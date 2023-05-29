@@ -38,11 +38,9 @@ You can use command line options to connect a node directly to a [dashboard](htt
 
 Start a node using the [`--ethstats`](../../../public-networks/reference/cli/options.md#ethstats) option to specify the Ethstats server URL. You can specify a contact email to send to the server using [`--ethstats-contact`](../../../public-networks/reference/cli/options.md#ethstats-contact).
 
-!!! example
-
-    ```bash
-    besu --ethstats=Dev-Node-1:secret@127.0.0.1:3001 --ethstats-contact=contact@mail.com
-    ```
+```bash
+besu --ethstats=Dev-Node-1:secret@127.0.0.1:3001 --ethstats-contact=contact@mail.com
+```
 
 :::note
 

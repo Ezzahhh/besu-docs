@@ -41,9 +41,11 @@ To run a development Besu node and connect it to Splunk Enterprise, use the Splu
 - [Git](https://git-scm.com/)
 - [Docker and Docker-compose](https://docs.docker.com/compose/install/)
 
-!!! important
+:::info
 
-    A Splunk license is not required to use the Splunk Connect for Ethereum demonstration.
+A Splunk license is not required to use the Splunk Connect for Ethereum demonstration.
+
+:::
 
 ### Steps
 
@@ -78,10 +80,11 @@ To run a development Besu node and connect it to Splunk Enterprise, use the Splu
 - [Docker](https://docs.docker.com/compose/install/)
 - [Besu 1.4.4](https://github.com/hyperledger/besu/blob/750580dcca349d22d024cc14a8171b2fa74b505a/CHANGELOG.md#144) or later [installed](../../get-started/install/binary-distribution.md)
 
-!!! important
+:::info
 
-    A Splunk license is not required to use the trial version of the Splunk Docker image.
-    The image is not suitable for production use and has [restrictions on daily log volume](https://www.splunk.com/).
+A Splunk license is not required to use the trial version of the Splunk Docker image. The image is not suitable for production use and has [restrictions on daily log volume](https://www.splunk.com/).
+
+:::
 
 :::note
 

@@ -36,20 +36,16 @@ Create a file (in this example, `knownClients`) that lists one or more trusted c
 - `<common_name>` is the Common Name specified in the client certificate.
 - `<hex-string>` is the SHA-256 fingerprint of the client certificate.
 
-!!! example
-
-    ```
-    ethsigner 8E:E0:85:9F:FC:2E:2F:21:31:46:0B:82:4C:A6:88:AB:30:34:9A:C6:EA:4F:04:31:ED:0F:69:A7:B5:C2:2F:A7
-    curl FC:18:BF:39:45:45:9A:15:46:76:A6:E7:C3:94:64:B8:34:84:A3:8E:B8:EA:67:DC:61:C0:29:E6:38:B8:B7:99
-    ```
+```bash title="Example"
+ethsigner 8E:E0:85:9F:FC:2E:2F:21:31:46:0B:82:4C:A6:88:AB:30:34:9A:C6:EA:4F:04:31:ED:0F:69:A7:B5:C2:2F:A7
+curl FC:18:BF:39:45:45:9A:15:46:76:A6:E7:C3:94:64:B8:34:84:A3:8E:B8:EA:67:DC:61:C0:29:E6:38:B8:B7:99
+```
 
 You can use [`openssl`](https://www.openssl.org/) or [`keytool`](https://docs.oracle.com/javase/6/docs/technotes/tools/solaris/keytool.html) to display the SHA256 fingerprint.
 
-!!! example
-
-    ```
-    keytool -list -v -keystore <keystore> -storetype PKCS12 -storepass <MY_PASSWORD>`.
-    ```
+```
+keytool -list -v -keystore <keystore> -storetype PKCS12 -storepass <MY_PASSWORD>`.
+```
 
 ### Start Besu
 
@@ -91,12 +87,10 @@ Create a file (in this example, `knownServers`) that lists one or more trusted s
 - `<port>` is the port used for communication
 - `<hex-string>` is the SHA-256 fingerprint of the server's certificate.
 
-!!! example
-
-    ```
-    localhost:8888 3C:B4:5A:F9:88:43:5E:62:69:9F:A9:9D:41:14:03:BA:83:24:AC:04:CE:BD:92:49:1B:8D:B2:A4:86:39:4C:AC
-    127.0.0.1:8888 3C:B4:5A:F9:88:43:5E:62:69:9F:A9:9D:41:14:03:BA:83:24:AC:04:CE:BD:92:49:1B:8D:B2:A4:86:39:4C:AC
-    ```
+```bash title="Example"
+localhost:8888 3C:B4:5A:F9:88:43:5E:62:69:9F:A9:9D:41:14:03:BA:83:24:AC:04:CE:BD:92:49:1B:8D:B2:A4:86:39:4C:AC
+127.0.0.1:8888 3C:B4:5A:F9:88:43:5E:62:69:9F:A9:9D:41:14:03:BA:83:24:AC:04:CE:BD:92:49:1B:8D:B2:A4:86:39:4C:AC
+```
 
 :::note
 

@@ -10,7 +10,8 @@ To deploy Besu using Ansible, use the [Hyperledger Besu role](https://galaxy.ans
 
 For more information, see the "Read Me" button on the [Ansible Galaxy Besu page](https://galaxy.ansible.com/consensys/hyperledger_besu).
 
-!!! important
+:::tip
 
-    We strongly recommend automating network creation. Automating makes updates easier and ensures
-    your configuration is synchronized across the network.
+We strongly recommend automating network creation. Automating makes updates easier and ensures your configuration is synchronized across the network.
+
+:::

@@ -8,10 +8,11 @@ description: Configure P2P TLS communication
 
 You can configure TLS to secure the P2P communication between nodes by ensuring only authorized nodes can communicate with each other. Use certificates issued by a trusted authority to connect authorized nodes in the network.
 
-!!! warning
+:::caution
 
-    P2P TLS is an early access feature, and functionality and options may be updated
-    between releases.
+P2P TLS is an early access feature, and functionality and options may be updated between releases.
+
+:::
 
 Besu supports PKCS11, PKCS12, and JKS keystore and truststore types for P2P TLS.
 

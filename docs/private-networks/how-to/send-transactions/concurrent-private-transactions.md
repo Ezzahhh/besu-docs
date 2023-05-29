@@ -20,16 +20,16 @@ You can use [`priv_getTransactionCount`](../../reference/api/index.md#priv_gettr
 
 Send the corresponding PMT using [`eth_sendRawTransaction`](../../../public-networks/reference/api/index.md#eth_sendrawtransaction), specifying the public PMT nonce. This method allows you to create and send the PMT yourself rather than [`eea_sendRawTransaction`](../../reference/api/index.md#eea_sendrawtransaction) handling the PMT.
 
-!!! important
+:::caution
 
-    When using `priv_distributeRawTransaction` to distribute transactions with consecutive nonces for the same account,
-    the corresponding PMTs must use one account with the nonces in the same order as the private transactions.
-    This is to ensure that the private transactions are executed in the correct order.
+When using `priv_distributeRawTransaction` to distribute transactions with consecutive nonces for the same account, the corresponding PMTs must use one account with the nonces in the same order as the private transactions.
 
-!!! example
+This is to ensure that the private transactions are executed in the correct order.
 
-    The [web3js-quorum library](https://github.com/ConsenSys/web3js-quorum/tree/master/example/concurrentPrivateTransactions)
-    includes an example of how to send concurrent private transactions.
-    The example uses [offchain privacy groups](../../concepts/privacy/privacy-groups.md).
-    Use [`priv_getPrivacyPrecompileAddress`](../../reference/api/index.md#priv_getprivacyprecompileaddress) to get the
-    precompile address to specify in the `to` field when creating the PMT.
+:::
+
+:::info
+
+The [web3js-quorum library](https://github.com/ConsenSys/web3js-quorum/tree/master/example/concurrentPrivateTransactions) includes an example of how to send concurrent private transactions. The example uses [offchain privacy groups](../../concepts/privacy/privacy-groups.md). Use [`priv_getPrivacyPrecompileAddress`](../../reference/api/index.md#priv_getprivacyprecompileaddress) to get the precompile address to specify in the `to` field when creating the PMT.
+
+:::
