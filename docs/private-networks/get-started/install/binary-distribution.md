@@ -37,15 +37,17 @@ To upgrade an existing Besu installation using Homebrew:
 brew upgrade hyperledger/besu/besu
 ```
 
-!!! note
+:::note
 
-    If you've upgraded your MacOS version between installing and upgrading Besu, when running `brew upgrade
-    hyperledger/besu/besu` you may be prompted to reinstall command line tools with `xcode-select --install`.
+If you've upgraded your MacOS version between installing and upgrading Besu, when running `brew upgrade hyperledger/besu/besu` you may be prompted to reinstall command line tools with `xcode-select --install`.
 
-!!! note
+:::
 
-    When upgrading Besu, you might be prompted to fix the remote branch names in Homebrew by using the command
-    `brew tap --repair`.
+:::note
+
+When upgrading Besu, you might be prompted to fix the remote branch names in Homebrew by using the command `brew tap --repair`.
+
+:::
 
 To display the Besu version and confirm installation:
 
@@ -65,16 +67,17 @@ besu --help
 
 - [Java JDK 17+](https://www.oracle.com/java/technologies/downloads/)
 
-!!! note "Linux open file limit"
+:::note Linux open file limit
 
-    If synchronizing to Mainnet on Linux or other chains with large data requirements, increase the
-    maximum number of open files allowed using `ulimit`. If the open files limit is not high
-    enough, a `Too many open files` RocksDB exception occurs.
+If synchronizing to Mainnet on Linux or other chains with large data requirements, increase the maximum number of open files allowed using `ulimit`. If the open files limit is not high enough, a `Too many open files` RocksDB exception occurs.
 
-!!! tip
+:::
 
-    We recommend installing [jemalloc](https://jemalloc.net/) to reduce memory usage.
-    If using Ubuntu, you can install it with the command: `apt install libjemalloc-dev`.
+:::tip
+
+We recommend installing [jemalloc](https://jemalloc.net/) to reduce memory usage. If using Ubuntu, you can install it with the command: `apt install libjemalloc-dev`.
+
+:::
 
 ### Install from packaged binaries
 

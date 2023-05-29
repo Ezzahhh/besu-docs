@@ -10,10 +10,11 @@ API interfaces in Hyperledger Besu allow users to [build plugins](../concepts/pl
 
 For more information about the available interfaces, see the [Plugin API Javadoc](https://javadoc.io/doc/org.hyperledger.besu/plugin-api/latest/index.html).
 
-!!! note "Javadoc issue"
+:::note Javadoc issue
 
-    The plugin API documentation is currently not being updated. We're working on a fix, but in the
-    meantime, some links are temporarily pointing to wiki.hyperledger.org.
+The plugin API documentation is currently not being updated. We're working on a fix, but in the meantime, some links are temporarily pointing to wiki.hyperledger.org.
+
+:::
 
 ## Core plugin classes
 

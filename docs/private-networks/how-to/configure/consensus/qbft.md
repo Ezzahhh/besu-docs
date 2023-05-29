@@ -31,10 +31,11 @@ To use QBFT, define a [genesis file](../../../../public-networks/concepts/genesi
 
 The genesis file differs depending on the [validator management method](#add-and-remove-validators) you intend to use.
 
-!!! note
+:::note
 
-    You can use a [transitions](#transitions) to change the `blockperiodseconds` or validator management method of the network
-    at a later time.
+You can use a [transitions](#transitions) to change the `blockperiodseconds` or validator management method of the network at a later time.
+
+:::
 
 !!! example "Example QBFT genesis files"
 
@@ -321,10 +322,11 @@ The methods to add or remove validators are:
 
 To view validator metrics for a specified block range, use [`qbft_getSignerMetrics`](../../../reference/api/index.md#qbft_getsignermetrics).
 
-!!! note
+:::note
 
-    If network conditions render it impossible to add and remove validators by voting, you can
-    [add and remove validators without voting](add-validators-without-voting.md).
+If network conditions render it impossible to add and remove validators by voting, you can [add and remove validators without voting](add-validators-without-voting.md).
+
+:::
 
 #### Add a validator
 
@@ -377,10 +379,11 @@ You can pre-deploy the validator smart contract in a new QBFT network by specify
     You can't use the JSON-RPC methods to add or remove validators when using a smart contract to manage nodes.
     You must interact with the contract functions using transactions.
 
-!!! note
+:::note
 
-    If network conditions render it impossible to add and remove validators using a smart contract, you can
-    [override smart contract validators](add-validators-without-voting.md#override-smart-contract-validators).
+If network conditions render it impossible to add and remove validators using a smart contract, you can [override smart contract validators](add-validators-without-voting.md#override-smart-contract-validators).
+
+:::
 
 ### Minimum number of validators
 
@@ -537,9 +540,11 @@ To update an existing network with a new `blockreward`:
             }
             ```
 
-    !!! note
+    :::note
 
-        You can add multiple `blockreward` updates in one transition object by specifying multiple future blocks.
+    You can add multiple `blockreward` updates in one transition object by specifying multiple future blocks.
+
+    :::
 
 3.  Restart all nodes in the network using the updated genesis file.
 
@@ -676,10 +681,11 @@ To update an existing network with a new mining beneficiary:
             }
             ```
 
-    !!! note
+    :::note
 
-        Setting the `miningbeneficiary` to an empty value clears out any override so that block rewards go to the
-        block producer rather than a global override address.
+    Setting the `miningbeneficiary` to an empty value clears out any override so that block rewards go to the block producer rather than a global override address.
+
+    :::
 
 3.  Restart all nodes in the network using the updated genesis file.
 

@@ -47,11 +47,11 @@ npx quorum-dev-quickstart
 
 Follow the prompts displayed to run Hyperledger Besu and [logging with ELK](../how-to/monitor/elastic-stack.md). Enter `n` for [Codefi Orchestrate](https://docs.orchestrate.consensys.net/en/stable/) and [private transactions](../concepts/privacy/index.md).
 
-!!! note
+:::note
 
-    If you enter `y` for private transactions, you get three Besu nodes with corresponding Tessera nodes for privacy.
-    You can follow the [privacy walk-through](privacy/index.md), which details how to send private
-    transactions and interact with deployed private contracts.
+If you enter `y` for private transactions, you get three Besu nodes with corresponding Tessera nodes for privacy. You can follow the [privacy walk-through](privacy/index.md), which details how to send private transactions and interact with deployed private contracts.
+
+:::
 
 ## Start the network
 
@@ -106,7 +106,11 @@ To display the list of endpoints again, run:
 
 You can [use Sirato Blockchain Explorer](../how-to/monitor/sirato-explorer.md) to analyze block information, contract metadata, transaction searches, and more. Sirato has built-in support for privacy-enabled Besu networks.
 
-!!! note You must connect to one of the privacy nodes (for example, `member1besu`), not the dedicated RPC, in order to allow access for Besu [privacy API methods](../reference/api/index.md#priv-methods). In production networks, you must [secure access](../../public-networks/how-to/use-besu-api/authenticate.md) to RPC nodes.
+:::note
+
+You must connect to one of the privacy nodes (for example, `member1besu`), not the dedicated RPC, in order to allow access for Besu [privacy API methods](../reference/api/index.md#priv-methods). In production networks, you must [secure access](../../public-networks/how-to/use-besu-api/authenticate.md) to RPC nodes.
+
+:::
 
 Clone the [Sirato GitHub repository](https://github.com/web3labs/sirato-free):
 
@@ -247,10 +251,11 @@ You can use [MetaMask](https://metamask.io/) to send a transaction on your priva
 
 <TestAccounts />
 
-!!! note
+:::note
 
-    Besu doesn't incorporate [account management](../../public-networks/how-to/send-transactions.md).
-    To create your own account, you have to use a third-party tool, such as MetaMask.
+Besu doesn't incorporate [account management](../../public-networks/how-to/send-transactions.md). To create your own account, you have to use a third-party tool, such as MetaMask.
+
+:::
 
 1.  After importing an existing test account, [create another test account from scratch] to use as the recipient for a test Ether transaction.
 
@@ -501,18 +506,21 @@ npm install
 node generate_node_keys.js --password "Password"
 ```
 
-!!! note
+:::note
 
-    The `--password` parameter is optional.
+The `--password` parameter is optional.
+
+:::
 
 ### 2. Create new node directory
 
 Navigate to the directory where the configuration files for the network were created.
 
-!!! note
+:::note
 
-    The directory was specified in an earlier step when running `npx quorum-dev-quickstart`. The default
-    location is `./quorum-test-network`.
+The directory was specified in an earlier step when running `npx quorum-dev-quickstart`. The default location is `./quorum-test-network`.
+
+:::
 
 In the `config/nodes` directory, create a subdirectory for the new node (for example, `newnode`), and move the `nodekey`, `nodekey.pub`, `address` and `accountkey` files from the previous step into this directory.
 
@@ -564,12 +572,13 @@ Add the new node's enode address to the [static nodes] file and [permissions fil
 
 Alternatively, call the [`perm_addNodesToAllowlist`](../../public-networks/reference/api/index.md#perm_addnodestoallowlist) API method on existing nodes to add the new node without restarting.
 
-!!! note
+:::note
 
-    Calling the API method by itself only persists for as long as the nodes remain online and is lost on the next restart.
+Calling the API method by itself only persists for as long as the nodes remain online and is lost on the next restart.
 
-    On a live network, the new node must be added to the [permissions file] so that subsequent restarts of the nodes are
-    aware of the change.
+On a live network, the new node must be added to the [permissions file] so that subsequent restarts of the nodes are aware of the change.
+
+:::
 
 ### 6. Start the network
 

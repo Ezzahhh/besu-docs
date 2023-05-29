@@ -94,11 +94,11 @@ Copy the following configuration file definition to a file called `ibftConfigFil
 }
 ```
 
-!!! note
+:::note
 
-    We recommend specifying the latest [milestone](../../../public-networks/reference/genesis-items.md#milestone-blocks)
-    when creating the configuration file for a private network.
-    This ensures you are using the most up-to-date protocol and have access to the most recent opcodes.
+We recommend specifying the latest [milestone](../../../public-networks/reference/genesis-items.md#milestone-blocks) when creating the configuration file for a private network. This ensures you are using the most up-to-date protocol and have access to the most recent opcodes.
+
+:::
 
 !!! warning
 
@@ -324,14 +324,13 @@ Look at the logs to confirm Besu is producing blocks:
 
 Use the [IBFT API](../../reference/api/index.md#ibft-20-methods) to remove or add validators.
 
-!!! note
+:::note
 
-    To add or remove nodes as validators you need the node address. The directory
-    [created for each node](#3-generate-node-keys-and-a-genesis-file) has the node address as the
-    name.
+To add or remove nodes as validators you need the node address. The directory [created for each node](#3-generate-node-keys-and-a-genesis-file) has the node address as the name.
 
-    This tutorial configures a private network using IBFT 2.0 for educational purposes only. IBFT
-    2.0 requires four validators to be Byzantine fault tolerant.
+This tutorial configures a private network using IBFT 2.0 for educational purposes only. IBFT 2.0 requires four validators to be Byzantine fault tolerant.
+
+:::
 
 Import accounts to MetaMask and send transactions as described in the [Quickstart tutorial](../quickstart.md#create-a-transaction-using-metamask).
 

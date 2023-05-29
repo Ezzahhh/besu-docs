@@ -25,7 +25,11 @@ Use one of several options to create a local cluster. Select one listed below, o
 
 [Minikube](https://minikube.sigs.k8s.io/docs/start/) is one of the most popular options to spin up a local Kubernetes cluster for development. You can [install a version](https://minikube.sigs.k8s.io/docs/start/) based on your architecture.
 
-!!! note We recommend at least 2 CPUs and 16GB of RAM.
+:::note
+
+We recommend at least 2 CPUs and 16GB of RAM.
+
+:::
 
 To start the cluster, run the following command:
 
@@ -70,7 +74,11 @@ The [template](https://github.com/ConsenSys/quorum-kubernetes/tree/master/aws) c
 - Dynamic storage classes backed by AWS EBS. The [volume claims](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims) are fixed sizes and can be updated as you grow via helm updates, and won't need to re-provision the underlying storage class.
 - [CNI](https://docs.aws.amazon.com/eks/latest/userguide/pod-networking.html) networking mode for EKS. By default, EKS clusters use `kubenet` to create a virtual network and subnet. Nodes get an IP address from a virtual network subnet. Network address translation (NAT) is then configured on the nodes, and pods receive an IP address "hidden" behind the node IP.
 
-  !!! note This approach reduces the number of IP addresses that you must reserve in your network space for pods, but constrains what can connect to the nodes from outside the cluster (for example, on-premise nodes or those on another cloud provider).
+  :::note
+
+  This approach reduces the number of IP addresses that you must reserve in your network space for pods, but constrains what can connect to the nodes from outside the cluster (for example, on-premise nodes or those on another cloud provider).
+
+  :::
 
 AWS Container Networking Interface (CNI) provides each pod with an IP address from the subnet, and can be accessed directly. The IP addresses must be unique across your network space, and must be planned in advance. Each node has a configuration parameter for the maximum number of pods that it supports. The equivalent number of IP addresses per node are then reserved up front for that node. This approach requires more planning, and can lead to IP address exhaustion as your application demands grow, however makes it easier for external nodes to connect to your cluster.
 
@@ -83,20 +91,20 @@ To provision the cluster:
 
 1.  Update [cluster.yml](https://github.com/ConsenSys/quorum-kubernetes/blob/5920caff6dd15b4ca17f760ad9e4d7d2e43b41a1/aws/templates/cluster.yml)
 
-1.  Deploy the template:
+2.  Deploy the template:
 
     ```bash
     eksctl create cluster -f ./templates/cluster.yml
     ```
 
-1.  Your `.kube/config` should be connected to the cluster automatically, but if not, run the commands below and replace `AWS_REGION` and `CLUSTER_NAME` with details that are specific to your deployment.
+3.  Your `.kube/config` should be connected to the cluster automatically, but if not, run the commands below and replace `AWS_REGION` and `CLUSTER_NAME` with details that are specific to your deployment.
 
         ```bash
         aws sts get-caller-identity
         aws eks --region AWS_REGION update-kubeconfig --name CLUSTER_NAME
         ```
 
-1.  After the deployment completes, provision the EBS drivers for the volumes. While it is possible to use the in-tree `aws-ebs` driver that's natively supported by Kubernetes, it is no longer being updated and does not support newer EBS features such as the [cheaper and better gp3 volumes](https://stackoverflow.com/questions/68359043/whats-the-difference-between-ebs-csi-aws-com-vs-kubernetes-io-aws-ebs-for-provi). The `cluster.yml` file (from the steps above) that is included in this folder automatically deploys the cluster with the EBS IAM policies, but you need to install the EBS CSI drivers. This can be done through the AWS Management Console for simplicity, or via a CLI command as below. Replace `CLUSTER_NAME`, `AWS_REGION` and `AWS_ACCOUNT` with details that are specific to your deployment.
+4.  After the deployment completes, provision the EBS drivers for the volumes. While it is possible to use the in-tree `aws-ebs` driver that's natively supported by Kubernetes, it is no longer being updated and does not support newer EBS features such as the [cheaper and better gp3 volumes](https://stackoverflow.com/questions/68359043/whats-the-difference-between-ebs-csi-aws-com-vs-kubernetes-io-aws-ebs-for-provi). The `cluster.yml` file (from the steps above) that is included in this folder automatically deploys the cluster with the EBS IAM policies, but you need to install the EBS CSI drivers. This can be done through the AWS Management Console for simplicity, or via a CLI command as below. Replace `CLUSTER_NAME`, `AWS_REGION` and `AWS_ACCOUNT` with details that are specific to your deployment.
 
         ```bash
         eksctl create iamserviceaccount --name ebs-csi-controller-sa --namespace kube-system --cluster CLUSTER_NAME --region AWS_REGION --attach-policy-arn arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy --approve --role-only --role-name AmazonEKS_EBS_CSI_DriverRole
@@ -104,7 +112,7 @@ To provision the cluster:
         eksctl create addon --name aws-ebs-csi-driver --cluster CLUSTER_NAME --region AWS_REGION --service-account-role-arn arn:aws:iam::AWS_ACCOUNT:role/AmazonEKS_EBS_CSI_DriverRole --force
         ```
 
-1.  Once the deployment is completed, provision the Secrets Manager IAM and CSI driver. Use `besu` (or equivalent) for `NAMESPACE` and replace `CLUSTER_NAME`, `AWS_REGION` and `AWS_ACCOUNT` with details that are specific to your deployment.
+5.  Once the deployment is completed, provision the Secrets Manager IAM and CSI driver. Use `besu` (or equivalent) for `NAMESPACE` and replace `CLUSTER_NAME`, `AWS_REGION` and `AWS_ACCOUNT` with details that are specific to your deployment.
 
         ```bash
         helm repo add secrets-store-csi-driver https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts
@@ -134,9 +142,9 @@ To provision the cluster:
             The above command creates a service account called `quorum-node-secrets-sa` and is
             preconfigured in the helm charts override `values.yml` files, for ease of use.
 
-1.  Optionally, deploy the [kubernetes dashboard](https://github.com/ConsenSys/quorum-kubernetes/tree/master/aws/templates/k8s-dashboard).
+6.  Optionally, deploy the [kubernetes dashboard](https://github.com/ConsenSys/quorum-kubernetes/tree/master/aws/templates/k8s-dashboard).
 
-1.  You can now use your cluster and you can deploy [Helm charts](charts.md) to it.
+7.  You can now use your cluster and you can deploy [Helm charts](charts.md) to it.
 
 ### Azure Kubernetes Service
 
@@ -149,7 +157,11 @@ The [template](https://github.com/ConsenSys/quorum-kubernetes/tree/master/azure)
 - Dynamic storage classes backed by Azure Files. The [volume claims](https://docs.microsoft.com/en-us/azure/aks/azure-disks-dynamic-pv) are fixed sizes and can be updated as you grow via helm updates, and won't need to re-provision the underlying storage class.
 - [CNI](https://docs.microsoft.com/en-us/azure/aks/configure-azure-cni) networking mode for AKS. By default, AKS clusters use `kubenet`, to create a virtual network and subnet. Nodes get an IP address from a virtual network subnet. Network address translation (NAT) is then configured on the nodes, and pods receive an IP address "hidden" behind the node IP.
 
-  !!! note This approach reduces the number of IP addresses you must reserve in your network space for pods to use, but constrains what can connect to the nodes from outside the cluster (for example, on-premise nodes or other cloud providers).
+  :::note
+
+  This approach reduces the number of IP addresses you must reserve in your network space for pods to use, but constrains what can connect to the nodes from outside the cluster (for example, on-premise nodes or other cloud providers).
+
+  :::
 
 AKS Container Networking Interface (CNI) provides each pod with an IP address from the subnet, and can be accessed directly. These IP addresses must be unique across your network space, and must be planned in advance. Each node has a configuration parameter for the maximum number of pods that it supports. The equivalent number of IP addresses per node are then reserved up front for that node. This approach requires more planning, and can leads to IP address exhaustion as your application demands grow, however makes it easier for external nodes to connect to your cluster.
 

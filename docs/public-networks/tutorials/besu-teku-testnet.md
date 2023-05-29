@@ -8,11 +8,11 @@ Description: How to run Besu and Teku on a testnet
 
 Run Besu as an [execution client](../concepts/the-merge.md#execution-clients) and [Teku](https://docs.teku.consensys.net/) as a [consensus client](../concepts/the-merge.md#consensus-clients) on the [Goerli](https://github.com/eth-clients/goerli) and [Sepolia](https://github.com/eth-clients/sepolia) Ethereum testnets.
 
-!!! note
+:::note
 
-    Sepolia is a permissioned network and you can't run a validator client on it without
-    [requesting to become a validator](https://notes.ethereum.org/zvkfSmYnT0-uxwwEegbCqg) first.
-    You can connect your consensus client using the beacon node only, without any validator duties.
+Sepolia is a permissioned network and you can't run a validator client on it without [requesting to become a validator](https://notes.ethereum.org/zvkfSmYnT0-uxwwEegbCqg) first. You can connect your consensus client using the beacon node only, without any validator duties.
+
+:::
 
 ## 1. Install Besu and Teku
 
@@ -38,10 +38,11 @@ If you're running Teku as a beacon node only, skip to the [next step](#4-start-b
 
 If you're also running Teku as a validator client, create a test Ethereum address (you can do this in [MetaMask](https://metamask.zendesk.com/hc/en-us/articles/360015289452-How-to-create-an-additional-account-in-your-wallet)). Fund this address with testnet ETH (32 ETH and gas fees for each validator) using a faucet. See the list of [Goerli faucets](https://github.com/eth-clients/goerli#meta-data-g%C3%B6rli) and [Sepolia faucets](https://github.com/eth-clients/sepolia#meta-data-sepolia).
 
-!!! note
+:::note
 
-    If you can't get ETH using the faucet, you can ask for help on the
-    [EthStaker Discord](https://discord.io/ethstaker).
+If you can't get ETH using the faucet, you can ask for help on the [EthStaker Discord](https://discord.io/ethstaker).
+
+:::
 
 Generate validator keys for one or more validators using the [Goerli Staking Launchpad](https://goerli.launchpad.ethereum.org/) (or [request to become validator on Sepolia](https://notes.ethereum.org/zvkfSmYnT0-uxwwEegbCqg)).
 

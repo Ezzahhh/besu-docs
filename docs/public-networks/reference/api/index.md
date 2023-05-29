@@ -27,11 +27,11 @@ import Postman from '../../../global/postman.md'
 
 The `ADMIN` API methods provide administrative functionality to manage your node.
 
-!!! note
+:::note
 
-    The `ADMIN` API methods are not enabled by default for JSON-RPC. To enable the `ADMIN` API
-    methods, use the [`--rpc-http-api`](../cli/options.md#rpc-http-api) or
-    [`--rpc-ws-api`](../cli/options.md#rpc-ws-api) options.
+The `ADMIN` API methods are not enabled by default for JSON-RPC. To enable the `ADMIN` API methods, use the [`--rpc-http-api`](../cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../cli/options.md#rpc-ws-api) options.
+
+:::
 
 ### `admin_addPeer`
 
@@ -150,10 +150,11 @@ Generates cached log bloom indexes for blocks. APIs such as [`eth_getLogs`](#eth
     [`--auto-log-bloom-caching-enabled`](../cli/options.md#auto-log-bloom-caching-enabled) command
     line option is set to false.
 
-!!! note
+:::note
 
-    Each index file contains 100000 blocks. The last fragment of blocks less than 100000 are not
-    indexed.
+Each index file contains 100000 blocks. The last fragment of blocks less than 100000 are not indexed.
+
+:::
 
 #### Parameters
 
@@ -315,11 +316,11 @@ None
 
 - `protocols`: _object_ - list of objects containing information for each Ethereum sub-protocol
 
-!!! note
+:::note
 
-    If the node is running locally, the host of the `enode` and `listenAddr` display as `[::]` in
-    the result. When advertising externally, the external address displayed for the `enode` and
-    `listenAddr` is defined by [`--nat-method`](../../how-to/connect/specify-nat.md).
+If the node is running locally, the host of the `enode` and `listenAddr` display as `[::]` in the result. When advertising externally, the external address displayed for the `enode` and `listenAddr` is defined by [`--nat-method`](../../how-to/connect/specify-nat.md).
+
+:::
 
 !!! example
 
@@ -495,11 +496,11 @@ Removes a [static node](../../how-to/connect/static-nodes.md).
 
 The `DEBUG` API methods allow you to inspect and debug the network. The `DEBUG` API is a more verbose alternative to the [`TRACE` API](#trace-methods), and its main purpose is compatibility with tools such as [Remix](https://remix.ethereum.org/). Where these APIs overlap, we recommend using the [`TRACE` API](#trace-methods) for production use over the `DEBUG` API. Specifically, we recommend `trace_block` over `debug_traceBlock`, and `trace_transaction` over `debug_traceTransaction`.
 
-!!! note
+:::note
 
-    The `DEBUG` API methods are not enabled by default for JSON-RPC. To enable the `DEBUG` API
-    methods, use the [`--rpc-http-api`](../cli/options.md#rpc-http-api) or
-    [`--rpc-ws-api`](../cli/options.md#rpc-ws-api) options.
+The `DEBUG` API methods are not enabled by default for JSON-RPC. To enable the `DEBUG` API methods, use the [`--rpc-http-api`](../cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../cli/options.md#rpc-ws-api) options.
+
+:::
 
 ### `debug_accountAt`
 
@@ -1533,11 +1534,11 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
 The `ETH` API methods allow you to interact with the blockchain.
 
-!!! note
+:::note
 
-    Methods with an equivalent [GraphQL](../../how-to/use-besu-api/graphql.md) query include a GraphQL
-    request and result in the method example. The parameter and result descriptions apply to the
-    JSON-RPC requests. The GraphQL specification is defined in the [schema].
+Methods with an equivalent [GraphQL](../../how-to/use-besu-api/graphql.md) query include a GraphQL request and result in the method example. The parameter and result descriptions apply to the JSON-RPC requests. The GraphQL specification is defined in the [schema].
+
+:::
 
 ### `eth_accounts`
 
@@ -1662,11 +1663,11 @@ If revert reason is enabled with [`--revert-reason-enabled`](../cli/options.md#r
 
 `blockNumber` or `blockHash`: _string_ - integer representing a block number, block hash, or one of the string tags `latest`, `earliest`, or `pending`, as described in [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
 
-!!! note
+:::note
 
-    By default, `eth_call` does not fail if the sender account has an insufficient balance.
-    This is done by setting the balance of the account to a large amount of ether.
-    To enforce balance rules, set the [`strict` parameter](objects.md#transaction-call-object) in the transaction call object to `true`.
+By default, `eth_call` does not fail if the sender account has an insufficient balance. This is done by setting the balance of the account to a large amount of ether. To enforce balance rules, set the [`strict` parameter](objects.md#transaction-call-object) in the transaction call object to `true`.
+
+:::
 
 #### Returns
 
@@ -2770,10 +2771,11 @@ Returns an array of [logs](../../concepts/events-and-logs.md) for the specified 
 
 Leave the [`--auto-log-bloom-caching-enabled`](../cli/options.md#auto-log-bloom-caching-enabled) command line option at the default value of `true` to improve log retrieval performance.
 
-!!! note
+:::note
 
-    `eth_getFilterLogs` is only used for filters created with `eth_newFilter`. To specify a filter
-    object and get logs without creating a filter, use `eth_getLogs`.
+`eth_getFilterLogs` is only used for filters created with `eth_newFilter`. To specify a filter object and get logs without creating a filter, use `eth_getLogs`.
+
+:::
 
 #### Parameters
 
@@ -3702,9 +3704,11 @@ Returns uncle specified by block hash and index.
 
 `result`: _object_ - [block object](objects.md#block-object)
 
-!!! note
+:::note
 
-    Uncles don't contain individual transactions.
+Uncles don't contain individual transactions.
+
+:::
 
 !!! example
 
@@ -3820,9 +3824,11 @@ Returns uncle specified by block number and index.
 
 `result`: _object_ - [block object](objects.md#block-object)
 
-!!! note
+:::note
 
-    Uncles do not contain individual transactions.
+Uncles do not contain individual transactions.
+
+:::
 
 !!! example
 
@@ -4206,9 +4212,11 @@ Creates a [log filter](../../concepts/events-and-logs.md). To poll for logs asso
 
 `filterOptions`: _object_ - [filter options object](objects.md#filter-options-object)
 
-!!! note
+:::note
 
-    `fromBlock` and `toBlock` in the filter options object default to `latest`.
+`fromBlock` and `toBlock` in the filter options object default to `latest`.
+
+:::
 
 #### Returns
 
@@ -4353,11 +4361,11 @@ To avoid exposing your private key, create signed transactions offline and send 
 
 `transaction`: _string_ - signed transaction serialized to hexadecimal format
 
-!!! note
+:::note
 
-    [Creating and sending transactions](../../how-to/send-transactions.md) includes
-    examples of creating signed transactions using the
-    [web3.js](https://github.com/ethereum/web3.js/) library.
+[Creating and sending transactions](../../how-to/send-transactions.md) includes examples of creating signed transactions using the [web3.js](https://github.com/ethereum/web3.js/) library.
+
+:::
 
 #### Returns
 
@@ -4493,9 +4501,11 @@ Submits a proof of work (Ethash) solution. This is used by mining software such 
 
 Returns an object with data about the synchronization status, or `false` if not synchronizing.
 
-!!! note
+:::note
 
-    Once the node reaches the head of the chain, `eth_syncing` returns false, indicating that there is no active syncing target.
+Once the node reaches the head of the chain, `eth_syncing` returns false, indicating that there is no active syncing target.
+
+:::
 
 #### Parameters
 
@@ -4623,11 +4633,11 @@ Filters time out when not requested by [`eth_getFilterChanges`](#eth_getfilterch
 
 The `MINER` API methods allow you to control the node’s mining operation.
 
-!!! note
+:::note
 
-    The `MINER` API methods are not enabled by default for JSON-RPC. To enable the `MINER` API
-    methods, use the [`--rpc-http-api`](../cli/options.md#rpc-http-api) or
-    [`--rpc-ws-api`](../cli/options.md#rpc-ws-api) options.
+The `MINER` API methods are not enabled by default for JSON-RPC. To enable the `MINER` API methods, use the [`--rpc-http-api`](../cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../cli/options.md#rpc-ws-api) options.
+
+:::
 
 ### `miner_changeTargetGasLimit`
 
@@ -4669,10 +4679,11 @@ Updates the target gas limit set using the [`--target-gas-limit`](../cli/options
 
 Sets the coinbase, the address for the mining rewards.
 
-!!! note
+:::note
 
-    You can also use `miner_setEtherbase` as an alternative method. They both work the same way.
-    Etherbase is a historic name for coinbase.
+You can also use `miner_setEtherbase` as an alternative method. They both work the same way. Etherbase is a historic name for coinbase.
+
+:::
 
 #### Parameters
 
@@ -4894,10 +4905,11 @@ None
 
 Returns enabled services (for example, `jsonrpc`) and the host and port for each service.
 
-!!! note
+:::note
 
-    The [`--nat-method`](../cli/options.md#nat-method) setting affects the JSON-RPC and P2P host and
-    port values, but not the metrics host and port values.
+The [`--nat-method`](../cli/options.md#nat-method) setting affects the JSON-RPC and P2P host and port values, but not the metrics host and port values.
+
+:::
 
 #### Parameters
 
@@ -4967,12 +4979,13 @@ None
 | `6`        | ETC   | Kotti   | PoA test network using Clique |
 | `212`      | ETC   | Astor   | PoW test network              |
 
-!!! note
+:::note
 
-    For almost all networks, network ID and chain ID are the same.
+For almost all networks, network ID and chain ID are the same.
 
-    The only networks in the table above with different network and chain IDs are
-    Classic with a chain ID of `61` and Mordor with a chain ID of `63`.
+The only networks in the table above with different network and chain IDs are Classic with a chain ID of `61` and Mordor with a chain ID of `63`.
+
+:::
 
 !!! example
 
@@ -5012,11 +5025,11 @@ None
 
 The `PLUGINS` API methods provide plugin-related functionality.
 
-!!! note
+:::note
 
-    The `PLUGINS` API methods are not enabled by default for JSON-RPC. To enable the `PLUGINS` API
-    methods, use the [`--rpc-http-api`](../cli/options.md#rpc-http-api) or
-    [`--rpc-ws-api`](../cli/options.md#rpc-ws-api) options.
+The `PLUGINS` API methods are not enabled by default for JSON-RPC. To enable the `PLUGINS` API methods, use the [`--rpc-http-api`](../cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../cli/options.md#rpc-ws-api) options.
+
+:::
 
 ### `plugins_reloadPluginConfig`
 
@@ -5058,11 +5071,11 @@ Reloads specified plugin configuration.
 
 The `TRACE` API is a more concise alternative to the [`DEBUG` API](#debug-methods).
 
-!!! note
+:::note
 
-    The `TRACE` API methods are not enabled by default for JSON-RPC. To enable the `TRACE` API
-    methods, use the [`--rpc-http-api`](../cli/options.md#rpc-http-api) or
-    [`--rpc-ws-api`](../cli/options.md#rpc-ws-api) options.
+The `TRACE` API methods are not enabled by default for JSON-RPC. To enable the `TRACE` API methods, use the [`--rpc-http-api`](../cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../cli/options.md#rpc-ws-api) options.
+
+:::
 
 ### `trace_block`
 
@@ -5772,11 +5785,11 @@ Provides transaction processing of [type `trace`](../trace-types.md#trace) for t
 
 The `TXPOOL` API methods allow you to inspect the contents of the transaction pool.
 
-!!! note
+:::note
 
-    The `TXPOOL` API methods are not enabled by default for JSON-RPC. To enable the `TXPOOL` API
-    methods, use the [`--rpc-http-api`](../cli/options.md#rpc-http-api) or
-    [`--rpc-ws-api`](../cli/options.md#rpc-ws-api) options.
+The `TXPOOL` API methods are not enabled by default for JSON-RPC. To enable the `TXPOOL` API methods, use the [`--rpc-http-api`](../cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../cli/options.md#rpc-ws-api) options.
+
+:::
 
 ### `txpool_besuPendingTransactions`
 
@@ -5811,9 +5824,11 @@ Supported operators:
 
 - `action`
 
-!!! note
+:::note
 
-    The only supported `action` is `"contract_creation"`.
+The only supported `action` is `"contract_creation"`.
+
+:::
 
 #### Returns
 

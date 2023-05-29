@@ -17,11 +17,11 @@ description: Hyperledger Besu private network JSON-RPC API methods reference
 
 The `CLIQUE` API methods provide access to the [Clique](../../how-to/configure/consensus/clique.md) consensus engine.
 
-!!! note
+:::note
 
-    The `CLIQUE` API methods are not enabled by default for JSON-RPC. To enable the `CLIQUE` API
-    methods use the [`--rpc-http-api`](../../../public-networks/reference/cli/options.md#rpc-http-api)
-    or [`--rpc-ws-api`](../../../public-networks/reference/cli/options.md#rpc-ws-api) options.
+The `CLIQUE` API methods are not enabled by default for JSON-RPC. To enable the `CLIQUE` API methods use the [`--rpc-http-api`](../../../public-networks/reference/cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../../../public-networks/reference/cli/options.md#rpc-ws-api) options.
+
+:::
 
 ### `clique_discard`
 
@@ -121,9 +121,11 @@ If you specify:
 
 `result`: _array_ of _objects_ - list of validator objects
 
-!!! note
+:::note
 
-    The proposer of the genesis block has address `0x0000000000000000000000000000000000000000`.
+The proposer of the genesis block has address `0x0000000000000000000000000000000000000000`.
+
+:::
 
 !!! example
 
@@ -282,11 +284,11 @@ Proposes to [add or remove a signer with the specified address].
 
 The `EEA` API methods provide functionality for [private transactions](../../concepts/privacy/private-transactions/index.md) and [privacy groups](../../concepts/privacy/privacy-groups.md).
 
-!!! note
+:::note
 
-    The `EEA` API methods are not enabled by default for JSON-RPC. To enable the `EEA` API methods,
-    use the [`--rpc-http-api`](../../../public-networks/reference/cli/options.md#rpc-http-api) or
-    [`--rpc-ws-api`](../../../public-networks/reference/cli/options.md#rpc-ws-api) options.
+The `EEA` API methods are not enabled by default for JSON-RPC. To enable the `EEA` API methods, use the [`--rpc-http-api`](../../../public-networks/reference/cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../../../public-networks/reference/cli/options.md#rpc-ws-api) options.
+
+:::
 
 ### `eea_sendRawTransaction`
 
@@ -355,11 +357,11 @@ To avoid exposing your private key, create signed transactions offline and send 
 
 The `IBFT` API methods provide access to the [IBFT 2.0](../../how-to/configure/consensus/ibft.md) consensus engine.
 
-!!! note
+:::note
 
-    The `IBFT` API methods are not enabled by default for JSON-RPC. To enable the `IBFT` API
-    methods, use the [`--rpc-http-api`](../../../public-networks/reference/cli/options.md#rpc-http-api) or
-    [`--rpc-ws-api`](../../../public-networks/reference/cli/options.md#rpc-ws-api) options.
+The `IBFT` API methods are not enabled by default for JSON-RPC. To enable the `IBFT` API methods, use the [`--rpc-http-api`](../../../public-networks/reference/cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../../../public-networks/reference/cli/options.md#rpc-ws-api) options.
+
+:::
 
 ### `ibft_discardValidatorVote`
 
@@ -462,9 +464,11 @@ If you specify:
 
 `result`: _array_ of _objects_ - list of validator objects
 
-!!! note
+:::note
 
-    The proposer of the genesis block has address `0x0000000000000000000000000000000000000000`.
+The proposer of the genesis block has address `0x0000000000000000000000000000000000000000`.
+
+:::
 
 !!! example
 
@@ -642,10 +646,11 @@ Adds accounts (participants) to the [accounts permission list](../../how-to/use-
 
 `addresses`: _array_ of _strings_ - list of account addresses
 
-!!! note
+:::note
 
-    The parameters list contains a list which is why the account addresses are enclosed by double
-    square brackets.
+The parameters list contains a list which is why the account addresses are enclosed by double square brackets.
+
+:::
 
 #### Returns
 
@@ -689,10 +694,11 @@ To use domain names in enode URLs, ensure you [enable DNS support](../../../publ
 
 `enodes`: _array_ of _strings_ - list of [enode URLs](../../../public-networks/concepts/node-keys.md#enode-url)
 
-!!! note
+:::note
 
-    The parameters list contains a list which is why the enode URLs are enclosed by double
-    square brackets.
+The parameters list contains a list which is why the enode URLs are enclosed by double square brackets.
+
+:::
 
 #### Returns
 
@@ -844,10 +850,11 @@ Removes accounts (participants) from the [accounts permissions list](../../how-t
 
 `addresses`: _array_ of _strings_ - list of account addresses
 
-!!! note
+:::note
 
-    The parameters list contains a list which is why the account addresses are enclosed by double
-    square brackets.
+The parameters list contains a list which is why the account addresses are enclosed by double square brackets.
+
+:::
 
 #### Returns
 
@@ -885,10 +892,11 @@ Removes nodes from the [nodes allowlist](../../how-to/use-permissioning/local.md
 
 `enodes`: _array_ of _strings_ - list of [enode URLs](../../../public-networks/concepts/node-keys.md#enode-url)
 
-!!! note
+:::note
 
-    The parameters list contains a list which is why the enode URLs are enclosed by double square
-    brackets.
+The parameters list contains a list which is why the enode URLs are enclosed by double square brackets.
+
+:::
 
 #### Returns
 
@@ -922,11 +930,11 @@ Removes nodes from the [nodes allowlist](../../how-to/use-permissioning/local.md
 
 The `PRIV` API methods provide functionality for [private transactions](../../concepts/privacy/private-transactions/index.md) and [privacy groups](../../concepts/privacy/privacy-groups.md).
 
-!!! note
+:::note
 
-    The `PRIV` API methods are not enabled by default for JSON-RPC. To enable the `PRIV` API
-    methods, use the [`--rpc-http-api`](../../../public-networks/reference/cli/options.md#rpc-http-api) or
-    [`--rpc-ws-api`](../../../public-networks/reference/cli/options.md#rpc-ws-api) options.
+The `PRIV` API methods are not enabled by default for JSON-RPC. To enable the `PRIV` API methods, use the [`--rpc-http-api`](../../../public-networks/reference/cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../../../public-networks/reference/cli/options.md#rpc-ws-api) options.
+
+:::
 
 ### `priv_call`
 
@@ -1363,10 +1371,11 @@ Returns an array of [logs](../../../public-networks/concepts/events-and-logs.md)
 
 For private contracts, `priv_getFilterLogs` is the same as [`eth_getFilterLogs`](../../../public-networks/reference/api/index.md#eth_getfilterlogs) for public contracts except there's no [automatic log bloom caching](../../../public-networks/reference/cli/options.md#auto-log-bloom-caching-enabled) for private contracts.
 
-!!! note
+:::note
 
-    `priv_getFilterLogs` is only used for filters created with [`priv_newFilter`](#priv_newfilter).
-    To specify a filter object and get logs without creating a filter, use [`priv_getLogs`](#priv_getlogs).
+`priv_getFilterLogs` is only used for filters created with [`priv_newFilter`](#priv_newfilter). To specify a filter object and get logs without creating a filter, use [`priv_getLogs`](#priv_getlogs).
+
+:::
 
 #### Parameters
 
@@ -1700,9 +1709,11 @@ For private contracts, `priv_newFilter` is the same as [`eth_newFilter`](../../.
 
 - `filterOptions`: _object_ - [filter options object](../../../public-networks/reference/api/objects.md#filter-options-object)
 
-!!! note
+:::note
 
-    `fromBlock` and `toBlock` in the filter options object default to `latest`.
+`fromBlock` and `toBlock` in the filter options object default to `latest`.
+
+:::
 
 #### Returns
 
@@ -1778,11 +1789,11 @@ For private contracts, `priv_uninstallFilter` is the same as [`eth_uninstallFilt
 
 The `QBFT` API methods provide access to the [QBFT](../../how-to/configure/consensus/qbft.md) consensus engine.
 
-!!! note
+:::note
 
-    The `QBFT` API methods are not enabled by default for JSON-RPC. To enable the `QBFT` API
-    methods, use the [`--rpc-http-api`](../../../public-networks/reference/cli/options.md#rpc-http-api) or
-    [`--rpc-ws-api`](../../../public-networks/reference/cli/options.md#rpc-ws-api) options.
+The `QBFT` API methods are not enabled by default for JSON-RPC. To enable the `QBFT` API methods, use the [`--rpc-http-api`](../../../public-networks/reference/cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../../../public-networks/reference/cli/options.md#rpc-ws-api) options.
+
+:::
 
 ### `qbft_discardValidatorVote`
 
@@ -1885,9 +1896,11 @@ If you specify:
 
 `result`: _array_ of _objects_ - list of validator objects
 
-!!! note
+:::note
 
-    The proposer of the genesis block has address `0x0000000000000000000000000000000000000000`.
+The proposer of the genesis block has address `0x0000000000000000000000000000000000000000`.
+
+:::
 
 !!! example
 

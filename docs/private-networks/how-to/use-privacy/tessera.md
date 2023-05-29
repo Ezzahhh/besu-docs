@@ -10,9 +10,11 @@ To enable [privacy functionality](../../concepts/privacy/index.md) in production
 
 ![Besu-Tessera-High-Availability](../../../assets/images/Besu-Tessera-High-Availability.png)
 
-!!! note
+:::note
 
-    You can also configure Besu for high availability using load balancers.
+You can also configure Besu for high availability using load balancers.
+
+:::
 
 ## High availability
 

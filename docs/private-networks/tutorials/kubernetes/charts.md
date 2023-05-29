@@ -60,10 +60,11 @@ Setting the `cluster.cloudNativeServices: true`:
 - Stores keys in Azure Key Vault or AWS Secrets Manager.
 - Uses Azure Managed Identities or AWS Identity and Access Management for pod identity access.
 
-!!! note
+:::note
 
-    You can customize any of the charts in this repository to suit your requirements, and make pull requests to
-    extend functionality.
+You can customize any of the charts in this repository to suit your requirements, and make pull requests to extend functionality.
+
+:::
 
 ### 1. Check that you can connect to the cluster with `kubectl`
 
@@ -84,11 +85,11 @@ Server Version: version.Info{Major:"1", Minor:"22", GitVersion:"v1.22.3", GitCom
 
 This tutorial isolates groups of resources (for example, StatefulSets and Services) within a single cluster.
 
-!!! note
+:::note
 
-    The rest of this tutorial uses `besu` as the namespace,
-    but you're free to pick any name when deploying, as long as it's consistent across the
-    [infrastructure scripts](cluster.md) and charts.
+The rest of this tutorial uses `besu` as the namespace, but you're free to pick any name when deploying, as long as it's consistent across the [infrastructure scripts](cluster.md) and charts.
+
+:::
 
 Run the following in a terminal window:
 
@@ -164,10 +165,11 @@ kubectl apply -f ../ingress/ingress-rules-monitoring.yml
 
 Once complete, view the IP address listed under the `Ingress` section if you're using the Kubernetes Dashboard or on the command line `kubectl -n quorum get services quorum-monitoring-ingress-ingress-nginx-controller`.
 
-!!! note
+:::note
 
-    We refer to the ingress here as `external-nginx` because it deals with monitoring endpoints specifically. We
-    also deploy a second ingress called `network-ingress` which is for the blockchain nodes only in [step 8](#9-connect-to-the-node-from-your-local-machine-via-an-ingress)
+We refer to the ingress here as `external-nginx` because it deals with monitoring endpoints specifically. We also deploy a second ingress called `network-ingress` which is for the blockchain nodes only in [step 8](#9-connect-to-the-node-from-your-local-machine-via-an-ingress)
+
+:::
 
 ![`k8s-ingress-external`](../../../assets/images/kubernetes-ingress-ip.png)
 
@@ -310,10 +312,11 @@ Please set the `aws`, `azure` and `cluster` keys are as per the [Provisioning](#
 
 For the bootnodes only, set the `quorumFlags.isBootnode: true`. When using bootnodes you have to also set `quorumFlags.usesBootnodes: true` to indicate that all nodes on the network will use these bootnodes.
 
-!!! note
+:::note
 
-    If you use bootnodes, you must set `quorumFlags.usesBootnodes: true` in the override values.yaml for
-    every other node type, that is validators.yaml, txnode.yaml and reader.yaml
+If you use bootnodes, you must set `quorumFlags.usesBootnodes: true` in the override values.yaml for every other node type, that is validators.yaml, txnode.yaml and reader.yaml
+
+:::
 
 ```bash
 helm install bootnode-1 ./charts/besu-node --namespace besu --values ./values/bootnode.yml
@@ -403,10 +406,11 @@ Logs for Besu resemble the following:
 
 ![`k8s-tx-Besu-logs`](../../../assets/images/kubernetes-tx-Besu-logs.png)
 
-!!! note
+:::note
 
-    In these examples we use `member-1` and `rpc-1` as release names for the deployments. You can pick any release
-    name that you'd like to use in place of those as per your requirements.
+In these examples we use `member-1` and `rpc-1` as release names for the deployments. You can pick any release name that you'd like to use in place of those as per your requirements.
+
+:::
 
 ### 9. Connect to the node from your local machine via an ingress
 

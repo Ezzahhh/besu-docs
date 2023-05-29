@@ -6,10 +6,11 @@ description: Public key infrastructure
 
 # Public key infrastructure
 
-!!! warning
+:::warning
 
-    Public key infrastructure (PKI) support is an early access feature, and functionality and options may be updated
-    between releases.
+Public key infrastructure (PKI) support is an early access feature, and functionality and options may be updated between releases.
+
+:::
 
 Hyperledger Besu's public key infrastructure allows you to use certificates issued by a trusted authority to manage node and account identities in the following ways:
 
@@ -28,9 +29,11 @@ When receiving connection requests, the incoming connection must be from another
 
 ## Block proposal permissioning
 
-!!! important
+:::caution
 
-    Only private networks using the [QBFT consensus protocol] support block proposal permissioning.
+Only private networks using the [QBFT consensus protocol] support block proposal permissioning.
+
+:::
 
 Use certificates issued by a trusted authority to ensure only authorized validator nodes can propose new blocks in the network. The block hash is signed by the validator private certificate and included in the header of the proposed block as a [CMS (Cryptographic Message Syntax)]. This is used by other validators to verify that the proposer is authorized to create a block in the network.
 

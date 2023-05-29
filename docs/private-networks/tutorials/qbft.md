@@ -98,11 +98,11 @@ Copy the following configuration file definition to a file called `qbftConfigFil
 }
 ```
 
-!!! note
+:::note
 
-    We recommend specifying the latest [milestone](../../public-networks/reference/genesis-items.md#milestone-blocks)
-    when creating the genesis file for a private network.
-    This ensures you are using the most up-to-date protocol and have access to the most recent opcodes.
+We recommend specifying the latest [milestone](../../public-networks/reference/genesis-items.md#milestone-blocks) when creating the genesis file for a private network. This ensures you are using the most up-to-date protocol and have access to the most recent opcodes.
+
+:::
 
 !!! warning
 
@@ -328,13 +328,13 @@ Look at the logs to confirm Besu is producing blocks:
 
 Use the [QBFT API](../reference/api/index.md#qbft-methods) to remove or add validators, or import accounts to MetaMask and send transactions as described in the [Quickstart tutorial](quickstart.md#create-a-transaction-using-metamask).
 
-!!! note
+:::note
 
-    To add or remove nodes as validators you need the node address. The directory
-    [created for each node](#3-generate-node-keys-and-a-genesis-file) has the node address as the
-    name.
+To add or remove nodes as validators you need the node address. The directory [created for each node](#3-generate-node-keys-and-a-genesis-file) has the node address as the name.
 
-    Besu doesn't support [private key management](../../public-networks/how-to/send-transactions.md).
+Besu doesn't support [private key management](../../public-networks/how-to/send-transactions.md).
+
+:::
 
 You can switch from the [block header validator selection method] configured here, to the [contract validator selection method] by updating the genesis file and [configuring a transition].
 

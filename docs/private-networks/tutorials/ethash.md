@@ -76,11 +76,11 @@ Copy the following genesis definition to a file called `privateNetworkGenesis.js
 }
 ```
 
-!!! note
+:::note
 
-    We recommend specifying the latest [milestone](../../public-networks/reference/genesis-items.md#milestone-blocks) when creating
-    the genesis file for a private network.
-    This ensures you are using the most up-to-date protocol and have access to the most recent opcodes.
+We recommend specifying the latest [milestone](../../public-networks/reference/genesis-items.md#milestone-blocks) when creating the genesis file for a private network. This ensures you are using the most up-to-date protocol and have access to the most recent opcodes.
+
+:::
 
 !!! warning
 

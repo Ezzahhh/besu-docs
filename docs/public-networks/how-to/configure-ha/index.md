@@ -30,23 +30,21 @@ To enable high availability to the [RPC Pub/Sub API over WebSocket](../use-besu-
 
 Use the [readiness endpoint](../use-besu-api/json-rpc.md#readiness-and-liveness-endpoints) to determine when a node is ready.
 
-!!! note
+:::note
 
-    The minimum number of peers and number of blocks from the best known block for determining if a
-    node considered ready is deployment specific.
+The minimum number of peers and number of blocks from the best known block for determining if a node considered ready is deployment specific.
+
+:::
 
 ## Transaction nonces
 
 Besu obtains the nonce for the next transaction using [`eth_getTransactionCount`](../../reference/api/index.md#eth_gettransactioncount). The nonce depends on the transactions in the [transaction pool](../../concepts/transactions/pool.md). If sending [`eth_getTransactionCount`](../../reference/api/index.md#eth_gettransactioncount) and [`eth_sendRawTransaction`](../../reference/api/index.md#eth_sendrawtransaction) requests for a specific account to more than one node, the [`eth_getTransactionCount`](../../reference/api/index.md#eth_gettransactioncount) results might be incorrect.
 
-!!! note
+:::note
 
-    If using [private transactions](../../../private-networks/concepts/privacy/private-transactions/index.md),
-    retrieve the nonce using
-    [`priv_getTransactionCount`](../../../private-networks/reference/api/index.md#priv_gettransactioncount) or
-    [`priv_getEeaTransactionCount`](../../../private-networks/reference/api/index.md#priv_geteeatransactioncount)
-    and send the private transactions using
-    [`eea_sendRawTransaction`](../../../private-networks/reference/api/index.md#eea_sendrawtransaction).
+If using [private transactions](../../../private-networks/concepts/privacy/private-transactions/index.md), retrieve the nonce using [`priv_getTransactionCount`](../../../private-networks/reference/api/index.md#priv_gettransactioncount) or [`priv_getEeaTransactionCount`](../../../private-networks/reference/api/index.md#priv_geteeatransactioncount) and send the private transactions using [`eea_sendRawTransaction`](../../../private-networks/reference/api/index.md#eea_sendrawtransaction).
+
+:::
 
 To get correct nonces when distributing requests across a cluster, either:
 
@@ -91,17 +89,21 @@ To request logs from the block number of the last log received before the subscr
 
 To request all pending transactions for the new node, use [`txpool_besuTransactions`](../../reference/api/index.md#txpool_besutransactions).
 
-!!! note
+:::note
 
-    Nodes do not all store the same pending transactions.
+Nodes do not all store the same pending transactions.
+
+:::
 
 ### Dropped pending transactions
 
 To request all pending transactions for the new node, use [`txpool_besuTransactions`](../../reference/api/index.md#txpool_besutransactions).
 
-!!! note
+:::note
 
-    Nodes do not all store the same pending transactions.
+Nodes do not all store the same pending transactions.
+
+:::
 
 ### Syncing
 

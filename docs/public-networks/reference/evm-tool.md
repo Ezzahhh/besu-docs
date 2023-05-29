@@ -14,7 +14,11 @@ This reference describes options for running the following [using the EVM tool](
 - [Ethereum state tests](#state-test-options)
 - [Ethereum object formatted code](#eof-code-validation)
 
-!!! note Option names that include `trace`, such as [`--trace`](#json-trace) and [`--trace.[no]memory`](#nomemory-tracenomemory) exist to support [`t8ntool`](https://ethereum-tests.readthedocs.io/en/latest/t8ntool.html) reference testing, and are interchangeable with their standard option names.
+:::note
+
+Option names that include `trace`, such as [`--trace`](#json-trace) and [`--trace.[no]memory`](#nomemory-tracenomemory) exist to support [`t8ntool`](https://ethereum-tests.readthedocs.io/en/latest/t8ntool.html) reference testing, and are interchangeable with their standard option names.
+
+:::
 
 ## Run options
 

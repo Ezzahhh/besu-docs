@@ -10,7 +10,11 @@ description: Use Sirato Explorer on a privacy-enabled Besu network
 
 Sirato provides an overview of the entire network, including block information, contract metadata, transaction searches, and [more](https://medium.com/web3labs/epirus-ethereum-saas-blockchain-explorer-d5d961717d15).
 
-!!! note You must connect to one of the privacy nodes (for example, `member1besu`), not the dedicated RPC, in order to allow access for Besu [privacy API methods](../../reference/api/index.md#priv-methods). In production networks, you must [secure access](../../../public-networks/how-to/use-besu-api/authenticate.md) to RPC nodes.
+:::note
+
+You must connect to one of the privacy nodes (for example, `member1besu`), not the dedicated RPC, in order to allow access for Besu [privacy API methods](../../reference/api/index.md#priv-methods). In production networks, you must [secure access](../../../public-networks/how-to/use-besu-api/authenticate.md) to RPC nodes.
+
+:::
 
 ## Prerequisites
 

@@ -42,10 +42,11 @@ The process of mining transactions happens in reverse to sending transactions.
 
 1.  The Mainnet transaction processor processes the PMT in the same way as any other public transaction. On nodes containing the [privacy precompile contract](../../../public-networks/reference/api/index.md#priv_getprivacyprecompileaddress) specified in the `to` attribute of the PMT, the Mainnet transaction processor passes the PMT to the privacy precompile contract.
 
-    !!! note
+    :::note
 
-        Nodes receiving the PMT that do not contain the specified privacy precompile
-        contract will ignore the PMT.
+    Nodes receiving the PMT that do not contain the specified privacy precompile contract will ignore the PMT.
+
+    :::
 
 1.  The privacy precompile contract queries the plugin for the private transaction using the PMT.
 1.  The privacy precompile contract passes the private transaction to the private transaction manager. The privacy group ID specifies the private world state to use.

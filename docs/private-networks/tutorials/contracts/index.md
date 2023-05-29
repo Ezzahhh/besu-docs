@@ -211,16 +211,16 @@ Use [`web3.priv.generateAndSendRawTransaction`](https://consensys.github.io/web3
 
 The deployment process includes creating the client as in the previous examples, but rather than deploying the contract with `to: null`, it instead sends the transaction with `privateFor: [memberPublicKey/s]`. Once you make the API call, you receive a `transactionHash`, which you can use to get a `transactionReceipt` containing the contract's address.
 
-!!! note
+:::note
 
-    This example doesn't use a privacy group and makes a simple node-to-node transaction.
-    To use a privacy group:
+This example doesn't use a privacy group and makes a simple node-to-node transaction. To use a privacy group:
 
-    * Create the privacy group using the public keys of the nodes in the group.
-    * Specify the `privacyGroupId` instead of the `privateFor` option in the txOptions above and then send the transaction.
+- Create the privacy group using the public keys of the nodes in the group.
+- Specify the `privacyGroupId` instead of the `privateFor` option in the txOptions above and then send the transaction.
 
-    The Developer Quickstart provides an
-    [example of a private transaction with a privacy group](https://github.com/ConsenSys/quorum-dev-quickstart/blob/b72a0f64d685c851bf8be399a8e33bbdf0e09982/files/besu/smart_contracts/privacy/scripts/private_tx_privacy_group.js).
+The Developer Quickstart provides an [example of a private transaction with a privacy group](https://github.com/ConsenSys/quorum-dev-quickstart/blob/b72a0f64d685c851bf8be399a8e33bbdf0e09982/files/besu/smart_contracts/privacy/scripts/private_tx_privacy_group.js).
+
+:::
 
 ## Use `eea_sendRawTransaction` for private contracts with web3js-eea
 

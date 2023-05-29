@@ -55,10 +55,11 @@ Forest mode must go through all the branches by hash to read a leaf value. Bonsa
 
 However, Bonsai becomes increasingly more resource-intensive the further in history you try to read data. To prevent this, you can limit how far Bonsai looks back while reconstructing data. The default limit Bonsai looks back is 512. To change the parameter, use the [`--bonsai-historical-block-limit`](../reference/cli/options.md#bonsai-historical-block-limit) option.
 
-!!! note
+:::note
 
-    Using `--bonsai-historical-block-limit` doesn't affect the size of the database being stored, only how far back to load.
-    This means there is no "safe minimum" value to use with this option.
+Using `--bonsai-historical-block-limit` doesn't affect the size of the database being stored, only how far back to load. This means there is no "safe minimum" value to use with this option.
+
+:::
 
 ### Syncing nodes
 

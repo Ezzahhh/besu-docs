@@ -8,11 +8,11 @@ sidebar_position: 7
 
 You can sign privacy marker transactions (PMTs) with either a random key or a specified key. To sign privacy marker transactions with a specified private key, use [`--privacy-marker-transaction-signing-key-file`](../../reference/cli/options.md#privacy-marker-transaction-signing-key-file) when starting Hyperledger Besu.
 
-!!! note
+:::note
 
-    The private key file can be the same file used by
-    [`--node-private-key-file`](#node-private-key-file), or a different key file to identify who
-    signed the privacy marker transaction.
+The private key file can be the same file used by [`--node-private-key-file`](#node-private-key-file), or a different key file to identify who signed the privacy marker transaction.
+
+:::
 
 In networks where you pay gas, you must specify a key and the associated account must contain adequate funds.
 
@@ -26,10 +26,11 @@ In [free gas networks](../configure/free-gas.md), to provide further anonymity b
     [`--privacy-marker-transaction-signing-key-file`](../../reference/cli/options.md#privacy-marker-transaction-signing-key-file)
     command line option and the corresponding public key included in the accounts allowlist.
 
-!!! note
+:::note
 
-    Besu signs privacy marker transactions during the
-    [private transaction process](../../concepts/privacy/private-transactions/processing.md).
+Besu signs privacy marker transactions during the [private transaction process](../../concepts/privacy/private-transactions/processing.md).
+
+:::
 
 <!-- Links -->
 

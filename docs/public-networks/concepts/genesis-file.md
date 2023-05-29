@@ -16,10 +16,11 @@ For private networks, [create a JSON genesis file](https://consensys.net/blog/qu
 
 The genesis file specifies the [network-wide settings](../reference/genesis-items.md), such as those for a [free gas network](../../private-networks/how-to/configure/free-gas.md), so all nodes in a network must use the same genesis file.
 
-!!! note
+:::note
 
-    You can specify node-level settings on the command line or in the
-    [node configuration file](../how-to/configuration-file.md).
+You can specify node-level settings on the command line or in the [node configuration file](../how-to/configuration-file.md).
+
+:::
 
 !!! example "Example IBFT 2.0 genesis file"
 

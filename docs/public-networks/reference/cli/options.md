@@ -461,10 +461,11 @@ The `enrtree` URL of the DNS node list for [node discovery via DNS](https://eips
 
 Enables or disables P2P discovery. The default is `true`.
 
-!!! note
+:::note
 
-    You can override the default DNS server if it's unreliable or doesn't serve TCP DNS requests, using the
-    [early access option](#xhelp) `--Xp2p-dns-discovery-server=<HOST>`.
+You can override the default DNS server if it's unreliable or doesn't serve TCP DNS requests, using the [early access option](#xhelp) `--Xp2p-dns-discovery-server=<HOST>`.
+
+:::
 
 ### `engine-host-allowlist`
 
@@ -926,10 +927,11 @@ A comma-separated list of hostnames to [access the JSON-RPC API](../../how-to/us
     [Besu authentication mechanism](../../how-to/use-besu-api/authenticate.md) with username and password
     authentication or JWT public key authentication.
 
-!!! note
+:::note
 
-    If using [Prometheus](https://prometheus.io/) to pull metrics from a node, you must specify all
-    the other nodes you want to pull metrics from in the list of allowed hostnames.
+If using [Prometheus](https://prometheus.io/) to pull metrics from a node, you must specify all the other nodes you want to pull metrics from in the list of allowed hostnames.
+
+:::
 
 !!! tip
 
@@ -1266,10 +1268,11 @@ You can't specify `--metrics-push-enabled` with [`--metrics-enabled`](#metrics-e
 
 The host of the [Prometheus Push Gateway](https://github.com/prometheus/pushgateway). The default is `127.0.0.1`. The metrics server respects the [`--host-allowlist` option](#host-allowlist).
 
-!!! note
+:::note
 
-    When pushing metrics, ensure you set `--metrics-push-host` to the machine on which the push
-    gateway is. Generally, this is a different machine to the machine on which Besu is running.
+When pushing metrics, ensure you set `--metrics-push-host` to the machine on which the push gateway is. Generally, this is a different machine to the machine on which Besu is running.
+
+:::
 
 ### `metrics-push-interval`
 
@@ -2498,10 +2501,11 @@ The port (TCP) on which HTTP JSON-RPC listens. The default is `8545`. You must [
 
 Enables or disables clients with trusted CA certificates to connect. The default is `false`.
 
-!!! note
+:::note
 
-    You must enable client authentication using the
-    [`--rpc-http-tls-client-auth-enabled`](#rpc-http-tls-client-auth-enabled) option.
+You must enable client authentication using the [`--rpc-http-tls-client-auth-enabled`](#rpc-http-tls-client-auth-enabled) option.
+
+:::
 
 ### `rpc-http-tls-client-auth-enabled`
 
@@ -2531,10 +2535,11 @@ Enables or disables clients with trusted CA certificates to connect. The default
 
 Enables or disables TLS client authentication for the JSON-RPC HTTP service. The default is `false`.
 
-!!! note
+:::note
 
-    You must specify [`--rpc-http-tls-ca-clients-enabled`](#rpc-http-tls-ca-clients-enabled) and/or
-    [`rpc-http-tls-known-clients-file`](#rpc-http-tls-known-clients-file).
+You must specify [`--rpc-http-tls-ca-clients-enabled`](#rpc-http-tls-ca-clients-enabled) and/or [`rpc-http-tls-known-clients-file`](#rpc-http-tls-known-clients-file).
+
+:::
 
 ### `rpc-http-tls-cipher-suite`
 
@@ -2597,9 +2602,11 @@ A list of comma-separated TLS cipher suites to support.
 
 Enables or disables TLS for the JSON-RPC HTTP service. The default is `false`.
 
-!!! note
+:::note
 
-    [`--rpc-http-enabled`](#rpc-http-enabled) must be enabled.
+[`--rpc-http-enabled`](#rpc-http-enabled) must be enabled.
+
+:::
 
 ### `rpc-http-tls-keystore-file`
 
@@ -2687,10 +2694,11 @@ The path to the file used to [authenticate clients](../../../private-networks/ho
 
 Must contain the certificate's Common Name, and SHA-256 fingerprint in the format `<CommonName> <hex-string>`.
 
-!!! note
+:::note
 
-    You must enable client authentication using the
-    [`--rpc-http-tls-client-auth-enabled`](#rpc-http-tls-client-auth-enabled) option.
+You must enable client authentication using the [`--rpc-http-tls-client-auth-enabled`](#rpc-http-tls-client-auth-enabled) option.
+
+:::
 
 ### `rpc-http-tls-protocol`
 
@@ -2879,11 +2887,11 @@ The path to the [credentials file](../../how-to/use-besu-api/authenticate.md#cre
 
 Enables or disables [authentication](../../how-to/use-besu-api/authenticate.md) for the WebSocket JSON-RPC service.
 
-!!! note
+:::note
 
-    `wscat` doesn't support headers. [Authentication](../../how-to/use-besu-api/authenticate.md)
-    requires you to pass an authentication token in the request header. To use authentication with
-    WebSockets, you need an app that supports headers.
+`wscat` doesn't support headers. [Authentication](../../how-to/use-besu-api/authenticate.md) requires you to pass an authentication token in the request header. To use authentication with WebSockets, you need an app that supports headers.
+
+:::
 
 ### `rpc-ws-authentication-jwt-public-key-file`
 

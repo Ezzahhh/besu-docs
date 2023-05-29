@@ -44,9 +44,11 @@ Start a node using the [`--ethstats`](../../../public-networks/reference/cli/opt
     besu --ethstats=Dev-Node-1:secret@127.0.0.1:3001 --ethstats-contact=contact@mail.com
     ```
 
-!!! note
+:::note
 
-    A server must be specified by `--ethstats` in order to use `--ethstats-contact`.
+A server must be specified by `--ethstats` in order to use `--ethstats-contact`.
+
+:::
 
 Open the selected dashboard website. Find your node under the list of nodes to see the statistics for the node and the network.
 

@@ -206,10 +206,11 @@ The methods to add or remove validators are:
 
 To view validator metrics for a specified block range, use [`ibft_getSignerMetrics`](../../../../public-networks/reference/api/index.md#ibft_getsignermetrics).
 
-!!! note
+:::note
 
-    If network conditions render it impossible to add and remove validators by voting, you can
-    [add and remove validators without voting](add-validators-without-voting.md).
+If network conditions render it impossible to add and remove validators by voting, you can [add and remove validators without voting](add-validators-without-voting.md).
+
+:::
 
 ### Add a validator
 
@@ -412,9 +413,11 @@ To update an existing network with a new `blockreward`:
             }
             ```
 
-    !!! note
+    :::note
 
-        You can add multiple `blockreward` updates in one transition object by specifying multiple future blocks.
+    You can add multiple `blockreward` updates in one transition object by specifying multiple future blocks.
+
+    :::
 
 1.  Restart all nodes in the network using the updated genesis file.
 
@@ -492,10 +495,11 @@ To update an existing network with a new mining beneficiary:
             }
             ```
 
-    !!! note
+    :::note
 
-        Setting the `miningbeneficiary` to an empty value clears out any override so that block rewards go to the
-        block producer rather than a global override address.
+    Setting the `miningbeneficiary` to an empty value clears out any override so that block rewards go to the block producer rather than a global override address.
+
+    :::
 
 1.  Restart all nodes in the network using the updated genesis file.
 

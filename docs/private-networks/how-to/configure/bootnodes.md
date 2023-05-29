@@ -20,11 +20,11 @@ In production networks, [configure two or more nodes as bootnodes](#configure-bo
     To find peers, configure one or more bootnodes. To configure a specific set
     of peer connections, use [static nodes](../../../public-networks/how-to/connect/static-nodes.md).
 
-!!! note "Mainnet and public testnets"
+:::note Mainnet and public testnets
 
-    For Mainnet and the Sepolia and Goerli testnets, Hyperledger Besu has an
-    internal list of enode URLs and uses this list automatically when you specify the
-    [`--network`](../../../public-networks/reference/cli/options.md#network) option.
+For Mainnet and the Sepolia and Goerli testnets, Hyperledger Besu has an internal list of enode URLs and uses this list automatically when you specify the [`--network`](../../../public-networks/reference/cli/options.md#network) option.
+
+:::
 
 ## Specify a bootnode
 

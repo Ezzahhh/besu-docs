@@ -26,10 +26,11 @@ IBFT-Network/
     ├── Tessera
 ```
 
-!!! note
+:::note
 
-    This tutorial uses [JWT public key authentication] to create the tenant's JWT,
-    but you can also use [username and password authentication].
+This tutorial uses [JWT public key authentication] to create the tenant's JWT, but you can also use [username and password authentication].
+
+:::
 
 ## Prerequisites
 
@@ -39,19 +40,21 @@ IBFT-Network/
 
 In the `Node-1` directory, [generate the private and public key pair]. The key pair, which must be in `.pem` format, belongs to the operator who uses the key pair to authenticate the [tenant JWTs](#6-generate-the-tenant-jwts).
 
-!!! note
+:::note
 
-    This step is not required when using [username and password authentication] to create the
-    required JWTs.
+This step is not required when using [username and password authentication] to create the required JWTs.
+
+:::
 
 ## 2. Generate Tessera keys
 
 In the `Node-1/Tessera` directory, [generate a public/private key pair for each tenant](index.md#2-generate-tessera-keys).
 
-!!! note
+:::note
 
-    The instructions creates an unlocked private key, meaning you do not need a password to decrypt
-    the private key file.
+The instructions creates an unlocked private key, meaning you do not need a password to decrypt the private key file.
+
+:::
 
 Name the key pair `nodeKey2` and `nodeKey3`.
 
@@ -121,10 +124,11 @@ In the `Node-1/Tessera` directory, update the `tessera.conf` file by adding the 
 }
 ```
 
-!!! note
+::note
 
-    Besu requires [`orion` mode](https://docs.tessera.consensys.net/HowTo/Configure/Orion-Mode). Add the line
-    `"mode": "orion",` to the Tessera configuration file.
+Besu requires [`orion` mode](https://docs.tessera.consensys.net/HowTo/Configure/Orion-Mode). Add the line `"mode": "orion",` to the Tessera configuration file.
+
+:::
 
 ## 4. Start Tessera
 
@@ -148,13 +152,11 @@ The command line specifies privacy options:
 - [`--privacy-url`](../../reference/cli/options.md#privacy-url) specifies the [Quorum to Tessera (Q2T)] server address of the Tessera node (`Q2T` in `tessera.conf`).
 - [`--privacy-multi-tenancy-enabled`](../../reference/cli/options.md#privacy-multi-tenancy-enabled) enables multi-tenancy.
 
-!!! note
+:::note
 
-    [`--rpc-http-authentication-jwt-public-key-file`](../../../public-networks/reference/cli/options.md#rpc-http-authentication-jwt-public-key-file)
-    is only required when using [JWT public key authentication]. If using
-    [username and password authentication], use
-    [`--rpc-http-authentication-credentials-file`](../../../public-networks/reference/cli/options.md#rpc-http-authentication-credentials-file)
-    instead.
+[`--rpc-http-authentication-jwt-public-key-file`](../../../public-networks/reference/cli/options.md#rpc-http-authentication-jwt-public-key-file) is only required when using [JWT public key authentication]. If using [username and password authentication], use [`--rpc-http-authentication-credentials-file`](../../../public-networks/reference/cli/options.md#rpc-http-authentication-credentials-file) instead.
+
+:::
 
 [Start the remaining Besu nodes](index.md#6-start-besu-node-2).
 
@@ -164,10 +166,11 @@ The command line specifies privacy options:
 
 Ensure you apply the appropriate [JSON-RPC API permissions](../../../public-networks/how-to/use-besu-api/authenticate.md#json-rpc-permissions) to the token. For example, ensure you enable the `PRIV` and `EEA` APIs for privacy.
 
-!!! note
+:::note
 
-    This step is not required when using [username and password authentication] to create the
-    required JWTs.
+This step is not required when using [username and password authentication] to create the required JWTs.
+
+:::
 
 [Use the authentication token to make requests].
 

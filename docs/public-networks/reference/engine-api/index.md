@@ -68,10 +68,11 @@ Exchanges a list of supported Engine API methods between the consensus client an
 
 Sends the transition configuration to the consensus client to verify the configuration between both clients.
 
-!!! note
+:::note
 
-    The execution client runs this call every 60 seconds in the background.
-    The log displays a warning message if the call hasn't been sent in 120 seconds.
+The execution client runs this call every 60 seconds in the background. The log displays a warning message if the call hasn't been sent in 120 seconds.
+
+:::
 
 #### Parameters
 

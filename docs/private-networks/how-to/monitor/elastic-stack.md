@@ -12,11 +12,11 @@ The [Filebeat] configuration ingests logs and the [Metricbeat] configuration col
 
 The [pipeline configuration] defines the JSON format used for Besu logs and automatically picks up any new log fields.
 
-!!! note
+:::note
 
-    The pipeline configuration must match the your log format.
-    If using the default log format, you can use the [grok plugin](https://www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html)
-    to extract the log fields.
+The pipeline configuration must match the your log format. If using the default log format, you can use the [grok plugin](https://www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html) to extract the log fields.
+
+:::
 
 To see the Besu Quickstart network logs in Kibana:
 

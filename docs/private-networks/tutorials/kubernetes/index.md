@@ -70,10 +70,11 @@ The same setup also works to connect external nodes and business applications fr
 
 In Kubernetes, [namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) provide a mechanism for isolating groups of resources within a single cluster. Both namespaces and resources (for example, Stateful Sets or Services) within a namespace must be unique, but resources across namespaces don't need to be.
 
-!!! note
+:::note
 
-    Namespace-based scoping is not applicable for cluster-wide objects (for example, Storage Class
-    or Persistent Volumes).
+Namespace-based scoping is not applicable for cluster-wide objects (for example, Storage Class or Persistent Volumes).
+
+:::
 
 ### Nodes
 
@@ -102,9 +103,11 @@ We recommend deploying metrics to get an overview of the network, nodes, and vol
 
 Besu publishes metrics to Prometheus, and you can configure metrics using the kubernetes scraper configuration. We also have custom Grafana dashboards to monitor the blockchain.
 
-!!! note
+:::note
 
-    Refer to `values/monitoring.yml` to configure the alerts per your requirements (for example slack or email).
+Refer to `values/monitoring.yml` to configure the alerts per your requirements (for example slack or email).
+
+:::
 
 ```bash
 cd helm

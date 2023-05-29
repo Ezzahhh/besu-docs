@@ -272,6 +272,7 @@ janvier
 javadoc
 javalin
 jdbc
+jemalloc
 jfernandes
 jmarcey
 jmeter

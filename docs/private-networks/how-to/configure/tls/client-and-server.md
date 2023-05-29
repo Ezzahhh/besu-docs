@@ -68,10 +68,11 @@ The command line:
 - specifies the Java cipher suites using the [`--rpc-http-tls-cipher-suite`](../../../../public-networks/reference/cli/options.md#rpc-http-tls-cipher-suite) option.
 - specifies the TLS protocol version using the [`--rpc-http-tls-protocol`](../../../../public-networks/reference/cli/options.md#rpc-http-tls-protocol) option.
 
-!!! note
+:::note
 
-    Set [`--rpc-http-tls-ca-clients-enabled`](../../../../public-networks/reference/cli/options.md#rpc-http-tls-ca-clients-enabled)
-    to `true` to allow access to clients with signed and trusted root CAs.
+Set [`--rpc-http-tls-ca-clients-enabled`](../../../../public-networks/reference/cli/options.md#rpc-http-tls-ca-clients-enabled) to `true` to allow access to clients with signed and trusted root CAs.
+
+:::
 
 ## Configure server TLS
 
@@ -97,10 +98,11 @@ Create a file (in this example, `knownServers`) that lists one or more trusted s
     127.0.0.1:8888 3C:B4:5A:F9:88:43:5E:62:69:9F:A9:9D:41:14:03:BA:83:24:AC:04:CE:BD:92:49:1B:8D:B2:A4:86:39:4C:AC
     ```
 
-!!! note
+:::note
 
-    If you are unsure whether requests use the hostname or an IP address, configure both in the
-    file.
+If you are unsure whether requests use the hostname or an IP address, configure both in the file.
+
+:::
 
 ### Start Besu
 

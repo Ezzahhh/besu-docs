@@ -374,10 +374,11 @@ Enables or disables [private transactions](../../concepts/privacy/index.md). The
 
 `<FILE>` is the name of the private key file used to [sign privacy marker transactions](../../how-to/use-privacy/sign-pmts.md).
 
-!!! note
+:::note
 
-    This can be the same file used by [`--node-private-key-file`](../../../public-networks/reference/cli/options.md#node-private-key-file),
-    or a different key file to identify who signed the privacy marker transaction.
+This can be the same file used by [`--node-private-key-file`](../../../public-networks/reference/cli/options.md#node-private-key-file), or a different key file to identify who signed the privacy marker transaction.
+
+:::
 
 You must specify this option if you're using:
 

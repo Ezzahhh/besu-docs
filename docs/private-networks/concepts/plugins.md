@@ -22,22 +22,23 @@ For example, create a plugin to add more monitoring functionality or stream even
 
 The plugin API provides access to [interfaces](../reference/plugin-api-interfaces.md) allowing you to build the plugin.
 
-!!! tip
+:::info
 
-    View the [plugin API webinar](https://youtu.be/78sa2WuA1rg) for an example of how to build a
-    plugin.
+View the [plugin API webinar](https://youtu.be/78sa2WuA1rg) for an example of how to build a plugin.
 
-    For more information about the available interfaces, see the
-    [Plugin API Javadoc](https://javadoc.io/doc/org.hyperledger.besu/plugin-api/latest/index.html).
+For more information about the available interfaces, see the [Plugin API Javadoc](https://javadoc.io/doc/org.hyperledger.besu/plugin-api/latest/index.html).
+
+:::
 
 ## Install plugins
 
 To allow Besu to access and use the plugin, copy the plugin (`.jar`) to the `plugins` directory.
 
-!!! important
+:::caution
 
-    If not already present, you must create the `plugins` directory one directory level below
-    (`../`) the `besu` executable.
+If not already present, you must create the `plugins` directory one directory level below (`../`) the `besu` executable.
+
+:::
 
 Each plugin in the directory has the following lifecycle events:
 
@@ -45,6 +46,8 @@ Each plugin in the directory has the following lifecycle events:
 - **Start** - Plugins start after being successfully registered.
 - **Stop** - Besu stops plugins.
 
-!!! note
+:::note
 
-    The order in which Besu calls plugins during lifecycle events is not guaranteed.
+The order in which Besu calls plugins during lifecycle events is not guaranteed.
+
+:::

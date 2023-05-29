@@ -14,12 +14,13 @@ GPU mining tests used [Ethminer](https://github.com/ethereum-mining/ethminer) wi
 
 Ethminer has been used with Hyperledger Besu to mine blocks on the [Ropsten testnet](https://ropsten.etherscan.io/address/0x2f14582947E292a2eCd20C430B46f2d27CFE213c#mine), [ETC Mainnet (uncle block only)](https://etc.tokenview.com/en/uncleblock/10555173) and Mordor ETC testnet.
 
-!!! note "Notes"
+:::note
 
-    - Some mining software supports the `getwork` scheme as the `http` scheme.
+- Some mining software supports the `getwork` scheme as the `http` scheme.
 
-    - The Ropsten testnet is now deprecated.
-      It transitioned to proof of stake consensus before deprecation.
+- The Ropsten testnet is now deprecated. It transitioned to proof of stake consensus before deprecation.
+
+:::
 
 ## Configure CPU mining
 
@@ -50,13 +51,13 @@ Optional command line options are:
 - [`--miner-stratum-host`](../../reference/cli/options.md#miner-stratum-host) to specify the host of the mining service.
 - [`--miner-stratum-port`](../../reference/cli/options.md#miner-stratum-port) to specify the port of the mining service.
 
-!!! note
+:::note
 
-    Besu also supports the `getwork` scheme. Use the
-    [`--miner-stratum-enabled`](../../reference/cli/options.md#miner-stratum-enabled) option and
-    [enable the `ETH` RPCs](../../reference/cli/options.md#rpc-http-api).
+Besu also supports the `getwork` scheme. Use the [`--miner-stratum-enabled`](../../reference/cli/options.md#miner-stratum-enabled) option and [enable the `ETH` RPCs](../../reference/cli/options.md#rpc-http-api).
 
-    The `getwork` scheme is supported as the `http` scheme in certain mining software.
+The `getwork` scheme is supported as the `http` scheme in certain mining software.
+
+:::
 
 Start and stop mining using the [`miner_start`](../../reference/api/index.md#miner_start) and [`miner_stop`](../../reference/api/index.md#miner_stop) APIs.
 

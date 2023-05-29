@@ -28,13 +28,15 @@ To run a Besu node in a container connected to the Ethereum Mainnet:
 docker run hyperledger/besu:latest
 ```
 
-!!! note
+:::note
 
-    https://hub.docker.com/r/hyperledger/besu/tags lists the available tags for the image.
+https://hub.docker.com/r/hyperledger/besu/tags lists the available tags for the image.
 
-    If you previously pulled `latest`, Docker runs the cached version.
+If you previously pulled `latest`, Docker runs the cached version.
 
-    To ensure your image is up to date, pull the `latest` version again using `docker pull hyperledger/besu:latest`.
+To ensure your image is up to date, pull the `latest` version again using `docker pull hyperledger/besu:latest`.
+
+:::
 
 ## Expose ports
 
@@ -46,16 +48,17 @@ To run Besu exposing local ports for access:
 docker run -p <localportJSON-RPC>:8545 -p <localportWS>:8546 -p <localportP2P>:30303 hyperledger/besu:latest --rpc-http-enabled --rpc-ws-enabled
 ```
 
-!!! note
+:::note
 
-    The examples on this page expose TCP ports only.
-    To expose UDP ports, specify `/udp` at the end of the argument for the `-p` Docker subcommand option:
+The examples on this page expose TCP ports only. To expose UDP ports, specify `/udp` at the end of the argument for the `-p` Docker subcommand option:
 
-    ```bash
-    docker run -p <port>:<port>/udp
-    ```
+```bash
+docker run -p <port>:<port>/udp
+```
 
-    See the [`docker run -p` documentation](https://docs.docker.com/engine/reference/commandline/run/#publish-or-expose-port--p---expose).
+See the [`docker run -p` documentation](https://docs.docker.com/engine/reference/commandline/run/#publish-or-expose-port--p---expose).
+
+:::
 
 !!! example
 

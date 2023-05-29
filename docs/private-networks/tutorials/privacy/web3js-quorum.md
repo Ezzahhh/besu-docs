@@ -8,9 +8,11 @@ description: web3js-quorum client library multi-node example
 
 To use the examples provided in the web3js-quorum library with [your privacy network](index.md):
 
-!!! note
+:::note
 
-    This example uses 3 of the 4 nodes configured in the [privacy tutorial](index.md).
+This example uses 3 of the 4 nodes configured in the [privacy tutorial](index.md).
+
+:::
 
 1.  Clone the **ConsenSys/web3js-quorum** repository:
 
@@ -18,20 +20,20 @@ To use the examples provided in the web3js-quorum library with [your privacy net
     git clone https://github.com/ConsenSys/web3js-quorum
     ```
 
-1.  In the `web3js-quorum` directory:
+2.  In the `web3js-quorum` directory:
 
     ```bash
     npm install
     ```
 
-1.  In the `example` directory, update the `keys.js` file to include:
+3.  In the `example` directory, update the `keys.js` file to include:
 
     - chain ID
     - Tessera node public keys
     - Hyperledger Besu node RPC URLs
     - [Hyperledger Besu node private keys](../../../public-networks/concepts/node-keys.md#node-private-key).
 
-1.  In the `example/multiNodeExample` directory, deploy the contract:
+4.  In the `example/multiNodeExample` directory, deploy the contract:
 
     ```bash
     node deployContract.js
@@ -51,12 +53,13 @@ To use the examples provided in the web3js-quorum library with [your privacy net
       logs: [] }
     ```
 
-    !!! note
+    :::note
 
-        If you receive a `Method not enabled` error, ensure you enabled the appropriate APIs
-        using the [`--rpc-http-api`](../../../public-networks/reference/cli/options.md#rpc-http-api)
+    If you receive a `Method not enabled` error, ensure you enabled the appropriate APIs using the [`--rpc-http-api`](../../../public-networks/reference/cli/options.md#rpc-http-api)
 
-1.  Copy the contract address from the private transaction receipt and set the `CONTRACT_ADDRESS` environment variable:
+    :::
+
+5.  Copy the contract address from the private transaction receipt and set the `CONTRACT_ADDRESS` environment variable:
 
     ```bash
     export CONTRACT_ADDRESS=<Contract Address from Private Transaction Receipt>
@@ -68,7 +71,7 @@ To use the examples provided in the web3js-quorum library with [your privacy net
           export CONTRACT_ADDRESS=0xfee84481da8f4b9a998dfacb38091b3145bb01ab
           ```
 
-1.  Store a value in the contract from Node 1:
+6.  Store a value in the contract from Node 1:
 
     ```bash
     node storeValueFromNode1.js
@@ -88,7 +91,7 @@ To use the examples provided in the web3js-quorum library with [your privacy net
     Get Value from http://localhost:8547: 0x
     ```
 
-1.  Store a value in the contract from Node 2:
+7.  Store a value in the contract from Node 2:
 
     ```bash
     node storeValueFromNode2.js
@@ -108,7 +111,8 @@ To use the examples provided in the web3js-quorum library with [your privacy net
     Get Value from http://localhost:8547: 0x
     ```
 
-    !!! note
+    :::note
 
-        As expected, log messages indicate that Node 3 Tessera cannot find payloads because Node 3
-        does not have access to the private transactions between Node 1 and Node 2.
+    As expected, log messages indicate that Node 3 Tessera cannot find payloads because Node 3 does not have access to the private transactions between Node 1 and Node 2.
+
+    :::

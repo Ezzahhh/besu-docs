@@ -54,8 +54,8 @@ To create and find a [flexible privacy group](../../concepts/privacy/flexible-pr
 
 To add and remove members from a [flexible privacy group](../../concepts/privacy/flexible-privacy.md), use the `addTo` and `removeFrom` methods in the [`web3js-quorum` library](https://github.com/ConsenSys/web3js-quorum) client library.
 
-!!! note
+:::note
 
-    When adding a member, Besu pushes all existing group transactions to the new member and
-    processes them. If there are a large number of existing transactions, adding the member may
-    take some time.
+When adding a member, Besu pushes all existing group transactions to the new member and processes them. If there are a large number of existing transactions, adding the member may take some time.
+
+:::

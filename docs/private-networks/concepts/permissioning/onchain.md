@@ -16,9 +16,11 @@ Onchain [permissioning](index.md) uses smart contracts to store and administer t
     your node cannot re-synchronize with other nodes that enforce onchain account permissioning rules
     (your node goes into forked state).
 
-!!! note
+:::note
 
-    Custom smart contracts and dapps can be implemented to work with onchain permissioning.
+Custom smart contracts and dapps can be implemented to work with onchain permissioning.
+
+:::
 
 ## Permissioning contracts
 

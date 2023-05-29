@@ -55,10 +55,11 @@ The enode URL format is `enode://<id>@<host:port>[?discport=<port>]` where:
 - `<id>` is the node public key, excluding the initial 0x.
 - `<host:port>` is the host and TCP port the bootnode is listening on for P2P discovery. Specify the host and TCP port using the [`--p2p-host`](../reference/cli/options.md#p2p-host) and [`--p2p-port`](../reference/cli/options.md#p2p-port) options. The default host is `127.0.0.1` and the default port is `30303`.
 
-  !!! note
+  :::note
 
-        Standard Ethereum enode URLs allow hostnames as IP addresses only, however Besu provides [domain name support](#domain-name-support) in
-        private permissioned networks.
+  Standard Ethereum enode URLs allow hostnames as IP addresses only, however Besu provides [domain name support](#domain-name-support) in private permissioned networks.
+
+  :::
 
 - If the TCP listening and UDP discovery ports differ, the UDP port is specified as query parameter `discport`.
 

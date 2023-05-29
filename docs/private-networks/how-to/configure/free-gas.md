@@ -17,11 +17,11 @@ In many private networks, network participants run the validators and do not req
     We use the term _free gas network_ to refer to a network with a gas price of zero. A network
     with a gas price of zero is also known as a _zero gas network_ or _no gas network_.
 
-!!! note
+:::note
 
-    Some pre-crafted transactions require the deployment account to have gas available. For
-    example, the transaction that creates the smart contract in
-    [EIP-1820](https://eips.ethereum.org/EIPS/eip-1820).
+Some pre-crafted transactions require the deployment account to have gas available. For example, the transaction that creates the smart contract in [EIP-1820](https://eips.ethereum.org/EIPS/eip-1820).
+
+:::
 
 In a free gas network, transactions still use gas but the gas price is zero, meaning the transaction cost is zero. Transaction cost = gas used \* 0 (the gas price).
 

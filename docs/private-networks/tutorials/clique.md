@@ -103,11 +103,11 @@ Copy the following genesis definition to a file called `cliqueGenesis.json` and 
 }
 ```
 
-!!! note
+:::note
 
-    We recommend specifying the latest [milestone](../../public-networks/reference/genesis-items.md#milestone-blocks) when creating
-    the genesis file for a private network.
-    This ensures you are using the most up-to-date protocol and have access to the most recent opcodes.
+We recommend specifying the latest [milestone](../../public-networks/reference/genesis-items.md#milestone-blocks) when creating the genesis file for a private network. This ensures you are using the most up-to-date protocol and have access to the most recent opcodes.
+
+:::
 
 In `extraData`, replace `<Node 1 Address>` with the [address for Node-1](#2-get-the-address-for-node-1), excluding the 0x prefix.
 
@@ -225,10 +225,11 @@ Look at the logs displayed to confirm Node-1 is producing blocks and Node-2 and 
 
 Use the [Clique API to add] Node-2 or Node-3 as a signer.
 
-!!! note
+:::note
 
-    To add Node-2 or Node-3 as a signer you need the
-    [node address as when specifying Node-1](#2-get-the-address-for-node-1) as the initial signer.
+To add Node-2 or Node-3 as a signer you need the [node address as when specifying Node-1](#2-get-the-address-for-node-1) as the initial signer.
+
+:::
 
 Import accounts to MetaMask and send transactions, as described in the [Quickstart tutorial](quickstart.md#create-a-transaction-using-metamask).
 

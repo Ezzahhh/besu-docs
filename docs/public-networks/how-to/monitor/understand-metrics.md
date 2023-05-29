@@ -42,10 +42,11 @@ The visible drop in CPU shows that Besu finished the world state nodes download.
 
 The block import step is long because Besu can't parallelize block import -- it must validate each parent block before importing a child.
 
-!!! note
+:::note
 
-    The Besu team is currently working on other algorithm and implementations to make this block
-    import faster.
+The Besu team is currently working on other algorithm and implementations to make this block import faster.
+
+:::
 
 ### 4. Blocks full import
 

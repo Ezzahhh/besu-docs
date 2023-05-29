@@ -27,10 +27,11 @@ To configure the Engine API:
 
 Enable the Engine API with the [`--engine-rpc-enabled`](../reference/cli/options.md#engine-rpc-enabled) CLI option.
 
-!!! note
+:::note
 
-    The `--engine-rpc-enabled` CLI option enables the Engine API even if no consensus client
-    configuration exists.
+The `--engine-rpc-enabled` CLI option enables the Engine API even if no consensus client configuration exists.
+
+:::
 
 ### Service ports
 

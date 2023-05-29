@@ -14,10 +14,11 @@ Save the configuration file and reuse it across node startups. To specify the co
 
 To override an option specified in the configuration file, either specify the same option on the command line or as an [environment variable](../reference/cli/options.md#specify-options). For options specified in more than one place, the order of precedence is command line, environment variable, configuration file.
 
-!!! note
+:::note
 
-    The configuration file is used for node-level settings.
-    You can specify network-wide settings in the [genesis file](../concepts/genesis-file.md).
+The configuration file is used for node-level settings. You can specify network-wide settings in the [genesis file](../concepts/genesis-file.md).
+
+:::
 
 ## TOML specification
 

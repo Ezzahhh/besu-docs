@@ -27,13 +27,13 @@ The following table shows the average world state sync time for each sync mode o
 | Fast       | ~1.5 days                | Average disk  |
 | Full       | ~weeks                   | Largest disk  |
 
-!!! note
+:::note
 
-    - As of late 2022, an average Mainnet snap sync consumes around 750 GB using Bonsai Tries.
-      Read more about [storage requirements](../../concepts/data-storage-formats.md#storage-requirements)
-      across data storage formats and sync modes.
+- As of late 2022, an average Mainnet snap sync consumes around 750 GB using Bonsai Tries. Read more about [storage requirements](../../concepts/data-storage-formats.md#storage-requirements) across data storage formats and sync modes.
 
-    - Testnets take significantly less time and space to sync.
+- Testnets take significantly less time and space to sync.
+
+:::
 
 While the world state syncs, Besu downloads and imports the blockchain in the background. The blockchain download time depends on CPU, the network, Besu's peers, and disk speed. It generally takes longer than the world state sync.
 
@@ -89,10 +89,11 @@ For other networks, you can configure a checkpoint in the genesis file by specif
     }
     ```
 
-!!! note
+:::note
 
-    If using [Clique](../../../private-networks/how-to/configure/consensus/clique.md) consensus, the
-    checkpoint must be the beginning of an epoch.
+If using [Clique](../../../private-networks/how-to/configure/consensus/clique.md) consensus, the checkpoint must be the beginning of an epoch.
+
+:::
 
 If you enable checkpoint sync without a checkpoint configuration in the genesis file, Besu snap syncs from the genesis block.
 
@@ -118,15 +119,11 @@ Using fast sync with [private transactions](../../../private-networks/concepts/p
 
 You can observe the `besu_synchronizer_fast_sync_*` and `besu_synchronizer_world_state_*` [metrics](../../how-to/monitor/metrics.md#metrics-list) to monitor fast sync.
 
-!!! note
+:::note
 
-    When fast syncing, block numbers increase until close to the head block, then the process pauses
-    while the world state download completes.
-    This may take a significant amount of time depending on world state size, during which the
-    current head block doesn't increase.
-    For example, Mainnet may take several days or more to fast sync.
-    Fast sync time may increase because Besu picks new pivot blocks, or because peers prune the
-    world state before it completes downloading.
+When fast syncing, block numbers increase until close to the head block, then the process pauses while the world state download completes. This may take a significant amount of time depending on world state size, during which the current head block doesn't increase. For example, Mainnet may take several days or more to fast sync. Fast sync time may increase because Besu picks new pivot blocks, or because peers prune the world state before it completes downloading.
+
+:::
 
 !!! caution "RocksDB error on AWS"
 

@@ -20,9 +20,11 @@ Use [`eth_newFilter`](../../reference/api/index.md#eth_newfilter) to create the 
 
 Access logs for [private contracts](../../../private-networks/concepts/privacy/index.md) using the equivalent [`priv_*` methods and specifying the privacy group ID](#filters-for-private-contracts). For example, [`priv_getLogs`](../../reference/api/index.md#priv_getlogs).
 
-!!! note
+:::note
 
-    The following examples use the sample contract included in [events and logs](../../concepts/events-and-logs.md).
+The following examples use the sample contract included in [events and logs](../../concepts/events-and-logs.md).
+
+:::
 
 ## Create a filter
 

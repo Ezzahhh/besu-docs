@@ -12,9 +12,11 @@ PoA consensus protocols have faster block times and a much greater transaction t
 
 In QBFT, IBFT 2.0, or Clique, a group of nodes in the network act as validators (QBFT and IBFT 2.0) or signers (Clique). The existing nodes in the signer/validator pool vote to add nodes to or remove nodes from the pool.
 
-!!! note
+:::note
 
-    For the rest of this page, the term validator is used to refer to signers and validators.
+For the rest of this page, the term validator is used to refer to signers and validators.
+
+:::
 
 ## Properties
 

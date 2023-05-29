@@ -21,10 +21,11 @@ The following tutorial describes the steps to upgrade the onchain permissioning 
 
 ### 1. Get the latest contracts and install dependencies
 
-!!! note
+:::note
 
-    Pull the latest changes if you already have a cloned repository using the `git pull` command
-    inside the `permissioning-smart-contracts` directory.
+Pull the latest changes if you already have a cloned repository using the `git pull` command inside the `permissioning-smart-contracts` directory.
+
+:::
 
 1. Clone the `permissioning-smart-contracts` repository:
 
@@ -59,9 +60,11 @@ If using a `.env` file to configure environment variables, then the file must be
 
 ### 4. Optional: Export current allowlists
 
-!!! note
+:::note
 
-    This step enables you to export the current allowlists to assist in updating.
+This step enables you to export the current allowlists to assist in updating.
+
+:::
 
 1. Export the current allowlists by setting the following environment variables:
 
@@ -71,7 +74,7 @@ If using a `.env` file to configure environment variables, then the file must be
    RETAIN_ACCOUNT_RULES_CONTRACT=true
    ```
 
-1. Log the current allowlists to console:
+2. Log the current allowlists to console:
 
    ```bash
    truffle migrate --reset
@@ -79,7 +82,7 @@ If using a `.env` file to configure environment variables, then the file must be
 
    The migration scripts will log the existing allowlists to the console, but no contracts will be deployed.
 
-1. Set initial values for updated deployment using the values logged in the previous step:
+3. Set initial values for updated deployment using the values logged in the previous step:
 
    ```bash
    INITIAL_ADMIN_ACCOUNTS=<list-of-admins>
@@ -87,7 +90,7 @@ If using a `.env` file to configure environment variables, then the file must be
    INITIAL_ALLOWLISTED_NODES=<list-of-enode-urls>
    ```
 
-1. Update environment variables for contracts that are to be deployed. For example:
+4. Update environment variables for contracts that are to be deployed. For example:
 
    ```bash
    RETAIN_ADMIN_CONTRACT=true

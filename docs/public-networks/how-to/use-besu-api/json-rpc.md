@@ -177,11 +177,11 @@ You can use `wscat` to make multiple RPC requests over WebSocket at the same tim
         }]
         ```
 
-!!! note
+:::note
 
-    `wscat` does not support headers. [Authentication](authenticate.md) requires you to pass an
-    authentication token in the request header. To use authentication with WebSocket, you need
-    an app that supports headers.
+`wscat` does not support headers. [Authentication](authenticate.md) requires you to pass an authentication token in the request header. To use authentication with WebSocket, you need an app that supports headers.
+
+:::
 
 ## Readiness and liveness endpoints
 
@@ -246,16 +246,18 @@ The block parameter can have one of the following values:
 - `blockNumber` : _quantity_ - The block number, specified in hexadecimal or decimal. 0 represents the genesis block.
 - `blockHash` : _string_ or _object_ - 32-byte block hash or JSON object specifying the block hash. If using a JSON object, you can specify `requireCanonical` to indicate whether the block must be a canonical block. See [this example](https://github.com/hyperledger/besu/blob/a2dedb0b2c7980cdc35db8eb4c094f2eb0dc7deb/ethereum/api/src/test/resources/org/hyperledger/besu/ethereum/api/jsonrpc/eth/eth_getBalance_blockHashObjectCanonical.json).
 
-  !!! note
+  :::note
 
-        Only the following methods support the `blockHash` parameter:
+  Only the following methods support the `blockHash` parameter:
 
-        * [`eth_call`](../../reference/api/index.md#eth_call)
-        * [`eth_getBalance`](../../reference/api/index.md#eth_getbalance)
-        * [`eth_getCode`](../../reference/api/index.md#eth_getcode)
-        * [`eth_getProof`](../../reference/api/index.md#eth_getproof)
-        * [`eth_getStorageAt`](../../reference/api/index.md#eth_getstorageat)
-        * [`eth_getTransactionCount`](../../reference/api/index.md#eth_gettransactioncount)
+  - [`eth_call`](../../reference/api/index.md#eth_call)
+  - [`eth_getBalance`](../../reference/api/index.md#eth_getbalance)
+  - [`eth_getCode`](../../reference/api/index.md#eth_getcode)
+  - [`eth_getProof`](../../reference/api/index.md#eth_getproof)
+  - [`eth_getStorageAt`](../../reference/api/index.md#eth_getstorageat)
+  - [`eth_getTransactionCount`](../../reference/api/index.md#eth_gettransactioncount)
+
+  :::
 
 - `earliest` : _tag_ - The earliest (genesis) block.
 - `latest` : _tag_ - The last block mined.

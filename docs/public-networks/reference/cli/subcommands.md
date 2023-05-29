@@ -54,9 +54,11 @@ You can specify the ending index (exclusive) of the block range to import with `
 
 Including `--skip-pow-validation-enabled` skips validation of the `mixHash` when importing blocks.
 
-!!! note
+:::note
 
-    Use `--skip-pow-validation-enabled` when performing [Ethereum Foundation hive testing](https://github.com/ethereum/hive).
+Use `--skip-pow-validation-enabled` when performing [Ethereum Foundation hive testing](https://github.com/ethereum/hive).
+
+:::
 
 ### `export`
 
@@ -180,10 +182,11 @@ Provides operator actions.
 
 Generates cached log bloom indexes for blocks. APIs use the cached indexes for improved log query performance.
 
-!!! note
+:::note
 
-    Each index file contains 100000 blocks. The last fragment of blocks less that 100000 are not
-    indexed.
+Each index file contains 100000 blocks. The last fragment of blocks less that 100000 are not indexed.
+
+:::
 
 To generate cached log bloom indexes while the node is running, use the [`admin_generateLogBloomCache`](../api/index.md#admin_generatelogbloomcache) API.
 

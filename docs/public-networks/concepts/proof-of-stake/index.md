@@ -12,12 +12,11 @@ In Ethereum's PoS, you must run a [full node](../the-merge.md#execution-and-cons
 
     Withdrawing staked ETH isn't yet supported and will be included in a separate upgrade following The Merge.
 
-!!! note
+:::note
 
-    You must run a beacon node and an execution client to operate a full node on Mainnet.
-    To become a validator, you must also run a validator client (either
-    [in the same process as the beacon node](https://docs.teku.consensys.net/en/stable/HowTo/Get-Started/Run-Teku/#start-the-clients-in-a-single-process) or
-    [separately](https://docs.teku.consensys.net/en/stable/HowTo/Get-Started/Run-Teku/#run-the-clients-separately)).
+You must run a beacon node and an execution client to operate a full node on Mainnet. To become a validator, you must also run a validator client (either [in the same process as the beacon node](https://docs.teku.consensys.net/en/stable/HowTo/Get-Started/Run-Teku/#start-the-clients-in-a-single-process) or [separately](https://docs.teku.consensys.net/en/stable/HowTo/Get-Started/Run-Teku/#run-the-clients-separately)).
+
+:::
 
 PoS is preferred over proof of work and proof of authority as a consensus mechanism because it is more secure, requires less energy, and lowers the barrier to entry.
 
@@ -30,10 +29,10 @@ Each consensus block contains an execution payload, which contains a list of tra
 When a node validates a consensus block, its [consensus client](../the-merge.md#consensus-clients) processes the block and sends the execution payload to the [execution client](../the-merge.md#execution-clients), which:
 
 1. Assembles a block on the execution layer.
-1. Verifies pre-conditions.
-1. Executes transactions.
-1. Verifies post-conditions.
-1. Sends the validity result back to the consensus client.
+2. Verifies pre-conditions.
+3. Executes transactions.
+4. Verifies post-conditions.
+5. Sends the validity result back to the consensus client.
 
 If the block is valid, the execution client includes it in the execution chain and stores the new state in execution state storage.
 

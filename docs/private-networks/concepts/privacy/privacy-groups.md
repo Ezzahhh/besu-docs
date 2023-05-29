@@ -28,10 +28,11 @@ Both privacy types create privacy groups and store private transactions with the
 
 ![Privacy Groups](../../../assets/images/PrivacyGroups.png)
 
-!!! note
+:::note
 
-    For clarity, the Tessera nodes are not shown in the previous diagram. To send private
-    transactions, each Besu node must have an associated Tessera node.
+For clarity, the Tessera nodes are not shown in the previous diagram. To send private transactions, each Besu node must have an associated Tessera node.
+
+:::
 
 ### Access between states
 

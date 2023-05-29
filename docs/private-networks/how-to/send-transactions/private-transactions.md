@@ -17,20 +17,21 @@ All private transaction participants must be online for a private transaction to
 
 The `gas` and `gasPrice` specified when sending a private transaction are used by the [privacy marker transaction (PMT)](../../concepts/privacy/private-transactions/processing.md), not the private transaction itself.
 
-!!! note
+:::note
 
-    Private transactions either deploy contracts or call contract functions. Ether transfer
-    transactions cannot be private.
+Private transactions either deploy contracts or call contract functions. Ether transfer transactions cannot be private.
+
+:::
 
 ## eea_sendRawTransaction
 
 [`eea_sendRawTransaction`](../../reference/api/index.md#eea_sendrawtransaction) distributes the private transaction to the participating nodes, and signs and submits the PMT, as described in [Private transaction processing](../../concepts/privacy/private-transactions/processing.md).
 
-!!! note
+:::note
 
-    If [sending concurrent transactions](concurrent-private-transactions.md), you must use
-    [`priv_distributeRawTransaction`](#priv_distributerawtransaction) instead of
-    [`eea_sendRawTransaction`](../../reference/api/index.md#eea_sendrawtransaction).
+If [sending concurrent transactions](concurrent-private-transactions.md), you must use [`priv_distributeRawTransaction`](#priv_distributerawtransaction) instead of [`eea_sendRawTransaction`](../../reference/api/index.md#eea_sendrawtransaction).
+
+:::
 
 ## priv_distributeRawTransaction
 

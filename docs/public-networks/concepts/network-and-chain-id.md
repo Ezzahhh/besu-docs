@@ -12,11 +12,11 @@ Ethereum networks have two identifiers, a network ID and a chain ID. Although th
 
 Peer-to-peer communication between nodes uses the _network ID_, while the transaction signature process uses the _chain ID_.
 
-!!! note
+:::note
 
-    [EIP-155](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-155.md) introduced using
-    the chain ID as part of the transaction signing process to protect against transaction
-    replay attacks.
+[EIP-155](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-155.md) introduced using the chain ID as part of the transaction signing process to protect against transaction replay attacks.
+
+:::
 
 For most networks, including Mainnet and the public testnets, the network ID and the chain ID are the same, with the network ID defaulting to the chain ID, as specified in the genesis file.
 

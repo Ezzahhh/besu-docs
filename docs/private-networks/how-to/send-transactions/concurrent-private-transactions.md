@@ -12,11 +12,11 @@ If your private transaction rate requires sending private transactions without w
 
 In this case, use [`priv_distributeRawTransaction`](private-transactions.md#priv_distributerawtransaction) instead of [`eea_sendRawTransaction`](../../reference/api/index.md#eea_sendrawtransaction).
 
-!!! note
+:::note
 
-    You can use [`priv_getTransactionCount`](../../reference/api/index.md#priv_gettransactioncount) or
-    [`priv_getEeaTransactionCount`](../../reference/api/index.md#priv_geteeatransactioncount) to get the nonce for
-    an account for the specified privacy group or participants.
+You can use [`priv_getTransactionCount`](../../reference/api/index.md#priv_gettransactioncount) or [`priv_getEeaTransactionCount`](../../reference/api/index.md#priv_geteeatransactioncount) to get the nonce for an account for the specified privacy group or participants.
+
+:::
 
 Send the corresponding PMT using [`eth_sendRawTransaction`](../../../public-networks/reference/api/index.md#eth_sendrawtransaction), specifying the public PMT nonce. This method allows you to create and send the PMT yourself rather than [`eea_sendRawTransaction`](../../reference/api/index.md#eea_sendrawtransaction) handling the PMT.
 

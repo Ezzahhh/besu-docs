@@ -10,13 +10,15 @@ sidebar_position: 9
 
 !!! important web3js-quorum supports JSON-RPC over HTTP only.
 
-!!! note
+:::note
 
-    web3js-quorum includes all [quorum.js](https://github.com/ConsenSys/quorum.js) and [web3js-eea](https://github.com/ConsenSys/web3js-eea) features.
+web3js-quorum includes all [quorum.js](https://github.com/ConsenSys/quorum.js) and [web3js-eea](https://github.com/ConsenSys/web3js-eea) features.
 
-    If migrating to web3js-quorum, update your JavaScript code as indicated in the following examples.
+If migrating to web3js-quorum, update your JavaScript code as indicated in the following examples.
 
-    [Read the migration guide for more information about updating your code.](https://consensys.github.io/web3js-quorum/latest/tutorial-Migrate%20from%20web3js-eea.html)
+[Read the migration guide for more information about updating your code.](https://consensys.github.io/web3js-quorum/latest/tutorial-Migrate%20from%20web3js-eea.html)
+
+:::
 
 ## Prerequisites
 
@@ -53,7 +55,11 @@ Initialize your client where:
         const web3 = new Web3Quorum(new Web3("http://localhost:8545"));
         ```
 
-!!! note When migrating from web3js-eea to web3js-quorum, use `Web3Quorum`. The constructor doesn't require the chain ID anymore. Chain ID is automatically retrieved from the chain using the specified JSON-RPC HTTP endpoint.
+:::note
+
+When migrating from web3js-eea to web3js-quorum, use `Web3Quorum`. The constructor doesn't require the chain ID anymore. Chain ID is automatically retrieved from the chain using the specified JSON-RPC HTTP endpoint.
+
+:::
 
 ## Deploy a contract with `generateAndSendRawTransaction`
 

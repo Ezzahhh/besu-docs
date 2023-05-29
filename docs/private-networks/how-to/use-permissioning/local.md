@@ -70,12 +70,11 @@ Updates to the permissions configuration file persist across node restarts.
 
 To view the nodes allowlist, use the [perm_getNodesAllowlist](../../reference/api/index.md#perm_getnodesallowlist) method.
 
-!!! note
+:::note
 
-    Each node has a [permissions configuration file](#permissions-configuration-file), which means
-    nodes can have different nodes allowlists. This means nodes might be participating in the
-    network that are not on the allowlist of other nodes in the network. We recommend each node in
-    the network has the same nodes allowlist.
+Each node has a [permissions configuration file](#permissions-configuration-file), which means nodes can have different nodes allowlists. This means nodes might be participating in the network that are not on the allowlist of other nodes in the network. We recommend each node in the network has the same nodes allowlist.
+
+:::
 
 !!! example "Example of different node allowlists"
 
@@ -134,13 +133,11 @@ The following diagram illustrates applying local and onchain permissioning rules
     Node 2 now has a transaction in the blockchain from Account A, which is not on the accounts
     allowlist for Node 2.
 
-!!! note
+:::note
 
-    Each node has a [permissions configuration file](#permissions-configuration-file) which means
-    nodes in the network can have different accounts allowlists. This means a transaction can
-    be successfully submitted by Node A from an account in the Node A allowlist but rejected
-    by Node B to which it's propagated if the account is not in the Node B allowlist. We
-    recommend each node in the network has the same accounts allowlist.
+Each node has a [permissions configuration file](#permissions-configuration-file) which means nodes in the network can have different accounts allowlists. This means a transaction can be successfully submitted by Node A from an account in the Node A allowlist but rejected by Node B to which it's propagated if the account is not in the Node B allowlist. We recommend each node in the network has the same accounts allowlist.
+
+:::
 
 ### Enable account allowlisting
 

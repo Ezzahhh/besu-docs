@@ -34,13 +34,13 @@ To configure a network of static nodes:
 
 To update the list of static peers at run time, use the [`admin_addPeer`](../../reference/api/index.md#admin_addpeer) and [`admin_removePeer`](../../reference/api/index.md#admin_removepeer) JSON-RPC API methods.
 
-!!! note
+:::note
 
-    Runtime modifications of static nodes are not persisted between runs. The `static-nodes.json`
-    file is not updated by the `admin_addPeer` and `admin_removePeer` methods.
+Runtime modifications of static nodes are not persisted between runs. The `static-nodes.json` file is not updated by the `admin_addPeer` and `admin_removePeer` methods.
 
-    Nodes not in the list of the static nodes are not prevented from connecting. To prevent nodes
-    from connecting, use [Permissioning](../../../private-networks/concepts/permissioning/index.md).
+Nodes not in the list of the static nodes are not prevented from connecting. To prevent nodes from connecting, use [Permissioning](../../../private-networks/concepts/permissioning/index.md).
+
+:::
 
 !!! tip
 
@@ -62,7 +62,8 @@ The `static-nodes.json` file must be in the data directory (specified by [`--dat
     ]
     ```
 
-!!! note
+:::note
 
-    Each node has a `static-nodes.json` file. We recommend each node in the network has the same
-    `static-nodes.json` file.
+Each node has a `static-nodes.json` file. We recommend each node in the network has the same `static-nodes.json` file.
+
+:::

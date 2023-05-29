@@ -305,11 +305,11 @@ In each `Tessera` directory, start Tessera specifying the [configuration file](#
 tessera -configfile tessera.conf
 ```
 
-!!! note
+:::note
 
-    After starting the first Tessera node and before starting the other nodes, the log message `failed to connect to node` displays.
-    This is normal behavior. Until you start the other peer nodes, your node is not connected and displays this warning.
-    You can continue to start the other nodes.
+After starting the first Tessera node and before starting the other nodes, the log message `failed to connect to node` displays. This is normal behavior. Until you start the other peer nodes, your node is not connected and displays this warning. You can continue to start the other nodes.
+
+:::
 
 ## 5. Start Besu Node-1
 
@@ -335,13 +335,11 @@ The command line specifies privacy options:
 - [`--rpc-http-api`](../../../public-networks/reference/cli/options.md#rpc-http-api) includes `EEA` and `PRIV` in the list of JSON-RPC APIs to enable privacy JSON-RPC API methods.
 - [`--min-gas-price`](../../../public-networks/reference/cli/options.md#min-gas-price) is 0 for a [free gas network](../../how-to/configure/free-gas.md).
 
-!!! note
+:::note
 
-    Use the
-    [`--privacy-marker-transaction-signing-key-file`](../../reference/cli/options.md#privacy-marker-transaction-signing-key-file)
-    command line option to sign
-    [privacy marker transactions](../../concepts/privacy/private-transactions/processing.md) using a
-    supplied key. The command line option is mandatory in privacy-enabled paid gas networks.
+Use the [`--privacy-marker-transaction-signing-key-file`](../../reference/cli/options.md#privacy-marker-transaction-signing-key-file) command line option to sign [privacy marker transactions](../../concepts/privacy/private-transactions/processing.md) using a supplied key. The command line option is mandatory in privacy-enabled paid gas networks.
+
+:::
 
 When the node starts, the [enode URL](../../../public-networks/concepts/node-keys.md#enode-url) displays. Copy the enode URL to specify Node-1 as the bootnode in the following steps.
 
@@ -365,10 +363,11 @@ In the `Node-2` directory, start Besu Node-2 specifying the Node-1 enode URL cop
 
 The command line specifies the same options as for Node-1 with different ports and Tessera node URL. The [`--bootnodes`](../../../public-networks/reference/cli/options.md#bootnodes) option specifies the enode URL of Node-1.
 
-!!! note
+:::note
 
-    When running Besu from the [Docker image](../../get-started/install/run-docker-image.md),
-    [expose ports](../../get-started/install/run-docker-image.md#expose-ports).
+When running Besu from the [Docker image](../../get-started/install/run-docker-image.md), [expose ports](../../get-started/install/run-docker-image.md#expose-ports).
+
+:::
 
 ## 7. Start Besu Node-3
 

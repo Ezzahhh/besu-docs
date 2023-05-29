@@ -42,10 +42,11 @@ docker run -rm <docker options> hyperledger/besu-evmtool:develop <evmtool option
 - If you use an option that requires input from standard in, use the `-i` docker option. The `-i` option pipes standard input to the EVM tool.
 - If you need to reference files we recommend using a docker file binding, such as `-v ${PWD}:/opt/data`, which maps the current directory to the `/opt/data` directory in the container.
 
-!!! note
+:::note
 
-    The `latest` tag is the latest released version of Besu, starting with 1.5.3.  The `develop` tag
-    is the current main branch code that will go into a future release version of Besu.
+The `latest` tag is the latest released version of Besu, starting with 1.5.3. The `develop` tag is the current main branch code that will go into a future release version of Besu.
+
+:::
 
 ## EVM tool run options
 

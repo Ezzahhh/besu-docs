@@ -44,9 +44,11 @@ Private transaction processing is illustrated and described in the following dia
 
 1.  The Mainnet Transaction Processor processes the PMT in the same way as any other public transaction. On nodes containing the [privacy precompile contract](../../../reference/api/index.md#priv_getprivacyprecompileaddress) specified in the `to` attribute of the PMT, the Mainnet Transaction Processor passes the PMT to the privacy precompile contract.
 
-    !!! note
+    :::note
 
-        Nodes receiving the PMT that don't contain the privacy precompile contract ignore the PMT.
+    Nodes receiving the PMT that don't contain the privacy precompile contract ignore the PMT.
+
+    :::
 
 1.  The privacy precompile contract queries Tessera for the private transaction and privacy group ID using the transaction hash.
 

@@ -18,11 +18,11 @@ On public networks, we recommend setting the maximum heap size to:
 - 5 GB on a 16 GB RAM system.
 - 8 GB on a system with at least 24 GB RAM.
 
-!!! note
+:::note
 
-    Setting a higher maximum heap size speeds up the sync period but doesn't have much impact
-    after sync.
-    Thus, we recommend setting it to 8 GB only when you have available RAM.
+Setting a higher maximum heap size speeds up the sync period but doesn't have much impact after sync. Thus, we recommend setting it to 8 GB only when you have available RAM.
+
+:::
 
 You can set the maximum heap size using the `BESU_OPTS` environment variable and the `-Xmx` option. The following examples set the maximum heap size to 8 GB:
 
