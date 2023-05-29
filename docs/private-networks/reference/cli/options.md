@@ -1,4 +1,6 @@
 ---
+title: Private network options
+sidebar_position: 1
 description: Hyperledger Besu private networks CLI reference
 ---
 
@@ -644,3 +646,4 @@ running.
 [nodes permissions configuration file]: ../../how-to/use-permissioning/local.md#permissions-configuration-file
 [account permissioning]: ../../concepts/permissioning/index.md#account-permissioning
 [TLS on communication with the private transaction manager]: ../../concepts/privacy/index.md#private-transaction-manager
+

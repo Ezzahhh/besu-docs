@@ -1,4 +1,6 @@
 ---
+title: Proof of authority consensus
+sidebar_poistion: 2
 description: Besu proof of authority consensus protocols comparison
 ---
 

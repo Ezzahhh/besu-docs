@@ -1,4 +1,6 @@
 ---
+sidebar_position: 4
+title: Use Ethstats network monitor
 description: Ethstats network monitor
 ---
 

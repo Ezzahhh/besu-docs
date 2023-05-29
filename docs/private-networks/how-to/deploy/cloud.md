@@ -1,4 +1,6 @@
 ---
+title: Deploy to the cloud
+sidebar_position: 1
 description: Deploying Besu to the cloud
 ---
 

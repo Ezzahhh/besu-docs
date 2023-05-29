@@ -1,5 +1,6 @@
 ---
-title: Deploy Hyperledger Besu with Ansible
+sidebar_position: 2
+title: Use Ansible
 description: Deploying Hyperledger Besu with Ansible role on Galaxy
 ---
 

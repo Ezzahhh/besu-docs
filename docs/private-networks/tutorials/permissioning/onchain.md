@@ -1,4 +1,6 @@
 ---
+title: Get started with onchain permissioning
+sidebar_position: 2
 description: Setting up and using Hyperledger Besu onchain permissioning
 ---
 

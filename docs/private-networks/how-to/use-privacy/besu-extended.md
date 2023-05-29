@@ -1,5 +1,7 @@
 ---
+title: Use Besu-extended privacy
 description: Hyperledger Besu-extended privacy
+sidebar_position: 2
 ---
 
 # Use Besu-extended privacy

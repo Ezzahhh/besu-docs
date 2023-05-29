@@ -1,3 +1,9 @@
+---
+title: Performance best practices
+description: Performance best practices
+sidebar_position: 10
+---
+
 # Performance best practices
 
 This document collects deployment and usage tips to help you achieve high performance for private transactions.

@@ -1,5 +1,7 @@
 ---
+title: Pre-deploy a contract
 description: Pre-deploying contracts in the genesis file
+sidebar_position: 5
 ---
 
 # Pre-deploy contracts in the genesis file

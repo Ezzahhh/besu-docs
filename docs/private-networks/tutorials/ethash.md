@@ -1,4 +1,6 @@
 ---
+title: Create an Ethash network
+sidebar_position: 5
 description: Hyperledger Besu private network using Ethash (proof of work) Consensus Protocol tutorial
 ---
 

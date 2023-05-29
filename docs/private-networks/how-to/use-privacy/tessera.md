@@ -1,5 +1,7 @@
 ---
+title: Run Tessera with Besu
 description: Running ConsenSys Quorum Tessera with Hyperledger Besu
+sidebar_position: 3
 ---
 
 # Run Tessera with Besu

@@ -1,5 +1,6 @@
 ---
-title: Besu Kubernetes - Getting ready for production
+title: Production
+sidebar_position: 7
 description: Deploying Besu Helm Charts for production on a Kubernetes cluster
 ---
 

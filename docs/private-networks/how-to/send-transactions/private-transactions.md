@@ -1,5 +1,7 @@
 ---
+title: Create and send private transactions
 description: Creating and sending private transactions with Hyperledger Besu
+sidebar_position: 2
 ---
 
 # Create and send private transactions
@@ -24,7 +26,7 @@ The `gas` and `gasPrice` specified when sending a private transaction are used b
     Private transactions either deploy contracts or call contract functions. Ether transfer
     transactions cannot be private.
 
-## `eea_sendRawTransaction`
+## eea_sendRawTransaction
 
 [`eea_sendRawTransaction`](../../reference/api/index.md#eea_sendrawtransaction) distributes the
 private transaction to the participating nodes, and signs and submits the PMT, as described in
@@ -36,7 +38,7 @@ private transaction to the participating nodes, and signs and submits the PMT, a
     [`priv_distributeRawTransaction`](#priv_distributerawtransaction) instead of
     [`eea_sendRawTransaction`](../../reference/api/index.md#eea_sendrawtransaction).
 
-## `priv_distributeRawTransaction`
+## priv_distributeRawTransaction
 
 Use [`priv_distributeRawTransaction`](../../reference/api/index.md#priv_distributerawtransaction) instead of
 [`eea_sendRawTransaction`](#eea_sendrawtransaction) when sending [concurrent private transactions](concurrent-private-transactions.md).

@@ -1,5 +1,6 @@
 ---
-title: Developer Quickstart
+title: Quorum Developer Quickstart
+sidebar_position: 1
 description: Rapidly generate local blockchain networks.
 ---
 

@@ -1,5 +1,7 @@
 ---
+title: Sign privacy marker transactions
 description: How to sign a privacy marker transaction with Hyperledger Besu
+sidebar_position: 7
 ---
 
 # Sign privacy marker transactions

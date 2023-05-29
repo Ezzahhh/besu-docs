@@ -1,5 +1,7 @@
 ---
+title: Use the web3js-quorum library
 description: web3js-quorum client library
+sidebar_position: 9
 ---
 
 # Use the web3js-quorum client library

@@ -1,5 +1,7 @@
 ---
+title: Onchain permissioning
 description: Onchain permissioning
+sidebar_position: 2
 ---
 
 # Onchain permissioning

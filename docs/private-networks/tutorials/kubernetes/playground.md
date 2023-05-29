@@ -1,5 +1,6 @@
 ---
-title: Deploy a Hyperledger Besu private network locally with Kubernetes
+title: Local playground
+sidebar_position: 2
 description: Deploying a Hyperledger Besu private network locally with Kubernetes
 ---
 

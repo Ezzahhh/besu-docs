@@ -1,5 +1,6 @@
 ---
-title: Besu Kubernetes - Deploying Charts
+title: Deploying Charts
+sidebar_position: 4
 description: Deploying Besu Helm Charts for a Kubernetes cluster
 ---
 

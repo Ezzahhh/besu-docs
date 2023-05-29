@@ -1,5 +1,6 @@
 ---
-title: Besu Kubernetes - Quorum Explorer
+title: Using the Quorum Explorer
+sidebar_position: 5
 description: Using the Quorum Explorer on a Kubernetes cluster
 ---
 

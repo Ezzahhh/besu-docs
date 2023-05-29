@@ -1,4 +1,6 @@
 ---
+title: Plugins
+sidebar_poistion: 6
 description: Plugins overview
 ---
 

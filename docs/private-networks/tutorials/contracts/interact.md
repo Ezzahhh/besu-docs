@@ -1,4 +1,6 @@
 ---
+title: Interact with a deployed contract
+sidebar_position: 3
 description: calling smart contracts functions
 ---
 

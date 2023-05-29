@@ -1,5 +1,7 @@
 ---
+title: Free gas network
 description: Configuring free gas networks
+sidebar_position: 2
 ---
 
 # Configure free gas networks

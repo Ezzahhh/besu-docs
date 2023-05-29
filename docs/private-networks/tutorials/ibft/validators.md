@@ -1,4 +1,6 @@
 ---
+title: Add and removing IBFT 2.0 validators
+sidebar_position: 2
 description: Adding and removing IBFT 2.0 validators
 ---
 

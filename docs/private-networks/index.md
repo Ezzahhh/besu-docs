@@ -1,6 +1,7 @@
 ---
-# page icon, insider only, see https://squidfunk.github.io/mkdocs-material/reference/#setting-the-page-icon
-icon: material/book-lock-outline
+title: Hyperledger Besu for private networks
+sidebar_position: 1
+id: index
 description: Private networks overview
 ---
 

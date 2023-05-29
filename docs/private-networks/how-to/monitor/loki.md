@@ -1,4 +1,6 @@
 ---
+title: Use Grafana Loki
+sidebar_position: 2
 description: Using Grafana Loki log management platform with Hyperledger Besu
 ---
 

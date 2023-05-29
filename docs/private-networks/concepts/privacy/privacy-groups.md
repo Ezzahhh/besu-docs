@@ -1,4 +1,6 @@
 ---
+title: Privacy groups
+sidebar_position: 3
 description: Privacy groups
 ---
 

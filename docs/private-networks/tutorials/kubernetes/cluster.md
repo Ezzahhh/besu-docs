@@ -1,5 +1,6 @@
 ---
 title: Create a cluster
+sidebar_position: 3
 description: Create a cluster for deployment
 ---
 

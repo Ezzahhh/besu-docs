@@ -1,5 +1,7 @@
 ---
+title:  Use flexible privacy groups
 description: Use flexible privacy groups
+sidebar_position: 5
 ---
 
 # Use flexible privacy groups

@@ -1,5 +1,7 @@
 ---
+title: Access private and privacy marker transactions
 description: Methods for accessing and managing private transactions and privacy groups in Hyperledger Besu
+sidebar_position: 6
 ---
 
 # Access private and privacy marker transactions

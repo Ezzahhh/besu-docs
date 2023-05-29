@@ -1,4 +1,6 @@
 ---
+title: Use Sirato Explorer
+sidebar_position: 7
 description: Use Sirato Explorer on a privacy-enabled Besu network
 ---
 

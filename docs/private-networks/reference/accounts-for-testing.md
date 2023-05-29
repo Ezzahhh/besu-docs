@@ -1,4 +1,6 @@
 ---
+title: Accounts for testing
+sidebar_position: 3
 description: Ethereum accounts used for Hyperledger Besu testing only on private networks
 ---
 

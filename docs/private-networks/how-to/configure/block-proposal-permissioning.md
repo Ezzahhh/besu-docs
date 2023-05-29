@@ -1,5 +1,7 @@
 ---
+title: Block proposal permissioning
 description: Block proposal permissioning
+sidebar_position: 7
 ---
 
 # Block proposal permissioning
@@ -252,5 +254,5 @@ Text file containing the password to unlock the truststore file.
 
 PKI truststore type. Valid options are `JKS` and `PKCS12`. The default is `JKS`.
 
-[QBFT consensus protocol]: /Consensus-Protocols/QBFT.md
+[QBFT consensus protocol]: ./consensus/qbft.md
 [certificate revocation list (CRL)]: https://www.securew2.com/blog/certificate-revocation-crl-explained

@@ -1,5 +1,7 @@
 ---
+title: Concepts
 description: private networks concepts overview
+sidebar_position: 3
 ---
 
 # Concepts

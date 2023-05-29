@@ -1,5 +1,7 @@
 ---
+title: Permissioning plugin
 description: Plugin based permissioning
+sidebar_position: 3
 ---
 
 # Permissioning plugin

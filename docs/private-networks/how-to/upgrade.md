@@ -1,5 +1,7 @@
 ---
+title: Upgrade
 description: Upgrading protocol versions
+sidebar_position: 8
 ---
 
 # Network and protocol upgrades

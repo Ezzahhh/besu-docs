@@ -1,5 +1,7 @@
 ---
+title: Privacy plugin
 description: Privacy plugin
+sidebar_position: 6
 ---
 
 # Privacy plugin

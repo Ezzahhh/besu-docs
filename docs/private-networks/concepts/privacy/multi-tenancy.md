@@ -1,4 +1,6 @@
 ---
+title: Multi-tenancy
+sidebar_position: 5
 description: Multi-tenancy
 ---
 

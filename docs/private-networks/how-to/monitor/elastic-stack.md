@@ -1,4 +1,6 @@
 ---
+title: Use Elastic Stack
+sidebar_position: 3
 description: Using Elastick Stack (ELK) with Hyperledger Besu
 ---
 

@@ -1,5 +1,7 @@
 ---
-description: Configuring bootnodoes
+title: Bootnodes
+description: Configuring bootnodes
+sidebar_position: 3
 ---
 
 # Configure bootnodes

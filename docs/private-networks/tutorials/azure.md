@@ -1,4 +1,6 @@
 ---
+title: Deploy using Microsoft Azure
+sidebar_position: 10
 description: Hyperledger Besu private network example on Azure
 ---
 

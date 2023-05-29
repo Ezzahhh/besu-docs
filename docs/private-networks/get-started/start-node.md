@@ -1,5 +1,7 @@
 ---
+title: Start Besu
 description: Starting Hyperledger Besu
+sidebar_position: 3
 ---
 
 # Start Besu

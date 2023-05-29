@@ -1,5 +1,7 @@
 ---
+title: Backup and restore
 description: Backing up and restoring Besu
+sidebar_position: 7
 ---
 
 # Backup and restore Besu

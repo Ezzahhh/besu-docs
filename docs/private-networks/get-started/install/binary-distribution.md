@@ -1,5 +1,7 @@
 ---
+title: Install binary distribution
 description: Install or upgrade Hyperledger Besu from binary distribution
+sidebar_position: 3
 ---
 
 # Install binary distribution

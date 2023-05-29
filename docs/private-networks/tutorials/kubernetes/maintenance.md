@@ -1,5 +1,6 @@
 ---
-title: Besu Kubernetes Maintenance
+title: Maintenance
+sidebar_position: 6
 description: Maintenance for Besu on a Kubernetes cluster
 ---
 

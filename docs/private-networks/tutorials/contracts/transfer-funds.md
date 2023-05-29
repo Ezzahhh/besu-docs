@@ -1,4 +1,6 @@
 ---
+title: Transfer account funds 
+sidebar_position: 2
 description: funds transfer transactions
 ---
 

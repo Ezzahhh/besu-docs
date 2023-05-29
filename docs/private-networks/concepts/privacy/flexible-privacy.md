@@ -1,4 +1,6 @@
 ---
+title: Flexible privacy groups
+sidebar_position: 4
 description: Flexible privacy groups
 ---
 

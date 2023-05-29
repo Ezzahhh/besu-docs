@@ -1,4 +1,6 @@
 ---
+title: Upgrade permissioning contracts
+sidebar_position: 3
 description: Upgrade the permissioning contracts for onchain permissioning
 ---
 

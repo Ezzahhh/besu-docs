@@ -1,4 +1,6 @@
 ---
+title: Processing private transaction 
+sidebar_position: 2
 description: Private transaction processing
 ---
 
