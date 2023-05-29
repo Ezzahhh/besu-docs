@@ -36,13 +36,21 @@
     "tsconfig.*.json",
     ".github/**",
     "__pycache__/**/*",
-    "docs/Tutorials/Configure-External-Signer-TLS.md",
     "docs/Reference/**",
-    "docs/HowTo/Monitor/Logging.md",
-    "docs/HowTo/Get-Started/Installation-Options/Install-Binaries.md",
-    "docs/HowTo/Configure/Use-Configuration-File.md",
-    "docs/HowTo/External-Signer/Manage-keys.md",
-    "docs/HowTo/Troubleshoot/Troubleshooting.md"
+    "docs/public-networks/reference/cli/options.md",
+    "MAINTAINERS.md",
+    "CODE_OF_CONDUCT.md"
   ],
-  "ignoreRegExpList": ["Email", "Urls", "#[\\w-]*"]
+  "ignoreRegExpList": [
+    "Email",
+    "Urls",
+    "#[\\w-]*",
+    "/^\\s*```[\\s\\S]*?^\\s*```/gm",
+    "/^\\s*`[\\s\\S]*?^\\s*`/gm",
+    "`[^`]*`",
+    "\\|[^\\n]+\\|",
+    "\\|[^\n]+",
+    "[^\n]+\\|",
+    "\\|[^\n]+\\|[^\n]+\\|"
+  ]
 }

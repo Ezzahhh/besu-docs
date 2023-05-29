@@ -84,7 +84,7 @@ Allow Besu to securely communicate with the server (Tessera).
 
 ### Create the known servers file
 
-Create a file (in this example, `knownServers`) that lists one or more trusted servers. The file contents use the format `<hostame>:<port> <hex-string>` where:
+Create a file (in this example, `knownServers`) that lists one or more trusted servers. The file contents use the format `<hostname>:<port> <hex-string>` where:
 
 - `<hostname>` is the server hostname
 - `<port>` is the port used for communication

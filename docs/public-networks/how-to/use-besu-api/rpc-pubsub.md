@@ -446,7 +446,7 @@ When cancelling a subscription for private logs, the privacy group ID must be sp
 
 !!!example
 
-    To unsubscribe from a subsciption with subscription ID of `0x1`:
+    To unsubscribe from a subscription with subscription ID of `0x1`:
 
     ```json
     {"id": 1, "method": "eth_unsubscribe", "params": ["0x1"]}

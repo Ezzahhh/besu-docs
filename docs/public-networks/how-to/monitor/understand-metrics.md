@@ -44,7 +44,7 @@ The block import step is long because Besu can't parallelize block import -- it 
 
 !!! note
 
-    The Besu team is curently working on other algorithm and implementations to make this block
+    The Besu team is currently working on other algorithm and implementations to make this block
     import faster.
 
 ### 4. Blocks full import

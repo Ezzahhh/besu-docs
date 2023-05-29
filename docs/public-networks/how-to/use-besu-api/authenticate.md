@@ -17,9 +17,17 @@ Besu supports two mutually exclusive authentication methods:
 
 Besu creates JWT internally with [username and password authentication](#username-and-password-authentication), and externally with [JWT public key authentication](#jwt-public-key-authentication).
 
-!!! note Using JSON-RPC authentication and authorization with [MetaMask](https://metamask.io/) is not supported.
+:::info
 
-!!! important To prevent interception of authentication credentials and authenticated tokens, make authenticated requests over HTTPS. We recommend running production deployments behind a network layer that provides SSL termination. Besu does not provide a HTTPS connection natively.
+Using JSON-RPC authentication and authorization with [MetaMask](https://metamask.io/) is not supported.
+
+:::
+
+:::caution
+
+To prevent interception of authentication credentials and authenticated tokens, make authenticated requests over HTTPS. We recommend running production deployments behind a network layer that provides SSL termination. Besu does not provide a HTTPS connection natively.
+
+:::
 
 ## Username and password authentication
 
@@ -31,19 +39,21 @@ Using [public key authentication](#jwt-public-key-authentication) disables the `
 
 The `toml` credentials file defines user details and the JSON-RPC methods they can access.
 
-!!! example "Sample `auth.toml` credentials file"
+:::info Sample `auth.toml` credentials file
 
-    ```toml
-    [Users.username1]
-    password = "$2a$10$l3GA7K8g6rJ/Yv.YFSygCuI9byngpEzxgWS9qEg5emYDZomQW7fGC"
-    permissions=["net:*","eth:blockNumber"]
-    privacyPublicKey="U7ANiOOd5L9Z/dMxRFjdbhA1Qragw6fLuYgmgCvLoX4="
+```toml
+[Users.username1]
+password = "$2a$10$l3GA7K8g6rJ/Yv.YFSygCuI9byngpEzxgWS9qEg5emYDZomQW7fGC"
+permissions=["net:*","eth:blockNumber"]
+privacyPublicKey="U7ANiOOd5L9Z/dMxRFjdbhA1Qragw6fLuYgmgCvLoX4="
 
-    [Users.username2]
-    password = "$2b$10$6sHt1J0MVUGIoNKvJiK33uaZzUwNmMmJlaVLkIwinkPiS1UBnAnF2"
-    permissions=["net:version","admin:*"]
-    privacyPublicKey="quhb1pQPGN1w8ZSZSyiIfncEAlVY/M/rauSyQ5wVMRE="
-    ```
+[Users.username2]
+password = "$2b$10$6sHt1J0MVUGIoNKvJiK33uaZzUwNmMmJlaVLkIwinkPiS1UBnAnF2"
+permissions=["net:version","admin:*"]
+privacyPublicKey="quhb1pQPGN1w8ZSZSyiIfncEAlVY/M/rauSyQ5wVMRE="
+```
+
+:::
 
 Each user requiring JSON-RPC access the configuration file lists the:
 
@@ -52,19 +62,21 @@ Each user requiring JSON-RPC access the configuration file lists the:
 - [JSON-RPC permissions](#json-rpc-permissions).
 - Optional. The tenant's Tessera public key using `privacyPublicKey`. Only used for [multi-tenancy](../../../private-networks/concepts/privacy/multi-tenancy.md).
 
-!!! example "Password hash subcommand"
+<!--tabs-->
 
-    === "Command"
+# Command
 
-        ```bash
-        besu password hash --password=MyPassword
-        ```
+```bash
+besu password hash --password=MyPassword
+```
 
-    === "Hash output"
+# Hash output
 
-        ```text
-        $2a$10$L3Xb5G/AJOsEK5SuOn9uzOhpCCfuVWTajc5hwWerY6N5xBM/xlrMK
-        ```
+```text
+$2a$10$L3Xb5G/AJOsEK5SuOn9uzOhpCCfuVWTajc5hwWerY6N5xBM/xlrMK
+```
+
+<!--/tabs-->
 
 ### 2. Enable authentication
 
@@ -76,37 +88,41 @@ To specify the [credentials file](#1-create-the-credentials-file), use the [`--r
 
 To generate an authentication token, make a request to the `/login` endpoint with your username and password. Specify the HTTP port or the WS port to generate a token to authenticate over HTTP or WS respectively. HTTP and WS requires a different token.
 
-!!! example
+<!--tabs-->
 
-    === "Generate a token for HTTP"
+# Generate a token for HTTP
 
-        ```bash
-        curl -X POST --data '{"username":"username1","password":"MyPassword"}' <JSON-RPC-http-hostname:http-port>/login
-        ```
+```bash
+curl -X POST --data '{"username":"username1","password":"MyPassword"}' <JSON-RPC-http-hostname:http-port>/login
+```
 
-    === "Example for HTTP"
+# Example for HTTP
 
-        ```bash
-        curl -X POST --data '{"username":"username1","password":"MyPassword"}' http://localhost:8545/login
-        ```
+```bash
+curl -X POST --data '{"username":"username1","password":"MyPassword"}' http://localhost:8545/login
+```
 
-    === "Generate a token for WS"
+# Generate a token for WS
 
-        ```bash
-        curl -X POST --data '{"username":"username1","password":"MyPassword"}' <JSON-RPC-ws-hostname:ws-port>/login
-        ```
+```bash
+curl -X POST --data '{"username":"username1","password":"MyPassword"}' <JSON-RPC-ws-hostname:ws-port>/login
+```
 
-    === "Example for WS"
+# Example for WS
 
-        ```bash
-        curl -X POST --data '{"username":"username1","password":"MyPassword"}' http://localhost:8546/login
-        ```
+```bash
+curl -X POST --data '{"username":"username1","password":"MyPassword"}' http://localhost:8546/login
+```
 
-    === "JSON result"
+# JSON result
 
-        ```json
-        {"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJwZXJtaXNzaW9ucyI6WyIqOioiXSwidXNlcm5hbWUiOiJ1c2VyMiIsImlhdCI6MTU1MDQ2MDYwNCwiZXhwIjoxNTUwNDYwOTA0fQ.l2Ycqzl_AyvReXBeUSayOlOMS_E8-DCuz3q0Db0DKD7mqyl6q-giWoEtfdWzUEvZbRRi2_ecKO3N6JkXq7zMKQAJbVAEzobfbaaXWcQEpHOjtnK4_Yz-UPyKiXtu7HGdcdl5Tfx3dKoksbqkBl3U3vFWxzmFnuu3dAISfVJYUNA"}
-        ```
+```json
+{
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJwZXJtaXNzaW9ucyI6WyIqOioiXSwidXNlcm5hbWUiOiJ1c2VyMiIsImlhdCI6MTU1MDQ2MDYwNCwiZXhwIjoxNTUwNDYwOTA0fQ.l2Ycqzl_AyvReXBeUSayOlOMS_E8-DCuz3q0Db0DKD7mqyl6q-giWoEtfdWzUEvZbRRi2_ecKO3N6JkXq7zMKQAJbVAEzobfbaaXWcQEpHOjtnK4_Yz-UPyKiXtu7HGdcdl5Tfx3dKoksbqkBl3U3vFWxzmFnuu3dAISfVJYUNA"
+}
+```
+
+<!--/tabs-->
 
 Authentication tokens expire five minutes after generation. If you require access after the token expires, you need to generate a new token.
 
@@ -114,7 +130,11 @@ Authentication tokens expire five minutes after generation. If you require acces
 
 Enable authentication from the command line and supply the external JWT provider's public key.
 
-!!! important JWT public authentication disables the Besu `/login` endpoint, meaning [username and password authentication](#username-and-password-authentication) will not work.
+:::danger
+
+JWT public authentication disables the Besu `/login` endpoint, meaning [username and password authentication](#username-and-password-authentication) will not work.
+
+:::
 
 ### 1. Generate a private and public key pair
 
@@ -127,45 +147,47 @@ The [key algorithm](https://datatracker.ietf.org/doc/html/rfc7518#section-3.1) c
 
 Besu default is `RS256`.
 
-!!! example "Example of key generation using OpenSSL"
+<!--tabs-->
 
-    === "`RS256` RSA Keys"
+# `RS256` RSA Keys
 
-        1. Generate the private key:
+1. Generate the private key:
 
-            ```bash
-            openssl genrsa -out privateRSAKey.pem 2048
-            ```
+   ```bash
+   openssl genrsa -out privateRSAKey.pem 2048
+   ```
 
-        1. Generate the public key:
+2. Generate the public key:
 
-            ```bash
-            openssl rsa -pubout -in privateRSAKey.pem -pubout -out publicRSAKey.pem
-            ```
+   ```bash
+   openssl rsa -pubout -in privateRSAKey.pem -pubout -out publicRSAKey.pem
+   ```
 
-    === "`ES256` `secp256r1` ECDSA Keys"
+# `ES256` `secp256r1` ECDSA Keys
 
-        1. Generate the private key:
+1.  Generate the private key:
 
-            ```bash
-            openssl ecparam -name secp256r1 -genkey -out privateECDSAKey.pem
-            ```
+    ```bash
+    openssl ecparam -name secp256r1 -genkey -out privateECDSAKey.pem
+    ```
 
-        1. Generate the public key:
+2.  Generate the public key:
 
-            ```bash
-            openssl ec -in privateECDSAKey.pem -pubout -out publicECDSAKey.pem
-            ```
+    ```bash
+    openssl ec -in privateECDSAKey.pem -pubout -out publicECDSAKey.pem
+    ```
 
-!!! critical "Private key security" The private key must be kept secret. Never share private keys publicly or on a Web site, even if advertised as secure.
+<!--/tabs-->
 
-    Always keep your private keys safe -- ideally using
-    [harware](https://connect2id.com/products/nimbus-jose-jwt/examples/pkcs11) or
-    [vault](https://www.vaultproject.io/docs/secrets/identity/identity-token) --
-    and define a strong security policy and
-    [best practices](https://auth0.com/docs/best-practices/token-best-practices).
+:::danger Private key security
 
-    Compromised keys can provide attackers access to you nodes RPC-API.
+The private key must be kept secret. Never share private keys publicly or on a Web site, even if advertised as secure.
+
+Always keep your private keys safe -- ideally using [hardware](https://connect2id.com/products/nimbus-jose-jwt/examples/pkcs11) or [vault](https://www.vaultproject.io/docs/secrets/identity/identity-token) -- and define a strong security policy and [best practices](https://auth0.com/docs/best-practices/token-best-practices).
+
+Compromised keys can provide attackers access to you nodes RPC-API.
+
+:::
 
 ### 2. Create the JWT
 
@@ -175,7 +197,11 @@ Create the JWT using a trusted authentication provider[^1] or [library](https://
 
 See [Java code sample to generate JWT using Vertx](https://github.com/NicolasMassart/java-jwt-sample-generation/) for an example implementation.
 
-!!! important The JWT must use one of the `RS256`, `RS384`, `RS512`, `ES256`, `ES384`, or `ES512` algorithms.
+:::caution
+
+The JWT must use one of the `RS256`, `RS384`, `RS512`, `ES256`, `ES384`, or `ES512` algorithms.
+
+:::
 
 Each payload for the JWT must contain:
 
@@ -183,21 +209,23 @@ Each payload for the JWT must contain:
 - [`exp` (Expiration Time) claim](https://tools.ietf.org/html/rfc7519#section-4.1.4)
 - Optionally, the tenant's Tessera public key using `privacyPublicKey`. Only used for [multi-tenancy](../../../private-networks/concepts/privacy/multi-tenancy.md).
 
-!!! example "JWT generation example"
+<!--tabs-->
 
-    === "Example JSON Payload"
+# Example JSON Payload
 
-        ```json
-        {
-          "permissions": ["*:*"],
-          "privacyPublicKey": "2UKH3VJThkOoKskrLFpwoxCnnRARyobV1bEdgseFHTs=",
-          "exp": 1600899999002
-        }
-        ```
+```json
+{
+  "permissions": ["*:*"],
+  "privacyPublicKey": "2UKH3VJThkOoKskrLFpwoxCnnRARyobV1bEdgseFHTs=",
+  "exp": 1600899999002
+}
+```
 
-    === "Example JWT result"
+# Example JWT result
 
-        ![eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJwZXJtaXNzaW9ucyI6Iio6KiIsInByaXZhY3lQdWJsaWNLZXkiOiIyVUtIM1ZKVGhrT29Lc2tyTEZwd294Q25uUkFSeW9iVjFiRWRnc2VGSFRzPSIsImV4cCI6IjE2MDA4OTk5OTkwMDIiLCJpYXQiOjE2MzkxNTc2Mjd9.FGf-FmfDQlIPCRDGmNnsHZWlwrUr69d7AIDqQrIrUrSJLiwGpR3NCUhVHIDMpQvDHQYf-sFMZTYvZGrvztYRuBKWMbTfIZKN74onzNJbFIPBVQuUX2HMXmI4VQ3UFB11LShiUJHKLna13qdbqfbgJIO3HetxJhJQxTiwtixfHwyPXl-Nx8HbQy_AWH58lLAUeaoLzN7QIA9kborthBpvfK9C7Sv1lXT1cdCDC4oRKBoiMg2RWFZtGtxFsnWyloangwbhCB6Bc_elqY5nd9WkF4ix95xsP_HgBcouy1sDw6jxn5_LveX53H8owczVWP6S1e6hv6hq2fs6YkSntKMK2g](jwt.png){: style='width:15rem' }
+![Example result](jwt.png)
+
+<!--/tabs-->
 
 ### 3. Enable authentication
 
@@ -227,16 +255,18 @@ In the **Authorization** tab in the **TYPE** drop-down list, select **Bearer Tok
 
 Specify the `Bearer` in the header.
 
-!!! example
+<!--tabs-->
 
-    === "cURL Request with authentication placeholders"
+# cURL Request with authentication placeholders
 
-        ```bash
-        curl -X POST -H 'Authorization: Bearer <JWT_TOKEN>' -d '{"jsonrpc":"2.0","method":"<API_METHOD>","params":[],"id":1}' <JSON-RPC-http-hostname:port>
-        ```
+```bash
+curl -X POST -H 'Authorization: Bearer <JWT_TOKEN>' -d '{"jsonrpc":"2.0","method":"<API_METHOD>","params":[],"id":1}' <JSON-RPC-http-hostname:port>
+```
 
-    === "cURL Request with authentication"
+# cURL Request with authentication
 
-        ```bash
-        curl -X POST -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJwZXJtaXNzaW9ucyI6WyIqOioiXSwidXNlcm5hbWUiOiJ1c2VyMiIsImlhdCI6MTU1MDQ2MTQxNiwiZXhwIjoxNTUwNDYxNzE2fQ.WQ1mqpqzRLHaoL8gOSEZPvnRs_qf6j__7A3Sg8vf9RKvWdNTww_vRJF1gjcVy-FFh96AchVnQyXVx0aNUz9O0txt8VN3jqABVWbGMfSk2T_CFdSw5aDjuriCsves9BQpP70Vhj-tseaudg-XU5hCokX0tChbAqd9fB2138zYm5M' -d '{"jsonrpc":"2.0","method":"net_listening","params":[],"id":1}' http://localhost:8545
-        ```
+```bash
+curl -X POST -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJwZXJtaXNzaW9ucyI6WyIqOioiXSwidXNlcm5hbWUiOiJ1c2VyMiIsImlhdCI6MTU1MDQ2MTQxNiwiZXhwIjoxNTUwNDYxNzE2fQ.WQ1mqpqzRLHaoL8gOSEZPvnRs_qf6j__7A3Sg8vf9RKvWdNTww_vRJF1gjcVy-FFh96AchVnQyXVx0aNUz9O0txt8VN3jqABVWbGMfSk2T_CFdSw5aDjuriCsves9BQpP70Vhj-tseaudg-XU5hCokX0tChbAqd9fB2138zYm5M' -d '{"jsonrpc":"2.0","method":"net_listening","params":[],"id":1}' http://localhost:8545
+```
+
+<!--/tabs-->

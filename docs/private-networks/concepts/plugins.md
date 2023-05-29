@@ -1,31 +1,26 @@
 ---
 title: Plugins
-sidebar_poistion: 6
+sidebar_position: 6
 description: Plugins overview
 ---
 
 # Plugins
 
-You can extend Hyperledger Besu functionality by building Java plugins or using existing open source
-Besu plugins.
-Use the Plugin API to take data from any Besu network, public or permissioned, and feed it into an
-application or system.
+You can extend Hyperledger Besu functionality by building Java plugins or using existing open source Besu plugins. Use the Plugin API to take data from any Besu network, public or permissioned, and feed it into an application or system.
 
-For example, create a plugin to add more monitoring functionality or stream event data to a
-third-party application. The API exposes data about the following components:
+For example, create a plugin to add more monitoring functionality or stream event data to a third-party application. The API exposes data about the following components:
 
-* Blocks
-* Balances
-* Transactions
-* Smart contracts
-* Execution results
-* Logs
-* Syncing state.
+- Blocks
+- Balances
+- Transactions
+- Smart contracts
+- Execution results
+- Logs
+- Syncing state.
 
 ![Besu plugin API](../../assets/images/Hyperledger-Besu-Plugin-API.png)
 
-The plugin API provides access to [interfaces](../reference/plugin-api-interfaces.md) allowing you
-to build the plugin.
+The plugin API provides access to [interfaces](../reference/plugin-api-interfaces.md) allowing you to build the plugin.
 
 !!! tip
 
@@ -46,9 +41,9 @@ To allow Besu to access and use the plugin, copy the plugin (`.jar`) to the `plu
 
 Each plugin in the directory has the following lifecycle events:
 
-* **Register** - Executed when Besu starts. Besu checks plugin compatibility and registers plugins.
-* **Start** - Plugins start after being successfully registered.
-* **Stop** - Besu stops plugins.
+- **Register** - Executed when Besu starts. Besu checks plugin compatibility and registers plugins.
+- **Start** - Plugins start after being successfully registered.
+- **Stop** - Besu stops plugins.
 
 !!! note
 
