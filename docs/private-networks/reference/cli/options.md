@@ -6,8 +6,7 @@ description: Hyperledger Besu private networks CLI reference
 
 # Private network command line options
 
-This reference describes the syntax of the Hyperledger Besu private network command line interface
-(CLI) options.
+This reference describes the syntax of the Hyperledger Besu private network command line interface (CLI) options.
 
 !!! attention
 
@@ -19,24 +18,23 @@ This reference describes the syntax of the Hyperledger Besu private network comm
 
 You can specify Besu options:
 
-* On the command line.
+- On the command line.
 
-    ```bash
-    besu [OPTIONS] [SUBCOMMAND]
-    ```
+  ```bash
+  besu [OPTIONS] [SUBCOMMAND]
+  ```
 
-* As an environment variable.
-  For each command line option, the equivalent environment variable is:
-    * Uppercase.
-    * `_` replaces `-`.
-    * Has a `BESU_` prefix.
+- As an environment variable. For each command line option, the equivalent environment variable is:
+
+  - Uppercase.
+  - `_` replaces `-`.
+  - Has a `BESU_` prefix.
 
   For example, set `--miner-coinbase` using the `BESU_MINER_COINBASE` environment variable.
 
-* In a [configuration file](../../../public-networks/how-to/configuration-file.md).
+- In a [configuration file](../../../public-networks/how-to/configuration-file.md).
 
-If you specify an option in more than one place, the order of priority is command line, environment
-variable, configuration file.
+If you specify an option in more than one place, the order of priority is command line, environment variable, configuration file.
 
 If using Bash or Z shell, you can view option suggestions by entering `--` and pressing the Tab key twice.
 
@@ -78,8 +76,7 @@ besu --Tab+Tab
     permissions-accounts-config-file="/home/me/me_configFiles/myPermissionsFile"
     ```
 
-The [accounts permissions configuration file]. The default is the `permissions_config.toml` file in
-the [data directory](../../../public-networks/reference/cli/options.md#data-path).
+The [accounts permissions configuration file]. The default is the `permissions_config.toml` file in the [data directory](../../../public-networks/reference/cli/options.md#data-path).
 
 !!! tip
 
@@ -140,8 +137,7 @@ Enables or disables file-based account level permissions. The default is `false`
     permissions-accounts-contract-address="xyz"
     ```
 
-The contract address for
-[onchain account permissioning](../../concepts/permissioning/onchain.md).
+The contract address for [onchain account permissioning](../../concepts/permissioning/onchain.md).
 
 ### `permissions-accounts-contract-enabled`
 
@@ -169,9 +165,7 @@ The contract address for
     permissions-accounts-contract-enabled=true
     ```
 
-Enables or disables contract-based
-[onchain account permissioning](../../concepts/permissioning/onchain.md). The default
-is `false`.
+Enables or disables contract-based [onchain account permissioning](../../concepts/permissioning/onchain.md). The default is `false`.
 
 ### `permissions-nodes-config-file`
 
@@ -199,8 +193,7 @@ is `false`.
     permissions-nodes-config-file="/home/me/me_configFiles/myPermissionsFile"
     ```
 
-The [nodes permissions configuration file]. The default is the `permissions_config.toml` file in
-the [data directory](../../../public-networks/reference/cli/options.md#data-path).
+The [nodes permissions configuration file]. The default is the `permissions_config.toml` file in the [data directory](../../../public-networks/reference/cli/options.md#data-path).
 
 !!! tip
 
@@ -262,8 +255,7 @@ Enables or disables file-based node level permissions. The default is `false`.
     permissions-nodes-contract-address="xyz"
     ```
 
-The contract address for
-[onchain node permissioning](../../concepts/permissioning/onchain.md).
+The contract address for [onchain node permissioning](../../concepts/permissioning/onchain.md).
 
 ### `permissions-nodes-contract-enabled`
 
@@ -291,9 +283,7 @@ The contract address for
     permissions-nodes-contract-enabled=true
     ```
 
-Enables or disables contract-based
-[onchain node permissioning](../../concepts/permissioning/onchain.md). The default is
-`false`.
+Enables or disables contract-based [onchain node permissioning](../../concepts/permissioning/onchain.md). The default is `false`.
 
 ### `permissions-nodes-contract-version`
 
@@ -321,8 +311,7 @@ Enables or disables contract-based
     permissions-nodes-contract-version=2
     ```
 
-Version of the EEA [node permissioning interface](../../how-to/use-permissioning/onchain.md#specify-the-permissioning-contract-interface-version).
-The default is 1.
+Version of the EEA [node permissioning interface](../../how-to/use-permissioning/onchain.md#specify-the-permissioning-contract-interface-version). The default is 1.
 
 ### `privacy-enabled`
 
@@ -350,8 +339,7 @@ The default is 1.
     privacy-enabled=false
     ```
 
-Enables or disables [private transactions](../../concepts/privacy/index.md). The default
-is `false`.
+Enables or disables [private transactions](../../concepts/privacy/index.md). The default is `false`.
 
 !!! important
 
@@ -384,8 +372,7 @@ is `false`.
     privacy-marker-transaction-signing-key-file="/home/me/me_node/myPrivateKey"
     ```
 
-`<FILE>` is the name of the private key file used to
-[sign privacy marker transactions](../../how-to/use-privacy/sign-pmts.md).
+`<FILE>` is the name of the private key file used to [sign privacy marker transactions](../../how-to/use-privacy/sign-pmts.md).
 
 !!! note
 
@@ -394,12 +381,10 @@ is `false`.
 
 You must specify this option if you're using:
 
-* a privacy network where you pay gas. Also, the associated account must contain adequate funds.
-* [account permissioning] and privacy. You must include the corresponding public key in the
-  accounts allowlist.
+- a privacy network where you pay gas. Also, the associated account must contain adequate funds.
+- [account permissioning] and privacy. You must include the corresponding public key in the accounts allowlist.
 
-If you do not specify this option (for example, in a free gas network), Besu signs each transaction
-with a different randomly generated key.
+If you do not specify this option (for example, in a free gas network), Besu signs each transaction with a different randomly generated key.
 
 ### `privacy-multi-tenancy-enabled`
 
@@ -427,8 +412,7 @@ with a different randomly generated key.
     privacy-multi-tenancy-enabled=false
     ```
 
-Enables or disables [multi-tenancy](../../concepts/privacy/multi-tenancy.md) for private
-transactions. The default is `false`.
+Enables or disables [multi-tenancy](../../concepts/privacy/multi-tenancy.md) for private transactions. The default is `false`.
 
 ### `privacy-flexible-groups-enabled`
 
@@ -519,8 +503,7 @@ The [public key of the Tessera node](https://docs.tessera.consensys.net/).
     privacy-tls-enabled=false
     ```
 
-Enables or disables [TLS on communication with the private transaction manager]. The default is
-false.
+Enables or disables [TLS on communication with the private transaction manager]. The default is false.
 
 ### `privacy-tls-keystore-file`
 
@@ -548,11 +531,9 @@ false.
     privacy-tls-keystore-file="/home/me/me_node/key"
     ```
 
-The keystore file (in PKCS #12 format) containing the private key and the certificate presented
-during authentication.
+The keystore file (in PKCS #12 format) containing the private key and the certificate presented during authentication.
 
-You must specify `privacy-tls-keystore-file` if [`--privacy-tls-enabled`](#privacy-tls-enabled) is
-`true`.
+You must specify `privacy-tls-keystore-file` if [`--privacy-tls-enabled`](#privacy-tls-enabled) is `true`.
 
 ### `privacy-tls-keystore-password-file`
 
@@ -608,8 +589,7 @@ The path to the file containing the password to decrypt the keystore.
     privacy-tls-known-enclave-file="/home/me/me_node/knownEnclave"
     ```
 
-The path to the file containing the hostnames, ports, and SHA256 certificate fingerprints of the
-[authorized privacy enclave](../../how-to/configure/tls/client-and-server.md#create-the-known-servers-file).
+The path to the file containing the hostnames, ports, and SHA256 certificate fingerprints of the [authorized privacy enclave](../../how-to/configure/tls/client-and-server.md#create-the-known-servers-file).
 
 ### `privacy-url`
 
@@ -637,13 +617,11 @@ The path to the file containing the hostnames, ports, and SHA256 certificate fin
     privacy-url="http://127.0.0.1:8888"
     ```
 
-The URL on which the
-[Tessera node](../../tutorials/privacy/index.md#3-create-tessera-configuration-files) is
-running.
+The URL on which the [Tessera node](../../tutorials/privacy/index.md#3-create-tessera-configuration-files) is running.
 
 <!-- Links -->
+
 [accounts permissions configuration file]: ../../how-to/use-permissioning/local.md#permissions-configuration-file
 [nodes permissions configuration file]: ../../how-to/use-permissioning/local.md#permissions-configuration-file
 [account permissioning]: ../../concepts/permissioning/index.md#account-permissioning
 [TLS on communication with the private transaction manager]: ../../concepts/privacy/index.md#private-transaction-manager
-

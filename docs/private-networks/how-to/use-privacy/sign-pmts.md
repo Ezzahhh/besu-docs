@@ -6,10 +6,7 @@ sidebar_position: 7
 
 # Sign privacy marker transactions
 
-You can sign privacy marker transactions (PMTs) with either a random key or a specified key. To sign
-privacy marker transactions with a specified private key, use
-[`--privacy-marker-transaction-signing-key-file`](../../reference/cli/options.md#privacy-marker-transaction-signing-key-file)
-when starting Hyperledger Besu.
+You can sign privacy marker transactions (PMTs) with either a random key or a specified key. To sign privacy marker transactions with a specified private key, use [`--privacy-marker-transaction-signing-key-file`](../../reference/cli/options.md#privacy-marker-transaction-signing-key-file) when starting Hyperledger Besu.
 
 !!! note
 
@@ -17,13 +14,9 @@ when starting Hyperledger Besu.
     [`--node-private-key-file`](#node-private-key-file), or a different key file to identify who
     signed the privacy marker transaction.
 
-In networks where you pay gas, you must specify a key and the associated account must contain
-adequate funds.
+In networks where you pay gas, you must specify a key and the associated account must contain adequate funds.
 
-In [free gas networks](../configure/free-gas.md), to provide further anonymity by signing
-each privacy marker transaction with a different random key, exclude the
-[`--privacy-marker-transaction-signing-key-file`](../../reference/cli/options.md#privacy-marker-transaction-signing-key-file)
-command line option when starting Besu.
+In [free gas networks](../configure/free-gas.md), to provide further anonymity by signing each privacy marker transaction with a different random key, exclude the [`--privacy-marker-transaction-signing-key-file`](../../reference/cli/options.md#privacy-marker-transaction-signing-key-file) command line option when starting Besu.
 
 !!! caution "Using account permissioning and privacy"
 
@@ -39,4 +32,5 @@ command line option when starting Besu.
     [private transaction process](../../concepts/privacy/private-transactions/processing.md).
 
 <!-- Links -->
+
 [account permissioning]: ../../concepts/permissioning/index.md#account-permissioning

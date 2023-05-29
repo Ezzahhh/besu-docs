@@ -45,20 +45,16 @@ This page contains some extra info if you're using [onchain permissioning](../..
 
 ## Specify the permissioning contract interface version
 
-Use the [`--permissions-nodes-contract-version`](../../reference/cli/options.md#permissions-nodes-contract-version)
-command line option to specify the version of the [permissioning contract interface](../../concepts/permissioning/onchain.md#permissioning-contracts).
-The default is 1.
+Use the [`--permissions-nodes-contract-version`](../../reference/cli/options.md#permissions-nodes-contract-version) command line option to specify the version of the [permissioning contract interface](../../concepts/permissioning/onchain.md#permissioning-contracts). The default is 1.
 
-Specify the contract interface version that maps to the version of the [Enterprise Ethereum Alliance Client Specification](https://entethalliance.org/technical-specifications/)
-the contract interface implements.
+Specify the contract interface version that maps to the version of the [Enterprise Ethereum Alliance Client Specification](https://entethalliance.org/technical-specifications/) the contract interface implements.
 
 |         | EEA Client Specification | Contract interface |
-|:--------|:-------------------------|:-------------------|
+| :------ | :----------------------- | :----------------- |
 | Version | 5                        | 1                  |
 | Version | 6                        | 2                  |
 
-The permissioning contracts in the [`ConsenSys/permissioning-smart-contracts`](https://github.com/ConsenSys/permissioning-smart-contracts)
-repository implement the version 2 contract interface.
+The permissioning contracts in the [`ConsenSys/permissioning-smart-contracts`](https://github.com/ConsenSys/permissioning-smart-contracts) repository implement the version 2 contract interface.
 
 [support domain names]: ../../../public-networks/concepts/node-keys.md#domain-name-support
 [projects release page]: https://github.com/ConsenSys/permissioning-smart-contracts/releases/latest

@@ -6,27 +6,17 @@ sidebar_position: 2
 
 # Use Besu-extended privacy
 
-Hyperledger Besu provides an extended implementation of privacy allowing you to
-[create a privacy group for a set of participants](../../concepts/privacy/privacy-groups.md). You
-must specify the privacy group ID when sending private transactions.
+Hyperledger Besu provides an extended implementation of privacy allowing you to [create a privacy group for a set of participants](../../concepts/privacy/privacy-groups.md). You must specify the privacy group ID when sending private transactions.
 
-To enable the [`PRIV` API methods](../../reference/api/index.md#priv-methods), use the
-[`--rpc-http-api`](../../../public-networks/reference/cli/options.md#rpc-http-api) or
-[`--rpc-ws-api`](../../../public-networks/reference/cli/options.md#rpc-ws-api) command line options.
+To enable the [`PRIV` API methods](../../reference/api/index.md#priv-methods), use the [`--rpc-http-api`](../../../public-networks/reference/cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../../../public-networks/reference/cli/options.md#rpc-ws-api) command line options.
 
-To create the privacy group containing the recipients of a private transaction, use
-[`priv_createPrivacyGroup`](../../reference/api/index.md#priv_createprivacygroup).
+To create the privacy group containing the recipients of a private transaction, use [`priv_createPrivacyGroup`](../../reference/api/index.md#priv_createprivacygroup).
 
-To create an EEA-compliant private transaction, specify `privacyGroupId` when creating the signed
-transaction passed as an input parameter to
-[`eea_sendRawTransaction`](../../reference/api/index.md#eea_sendrawtransaction).
+To create an EEA-compliant private transaction, specify `privacyGroupId` when creating the signed transaction passed as an input parameter to [`eea_sendRawTransaction`](../../reference/api/index.md#eea_sendrawtransaction).
 
 ## Privacy group type
 
-Privacy groups created using
-[`priv_createPrivacyGroup`](../../reference/api/index.md#priv_createprivacygroup)
-have a `BESU` privacy group type when returned by
-[`priv_findPrivacyGroup`](../../reference/api/index.md#priv_findprivacygroup).
+Privacy groups created using [`priv_createPrivacyGroup`](../../reference/api/index.md#priv_createprivacygroup) have a `BESU` privacy group type when returned by [`priv_findPrivacyGroup`](../../reference/api/index.md#priv_findprivacygroup).
 
 !!! example
 

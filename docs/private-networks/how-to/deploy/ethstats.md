@@ -6,8 +6,7 @@ description: Ethstats network monitor
 
 # Connect to Ethstats network monitor
 
-Connect to [Ethstats](https://ethstats.net) to display real time and historical [statistics](#statistics) about the network and nodes.
-You can connect to the Ethstats dashboard by [connecting to a client and server](#connect-through-a-client-and-server) or by [connecting through the command line](#connect-through-the-command-line).
+Connect to [Ethstats](https://ethstats.net) to display real time and historical [statistics](#statistics) about the network and nodes. You can connect to the Ethstats dashboard by [connecting to a client and server](#connect-through-a-client-and-server) or by [connecting through the command line](#connect-through-the-command-line).
 
 ## Components
 
@@ -22,8 +21,8 @@ Ethstats consists of:
 Statistics displayed by Ethstats include:
 
 - Nodes in the network. Metrics for nodes include:
-    - Information about the last received block such as block number, block hash, transaction count, uncle count, block time, and propagation time.
-    - Connected peers, whether the node is mining, hash rate, latency, and uptime.
+  - Information about the last received block such as block number, block hash, transaction count, uncle count, block time, and propagation time.
+  - Connected peers, whether the node is mining, hash rate, latency, and uptime.
 - Charts for block time, block difficulty, block gas limit, block uncles, block transactions, block gas used, block propagation histogram, and top miners.
 - IP-based geolocation overview.
 - Node logs, which display the data sent by a node.
@@ -31,15 +30,13 @@ Statistics displayed by Ethstats include:
 
 ## Connect through a client and server
 
-Refer to the external [Ethstats client](https://github.com/goerli/ethstats-client) and [Ethstats server](https://github.com/goerli/ethstats-server) documentation
-for installing those components and connecting to a dashboard.
+Refer to the external [Ethstats client](https://github.com/goerli/ethstats-client) and [Ethstats server](https://github.com/goerli/ethstats-server) documentation for installing those components and connecting to a dashboard.
 
 ## Connect through the command line
 
 You can use command line options to connect a node directly to a [dashboard](https://github.com/goerli/ethstats-client#available-dashboards), without using a client.
 
-Start a node using the [`--ethstats`](../../../public-networks/reference/cli/options.md#ethstats) option to specify the Ethstats server URL.
-You can specify a contact email to send to the server using [`--ethstats-contact`](../../../public-networks/reference/cli/options.md#ethstats-contact).
+Start a node using the [`--ethstats`](../../../public-networks/reference/cli/options.md#ethstats) option to specify the Ethstats server URL. You can specify a contact email to send to the server using [`--ethstats-contact`](../../../public-networks/reference/cli/options.md#ethstats-contact).
 
 !!! example
 

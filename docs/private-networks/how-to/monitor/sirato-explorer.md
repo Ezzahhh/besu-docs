@@ -6,20 +6,11 @@ description: Use Sirato Explorer on a privacy-enabled Besu network
 
 # Use Sirato Blockchain Explorer
 
-[Sirato Blockchain Explorer](https://www.web3labs.com/sirato) supports public and private EVM networks.
-This page describes how to use the free version of Sirato with its built-in support for
-[privacy-enabled](../../concepts/privacy/index.md) Besu networks created using the
-[Developer Quickstart](../../tutorials/quickstart.md).
+[Sirato Blockchain Explorer](https://www.web3labs.com/sirato) supports public and private EVM networks. This page describes how to use the free version of Sirato with its built-in support for [privacy-enabled](../../concepts/privacy/index.md) Besu networks created using the [Developer Quickstart](../../tutorials/quickstart.md).
 
-Sirato provides an overview of the entire network, including block information, contract metadata,
-transaction searches, and
-[more](https://medium.com/web3labs/epirus-ethereum-saas-blockchain-explorer-d5d961717d15).
+Sirato provides an overview of the entire network, including block information, contract metadata, transaction searches, and [more](https://medium.com/web3labs/epirus-ethereum-saas-blockchain-explorer-d5d961717d15).
 
-!!! note
-    You must connect to one of the privacy nodes (for example, `member1besu`), not the dedicated RPC,
-    in order to allow access for Besu [privacy API methods](../../reference/api/index.md#priv-methods).
-    In production networks, you must
-    [secure access](../../../public-networks/how-to/use-besu-api/authenticate.md) to RPC nodes.
+!!! note You must connect to one of the privacy nodes (for example, `member1besu`), not the dedicated RPC, in order to allow access for Besu [privacy API methods](../../reference/api/index.md#priv-methods). In production networks, you must [secure access](../../../public-networks/how-to/use-besu-api/authenticate.md) to RPC nodes.
 
 ## Prerequisites
 
@@ -33,8 +24,7 @@ Clone the [Sirato GitHub repository](https://github.com/web3labs/sirato-free):
 git clone https://github.com/web3labs/sirato-free
 ```
 
-The repository contains Docker Compose scripts to allow Sirato to start with a Developer Quickstart
-test network.
+The repository contains Docker Compose scripts to allow Sirato to start with a Developer Quickstart test network.
 
 From the Sirato directory, run the following script:
 
@@ -65,9 +55,7 @@ From the Sirato directory, run the following script:
     Sirato is connected to node                   : http://rpcnode:8545
     ```
 
-Open `http://localhost/` on your browser.
-You’ll see the new initialization page while it boots up.
-This may take 5–10 minutes for the all services to start and the ingestion sync to complete.
+Open `http://localhost/` on your browser. You’ll see the new initialization page while it boots up. This may take 5–10 minutes for the all services to start and the ingestion sync to complete.
 
 ![`Sirato-dashboard`](../../../assets/images/sirato-loading.png)
 
@@ -77,9 +65,7 @@ The **Dashboard** page provides an aggregated view of network activities.
 
 ![`Epirus-dashboard`](../../../assets/images/sirato-dashboard.png)
 
-The **Network** page provides an overview of the network status and connected peers.
-This page is disabled by default, and is only visible if you set `DISPLAY_NETWOR_TAB=enabled` using
-the following command:
+The **Network** page provides an overview of the network status and connected peers. This page is disabled by default, and is only visible if you set `DISPLAY_NETWOR_TAB=enabled` using the following command:
 
 ```bash
 NODE_ENDPOINT=http://member1besu:8545 DISPLAY_NETWORK_TAB=enabled docker-compose -f docker-compose.yml -f sirato-extensions/docker-compose-quorum-dev-quickstart.yml up

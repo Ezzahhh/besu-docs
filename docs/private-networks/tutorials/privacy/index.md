@@ -6,13 +6,9 @@ description: Configure Hyperledger Besu privacy
 
 # Create a privacy-enabled network
 
-Configuring a network that supports private transactions requires starting a [Tessera] node for each
-Hyperledger Besu node. Besu command line options associate the Besu node with the Tessera node.
+Configuring a network that supports private transactions requires starting a [Tessera] node for each Hyperledger Besu node. Besu command line options associate the Besu node with the Tessera node.
 
-This tutorial assumes you have completed setting up an IBFT 2.0 network to the point where you have
-[created the genesis file and copied the private keys](../ibft/index.md#5-copy-the-node-private-keys-to-the-node-directories).
-If not, complete steps 1 to 5 of the
-[Create an IBFT 2.0](../ibft/index.md) tutorial before continuing.
+This tutorial assumes you have completed setting up an IBFT 2.0 network to the point where you have [created the genesis file and copied the private keys](../ibft/index.md#5-copy-the-node-private-keys-to-the-node-directories). If not, complete steps 1 to 5 of the [Create an IBFT 2.0](../ibft/index.md) tutorial before continuing.
 
 !!! important
 
@@ -21,12 +17,11 @@ If not, complete steps 1 to 5 of the
     This tutorial configures a private network using IBFT 2.0 for educational purposes only. IBFT
     2.0 requires 4 validators to be Byzantine fault tolerant.
 
-In this tutorial we start Tessera nodes for the four Besu nodes and associate each Besu node with
-a Tessera node.
+In this tutorial we start Tessera nodes for the four Besu nodes and associate each Besu node with a Tessera node.
 
 ## Prerequisites
 
-* [Install Tessera](https://docs.tessera.consensys.net/category/install).
+- [Install Tessera](https://docs.tessera.consensys.net/category/install).
 
 ## 1. Create Tessera directories
 
@@ -50,24 +45,21 @@ IBFT-Network/
 
 ## 2. Generate Tessera keys
 
-This example creates an unlocked private key, meaning you do not need a password to decrypt the
-private key file.
+This example creates an unlocked private key, meaning you do not need a password to decrypt the private key file.
 
 In each `Tessera` directory, generate a public/private key pair for the Tessera node:
 
-``` bash
+```bash
 tessera -keygen -filename nodeKey
 ```
 
 At the prompt, press **Enter** to create an unlocked key.
 
-Tessera generates the public/private key pair and saves the keys in the `nodeKey.pub` and
-`nodeKey.key` files.
+Tessera generates the public/private key pair and saves the keys in the `nodeKey.pub` and `nodeKey.key` files.
 
 ## 3. Create Tessera configuration files
 
-In the `Tessera` directory for each node, create a file called `tessera.conf`, with the following
-configuration:
+In the `Tessera` directory for each node, create a file called `tessera.conf`, with the following configuration:
 
 !!! important
 
@@ -301,16 +293,13 @@ configuration:
 
 In the configuration file, specify:
 
-* Different port numbers for the various servers in the
-    [`serverConfigs`](https://docs.tessera.consensys.net/HowTo/Configure/TesseraAPI/) section.
-* The address of the Tessera nodes to discover, in the
-    [`peer`](https://docs.tessera.consensys.net/HowTo/Configure/Peer-discovery/#specify-peers) section.
-* The location of the public/private key pair.
+- Different port numbers for the various servers in the [`serverConfigs`](https://docs.tessera.consensys.net/HowTo/Configure/TesseraAPI/) section.
+- The address of the Tessera nodes to discover, in the [`peer`](https://docs.tessera.consensys.net/HowTo/Configure/Peer-discovery/#specify-peers) section.
+- The location of the public/private key pair.
 
 ## 4. Start the Tessera nodes
 
-In each `Tessera` directory, start Tessera specifying the
-[configuration file](#3-create-tessera-configuration-files) created in the previous step:
+In each `Tessera` directory, start Tessera specifying the [configuration file](#3-create-tessera-configuration-files) created in the previous step:
 
 ```bash
 tessera -configfile tessera.conf
@@ -340,16 +329,11 @@ In the `Node-1` directory, start Besu Node-1:
 
 The command line specifies privacy options:
 
-* [`--privacy-enabled`](../../reference/cli/options.md#privacy-enabled) enables privacy
-* [`--privacy-url`](../../reference/cli/options.md#privacy-url) specifies the Q2T server address
-    of the Tessera node (`Q2T` in `tessera.conf`)
-* [`--privacy-public-key-file`](../../reference/cli/options.md#privacy-public-key-file)
-  specifies the file containing Tessera node public key (created in
-  [3. Generate Tessera Keys](#2-generate-tessera-keys))
-* [`--rpc-http-api`](../../../public-networks/reference/cli/options.md#rpc-http-api) includes `EEA` and `PRIV` in
-  the list of JSON-RPC APIs to enable privacy JSON-RPC API methods.
-* [`--min-gas-price`](../../../public-networks/reference/cli/options.md#min-gas-price) is 0 for a
-  [free gas network](../../how-to/configure/free-gas.md).
+- [`--privacy-enabled`](../../reference/cli/options.md#privacy-enabled) enables privacy
+- [`--privacy-url`](../../reference/cli/options.md#privacy-url) specifies the Q2T server address of the Tessera node (`Q2T` in `tessera.conf`)
+- [`--privacy-public-key-file`](../../reference/cli/options.md#privacy-public-key-file) specifies the file containing Tessera node public key (created in [3. Generate Tessera Keys](#2-generate-tessera-keys))
+- [`--rpc-http-api`](../../../public-networks/reference/cli/options.md#rpc-http-api) includes `EEA` and `PRIV` in the list of JSON-RPC APIs to enable privacy JSON-RPC API methods.
+- [`--min-gas-price`](../../../public-networks/reference/cli/options.md#min-gas-price) is 0 for a [free gas network](../../how-to/configure/free-gas.md).
 
 !!! note
 
@@ -359,15 +343,13 @@ The command line specifies privacy options:
     [privacy marker transactions](../../concepts/privacy/private-transactions/processing.md) using a
     supplied key. The command line option is mandatory in privacy-enabled paid gas networks.
 
-When the node starts, the [enode URL](../../../public-networks/concepts/node-keys.md#enode-url) displays. Copy the
-enode URL to specify Node-1 as the bootnode in the following steps.
+When the node starts, the [enode URL](../../../public-networks/concepts/node-keys.md#enode-url) displays. Copy the enode URL to specify Node-1 as the bootnode in the following steps.
 
 ![Node 1 Enode URL](../../../assets/images/EnodeStartup.png)
 
 ## 6. Start Besu Node-2
 
-In the `Node-2` directory, start Besu Node-2 specifying the Node-1 enode URL copied when starting
-Node-1 as the bootnode:
+In the `Node-2` directory, start Besu Node-2 specifying the Node-1 enode URL copied when starting Node-1 as the bootnode:
 
 === "MacOS"
 
@@ -381,8 +363,7 @@ Node-1 as the bootnode:
     besu --data-path=data --genesis-file=..\genesis.json --bootnodes=<Node-1 Enode URL> --p2p-port=30304 --rpc-http-enabled --rpc-http-api=ETH,NET,IBFT,EEA,PRIV --host-allowlist="*" --rpc-http-cors-origins="all" --rpc-http-port=8546 --privacy-enabled --privacy-url=http://127.0.0.1:9202 --privacy-public-key-file=Tessera\nodeKey.pub --min-gas-price=0
     ```
 
-The command line specifies the same options as for Node-1 with different ports and Tessera node URL.
-The [`--bootnodes`](../../../public-networks/reference/cli/options.md#bootnodes) option specifies the enode URL of Node-1.
+The command line specifies the same options as for Node-1 with different ports and Tessera node URL. The [`--bootnodes`](../../../public-networks/reference/cli/options.md#bootnodes) option specifies the enode URL of Node-1.
 
 !!! note
 
@@ -391,8 +372,7 @@ The [`--bootnodes`](../../../public-networks/reference/cli/options.md#bootnodes)
 
 ## 7. Start Besu Node-3
 
-In the `Node-3` directory, start Besu Node-3 specifying the Node-1 enode URL copied when starting
-Node-1 as the bootnode:
+In the `Node-3` directory, start Besu Node-3 specifying the Node-1 enode URL copied when starting Node-1 as the bootnode:
 
 === "MacOS"
 
@@ -406,13 +386,11 @@ Node-1 as the bootnode:
     besu --data-path=data --genesis-file=..\genesis.json --bootnodes=<Node-1 Enode URL> --p2p-port=30305 --rpc-http-enabled --rpc-http-api=ETH,NET,IBFT,EEA,PRIV --host-allowlist="*" --rpc-http-cors-origins="all" --rpc-http-port=8547 --privacy-enabled --privacy-url=http://127.0.0.1:9302 --privacy-public-key-file=Tessera\nodeKey.pub --min-gas-price=0
     ```
 
-The command line specifies the same options as for Node-1 with different ports and Tessera node URL.
-The [`--bootnodes`](../../../public-networks/reference/cli/options.md#bootnodes) option specifies the enode URL of Node-1.
+The command line specifies the same options as for Node-1 with different ports and Tessera node URL. The [`--bootnodes`](../../../public-networks/reference/cli/options.md#bootnodes) option specifies the enode URL of Node-1.
 
 ## 8. Start Besu Node-4
 
-In the `Node-4` directory, start Besu Node-4 specifying the Node-1 enode URL copied when starting
-Node-1 as the bootnode:
+In the `Node-4` directory, start Besu Node-4 specifying the Node-1 enode URL copied when starting Node-1 as the bootnode:
 
 === "MacOS"
 
@@ -426,8 +404,8 @@ Node-1 as the bootnode:
     besu --data-path=data --genesis-file=..\genesis.json --bootnodes=<Node-1 Enode URL> --p2p-port=30306 --rpc-http-enabled --rpc-http-api=ETH,NET,IBFT,EEA,PRIV --host-allowlist="*" --rpc-http-cors-origins="all" --rpc-http-port=8548 --privacy-enabled --privacy-url=http://127.0.0.1:9402 --privacy-public-key-file=Tessera\nodeKey.pub --min-gas-price=0
     ```
 
-The command line specifies the same options as for Node-1 with different ports and Tessera node URL.
-The [`--bootnodes`](../../../public-networks/reference/cli/options.md#bootnodes) option specifies the enode URL of Node-1.
+The command line specifies the same options as for Node-1 with different ports and Tessera node URL. The [`--bootnodes`](../../../public-networks/reference/cli/options.md#bootnodes) option specifies the enode URL of Node-1.
 
 <!-- links -->
+
 [Tessera]: https://docs.tessera.consensys.net/

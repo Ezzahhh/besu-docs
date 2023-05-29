@@ -1,13 +1,12 @@
 ---
-title:  Use flexible privacy groups
+title: Use flexible privacy groups
 description: Use flexible privacy groups
 sidebar_position: 5
 ---
 
 # Use flexible privacy groups
 
-Use the [`web3js-quorum` library](https://github.com/ConsenSys/web3js-quorum) to create and update
-membership of [flexible privacy groups](../../concepts/privacy/flexible-privacy.md).
+Use the [`web3js-quorum` library](https://github.com/ConsenSys/web3js-quorum) to create and update membership of [flexible privacy groups](../../concepts/privacy/flexible-privacy.md).
 
 !!! tip
 
@@ -28,29 +27,22 @@ membership of [flexible privacy groups](../../concepts/privacy/flexible-privacy.
 
 ## Enable flexible privacy groups
 
-Use the [`--privacy-flexible-groups-enabled`](../../reference/cli/options.md#privacy-flexible-groups-enabled)
-command line option to enable [flexible privacy groups](../../concepts/privacy/flexible-privacy.md).
-When flexible privacy groups are enabled, the [`priv_createPrivacyGroup`](../../reference/api/index.md#priv_createprivacygroup),
-[`priv_deletePrivacyGroup`](../../reference/api/index.md#priv_deleteprivacygroup),
-and [`priv_findPrivacyGroup`](../../reference/api/index.md#priv_findprivacygroup) methods for
-[offchain privacy groups](../../concepts/privacy/privacy-groups.md) are disabled.
+Use the [`--privacy-flexible-groups-enabled`](../../reference/cli/options.md#privacy-flexible-groups-enabled) command line option to enable [flexible privacy groups](../../concepts/privacy/flexible-privacy.md). When flexible privacy groups are enabled, the [`priv_createPrivacyGroup`](../../reference/api/index.md#priv_createprivacygroup), [`priv_deletePrivacyGroup`](../../reference/api/index.md#priv_deleteprivacygroup), and [`priv_findPrivacyGroup`](../../reference/api/index.md#priv_findprivacygroup) methods for [offchain privacy groups](../../concepts/privacy/privacy-groups.md) are disabled.
 
 ## Simple flexible privacy group example
 
-To create and find a [flexible privacy group](../../concepts/privacy/flexible-privacy.md) using
-the [`web3js-quorum` library](https://github.com/ConsenSys/web3js-quorum):
+To create and find a [flexible privacy group](../../concepts/privacy/flexible-privacy.md) using the [`web3js-quorum` library](https://github.com/ConsenSys/web3js-quorum):
 
 1. Update the `example/keys.js` file to match your network configuration.
 
 1. Run:
 
-    ```bash
-    cd example/onchainPrivacy
-    node simpleExample.js
-    ```
+   ```bash
+   cd example/onchainPrivacy
+   node simpleExample.js
+   ```
 
-    This script creates the flexible privacy group with two members. `findPrivacyGroup` finds and
-    displays the created privacy group.
+   This script creates the flexible privacy group with two members. `findPrivacyGroup` finds and displays the created privacy group.
 
 !!! tip
 
@@ -60,9 +52,7 @@ the [`web3js-quorum` library](https://github.com/ConsenSys/web3js-quorum):
 
 ## Add and remove members
 
-To add and remove members from a [flexible privacy group](../../concepts/privacy/flexible-privacy.md),
-use the `addTo` and `removeFrom` methods in the [`web3js-quorum` library](https://github.com/ConsenSys/web3js-quorum)
-client library.
+To add and remove members from a [flexible privacy group](../../concepts/privacy/flexible-privacy.md), use the `addTo` and `removeFrom` methods in the [`web3js-quorum` library](https://github.com/ConsenSys/web3js-quorum) client library.
 
 !!! note
 

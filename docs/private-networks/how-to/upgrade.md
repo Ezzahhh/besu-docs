@@ -12,28 +12,21 @@ sidebar_position: 8
     In private networks, you can [upgrade your node](../../public-networks/how-to/upgrade-node.md)
     as in public networks.
 
-Network upgrades are the mechanism for upgrading the Ethereum protocol.
-Protocol upgrades occur during the network upgrades.
+Network upgrades are the mechanism for upgrading the Ethereum protocol. Protocol upgrades occur during the network upgrades.
 
-For Ethereum Mainnet and public testnets, the milestone block definitions are included in Besu.
-Upgrading your Besu client applies the network upgrade.
+For Ethereum Mainnet and public testnets, the milestone block definitions are included in Besu. Upgrading your Besu client applies the network upgrade.
 
-For private networks, all network participants must agree on the protocol upgrades and coordinate
-the network upgrades.
-The genesis file specifies the milestone block at which to apply the protocol upgrade.
+For private networks, all network participants must agree on the protocol upgrades and coordinate the network upgrades. The genesis file specifies the milestone block at which to apply the protocol upgrade.
 
 ## Upgrade the protocol
 
 To upgrade the protocol in a private network:
 
-1. Review included EIPs for breaking changes.
-    A [meta EIP](https://eips.ethereum.org/meta) for each protocol upgrade lists included EIPs.
-    For example, [Istanbul](https://eips.ethereum.org/EIPS/eip-1679).
+1. Review included EIPs for breaking changes. A [meta EIP](https://eips.ethereum.org/meta) for each protocol upgrade lists included EIPs. For example, [Istanbul](https://eips.ethereum.org/EIPS/eip-1679).
 1. Network participants agree on the block number at which to upgrade.
 1. For each node in the network:
-    1. Add the [milestone block number](../../public-networks/reference/genesis-items.md#milestone-blocks)
-        to the genesis file.
-    1. Restart the node before reaching milestone block.
+   1. Add the [milestone block number](../../public-networks/reference/genesis-items.md#milestone-blocks) to the genesis file.
+   1. Restart the node before reaching milestone block.
 
 !!! caution
 

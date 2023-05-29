@@ -6,12 +6,11 @@ sidebar_position: 4
 
 # Create and manage privacy groups
 
-Hyperledger Besu-extended privacy provides JSON-RPC API methods for creating and managing privacy
-groups:
+Hyperledger Besu-extended privacy provides JSON-RPC API methods for creating and managing privacy groups:
 
-* [`priv_createPrivacyGroup`](../../reference/api/index.md#priv_createprivacygroup)
-* [`priv_findPrivacyGroup`](../../reference/api/index.md#priv_findprivacygroup)
-* [`priv_deletePrivacyGroup`](../../reference/api/index.md#priv_deleteprivacygroup).
+- [`priv_createPrivacyGroup`](../../reference/api/index.md#priv_createprivacygroup)
+- [`priv_findPrivacyGroup`](../../reference/api/index.md#priv_findprivacygroup)
+- [`priv_deletePrivacyGroup`](../../reference/api/index.md#priv_deleteprivacygroup).
 
 !!! tip
 

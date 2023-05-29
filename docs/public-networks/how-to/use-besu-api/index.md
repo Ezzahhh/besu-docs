@@ -8,19 +8,15 @@ tags:
 
 Access the [Hyperledger Besu API](../../reference/api/index.md) using:
 
-* [JSON-RPC over HTTP, WebSocket, or IPC](json-rpc.md)
-* [RPC Pub/Sub over WebSockets](rpc-pubsub.md)
-* [GraphQL over HTTP](graphql.md).
+- [JSON-RPC over HTTP, WebSocket, or IPC](json-rpc.md)
+- [RPC Pub/Sub over WebSockets](rpc-pubsub.md)
+- [GraphQL over HTTP](graphql.md).
 
 The following sections provide information about JSON-RPC, RPC Pub/Sub, and GraphQL.
 
 ## Enable API access
 
-To enable API access, use the
-[`--rpc-http-enabled`](../../reference/cli/options.md#rpc-http-enabled),
-[`--ws-http-enabled`](../../reference/cli/options.md#rpc-ws-enabled),
-[`--graphql-http-enabled`](../../reference/cli/options.md#graphql-http-enabled), and
-`--Xrpc-ipc-enabled` options.
+To enable API access, use the [`--rpc-http-enabled`](../../reference/cli/options.md#rpc-http-enabled), [`--ws-http-enabled`](../../reference/cli/options.md#rpc-ws-enabled), [`--graphql-http-enabled`](../../reference/cli/options.md#graphql-http-enabled), and `--Xrpc-ipc-enabled` options.
 
 !!! caution
 
@@ -28,11 +24,7 @@ To enable API access, use the
 
 ## Service hosts
 
-To specify the host the API service listens on, use the
-[`--rpc-http-host`](../../reference/cli/options.md#rpc-http-host),
-[`--rpc-ws-host`](../../reference/cli/options.md#rpc-ws-host), and
-[`--graphql-http-host`](../../reference/cli/options.md#graphql-http-host) options. The
-default host is `127.0.0.1`.
+To specify the host the API service listens on, use the [`--rpc-http-host`](../../reference/cli/options.md#rpc-http-host), [`--rpc-ws-host`](../../reference/cli/options.md#rpc-ws-host), and [`--graphql-http-host`](../../reference/cli/options.md#graphql-http-host) options. The default host is `127.0.0.1`.
 
 To allow remote connections, set the host to `0.0.0.0`.
 
@@ -44,23 +36,19 @@ To allow remote connections, set the host to `0.0.0.0`.
 
 ## Service ports
 
-To specify the port the API service listens on, use the
-[`--rpc-http-port`](../../reference/cli/options.md#rpc-http-port),
-[`--rpc-ws-port`](../../reference/cli/options.md#rpc-ws-port), and
-[`--graphql-http-port`](../../reference/cli/options.md#graphql-http-port) options.
+To specify the port the API service listens on, use the [`--rpc-http-port`](../../reference/cli/options.md#rpc-http-port), [`--rpc-ws-port`](../../reference/cli/options.md#rpc-ws-port), and [`--graphql-http-port`](../../reference/cli/options.md#graphql-http-port) options.
 
 The default ports are:
 
-* 8545 for JSON-RPC over HTTP.
-* 8546 for JSON-RPC over WebSocket.
-* 8547 for GraphQL over HTTP.
+- 8545 for JSON-RPC over HTTP.
+- 8546 for JSON-RPC over WebSocket.
+- 8547 for GraphQL over HTTP.
 
 Ports must be [exposed appropriately](../connect/configure-ports.md).
 
 ## Socket path
 
-To specify the socket path for the IPC socket, use the `--Xrpc-ipc-path` option.
-The default path is `besu.ipc` in the Besu data directory.
+To specify the socket path for the IPC socket, use the `--Xrpc-ipc-path` option. The default path is `besu.ipc` in the Besu data directory.
 
 !!! caution
 
@@ -68,11 +56,7 @@ The default path is `besu.ipc` in the Besu data directory.
 
 ## Host allowlist
 
-To prevent DNS rebinding attacks, Besu checks incoming HTTP request host headers, WebSocket connections, and GraphQL
-requests.
-Besu accepts requests only when hostnames specified using the
-[`--host-allowlist`](../../reference/cli/options.md#host-allowlist) option matches the request host headers.
-By default, Besu accepts requests and connections from `localhost` and `127.0.0.1`.
+To prevent DNS rebinding attacks, Besu checks incoming HTTP request host headers, WebSocket connections, and GraphQL requests. Besu accepts requests only when hostnames specified using the [`--host-allowlist`](../../reference/cli/options.md#host-allowlist) option matches the request host headers. By default, Besu accepts requests and connections from `localhost` and `127.0.0.1`.
 
 !!! important
 
@@ -100,9 +84,7 @@ Specify `*` for `--host-allowlist` to effectively disable host protection.
 
 Account management relies on private key management in the client, which is not supported by Besu.
 
-To send signed transactions, use
-[`eth_sendRawTransaction`](../../reference/api/index.md#eth_sendrawtransaction).
-`eth_sendTransaction` is not implemented.
+To send signed transactions, use [`eth_sendRawTransaction`](../../reference/api/index.md#eth_sendrawtransaction). `eth_sendTransaction` is not implemented.
 
 For [account management](../send-transactions.md#use-wallets-for-key-management), use third-party wallets.
 

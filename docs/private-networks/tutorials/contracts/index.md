@@ -10,22 +10,15 @@ This tutorial shows you how to deploy smart contracts as transactions to a netwo
 
 ## Prerequisites
 
-This tutorial requires a local blockchain network.
-You can use the [Developer Quickstart](../quickstart.md) to rapidly generate one.
-If deploying a private contract, enable privacy on the network (public contracts can also be deployed on privacy-enabled
-networks).
+This tutorial requires a local blockchain network. You can use the [Developer Quickstart](../quickstart.md) to rapidly generate one. If deploying a private contract, enable privacy on the network (public contracts can also be deployed on privacy-enabled networks).
 
 ## Use `eth_sendSignedTransaction`
 
-To deploy a smart contract using
-[`eth_sendSignedTransaction`](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#sendsignedtransaction), use an
-account's private key to sign and serialize the transaction, and send the API request.
+To deploy a smart contract using [`eth_sendSignedTransaction`](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#sendsignedtransaction), use an account's private key to sign and serialize the transaction, and send the API request.
 
 This example uses the [web3js](https://www.npmjs.com/package/web3) library to make the API calls.
 
-Using the
-[`SimpleStorage.sol`](https://github.com/ConsenSys/quorum-dev-quickstart/blob/1e8cc281098923802845cd829ec20c88513c2e1c/files/common/smart_contracts/privacy/contracts/SimpleStorage.sol)
-smart contract as an example, create a new file called `compile.js` with the following content:
+Using the [`SimpleStorage.sol`](https://github.com/ConsenSys/quorum-dev-quickstart/blob/1e8cc281098923802845cd829ec20c88513c2e1c/files/common/smart_contracts/privacy/contracts/SimpleStorage.sol) smart contract as an example, create a new file called `compile.js` with the following content:
 
 !!! example "`compile.js`"
 
@@ -74,11 +67,9 @@ Run `solc` to get the contract's bytecode and ABI:
 solc SimpleStorage.sol --bin --abi
 ```
 
-Once you have the bytecode and ABI, you can rename the output files to make them easier to use;
-this tutorial refers to them as `SimpleStorage.bin` and `SimpleStorage.abi`.
+Once you have the bytecode and ABI, you can rename the output files to make them easier to use; this tutorial refers to them as `SimpleStorage.bin` and `SimpleStorage.abi`.
 
-Create a new file named `public_tx.js` to send the transaction (or run the following commands in a JavaScript console).
-The Developer Quickstart provides an [example of a public transaction script](https://github.com/ConsenSys/quorum-dev-quickstart/blob/1e8cc281098923802845cd829ec20c88513c2e1c/files/besu/smart_contracts/privacy/scripts/public_tx.js).
+Create a new file named `public_tx.js` to send the transaction (or run the following commands in a JavaScript console). The Developer Quickstart provides an [example of a public transaction script](https://github.com/ConsenSys/quorum-dev-quickstart/blob/1e8cc281098923802845cd829ec20c88513c2e1c/files/besu/smart_contracts/privacy/scripts/public_tx.js).
 
 !!! example "`public_tx.js`"
 
@@ -122,14 +113,13 @@ The Developer Quickstart provides an [example of a public transaction script](ht
 
 `rawTxOptions` contains the following fields:
 
-* `nonce` - the number of transactions sent from an address.
-* `from` - address of the sending account. For example `0xfe3b557e8fb62b89f4916b721be55ceb828dbd73`.
-* `to` - address of the receiver. To deploy a contract, set to `null`.
-* `gas` - amount of gas provided by the sender for the transaction.
-* `gasPrice` - price for each unit of gas the sender is willing to pay.
-* `data` - binary of the contract (in this example there's also a constructor initialization value,
-    so we append that to the binary value).
-* `value` - amount of Ether/Wei transferred from the sender to the recipient.
+- `nonce` - the number of transactions sent from an address.
+- `from` - address of the sending account. For example `0xfe3b557e8fb62b89f4916b721be55ceb828dbd73`.
+- `to` - address of the receiver. To deploy a contract, set to `null`.
+- `gas` - amount of gas provided by the sender for the transaction.
+- `gasPrice` - price for each unit of gas the sender is willing to pay.
+- `data` - binary of the contract (in this example there's also a constructor initialization value, so we append that to the binary value).
+- `value` - amount of Ether/Wei transferred from the sender to the recipient.
 
 Run the `public_tx.js` to send the transaction:
 
@@ -137,34 +127,24 @@ Run the `public_tx.js` to send the transaction:
 node public_tx.js
 ```
 
-This example code creates the transaction `tx`, signs it with the private key of the account, serializes it, then calls
-`eth_sendSignedTransaction` to deploy the contract.
+This example code creates the transaction `tx`, signs it with the private key of the account, serializes it, then calls `eth_sendSignedTransaction` to deploy the contract.
 
 ## Use `eth_sendTransaction`
 
-You can use [`eth_sendTransaction`](https://ethereum.github.io/execution-apis/api-documentation) as an alternative to `eth_sendSignedTransaction`.
-However, Hyperledger Besu does not support the `eth_sendTransaction` API call and keeps account management separate for
-stronger security.
-Configure [EthSigner](https://docs.ethsigner.consensys.net/en/stable/) with your Besu node to make the
-`eth_sendTransaction` API call.
+You can use [`eth_sendTransaction`](https://ethereum.github.io/execution-apis/api-documentation) as an alternative to `eth_sendSignedTransaction`. However, Hyperledger Besu does not support the `eth_sendTransaction` API call and keeps account management separate for stronger security. Configure [EthSigner](https://docs.ethsigner.consensys.net/en/stable/) with your Besu node to make the `eth_sendTransaction` API call.
 
-An example can be found in the [Developer Quickstart](../quickstart.md) where the RPC node is paired with EthSigner.
-Refer to the [EthSigner documentation](https://docs.ethsigner.consensys.net/) for configuration details.
+An example can be found in the [Developer Quickstart](../quickstart.md) where the RPC node is paired with EthSigner. Refer to the [EthSigner documentation](https://docs.ethsigner.consensys.net/) for configuration details.
 
-Pass the following parameters to the
-[`eth_sendTransaction`](https://docs.ethsigner.consensys.net/Reference/API-Methods/#eth_sendtransaction) call
-to EthSigner; EthSigner then converts the request to an
-[`eth_sendRawTransaction`](../../../public-networks/reference/api/index.md#eth_sendrawtransaction) call that Besu uses:
+Pass the following parameters to the [`eth_sendTransaction`](https://docs.ethsigner.consensys.net/Reference/API-Methods/#eth_sendtransaction) call to EthSigner; EthSigner then converts the request to an [`eth_sendRawTransaction`](../../../public-networks/reference/api/index.md#eth_sendrawtransaction) call that Besu uses:
 
-* `to` - address of the receiver. To deploy a contract, set to `null`.
-* `from` - address of the sender account. For example `0x9b790656b9ec0db1936ed84b3bea605873558198`.
-* `gas` - amount of gas provided by the sender for the transaction
-* `gasPrice` - price for each unit of gas the sender is willing to pay
-* `data` - one of the following:
-    * For contract deployments (this use case) - compiled code of the contract
-    * For contract interactions - hash of the invoked method signature and encoded parameters
-      (see [Ethereum Contract ABI](https://solidity.readthedocs.io/en/develop/abi-spec.html))
-    * For simple ether transfers - empty
+- `to` - address of the receiver. To deploy a contract, set to `null`.
+- `from` - address of the sender account. For example `0x9b790656b9ec0db1936ed84b3bea605873558198`.
+- `gas` - amount of gas provided by the sender for the transaction
+- `gasPrice` - price for each unit of gas the sender is willing to pay
+- `data` - one of the following:
+  - For contract deployments (this use case) - compiled code of the contract
+  - For contract interactions - hash of the invoked method signature and encoded parameters (see [Ethereum Contract ABI](https://solidity.readthedocs.io/en/develop/abi-spec.html))
+  - For simple ether transfers - empty
 
 !!! example "`eth_sendTransaction` parameters"
 
@@ -188,20 +168,13 @@ Make the request using `eth_sendTransaction`:
 
 ## Use `eea_sendRawTransaction` for private contracts with web3js-quorum
 
-To deploy a private contract to another node or [privacy group](../../concepts/privacy/privacy-groups.md) member, use the
-[web3js-quorum](https://www.npmjs.com/package/web3js-quorum) library and
-the [`eea_sendRawTransaction`](../../../public-networks/reference/api/index.md#eea_sendrawtransaction) API call.
-You must use this API call instead of [`eth_sendTransaction`](https://ethereum.github.io/execution-apis/api-documentation) because Hyperledger Besu
-keeps account management separate for stronger security.
+To deploy a private contract to another node or [privacy group](../../concepts/privacy/privacy-groups.md) member, use the [web3js-quorum](https://www.npmjs.com/package/web3js-quorum) library and the [`eea_sendRawTransaction`](../../../public-networks/reference/api/index.md#eea_sendrawtransaction) API call. You must use this API call instead of [`eth_sendTransaction`](https://ethereum.github.io/execution-apis/api-documentation) because Hyperledger Besu keeps account management separate for stronger security.
 
-The Developer Quickstart provides an
-[example of a private transaction script](https://github.com/ConsenSys/quorum-dev-quickstart/blob/1e8cc281098923802845cd829ec20c88513c2e1c/files/besu/smart_contracts/privacy/scripts/private_tx.js).
+The Developer Quickstart provides an [example of a private transaction script](https://github.com/ConsenSys/quorum-dev-quickstart/blob/1e8cc281098923802845cd829ec20c88513c2e1c/files/besu/smart_contracts/privacy/scripts/private_tx.js).
 
 This example uses the [web3js](https://www.npmjs.com/package/web3) library to make the API calls.
 
-Use [`web3.priv.generateAndSendRawTransaction`](https://consensys.github.io/web3js-quorum/latest/module-priv.html#~generateAndSendRawTransaction)
-by running the following commands in a JavaScript console, or by including them in a `private_tx.js` file and running
-`node private_tx.js`:
+Use [`web3.priv.generateAndSendRawTransaction`](https://consensys.github.io/web3js-quorum/latest/module-priv.html#~generateAndSendRawTransaction) by running the following commands in a JavaScript console, or by including them in a `private_tx.js` file and running `node private_tx.js`:
 
 !!! example "`private_tx.js` using `web3.priv.generateAndSendRawTransaction`"
 
@@ -234,13 +207,9 @@ by running the following commands in a JavaScript console, or by including them 
 
 `txOptions` contains the following field:
 
-* `data` - compiled code of the contract (in this example there's also a constructor initialization value, so we append
-  that to the bytecode).
+- `data` - compiled code of the contract (in this example there's also a constructor initialization value, so we append that to the bytecode).
 
-The deployment process includes creating the client as in the previous examples, but rather than deploying the contract
-with `to: null`, it instead sends the transaction with `privateFor: [memberPublicKey/s]`.
-Once you make the API call, you receive a `transactionHash`, which you can use to get a `transactionReceipt` containing
-the contract's address.
+The deployment process includes creating the client as in the previous examples, but rather than deploying the contract with `to: null`, it instead sends the transaction with `privateFor: [memberPublicKey/s]`. Once you make the API call, you receive a `transactionHash`, which you can use to get a `transactionReceipt` containing the contract's address.
 
 !!! note
 
@@ -260,19 +229,13 @@ the contract's address.
     This web3js-eea library will be deprecated on December 31, 2021.
     Please use the [web3js-quorum](https://www.npmjs.com/package/web3js-quorum) library instead and refer to the previous section.
 
-To deploy a private contract to another [privacy group](../../concepts/privacy/privacy-groups.md) member, use the
-[web3js-quorum](https://consensys.github.io/web3js-quorum/latest/index.html) library and
-the [`eea_sendRawTransaction`](../../../public-networks/reference/api/index.md#eea_sendrawtransaction) API call.
-You must use this API call instead of [`eth_sendTransaction`](https://ethereum.github.io/execution-apis/api-documentation) because Hyperledger Besu
-keeps account management separate for stronger security.
+To deploy a private contract to another [privacy group](../../concepts/privacy/privacy-groups.md) member, use the [web3js-quorum](https://consensys.github.io/web3js-quorum/latest/index.html) library and the [`eea_sendRawTransaction`](../../../public-networks/reference/api/index.md#eea_sendrawtransaction) API call. You must use this API call instead of [`eth_sendTransaction`](https://ethereum.github.io/execution-apis/api-documentation) because Hyperledger Besu keeps account management separate for stronger security.
 
-The Developer Quickstart provides an
-[example of a private transaction script](https://github.com/ConsenSys/quorum-dev-quickstart/blob/1e8cc281098923802845cd829ec20c88513c2e1c/files/besu/smart_contracts/privacy/scripts/private_tx.js).
+The Developer Quickstart provides an [example of a private transaction script](https://github.com/ConsenSys/quorum-dev-quickstart/blob/1e8cc281098923802845cd829ec20c88513c2e1c/files/besu/smart_contracts/privacy/scripts/private_tx.js).
 
 This example uses the [web3js](https://www.npmjs.com/package/web3) library to make the API calls.
 
-Use `eea_sendRawTransaction` by running the following commands in a JavaScript console, or by including them in a
-`private_tx.js` file and running `node private_tx.js`:
+Use `eea_sendRawTransaction` by running the following commands in a JavaScript console, or by including them in a `private_tx.js` file and running `node private_tx.js`:
 
 !!! example "`private_tx.js` using `eea_sendRawTransaction`"
 
@@ -303,10 +266,6 @@ Use `eea_sendRawTransaction` by running the following commands in a JavaScript c
 
 `txOptions` contains the following field:
 
-* `data` - compiled code of the contract (in this example there's also a constructor initialization value, so we append
-  that to the bytecode).
+- `data` - compiled code of the contract (in this example there's also a constructor initialization value, so we append that to the bytecode).
 
-The deployment process includes creating the client as in the previous examples, but rather than deploying the contract with
-`to: null`, it instead sends the transaction with `privateFor: [memberPublicKey/s]`.
-Once you make the API call, you receive a `transactionHash`, which you can use to get a `transactionReceipt` containing
-the contract's address.
+The deployment process includes creating the client as in the previous examples, but rather than deploying the contract with `to: null`, it instead sends the transaction with `privateFor: [memberPublicKey/s]`. Once you make the API call, you receive a `transactionHash`, which you can use to get a `transactionReceipt` containing the contract's address.

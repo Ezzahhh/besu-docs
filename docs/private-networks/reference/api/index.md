@@ -29,11 +29,11 @@ Discards a proposal to [add or remove a signer with the specified address].
 
 #### Parameters
 
-`address`: *string* - 20-byte address of proposed signer
+`address`: _string_ - 20-byte address of proposed signer
 
 #### Returns
 
-`result`: *boolean* - indicates if the proposal is discarded
+`result`: _boolean_ - indicates if the proposal is discarded
 
 !!! example
 
@@ -65,13 +65,11 @@ Lists [signers for the specified block].
 
 #### Parameters
 
-`blockNumber`: *string* - integer representing a block number or one of the string tags `latest`,
-`earliest`, or `pending`, as described in
-[Block Parameter](../../../public-networks/how-to/use-besu-api/json-rpc.md#block-parameter)
+`blockNumber`: _string_ - integer representing a block number or one of the string tags `latest`, `earliest`, or `pending`, as described in [Block Parameter](../../../public-networks/how-to/use-besu-api/json-rpc.md#block-parameter)
 
 #### Returns
 
-`result`: *array* of *string* - list of 20-byte addresses of signers
+`result`: _array_ of _string_ - list of 20-byte addresses of signers
 
 !!! example
 
@@ -101,33 +99,27 @@ Lists [signers for the specified block].
 
 Provides the following validator metrics for the specified range:
 
-* Number of blocks from each validator
+- Number of blocks from each validator
 
-* Block number of the last block proposed by each validator (if any proposed in the specified
-  range)
+- Block number of the last block proposed by each validator (if any proposed in the specified range)
 
-* All validators present in the last block
+- All validators present in the last block
 
 #### Parameters
 
-* `fromBlockNumber`: *string* - integer representing a block number or the string tag `earliest`, as described
-  in [Block Parameter](../../../public-networks/how-to/use-besu-api/json-rpc.md#block-parameter)
+- `fromBlockNumber`: _string_ - integer representing a block number or the string tag `earliest`, as described in [Block Parameter](../../../public-networks/how-to/use-besu-api/json-rpc.md#block-parameter)
 
-* `toBlockNumber`: *string* - integer representing a block number or one of the string tags `latest` or
-  `pending`, as described in
-  [Block Parameter](../../../public-networks/how-to/use-besu-api/json-rpc.md#block-parameter)
+- `toBlockNumber`: _string_ - integer representing a block number or one of the string tags `latest` or `pending`, as described in [Block Parameter](../../../public-networks/how-to/use-besu-api/json-rpc.md#block-parameter)
 
 If you specify:
 
-* No parameters, the call provides metrics for the last 100 blocks, or all blocks if there are less
-  than 100 blocks.
+- No parameters, the call provides metrics for the last 100 blocks, or all blocks if there are less than 100 blocks.
 
-* Only the first parameter, the call provides metrics for all blocks from the block specified to
-  the latest block.
+- Only the first parameter, the call provides metrics for all blocks from the block specified to the latest block.
 
 #### Returns
 
-`result`: *array* of *objects* - list of validator objects
+`result`: _array_ of _objects_ - list of validator objects
 
 !!! note
 
@@ -179,11 +171,11 @@ Lists signers for the specified block.
 
 #### Parameters
 
-`hash`: *string* - 32-byte block hash
+`hash`: _string_ - 32-byte block hash
 
 #### Returns
 
-`result`: *array* of *string* - list of 20-byte addresses of signers
+`result`: _array_ of _string_ - list of 20-byte addresses of signers
 
 !!! example
 
@@ -211,8 +203,7 @@ Lists signers for the specified block.
 
 ### `clique_proposals`
 
-Returns
-[current proposals](../../how-to/configure/consensus/clique.md#add-and-remove-signers).
+Returns [current proposals](../../how-to/configure/consensus/clique.md#add-and-remove-signers).
 
 #### Parameters
 
@@ -220,9 +211,7 @@ None
 
 #### Returns
 
-`result`: *map* of *strings* to *booleans* - map of account addresses to corresponding boolean values indicating the
-proposal for each account (if `true`, the proposal is to add a signer; if `false`, the proposal is to
-remove a signer.)
+`result`: _map_ of _strings_ to _booleans_ - map of account addresses to corresponding boolean values indicating the proposal for each account (if `true`, the proposal is to add a signer; if `false`, the proposal is to remove a signer.)
 
 !!! example
 
@@ -257,13 +246,13 @@ Proposes to [add or remove a signer with the specified address].
 
 #### Parameters
 
-* `address`: *string* - 20-byte address
+- `address`: _string_ - 20-byte address
 
-* `proposal`: *boolean* - `true` to propose adding signer or `false` to propose removing signer
+- `proposal`: _boolean_ - `true` to propose adding signer or `false` to propose removing signer
 
 #### Returns
 
-`result`: *boolean* - `true`
+`result`: _boolean_ - `true`
 
 !!! example
 
@@ -291,8 +280,7 @@ Proposes to [add or remove a signer with the specified address].
 
 ## `EEA` methods
 
-The `EEA` API methods provide functionality for [private transactions](../../concepts/privacy/private-transactions/index.md) and
-[privacy groups](../../concepts/privacy/privacy-groups.md).
+The `EEA` API methods provide functionality for [private transactions](../../concepts/privacy/private-transactions/index.md) and [privacy groups](../../concepts/privacy/privacy-groups.md).
 
 !!! note
 
@@ -302,21 +290,13 @@ The `EEA` API methods provide functionality for [private transactions](../../con
 
 ### `eea_sendRawTransaction`
 
-Distributes the
-[private transaction](../../how-to/send-transactions/private-transactions.md),
-generates the [privacy marker transaction](../../concepts/privacy/private-transactions/processing.md)
-and submits it to the transaction pool, and returns the transaction hash of the
-[privacy marker transaction](../../concepts/privacy/private-transactions/processing.md).
+Distributes the [private transaction](../../how-to/send-transactions/private-transactions.md), generates the [privacy marker transaction](../../concepts/privacy/private-transactions/processing.md) and submits it to the transaction pool, and returns the transaction hash of the [privacy marker transaction](../../concepts/privacy/private-transactions/processing.md).
 
-The signed transaction passed as an input parameter includes the `privateFrom`,
-[`privateFor` or `privacyGroupId`](../../how-to/send-transactions/private-transactions.md#eea-compliant-or-besu-extended-privacy),
-and `restriction` fields.
+The signed transaction passed as an input parameter includes the `privateFrom`, [`privateFor` or `privacyGroupId`](../../how-to/send-transactions/private-transactions.md#eea-compliant-or-besu-extended-privacy), and `restriction` fields.
 
-The `gas` and `gasPrice` are used by the [privacy marker transaction](../../concepts/privacy/private-transactions/processing.md)
-not the private transaction itself.
+The `gas` and `gasPrice` are used by the [privacy marker transaction](../../concepts/privacy/private-transactions/processing.md) not the private transaction itself.
 
-To avoid exposing your private key, create signed transactions offline and send the signed
-transaction data using `eea_sendRawTransaction`.
+To avoid exposing your private key, create signed transactions offline and send the signed transaction data using `eea_sendRawTransaction`.
 
 !!! important
 
@@ -336,12 +316,11 @@ transaction data using `eea_sendRawTransaction`.
 
 #### Parameters
 
-`transaction`: *string* -  signed RLP-encoded private transaction
+`transaction`: _string_ - signed RLP-encoded private transaction
 
 #### Returns
 
-`result`: *string* - 32-byte transaction hash of the
-[privacy marker transaction](../../concepts/privacy/private-transactions/processing.md)
+`result`: _string_ - 32-byte transaction hash of the [privacy marker transaction](../../concepts/privacy/private-transactions/processing.md)
 
 !!! tip
 
@@ -388,11 +367,11 @@ Discards a proposal to [add or remove a validator] with the specified address.
 
 #### Parameters
 
-`address`: *string* - 20-byte address of proposed validator
+`address`: _string_ - 20-byte address of proposed validator
 
 #### Returns
 
-`result`: *boolean* - indicates if the proposal is discarded
+`result`: _boolean_ - indicates if the proposal is discarded
 
 !!! example
 
@@ -420,8 +399,7 @@ Discards a proposal to [add or remove a validator] with the specified address.
 
 ### `ibft_getPendingVotes`
 
-Returns [votes](../../how-to/configure/consensus/ibft.md#add-and-remove-validators) cast in the current
-[epoch](../../how-to/configure/consensus/ibft.md#genesis-file).
+Returns [votes](../../how-to/configure/consensus/ibft.md#add-and-remove-validators) cast in the current [epoch](../../how-to/configure/consensus/ibft.md#genesis-file).
 
 #### Parameters
 
@@ -429,9 +407,7 @@ None
 
 #### Returns
 
-`result`: *map* of *strings* to *booleans* - map of account addresses to corresponding boolean values indicating the
-vote for each account; if `true`, the vote is to add a validator. If `false`, the proposal is to
-remove a validator.
+`result`: _map_ of _strings_ to _booleans_ - map of account addresses to corresponding boolean values indicating the vote for each account; if `true`, the vote is to add a validator. If `false`, the proposal is to remove a validator.
 
 !!! example
 
@@ -464,33 +440,27 @@ remove a validator.
 
 Provides the following validator metrics for the specified range:
 
-* Number of blocks from each validator
+- Number of blocks from each validator
 
-* Block number of the last block proposed by each validator (if any proposed in the specified
-  range)
+- Block number of the last block proposed by each validator (if any proposed in the specified range)
 
-* All validators present in the last block of the range
+- All validators present in the last block of the range
 
 #### Parameters
 
-* `fromBlockNumber`: *string* - integer representing a block number or the string tag `earliest` as described
-  in [Block Parameter](../../../public-networks/how-to/use-besu-api/json-rpc.md#block-parameter)
+- `fromBlockNumber`: _string_ - integer representing a block number or the string tag `earliest` as described in [Block Parameter](../../../public-networks/how-to/use-besu-api/json-rpc.md#block-parameter)
 
-* `toBlockNumber`: *string* - integer representing a block number or one of the string tags `latest` or
-  `pending`, as described in
-  [Block Parameter](../../../public-networks/how-to/use-besu-api/json-rpc.md#block-parameter)
+- `toBlockNumber`: _string_ - integer representing a block number or one of the string tags `latest` or `pending`, as described in [Block Parameter](../../../public-networks/how-to/use-besu-api/json-rpc.md#block-parameter)
 
 If you specify:
 
-* No parameters, the call provides metrics for the last 100 blocks, or all blocks if there are less
-  than 100 blocks.
+- No parameters, the call provides metrics for the last 100 blocks, or all blocks if there are less than 100 blocks.
 
-* Only the first parameter, the call provides metrics for all blocks from the block specified to
-  the latest block.
+- Only the first parameter, the call provides metrics for all blocks from the block specified to the latest block.
 
 #### Returns
 
-`result`: *array* of *objects* - list of validator objects
+`result`: _array_ of _objects_ - list of validator objects
 
 !!! note
 
@@ -542,11 +512,11 @@ Lists the validators defined in the specified block.
 
 #### Parameters
 
-`block`: *string* - 32-byte block hash
+`block`: _string_ - 32-byte block hash
 
 #### Returns
 
-`result`: *array* of *strings* - list of validator addresses
+`result`: _array_ of _strings_ - list of validator addresses
 
 !!! example
 
@@ -582,13 +552,11 @@ Lists the validators defined in the specified block.
 
 #### Parameters
 
-* `blockNumber`: *string* - integer representing a block number or one of the string tags `latest`,
-  `earliest`, or `pending`, as described in
-  [Block Parameter](../../../public-networks/how-to/use-besu-api/json-rpc.md#block-parameter)
+- `blockNumber`: _string_ - integer representing a block number or one of the string tags `latest`, `earliest`, or `pending`, as described in [Block Parameter](../../../public-networks/how-to/use-besu-api/json-rpc.md#block-parameter)
 
 #### Returns
 
-`result`: *array* of *strings* - list of validator addresses
+`result`: _array_ of _strings_ - list of validator addresses
 
 !!! example
 
@@ -624,13 +592,13 @@ Proposes to [add or remove a validator] with the specified address.
 
 #### Parameters
 
-* `address`: *string* - account address
+- `address`: _string_ - account address
 
-* `proposal`: *boolean* - `true` to propose adding validator or `false` to propose removing validator
+- `proposal`: _boolean_ - `true` to propose adding validator or `false` to propose removing validator
 
 #### Returns
 
-`result`: *boolean* - `true`
+`result`: _boolean_ - `true`
 
 !!! example
 
@@ -658,8 +626,7 @@ Proposes to [add or remove a validator] with the specified address.
 
 ## `PERM` (Permissioning) methods
 
-The `PERM` API methods provide permissioning functionality.
-Use these methods for [local permissioning](../../how-to/use-permissioning/local.md) only.
+The `PERM` API methods provide permissioning functionality. Use these methods for [local permissioning](../../how-to/use-permissioning/local.md) only.
 
 !!! important
 
@@ -669,12 +636,11 @@ Use these methods for [local permissioning](../../how-to/use-permissioning/local
 
 ### `perm_addAccountsToAllowlist`
 
-Adds accounts (participants) to the
-[accounts permission list](../../how-to/use-permissioning/local.md#account-permissioning).
+Adds accounts (participants) to the [accounts permission list](../../how-to/use-permissioning/local.md#account-permissioning).
 
 #### Parameters
 
-`addresses`: *array* of *strings* - list of account addresses
+`addresses`: _array_ of _strings_ - list of account addresses
 
 !!! note
 
@@ -683,8 +649,7 @@ Adds accounts (participants) to the
 
 #### Returns
 
-`result`: *string* - `Success` or `error` (errors include attempting to add accounts already on the
-allowlist and including invalid account addresses.)
+`result`: _string_ - `Success` or `error` (errors include attempting to add accounts already on the allowlist and including invalid account addresses.)
 
 !!! example
 
@@ -712,11 +677,9 @@ allowlist and including invalid account addresses.)
 
 ### `perm_addNodesToAllowlist`
 
-Adds nodes to the
-[nodes allowlist](../../how-to/use-permissioning/local.md#node-allowlisting).
+Adds nodes to the [nodes allowlist](../../how-to/use-permissioning/local.md#node-allowlisting).
 
-To use domain names in enode URLs, ensure you [enable DNS support](../../../public-networks/concepts/node-keys.md#domain-name-support)
-to avoid receiving a `request contains an invalid node` error.
+To use domain names in enode URLs, ensure you [enable DNS support](../../../public-networks/concepts/node-keys.md#domain-name-support) to avoid receiving a `request contains an invalid node` error.
 
 !!! warning
 
@@ -724,7 +687,7 @@ to avoid receiving a `request contains an invalid node` error.
 
 #### Parameters
 
-`enodes`: *array* of *strings* - list of [enode URLs](../../../public-networks/concepts/node-keys.md#enode-url)
+`enodes`: _array_ of _strings_ - list of [enode URLs](../../../public-networks/concepts/node-keys.md#enode-url)
 
 !!! note
 
@@ -733,8 +696,7 @@ to avoid receiving a `request contains an invalid node` error.
 
 #### Returns
 
-`result`: *string* - `Success` or `error`; errors include attempting to add nodes already on the allowlist or
-including invalid enode URLs.
+`result`: _string_ - `Success` or `error`; errors include attempting to add nodes already on the allowlist or including invalid enode URLs.
 
 !!! example
 
@@ -762,8 +724,7 @@ including invalid enode URLs.
 
 ### `perm_getAccountsAllowlist`
 
-Lists accounts (participants) in the
-[accounts permissions list](../../how-to/use-permissioning/local.md#account-permissioning).
+Lists accounts (participants) in the [accounts permissions list](../../how-to/use-permissioning/local.md#account-permissioning).
 
 #### Parameters
 
@@ -771,7 +732,7 @@ None
 
 #### Returns
 
-`result`: *array* of *strings* - list of accounts (participants) in the accounts allowlist
+`result`: _array_ of _strings_ - list of accounts (participants) in the accounts allowlist
 
 !!! example
 
@@ -802,8 +763,7 @@ None
 
 ### `perm_getNodesAllowlist`
 
-Lists nodes in the
-[nodes allowlist](../../how-to/use-permissioning/local.md#node-allowlisting).
+Lists nodes in the [nodes allowlist](../../how-to/use-permissioning/local.md#node-allowlisting).
 
 #### Parameters
 
@@ -811,8 +771,7 @@ None
 
 #### Returns
 
-`result`: *array* of *strings* - [enode URLs](../../../public-networks/concepts/node-keys.md#enode-url)
-of nodes in the nodes allowlist
+`result`: _array_ of _strings_ - [enode URLs](../../../public-networks/concepts/node-keys.md#enode-url) of nodes in the nodes allowlist
 
 !!! example
 
@@ -851,7 +810,7 @@ None
 
 #### Returns
 
-`result`: *string* - `Success`, or `error` if the permissions configuration file is not valid
+`result`: _string_ - `Success`, or `error` if the permissions configuration file is not valid
 
 !!! example
 
@@ -879,12 +838,11 @@ None
 
 ### `perm_removeAccountsFromAllowlist`
 
-Removes accounts (participants) from the
-[accounts permissions list](../../how-to/use-permissioning/local.md#account-permissioning).
+Removes accounts (participants) from the [accounts permissions list](../../how-to/use-permissioning/local.md#account-permissioning).
 
 #### Parameters
 
-`addresses`: *array* of *strings* - list of account addresses
+`addresses`: _array_ of _strings_ - list of account addresses
 
 !!! note
 
@@ -893,8 +851,7 @@ Removes accounts (participants) from the
 
 #### Returns
 
-`result`: *string* - `Success` or `error` (errors include attempting to remove accounts not on the allowlist
-and including invalid account addresses.)
+`result`: _string_ - `Success` or `error` (errors include attempting to remove accounts not on the allowlist and including invalid account addresses.)
 
 !!! example
 
@@ -922,12 +879,11 @@ and including invalid account addresses.)
 
 ### `perm_removeNodesFromAllowlist`
 
-Removes nodes from the
-[nodes allowlist](../../how-to/use-permissioning/local.md#node-allowlisting).
+Removes nodes from the [nodes allowlist](../../how-to/use-permissioning/local.md#node-allowlisting).
 
 #### Parameters
 
-`enodes`: *array* of *strings* - list of [enode URLs](../../../public-networks/concepts/node-keys.md#enode-url)
+`enodes`: _array_ of _strings_ - list of [enode URLs](../../../public-networks/concepts/node-keys.md#enode-url)
 
 !!! note
 
@@ -936,8 +892,7 @@ Removes nodes from the
 
 #### Returns
 
-`result`: *string* - `Success` or `error` (errors include attempting to remove nodes not on the allowlist
-and including invalid enode URLs.)
+`result`: _string_ - `Success` or `error` (errors include attempting to remove nodes not on the allowlist and including invalid enode URLs.)
 
 !!! example
 
@@ -965,8 +920,7 @@ and including invalid enode URLs.)
 
 ## `PRIV` methods
 
-The `PRIV` API methods provide functionality for [private transactions](../../concepts/privacy/private-transactions/index.md) and
-[privacy groups](../../concepts/privacy/privacy-groups.md).
+The `PRIV` API methods provide functionality for [private transactions](../../concepts/privacy/private-transactions/index.md) and [privacy groups](../../concepts/privacy/privacy-groups.md).
 
 !!! note
 
@@ -978,22 +932,19 @@ The `PRIV` API methods provide functionality for [private transactions](../../co
 
 Invokes a private contract function locally and does not change the privacy group state.
 
-For private contracts, `priv_call` is the same as [`eth_call`](../../../public-networks/reference/api/index.md#eth_call)
-for public contracts.
+For private contracts, `priv_call` is the same as [`eth_call`](../../../public-networks/reference/api/index.md#eth_call) for public contracts.
 
 #### Parameters
 
-* `privacyGroupId`: *string* - 32-byte [privacy Group ID](../../concepts/privacy/privacy-groups.md)
+- `privacyGroupId`: _string_ - 32-byte [privacy Group ID](../../concepts/privacy/privacy-groups.md)
 
-* `call`: *object* - [transaction call object](../../../public-networks/reference/api/objects.md#transaction-call-object)
+- `call`: _object_ - [transaction call object](../../../public-networks/reference/api/objects.md#transaction-call-object)
 
-* `blockNumber`: *string* - integer representing a block number or one of the string tags `latest`,
-  `earliest`, or `pending`, as described in
-  [Block Parameter](../../../public-networks/how-to/use-besu-api/json-rpc.md#block-parameter)
+- `blockNumber`: _string_ - integer representing a block number or one of the string tags `latest`, `earliest`, or `pending`, as described in [Block Parameter](../../../public-networks/how-to/use-besu-api/json-rpc.md#block-parameter)
 
 #### Returns
 
-`result`: *data* - return value of the executed contract
+`result`: _data_ - return value of the executed contract
 
 !!! example
 
@@ -1061,18 +1012,17 @@ Creates a group of nodes, specified by their [Tessera](https://docs.tessera.cons
 
 #### Parameters
 
-`options`: *object* - request options object with the following fields:
+`options`: _object_ - request options object with the following fields:
 
-* `addresses`: *array* of *strings* - list of nodes specified by
-  [Tessera](https://docs.tessera.consensys.net/) public keys
+- `addresses`: _array_ of _strings_ - list of nodes specified by [Tessera](https://docs.tessera.consensys.net/) public keys
 
-* `name`: *string* - (optional) privacy group name
+- `name`: _string_ - (optional) privacy group name
 
-* `description`: *string* - (optional) privacy group description
+- `description`: _string_ - (optional) privacy group description
 
 #### Returns
 
-`result`: *string* - privacy group ID
+`result`: _string_ - privacy group ID
 
 !!! example
 
@@ -1104,15 +1054,13 @@ Returns the state root of the specified privacy group at the specified block.
 
 #### Parameters
 
-* `privacyGroupId`: *string* - 32-byte [privacy Group ID](../../concepts/privacy/privacy-groups.md)
+- `privacyGroupId`: _string_ - 32-byte [privacy Group ID](../../concepts/privacy/privacy-groups.md)
 
-* `blockNumber`: *string* - integer representing a block number or one of the string tags `latest`,
-  `earliest`, or `pending`, as described in
-  [Block Parameter](../../../public-networks/how-to/use-besu-api/json-rpc.md#block-parameter)
+- `blockNumber`: _string_ - integer representing a block number or one of the string tags `latest`, `earliest`, or `pending`, as described in [Block Parameter](../../../public-networks/how-to/use-besu-api/json-rpc.md#block-parameter)
 
 #### Returns
 
-`result`: *string* - 32-byte state root
+`result`: _string_ - 32-byte state root
 
 !!! example
 
@@ -1145,11 +1093,11 @@ Deletes the specified privacy group.
 
 #### Parameters
 
-`privacyGroupId`: *string* - privacy group ID
+`privacyGroupId`: _string_ - privacy group ID
 
 #### Returns
 
-`result`: *string* - deleted privacy group ID
+`result`: _string_ - deleted privacy group ID
 
 !!! example
 
@@ -1177,8 +1125,7 @@ Deletes the specified privacy group.
 
 ### `priv_distributeRawTransaction`
 
-Distributes a signed, RLP encoded
-[private transaction](../../how-to/send-transactions/private-transactions.md).
+Distributes a signed, RLP encoded [private transaction](../../how-to/send-transactions/private-transactions.md).
 
 !!! tip
 
@@ -1188,12 +1135,11 @@ Distributes a signed, RLP encoded
 
 #### Parameters
 
-`transaction`: *string* - signed RLP-encoded private transaction
+`transaction`: _string_ - signed RLP-encoded private transaction
 
 #### Returns
 
-`result`: *string* - 32-byte enclave key (the enclave key is a pointer to the private transaction in
-[Tessera](https://docs.tessera.consensys.net/).)
+`result`: _string_ - 32-byte enclave key (the enclave key is a pointer to the private transaction in [Tessera](https://docs.tessera.consensys.net/).)
 
 !!! example
 
@@ -1221,22 +1167,19 @@ Distributes a signed, RLP encoded
 
 ### `priv_findPrivacyGroup`
 
-Returns a list of privacy groups containing only the listed members. For example, if the listed
-members are A and B, a privacy group containing A, B, and C is not returned.
+Returns a list of privacy groups containing only the listed members. For example, if the listed members are A and B, a privacy group containing A, B, and C is not returned.
 
 #### Parameters
 
-`members`: *array* of *strings* - members specified by [Tessera](https://docs.tessera.consensys.net/) public keys
+`members`: _array_ of _strings_ - members specified by [Tessera](https://docs.tessera.consensys.net/) public keys
 
 #### Returns
 
-`result`: *array* of *objects* - privacy group objects containing only the specified members; privacy groups are
-[EEA-compliant](../../concepts/privacy/privacy-groups.md#enterprise-ethereum-alliance-privacy)
-or [Besu-extended](../../concepts/privacy/privacy-groups.md#besu-extended-privacy) with types:
+`result`: _array_ of _objects_ - privacy group objects containing only the specified members; privacy groups are [EEA-compliant](../../concepts/privacy/privacy-groups.md#enterprise-ethereum-alliance-privacy) or [Besu-extended](../../concepts/privacy/privacy-groups.md#besu-extended-privacy) with types:
 
-* `LEGACY` for EEA-compliant groups.
+- `LEGACY` for EEA-compliant groups.
 
-* `PANTHEON` for Besu-extended groups.
+- `PANTHEON` for Besu-extended groups.
 
 !!! example
 
@@ -1275,21 +1218,19 @@ or [Besu-extended](../../concepts/privacy/privacy-groups.md#besu-extended-privac
 
 ### `priv_getCode`
 
-Returns the code of the private smart contract at the specified address. Compiled smart contract code
-is stored as a hexadecimal value.
+Returns the code of the private smart contract at the specified address. Compiled smart contract code is stored as a hexadecimal value.
 
 #### Parameters
 
-* `privacyGroupId`: *string* - 32-byte [privacy Group ID](../../concepts/privacy/privacy-groups.md)
+- `privacyGroupId`: _string_ - 32-byte [privacy Group ID](../../concepts/privacy/privacy-groups.md)
 
-* `address`: *string* - 20-byte contract address
+- `address`: _string_ - 20-byte contract address
 
-* `blockNumber`: *string* - integer representing a block number or one of the string tags `latest`, `earliest`,
-  or `pending`, as described in [Block Parameter](../../../public-networks/how-to/use-besu-api/json-rpc.md#block-parameter)
+- `blockNumber`: _string_ - integer representing a block number or one of the string tags `latest`, `earliest`, or `pending`, as described in [Block Parameter](../../../public-networks/how-to/use-besu-api/json-rpc.md#block-parameter)
 
 #### Returns
 
-`result`: *data* - code stored at the specified address
+`result`: _data_ - code stored at the specified address
 
 !!! example
 
@@ -1317,8 +1258,7 @@ is stored as a hexadecimal value.
 
 ### `priv_getEeaTransactionCount`
 
-Returns the private transaction count for the specified account and
-[group of sender and recipients].
+Returns the private transaction count for the specified account and [group of sender and recipients].
 
 !!! important
 
@@ -1328,16 +1268,15 @@ Returns the private transaction count for the specified account and
 
 #### Parameters
 
-* `address`: *string* - account address
+- `address`: _string_ - account address
 
-* `sender`: *string* - base64-encoded Tessera address of the sender
+- `sender`: _string_ - base64-encoded Tessera address of the sender
 
-* `recipients`: *array* of *strings* - base64-encoded Tessera addresses of recipients
+- `recipients`: _array_ of _strings_ - base64-encoded Tessera addresses of recipients
 
 #### Returns
 
-`result`: *string* - integer representing the number of private transactions sent from the address to the
-specified group of sender and recipients
+`result`: _string_ - integer representing the number of private transactions sent from the address to the specified group of sender and recipients
 
 !!! example
 
@@ -1365,23 +1304,19 @@ specified group of sender and recipients
 
 ### `priv_getFilterChanges`
 
-Polls the specified filter for a private contract and returns an array of changes that have occurred
-since the last poll.
+Polls the specified filter for a private contract and returns an array of changes that have occurred since the last poll.
 
-Filters for private contracts can only be created by [`priv_newFilter`](#priv_newfilter) so unlike
-[`eth_getFilterChanges`](../../../public-networks/reference/api/index.md#eth_getfilterchanges),
-`priv_getFilterChanges` always returns an array of log objects or an empty list.
+Filters for private contracts can only be created by [`priv_newFilter`](#priv_newfilter) so unlike [`eth_getFilterChanges`](../../../public-networks/reference/api/index.md#eth_getfilterchanges), `priv_getFilterChanges` always returns an array of log objects or an empty list.
 
 #### Parameters
 
-* `privacyGroupId`: *string* - 32-byte [privacy Group ID](../../concepts/privacy/privacy-groups.md)
+- `privacyGroupId`: _string_ - 32-byte [privacy Group ID](../../concepts/privacy/privacy-groups.md)
 
-* `filterId`: *string* - filter ID
+- `filterId`: _string_ - filter ID
 
 #### Returns
 
-`result`: *array* of *objects* - list of [log objects](../../../public-networks/reference/api/objects.md#log-object),
-or an empty list if nothing has changed since the last poll
+`result`: _array_ of _objects_ - list of [log objects](../../../public-networks/reference/api/objects.md#log-object), or an empty list if nothing has changed since the last poll
 
 !!! example
 
@@ -1424,13 +1359,9 @@ or an empty list if nothing has changed since the last poll
 
 ### `priv_getFilterLogs`
 
-Returns an array of [logs](../../../public-networks/concepts/events-and-logs.md) for the specified filter for a private
-contract.
+Returns an array of [logs](../../../public-networks/concepts/events-and-logs.md) for the specified filter for a private contract.
 
-For private contracts, `priv_getFilterLogs` is the same as
-[`eth_getFilterLogs`](../../../public-networks/reference/api/index.md#eth_getfilterlogs) for public
-contracts except there's no [automatic log bloom caching](../../../public-networks/reference/cli/options.md#auto-log-bloom-caching-enabled)
-for private contracts.
+For private contracts, `priv_getFilterLogs` is the same as [`eth_getFilterLogs`](../../../public-networks/reference/api/index.md#eth_getfilterlogs) for public contracts except there's no [automatic log bloom caching](../../../public-networks/reference/cli/options.md#auto-log-bloom-caching-enabled) for private contracts.
 
 !!! note
 
@@ -1439,13 +1370,13 @@ for private contracts.
 
 #### Parameters
 
-* `privacyGroupId`: *string* - 32-byte [privacy Group ID](../../concepts/privacy/privacy-groups.md)
+- `privacyGroupId`: _string_ - 32-byte [privacy Group ID](../../concepts/privacy/privacy-groups.md)
 
-* `filterId`: *string* - filter ID
+- `filterId`: _string_ - filter ID
 
 #### Returns
 
-`result`: *array* of *objects* - list of [log objects](../../../public-networks/reference/api/objects.md#log-object)
+`result`: _array_ of _objects_ - list of [log objects](../../../public-networks/reference/api/objects.md#log-object)
 
 !!! example
 
@@ -1504,19 +1435,17 @@ for private contracts.
 
 Returns an array of [logs](../../../public-networks/concepts/events-and-logs.md) matching a specified filter object.
 
-For private contracts, `priv_getLogs` is the same as [`eth_getLogs`](../../../public-networks/reference/api/index.md#eth_getlogs)
-for public contracts except there is no [automatic log bloom caching](../../../public-networks/reference/cli/options.md#auto-log-bloom-caching-enabled)
-for private contracts.
+For private contracts, `priv_getLogs` is the same as [`eth_getLogs`](../../../public-networks/reference/api/index.md#eth_getlogs) for public contracts except there is no [automatic log bloom caching](../../../public-networks/reference/cli/options.md#auto-log-bloom-caching-enabled) for private contracts.
 
 #### Parameters
 
-* `privacyGroupId`: *string* - 32-byte [privacy Group ID](../../concepts/privacy/privacy-groups.md)
+- `privacyGroupId`: _string_ - 32-byte [privacy Group ID](../../concepts/privacy/privacy-groups.md)
 
-* `filterOptions`: *object* - [filter options object](../../../public-networks/reference/api/objects.md#filter-options-object)
+- `filterOptions`: _object_ - [filter options object](../../../public-networks/reference/api/objects.md#filter-options-object)
 
 #### Returns
 
-`result`: *array* of *objects* - list of [log objects](../../../public-networks/reference/api/objects.md#log-object)
+`result`: _array_ of _objects_ - list of [log objects](../../../public-networks/reference/api/objects.md#log-object)
 
 !!! example
 
@@ -1573,11 +1502,7 @@ for private contracts.
 
 ### `priv_getPrivacyPrecompileAddress`
 
-Returns the address of the
-[privacy precompiled contract](../../concepts/privacy/private-transactions/processing.md).
-The address
-is derived and based on the value of the
-[`privacy-flexible-groups-enabled`](../cli/options.md#privacy-flexible-groups-enabled) option.
+Returns the address of the [privacy precompiled contract](../../concepts/privacy/private-transactions/processing.md). The address is derived and based on the value of the [`privacy-flexible-groups-enabled`](../cli/options.md#privacy-flexible-groups-enabled) option.
 
 #### Parameters
 
@@ -1585,7 +1510,7 @@ None
 
 #### Returns
 
-`result`: *string* - address of the privacy precompile
+`result`: _string_ - address of the privacy precompile
 
 !!! example
 
@@ -1617,13 +1542,11 @@ Returns the private transaction if you are a participant, otherwise, `null`.
 
 #### Parameters
 
-`transaction`: *string* - transaction hash returned by [`eea_sendRawTransaction`](#eea_sendrawtransaction) or
-[`eea_sendTransaction`](https://docs.ethsigner.consensys.net/Reference/API-Methods#eea_sendtransaction).
+`transaction`: _string_ - transaction hash returned by [`eea_sendRawTransaction`](#eea_sendrawtransaction) or [`eea_sendTransaction`](https://docs.ethsigner.consensys.net/Reference/API-Methods#eea_sendtransaction).
 
 #### Returns
 
-`result`: *object* - [private transaction object](objects.md#private-transaction-object), or `null` if not
-a participant in the private transaction
+`result`: _object_ - [private transaction object](objects.md#private-transaction-object), or `null` if not a participant in the private transaction
 
 !!! example
 
@@ -1678,14 +1601,13 @@ Returns the private transaction count for specified account and privacy group.
 
 #### Parameters
 
-* `address`: *string* - account address
+- `address`: _string_ - account address
 
-* `privacyGroupId`: *string* - privacy group ID
+- `privacyGroupId`: _string_ - privacy group ID
 
 #### Returns
 
-`result`: *string* - integer representing the number of private transactions sent from the address to the
-specified privacy group
+`result`: _string_ - integer representing the number of private transactions sent from the address to the specified privacy group
 
 !!! example
 
@@ -1713,17 +1635,15 @@ specified privacy group
 
 ### `priv_getTransactionReceipt`
 
-Returns information about the private transaction after mining the transaction. Receipts for
-pending transactions are not available.
+Returns information about the private transaction after mining the transaction. Receipts for pending transactions are not available.
 
 #### Parameters
 
-`transaction`: *string* - 32-byte hash of a transaction
+`transaction`: _string_ - 32-byte hash of a transaction
 
 #### Returns
 
-`result`: *object* - [private Transaction receipt object](objects.md#private-transaction-receipt-object),
-or `null` if no receipt found
+`result`: _object_ - [private Transaction receipt object](objects.md#private-transaction-receipt-object), or `null` if no receipt found
 
 !!! example
 
@@ -1770,18 +1690,15 @@ or `null` if no receipt found
 
 ### `priv_newFilter`
 
-Creates a [log filter](../../../public-networks/concepts/events-and-logs.md) for a private contract.
-To poll for logs associated with the created filter, use [`priv_getFilterChanges`](#priv_getfilterchanges).
-To get all logs associated with the filter, use [`priv_getFilterLogs`](#priv_getfilterlogs).
+Creates a [log filter](../../../public-networks/concepts/events-and-logs.md) for a private contract. To poll for logs associated with the created filter, use [`priv_getFilterChanges`](#priv_getfilterchanges). To get all logs associated with the filter, use [`priv_getFilterLogs`](#priv_getfilterlogs).
 
-For private contracts, `priv_newFilter` is the same as [`eth_newFilter`](../../../public-networks/reference/api/index.md#eth_newfilter)
-for public contracts.
+For private contracts, `priv_newFilter` is the same as [`eth_newFilter`](../../../public-networks/reference/api/index.md#eth_newfilter) for public contracts.
 
 #### Parameters
 
-* `privacyGroupId`: *string* - 32-byte [privacy Group ID](../../concepts/privacy/privacy-groups.md)
+- `privacyGroupId`: _string_ - 32-byte [privacy Group ID](../../concepts/privacy/privacy-groups.md)
 
-* `filterOptions`: *object* - [filter options object](../../../public-networks/reference/api/objects.md#filter-options-object)
+- `filterOptions`: _object_ - [filter options object](../../../public-networks/reference/api/objects.md#filter-options-object)
 
 !!! note
 
@@ -1789,7 +1706,7 @@ for public contracts.
 
 #### Returns
 
-`result`: *string* - filter ID
+`result`: _string_ - filter ID
 
 !!! example
 
@@ -1817,25 +1734,21 @@ for public contracts.
 
 ### `priv_uninstallFilter`
 
-Uninstalls a filter for a private contract with the specified ID. When a filter is no longer required,
-call this method.
+Uninstalls a filter for a private contract with the specified ID. When a filter is no longer required, call this method.
 
-Filters time out when not requested by [`priv_getFilterChanges`](#priv_getfilterchanges) or
-[`priv_getFilterLogs`](#priv_getfilterlogs) for 10 minutes.
+Filters time out when not requested by [`priv_getFilterChanges`](#priv_getfilterchanges) or [`priv_getFilterLogs`](#priv_getfilterlogs) for 10 minutes.
 
-For private contracts, `priv_uninstallFilter` is the same as
-[`eth_uninstallFilter`](../../../public-networks/reference/api/index.md#eth_uninstallfilter)
-for public contracts.
+For private contracts, `priv_uninstallFilter` is the same as [`eth_uninstallFilter`](../../../public-networks/reference/api/index.md#eth_uninstallfilter) for public contracts.
 
 #### Parameters
 
-* `privacyGroupId`: *string* - 32-byte [privacy group ID](../../concepts/privacy/privacy-groups.md)
+- `privacyGroupId`: _string_ - 32-byte [privacy group ID](../../concepts/privacy/privacy-groups.md)
 
-* `filterId`: *string* - filter ID
+- `filterId`: _string_ - filter ID
 
 #### Returns
 
-`result`: *boolean* - indicates if the filter is successfully uninstalled
+`result`: _boolean_ - indicates if the filter is successfully uninstalled
 
 !!! example
 
@@ -1873,17 +1786,15 @@ The `QBFT` API methods provide access to the [QBFT](../../how-to/configure/conse
 
 ### `qbft_discardValidatorVote`
 
-Discards a proposal to
-[add or remove a validator](../../how-to/configure/consensus/qbft.md#add-and-remove-validators) with
-the specified address.
+Discards a proposal to [add or remove a validator](../../how-to/configure/consensus/qbft.md#add-and-remove-validators) with the specified address.
 
 #### Parameters
 
-`address`: *string* - 20-byte address of proposed validator
+`address`: _string_ - 20-byte address of proposed validator
 
 #### Returns
 
-`result`: *boolean* - indicates if the proposal is discarded
+`result`: _boolean_ - indicates if the proposal is discarded
 
 !!! example
 
@@ -1911,8 +1822,7 @@ the specified address.
 
 ### `qbft_getPendingVotes`
 
-Returns [votes](../../how-to/configure/consensus/qbft.md#add-and-remove-validators) cast in the current
-[epoch](../../how-to/configure/consensus/qbft.md#genesis-file).
+Returns [votes](../../how-to/configure/consensus/qbft.md#add-and-remove-validators) cast in the current [epoch](../../how-to/configure/consensus/qbft.md#genesis-file).
 
 #### Parameters
 
@@ -1920,9 +1830,7 @@ None
 
 #### Returns
 
-`result`: *map* of *strings* to *booleans* - map of account addresses to corresponding boolean values indicating the
-vote for each account; if `true`, the vote is to add a validator. If `false`, the proposal is to
-remove a validator.
+`result`: _map_ of _strings_ to _booleans_ - map of account addresses to corresponding boolean values indicating the vote for each account; if `true`, the vote is to add a validator. If `false`, the proposal is to remove a validator.
 
 !!! example
 
@@ -1955,33 +1863,27 @@ remove a validator.
 
 Provides the following validator metrics for the specified range:
 
-* Number of blocks from each validator
+- Number of blocks from each validator
 
-* Block number of the last block proposed by each validator (if any proposed in the specified
-  range)
+- Block number of the last block proposed by each validator (if any proposed in the specified range)
 
-* All validators present in the last block of the range
+- All validators present in the last block of the range
 
 #### Parameters
 
-* `fromBlockNumber`: *string* - integer representing a block number or the string tag `earliest` as described
-  in [Block Parameter](../../../public-networks/how-to/use-besu-api/json-rpc.md#block-parameter)
+- `fromBlockNumber`: _string_ - integer representing a block number or the string tag `earliest` as described in [Block Parameter](../../../public-networks/how-to/use-besu-api/json-rpc.md#block-parameter)
 
-* `toBlockNumber`: *string* - integer representing a block number or one of the string tags `latest` or
-  `pending`, as described in
-  [Block Parameter](../../../public-networks/how-to/use-besu-api/json-rpc.md#block-parameter)
+- `toBlockNumber`: _string_ - integer representing a block number or one of the string tags `latest` or `pending`, as described in [Block Parameter](../../../public-networks/how-to/use-besu-api/json-rpc.md#block-parameter)
 
 If you specify:
 
-* No parameters, the call provides metrics for the last 100 blocks, or all blocks if there are less
-  than 100 blocks.
+- No parameters, the call provides metrics for the last 100 blocks, or all blocks if there are less than 100 blocks.
 
-* Only the first parameter, the call provides metrics for all blocks from the block specified to
-  the latest block.
+- Only the first parameter, the call provides metrics for all blocks from the block specified to the latest block.
 
 #### Returns
 
-`result`: *array* of *objects* - list of validator objects
+`result`: _array_ of _objects_ - list of validator objects
 
 !!! note
 
@@ -2033,11 +1935,11 @@ Lists the validators defined in the specified block.
 
 #### Parameters
 
-`block`: *string* - 32-byte block hash
+`block`: _string_ - 32-byte block hash
 
 #### Returns
 
-`result`: *array* of *strings* - list of validator addresses
+`result`: _array_ of _strings_ - list of validator addresses
 
 !!! example
 
@@ -2073,13 +1975,11 @@ Lists the validators defined in the specified block.
 
 #### Parameters
 
-* `blockNumber`: *string* - integer representing a block number or one of the string tags `latest`,
-  `earliest`, or `pending`, as described in
-  [Block Parameter](../../../public-networks/how-to/use-besu-api/json-rpc.md#block-parameter)
+- `blockNumber`: _string_ - integer representing a block number or one of the string tags `latest`, `earliest`, or `pending`, as described in [Block Parameter](../../../public-networks/how-to/use-besu-api/json-rpc.md#block-parameter)
 
 #### Returns
 
-`result`: *array* of *strings* - list of validator addresses
+`result`: _array_ of _strings_ - list of validator addresses
 
 !!! example
 
@@ -2111,19 +2011,17 @@ Lists the validators defined in the specified block.
 
 ### `qbft_proposeValidatorVote`
 
-Proposes to
-[add or remove a validator](../../how-to/configure/consensus/qbft.md#add-and-remove-validators) with
-the specified address.
+Proposes to [add or remove a validator](../../how-to/configure/consensus/qbft.md#add-and-remove-validators) with the specified address.
 
 #### Parameters
 
-* `address`: *string* - account address
+- `address`: _string_ - account address
 
-* `proposal`: *boolean* - `true` to propose adding validator or `false` to propose removing validator
+- `proposal`: _boolean_ - `true` to propose adding validator or `false` to propose removing validator
 
 #### Returns
 
-`result`: *boolean* - `true`
+`result`: _boolean_ - `true`
 
 !!! example
 
@@ -2150,10 +2048,11 @@ the specified address.
         ```
 
 <!-- Links -->
+
 [add or remove a signer with the specified address]: ../../how-to/configure/consensus/clique.md#add-and-remove-signers
 [signers for the specified block]: ../../how-to/configure/consensus/clique.md#adding-and-removing-signers
 [add or remove a validator]: ../../how-to/configure/consensus/ibft.md#add-and-remove-validators
 [permissions configuration file]: ../../how-to/use-permissioning/local.md#permissions-configuration-file
 [group of sender and recipients]: ../../concepts/privacy/privacy-groups.md#enterprise-ethereum-alliance-privacy
 
-*[EEA]: Enterprise Ethereum Alliance
+\*[EEA]: Enterprise Ethereum Alliance

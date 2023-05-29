@@ -6,22 +6,16 @@ sidebar_position: 6
 
 # Access private and privacy marker transactions
 
-A Hyperledger Besu private transaction creates a
-[privacy marker transaction](../../concepts/privacy/private-transactions/processing.md) and
-the private transaction itself.
+A Hyperledger Besu private transaction creates a [privacy marker transaction](../../concepts/privacy/private-transactions/processing.md) and the private transaction itself.
 
 ## Transaction receipts
 
-With the transaction hash returned when submitting the private transaction, to get the transaction
-receipt for the:
+With the transaction hash returned when submitting the private transaction, to get the transaction receipt for the:
 
-* Private transaction, use
-    [`priv_getTransactionReceipt`](../../reference/api/index.md#priv_gettransactionreceipt).
-* Privacy marker transaction, use
-    [`eth_getTransactionReceipt`](../../../public-networks/reference/api/index.md#eth_gettransactionreceipt).
+- Private transaction, use [`priv_getTransactionReceipt`](../../reference/api/index.md#priv_gettransactionreceipt).
+- Privacy marker transaction, use [`eth_getTransactionReceipt`](../../../public-networks/reference/api/index.md#eth_gettransactionreceipt).
 
-The transaction receipt includes a `status` indicating if the transaction failed (`0x0`), succeeded (`0x1`), or
-was invalid (`0x2`).
+The transaction receipt includes a `status` indicating if the transaction failed (`0x0`), succeeded (`0x1`), or was invalid (`0x2`).
 
 !!! example "Private transaction failure example"
 
@@ -34,7 +28,5 @@ was invalid (`0x2`).
 
 With the transaction hash returned when submitting the private transaction, to get the:
 
-* Private transaction, use
-    [`priv_getPrivateTransaction`](../../reference/api/index.md#priv_getprivatetransaction).
-* Privacy marker transaction, use
-    [`eth_getTransactionByHash`](../../../public-networks/reference/api/index.md#eth_gettransactionbyhash).
+- Private transaction, use [`priv_getPrivateTransaction`](../../reference/api/index.md#priv_getprivatetransaction).
+- Privacy marker transaction, use [`eth_getTransactionByHash`](../../../public-networks/reference/api/index.md#eth_gettransactionbyhash).

@@ -5,8 +5,7 @@ description: private networks send transactions overview
 
 # Create and send transactions
 
-In private networks, you can create and [send regular transactions](../../../public-networks/how-to/send-transactions.md)
-as in public networks.
+In private networks, you can create and [send regular transactions](../../../public-networks/how-to/send-transactions.md) as in public networks.
 
 You can also:
 

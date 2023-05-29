@@ -6,8 +6,7 @@ description: Hyperledger Besu command line interface subcommands
 
 # Private network subcommands
 
-This reference describes the syntax of the Hyperledger Besu private network command line interface
-(CLI) subcommands.
+This reference describes the syntax of the Hyperledger Besu private network command line interface (CLI) subcommands.
 
 !!! attention
 
@@ -44,14 +43,10 @@ Provides operator actions.
     ```bash
     besu operator generate-blockchain-config --config-file=config.json --to=myNetworkFiles
     ```
-Generates an
-[IBFT 2.0](../../how-to/configure/consensus/ibft.md#genesis-file) or
-[QBFT](../../how-to/configure/consensus/qbft.md#genesis-file) genesis file.
 
-The configuration file has two nested JSON nodes.
-The first is the `genesis` property defining the IBFT 2.0 or QBFT genesis file, except for the
-`extraData` string.
-The second is the `blockchain` property defining the number of key pairs to generate.
+Generates an [IBFT 2.0](../../how-to/configure/consensus/ibft.md#genesis-file) or [QBFT](../../how-to/configure/consensus/qbft.md#genesis-file) genesis file.
+
+The configuration file has two nested JSON nodes. The first is the `genesis` property defining the IBFT 2.0 or QBFT genesis file, except for the `extraData` string. The second is the `blockchain` property defining the number of key pairs to generate.
 
 ## `rlp`
 
@@ -77,17 +72,13 @@ Provides RLP related actions.
     cat extra_data.json | besu rlp encode > rlp.txt
     ```
 
-Encodes the RLP hexadecimal string for use in an [IBFT 2.0](../../how-to/configure/consensus/ibft.md#genesis-file)
-or [QBFT](../../how-to/configure/consensus/qbft.md#genesis-file) genesis file.
-The default type is `IBFT_EXTRA_DATA`.
+Encodes the RLP hexadecimal string for use in an [IBFT 2.0](../../how-to/configure/consensus/ibft.md#genesis-file) or [QBFT](../../how-to/configure/consensus/qbft.md#genesis-file) genesis file. The default type is `IBFT_EXTRA_DATA`.
 
 Supported types are:
 
-* `IBFT_EXTRA_DATA` - The IBFT 2.0 genesis file includes the `IBFT_EXTRA_DATA` type in the
-  [`extraData`](../../how-to/configure/consensus/ibft.md#extra-data) property.
+- `IBFT_EXTRA_DATA` - The IBFT 2.0 genesis file includes the `IBFT_EXTRA_DATA` type in the [`extraData`](../../how-to/configure/consensus/ibft.md#extra-data) property.
 
-* `QBFT_EXTRA_DATA` - The QBFT genesis file includes the `QBFT_EXTRA_DATA` type in the
-  [`extraData`](../../how-to/configure/consensus/qbft.md#extra-data) property.
+- `QBFT_EXTRA_DATA` - The QBFT genesis file includes the `QBFT_EXTRA_DATA` type in the [`extraData`](../../how-to/configure/consensus/qbft.md#extra-data) property.
 
 ???+ summary "IBFT 2.0 extra data"
 

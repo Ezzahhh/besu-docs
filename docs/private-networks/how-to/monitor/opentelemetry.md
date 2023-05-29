@@ -6,11 +6,7 @@ description: Collect Besu information with the OpenTelemetry Collector
 
 # Use OpenTelemetry
 
-You can use the OpenTelemetry monitoring and tracing service to gather node metrics and traces.
-To enable OpenTelemetry to access Hyperledger Besu, use the [`--metrics-enabled`](../../../public-networks/reference/cli/options.md#metrics-enabled)
-and [`--metrics-protocol=opentelemetry`](../../../public-networks/reference/cli/options.md#metrics-protocol) options.
-Use [Splunk](https://splunk.com) to visualize the collected data.
-A [Besu Sync example](https://github.com/splunk/splunk-connect-for-ethereum/tree/master/examples/besu-sync) is available.
+You can use the OpenTelemetry monitoring and tracing service to gather node metrics and traces. To enable OpenTelemetry to access Hyperledger Besu, use the [`--metrics-enabled`](../../../public-networks/reference/cli/options.md#metrics-enabled) and [`--metrics-protocol=opentelemetry`](../../../public-networks/reference/cli/options.md#metrics-protocol) options. Use [Splunk](https://splunk.com) to visualize the collected data. A [Besu Sync example](https://github.com/splunk/splunk-connect-for-ethereum/tree/master/examples/besu-sync) is available.
 
 !!! example
 
@@ -33,8 +29,7 @@ Download and install the [OpenTelemetry Collector](https://github.com/open-telem
 
 ## Setting up and running OpenTelemetry with Besu
 
-1. Configure OpenTelemetry to accept data from Besu.
-    For example, use the following configuration for your `otel-collector-config.yml` file, and send data to Splunk and Splunk APM:
+1.  Configure OpenTelemetry to accept data from Besu. For example, use the following configuration for your `otel-collector-config.yml` file, and send data to Splunk and Splunk APM:
 
     !!! example "`otel-collector-config.yml`"
 
@@ -142,9 +137,7 @@ Download and install the [OpenTelemetry Collector](https://github.com/open-telem
 
     You can also refer to this [Docker-compose example](https://github.com/splunk/splunk-connect-for-ethereum/blob/989dc2ccae7d8235bf3ce2a83a18cf0cd1713294/examples/besu-sync/full-sync/docker-compose.yaml).
 
-1. Start Besu with the [`--metrics-enabled`](../../../public-networks/reference/cli/options.md#metrics-enabled) and
-    [`--metrics-protocol=opentelemetry`](../../../public-networks/reference/cli/options.md#metrics-protocol) options.
-    For example, run the following command to start a single node:
+1.  Start Besu with the [`--metrics-enabled`](../../../public-networks/reference/cli/options.md#metrics-enabled) and [`--metrics-protocol=opentelemetry`](../../../public-networks/reference/cli/options.md#metrics-protocol) options. For example, run the following command to start a single node:
 
     === "Syntax"
 
@@ -158,19 +151,19 @@ Download and install the [OpenTelemetry Collector](https://github.com/open-telem
         OTEL_EXPORTER_OTLP_ENDPOINT=https://localhost:4317 besu --network=dev --miner-enabled --miner-coinbase fe3b557e8fb62b89f4916b721be55ceb828dbd73 --rpc-http-cors-origins="all" --rpc-http-enabled --metrics-enabled --metrics-protocol=opentelemetry
         ```
 
-    The [OpenTelemetry SDK](https://github.com/open-telemetry/opentelemetry-specification/blob/8f7cdb73618a0b3afa9532b8f8103d719e352781/specification/sdk-environment-variables.md)
-    mandates how to configure the OpenTelemetry gRPC client, so data flows to the collector from Besu.
+    The [OpenTelemetry SDK](https://github.com/open-telemetry/opentelemetry-specification/blob/8f7cdb73618a0b3afa9532b8f8103d719e352781/specification/sdk-environment-variables.md) mandates how to configure the OpenTelemetry gRPC client, so data flows to the collector from Besu.
 
     You can use the following environment variables:
 
-    | Name                        | Description                                                                                                       | Required |
-    |-----------------------------|-------------------------------------------------------------------------------------------------------------------|----------|
-    | OTEL_EXPORTER_OTLP_ENDPOINT | OpenTelemetry Collector endpoint, of the form `https://host:port`. The default value is `https://localhost:4317`  | Yes      |
-    | OTEL_EXPORTER_OTLP_INSECURE | Whether to allow insecure connections for OpenTelemetry data. False by default.                                   | No       |
+    | Name | Description | Required |
+    | --- | --- | --- |
+    | OTEL_EXPORTER_OTLP_ENDPOINT | OpenTelemetry Collector endpoint, of the form `https://host:port`. The default value is `https://localhost:4317` | Yes |
+    | OTEL_EXPORTER_OTLP_INSECURE | Whether to allow insecure connections for OpenTelemetry data. False by default. | No |
 
 <!-- Links -->
+
 [Monitoring Besu synchronization to chain with Splunk]: https://github.com/splunk/splunk-connect-for-ethereum/tree/master/examples/besu-sync
 
 <!--- END of page meta data -->
 
-*[APM]: Application Performance Monitoring
+\*[APM]: Application Performance Monitoring

@@ -6,12 +6,9 @@ description: Hyperledger Besu private network using the QBFT (proof of authority
 
 # Create a private network using QBFT
 
-A private network provides a configurable network for testing. This private network uses the
-[QBFT (proof of authority) consensus protocol](../how-to/configure/consensus/qbft.md).
+A private network provides a configurable network for testing. This private network uses the [QBFT (proof of authority) consensus protocol](../how-to/configure/consensus/qbft.md).
 
-The QBFT network in this tutorial implements the [block header validator selection method] to manage
-validators. For a tutorial on how to implement the [contract validator selection method], follow the
-steps in the [example smart contract repository].
+The QBFT network in this tutorial implements the [block header validator selection method] to manage validators. For a tutorial on how to implement the [contract validator selection method], follow the steps in the [example smart contract repository].
 
 !!! important
 
@@ -23,20 +20,18 @@ steps in the [example smart contract repository].
 
 ## Prerequisites
 
-* [Hyperledger Besu](../get-started/install/binary-distribution.md)
-* [Curl (or similar webservice client)](https://curl.haxx.se/download.html).
+- [Hyperledger Besu](../get-started/install/binary-distribution.md)
+- [Curl (or similar webservice client)](https://curl.haxx.se/download.html).
 
 ## Steps
 
-Listed on the right-hand side of the page are the steps to create a private network using QBFT
-with four nodes. The four nodes are all validators.
+Listed on the right-hand side of the page are the steps to create a private network using QBFT with four nodes. The four nodes are all validators.
 
 ### 1. Create directories
 
 Each node requires a data directory for the blockchain data.
 
-Create directories for your private network, each of the four nodes, and a data directory for each
-node:
+Create directories for your private network, each of the four nodes, and a data directory for each node:
 
 ```bash
 QBFT-Network/
@@ -52,17 +47,11 @@ QBFT-Network/
 
 ### 2. Create a configuration file
 
-The configuration file defines the
-[QBFT genesis file](../how-to/configure/consensus/qbft.md#genesis-file) and the
-number of node key pairs to generate.
+The configuration file defines the [QBFT genesis file](../how-to/configure/consensus/qbft.md#genesis-file) and the number of node key pairs to generate.
 
-The configuration file has two nested JSON nodes. The first is the `genesis` property defining
-the QBFT genesis file, except for the `extraData` string, which Besu generates automatically in
-the resulting genesis file. The second is the `blockchain` property defining the number of key
-pairs to generate.
+The configuration file has two nested JSON nodes. The first is the `genesis` property defining the QBFT genesis file, except for the `extraData` string, which Besu generates automatically in the resulting genesis file. The second is the `blockchain` property defining the number of key pairs to generate.
 
-Copy the following configuration file definition to a file called `qbftConfigFile.json` and save it
-in the `QBFT-Network` directory:
+Copy the following configuration file definition to a file called `qbftConfigFile.json` and save it in the `QBFT-Network` directory:
 
 ```json
 {
@@ -103,7 +92,7 @@ in the `QBFT-Network` directory:
   "blockchain": {
     "nodes": {
       "generate": true,
-        "count": 4
+      "count": 4
     }
   }
 }
@@ -132,10 +121,8 @@ In the `QBFT-Network` directory, generate the node key and genesis file:
 
 Besu creates the following in the `networkFiles` directory:
 
-* `genesis.json` - The genesis file including the `extraData` property specifying the four nodes
-  are validators.
-* A directory for each node named using the node address and containing the public and private key
-  for each node.
+- `genesis.json` - The genesis file including the `extraData` property specifying the four nodes are validators.
+- A directory for each node named using the node address and containing the public and private key for each node.
 
 ```text
 networkFiles/
@@ -202,26 +189,19 @@ In the `Node-1` directory, start Node-1:
 
 The command line:
 
-* Specifies the data directory for Node-1 using the
-  [`--data-path`](../../public-networks/reference/cli/options.md#data-path) option.
-* Enables the JSON-RPC API using the
-  [`--rpc-http-enabled`](../../public-networks/reference/cli/options.md#rpc-http-enabled) option.
-* Enables the ETH, NET, and QBFT APIs using the
-  [`--rpc-http-api`](../../public-networks/reference/cli/options.md#rpc-http-api) option.
-* Enables all-host access to the HTTP JSON-RPC API using the
-  [`--host-allowlist`](../../public-networks/reference/cli/options.md#host-allowlist) option.
-* Enables all-domain access to the node through the HTTP JSON-RPC API using the
-  [`--rpc-http-cors-origins`](../../public-networks/reference/cli/options.md#rpc-http-cors-origins) option.
+- Specifies the data directory for Node-1 using the [`--data-path`](../../public-networks/reference/cli/options.md#data-path) option.
+- Enables the JSON-RPC API using the [`--rpc-http-enabled`](../../public-networks/reference/cli/options.md#rpc-http-enabled) option.
+- Enables the ETH, NET, and QBFT APIs using the [`--rpc-http-api`](../../public-networks/reference/cli/options.md#rpc-http-api) option.
+- Enables all-host access to the HTTP JSON-RPC API using the [`--host-allowlist`](../../public-networks/reference/cli/options.md#host-allowlist) option.
+- Enables all-domain access to the node through the HTTP JSON-RPC API using the [`--rpc-http-cors-origins`](../../public-networks/reference/cli/options.md#rpc-http-cors-origins) option.
 
-When the node starts, the [enode URL](../../public-networks/concepts/node-keys.md#enode-url) displays. Copy the
-enode URL to specify Node-1 as the bootnode in the following steps.
+When the node starts, the [enode URL](../../public-networks/concepts/node-keys.md#enode-url) displays. Copy the enode URL to specify Node-1 as the bootnode in the following steps.
 
 ![Node 1 Enode URL](../../assets/images/EnodeStartup.png)
 
 ### 7. Start Node-2
 
-Start another terminal, change to the `Node-2` directory and start Node-2 specifying the Node-1
-enode URL copied when starting Node-1 as the bootnode:
+Start another terminal, change to the `Node-2` directory and start Node-2 specifying the Node-1 enode URL copied when starting Node-1 as the bootnode:
 
 === "MacOS"
 
@@ -237,20 +217,15 @@ enode URL copied when starting Node-1 as the bootnode:
 
 The command line specifies:
 
-* The data directory for Node-2 using the
-  [`--data-path`](../../public-networks/reference/cli/options.md#data-path) option.
-* A different port to Node-1 for P2P discovery using the
-  [`--p2p-port`](../../public-networks/reference/cli/options.md#p2p-port) option.
-* A different port to Node-1 for HTTP JSON-RPC using the
-  [`--rpc-http-port`](../../public-networks/reference/cli/options.md#rpc-http-port) option.
-* The enode URL of Node-1 using the
-  [`--bootnodes`](../../public-networks/reference/cli/options.md#bootnodes) option.
-* Other options as for [Node-1](#6-start-the-first-node-as-the-bootnode).
+- The data directory for Node-2 using the [`--data-path`](../../public-networks/reference/cli/options.md#data-path) option.
+- A different port to Node-1 for P2P discovery using the [`--p2p-port`](../../public-networks/reference/cli/options.md#p2p-port) option.
+- A different port to Node-1 for HTTP JSON-RPC using the [`--rpc-http-port`](../../public-networks/reference/cli/options.md#rpc-http-port) option.
+- The enode URL of Node-1 using the [`--bootnodes`](../../public-networks/reference/cli/options.md#bootnodes) option.
+- Other options as for [Node-1](#6-start-the-first-node-as-the-bootnode).
 
 ### 8. Start Node-3
 
-Start another terminal, change to the `Node-3` directory and start Node-3 specifying the Node-1
-enode URL copied when starting Node-1 as the bootnode:
+Start another terminal, change to the `Node-3` directory and start Node-3 specifying the Node-1 enode URL copied when starting Node-1 as the bootnode:
 
 === "MacOS"
 
@@ -266,19 +241,15 @@ enode URL copied when starting Node-1 as the bootnode:
 
 The command line specifies:
 
-* The data directory for Node-3 using the
-  [`--data-path`](../../public-networks/reference/cli/options.md#data-path) option.
-* A different port to Node-1 and Node-2 for P2P discovery using the
-  [`--p2p-port`](../../public-networks/reference/cli/options.md#p2p-port) option.
-* A different port to Node-1 and Node-2 for HTTP JSON-RPC using the
-  [`--rpc-http-port`](../../public-networks/reference/cli/options.md#rpc-http-port) option.
-* The bootnode as for [Node-2](#7-start-node-2).
-* Other options as for [Node-1](#6-start-the-first-node-as-the-bootnode).
+- The data directory for Node-3 using the [`--data-path`](../../public-networks/reference/cli/options.md#data-path) option.
+- A different port to Node-1 and Node-2 for P2P discovery using the [`--p2p-port`](../../public-networks/reference/cli/options.md#p2p-port) option.
+- A different port to Node-1 and Node-2 for HTTP JSON-RPC using the [`--rpc-http-port`](../../public-networks/reference/cli/options.md#rpc-http-port) option.
+- The bootnode as for [Node-2](#7-start-node-2).
+- Other options as for [Node-1](#6-start-the-first-node-as-the-bootnode).
 
 ### 9. Start Node-4
 
-Start another terminal, change to the `Node-4` directory and start Node-4 specifying the Node-1
-enode URL copied when starting Node-1 as the bootnode:
+Start another terminal, change to the `Node-4` directory and start Node-4 specifying the Node-1 enode URL copied when starting Node-1 as the bootnode:
 
 === "MacOS"
 
@@ -294,20 +265,15 @@ enode URL copied when starting Node-1 as the bootnode:
 
 The command line specifies:
 
-* The data directory for Node-4 using the
-  [`--data-path`](../../public-networks/reference/cli/options.md#data-path) option.
-* A different port to Node-1, Node-2, and Node-3 for P2P discovery using the
-  [`--p2p-port`](../../public-networks/reference/cli/options.md#p2p-port) option.
-* A different port to Node-1, Node-2, and Node-3 for HTTP JSON-RPC using the
-  [`--rpc-http-port`](../../public-networks/reference/cli/options.md#rpc-http-port) option.
-* The bootnode as for [Node-2](#7-start-node-2).
-* Other options as for [Node-1](#6-start-the-first-node-as-the-bootnode).
+- The data directory for Node-4 using the [`--data-path`](../../public-networks/reference/cli/options.md#data-path) option.
+- A different port to Node-1, Node-2, and Node-3 for P2P discovery using the [`--p2p-port`](../../public-networks/reference/cli/options.md#p2p-port) option.
+- A different port to Node-1, Node-2, and Node-3 for HTTP JSON-RPC using the [`--rpc-http-port`](../../public-networks/reference/cli/options.md#rpc-http-port) option.
+- The bootnode as for [Node-2](#7-start-node-2).
+- Other options as for [Node-1](#6-start-the-first-node-as-the-bootnode).
 
 ### 10. Confirm the private network is working
 
-Start another terminal, use curl to call the JSON-RPC API
-[`qbft_getvalidatorsbyblocknumber`](../reference/api/index.md#qbft_getvalidatorsbyblocknumber)
-method and confirm the network has four validators:
+Start another terminal, use curl to call the JSON-RPC API [`qbft_getvalidatorsbyblocknumber`](../reference/api/index.md#qbft_getvalidatorsbyblocknumber) method and confirm the network has four validators:
 
 ```bash
 curl -X POST --data '{"jsonrpc":"2.0","method":"qbft_getValidatorsByBlockNumber","params":["latest"], "id":1}' localhost:8545
@@ -317,9 +283,14 @@ The result displays the four validators:
 
 ```json
 {
-  "jsonrpc" : "2.0",
-  "id" : 1,
-  "result" : [ "0x73ced0bd3def2e2d9859e3bd0882683a2e6835fb", "0x7a175f3542ceb60bf80fb536b3f42e7a30c0a6d7", "0x7f6efa6e34f8c9b591a9ad4763e21b3fca31bcd6", "0xc64140f1c9d5bb82e54976e568ad39958c3e94be" ]
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": [
+    "0x73ced0bd3def2e2d9859e3bd0882683a2e6835fb",
+    "0x7a175f3542ceb60bf80fb536b3f42e7a30c0a6d7",
+    "0x7f6efa6e34f8c9b591a9ad4763e21b3fca31bcd6",
+    "0xc64140f1c9d5bb82e54976e568ad39958c3e94be"
+  ]
 }
 ```
 
@@ -355,9 +326,7 @@ Look at the logs to confirm Besu is producing blocks:
 
 ## Next steps
 
-Use the [QBFT API](../reference/api/index.md#qbft-methods) to remove or add validators, or import accounts
-to MetaMask and send transactions as described in the
-[Quickstart tutorial](quickstart.md#create-a-transaction-using-metamask).
+Use the [QBFT API](../reference/api/index.md#qbft-methods) to remove or add validators, or import accounts to MetaMask and send transactions as described in the [Quickstart tutorial](quickstart.md#create-a-transaction-using-metamask).
 
 !!! note
 
@@ -367,8 +336,7 @@ to MetaMask and send transactions as described in the
 
     Besu doesn't support [private key management](../../public-networks/how-to/send-transactions.md).
 
-You can switch from the [block header validator selection method] configured here, to the [contract validator selection method]
-by updating the genesis file and [configuring a transition].
+You can switch from the [block header validator selection method] configured here, to the [contract validator selection method] by updating the genesis file and [configuring a transition].
 
 ## Stop the nodes
 
@@ -380,9 +348,12 @@ When finished using the private network, stop all nodes using ++ctrl+c++ in each
     [step 6](#6-start-the-first-node-as-the-bootnode).
 
 <!-- Links -->
+
 [block header validator selection method]: ../how-to/configure/consensus/qbft.md#add-and-remove-validators-using-block-headers
 [contract validator selection method]: ../how-to/configure/consensus/qbft.md#add-and-remove-validators-using-a-smart-contract
 [example smart contract repository]: https://github.com/ConsenSys/validator-smart-contracts
 [configuring a transition]: ../how-to/configure/consensus/qbft.md#transitions
+
 <!-- Acronyms and Definitions -->
-*[Byzantine fault tolerant]: Ability to function correctly and reach consensus despite nodes failing or propagating incorrect information to peers.
+
+\*[Byzantine fault tolerant]: Ability to function correctly and reach consensus despite nodes failing or propagating incorrect information to peers.
