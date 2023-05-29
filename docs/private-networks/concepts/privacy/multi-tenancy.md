@@ -1,6 +1,6 @@
 ---
 title: Multi-tenancy
-sidebar_position: 5
+sidebar_position: 4
 description: Multi-tenancy
 ---
 
@@ -8,8 +8,7 @@ description: Multi-tenancy
 
 By default, each participant in a privacy network uses its own Besu and Tessera node.
 
-Multi-tenancy allows multiple participants to use the same Besu and Tessera node. Each participant
-is a _tenant_, and the operator is the _owner_ of the Besu and Tessera node.
+Multi-tenancy allows multiple participants to use the same Besu and Tessera node. Each participant is a _tenant_, and the operator is the _owner_ of the Besu and Tessera node.
 
 !!! important
 
@@ -31,9 +30,6 @@ is a _tenant_, and the operator is the _owner_ of the Besu and Tessera node.
     with the [`WHITELIST`](https://docs.tessera.consensys.net/en/stable/HowTo/Configure/TLS/#whitelist)
     trust mode.
 
-Multi-tenancy validates that tenants have permission to use the specified HTTP or WebSocket
-JSON-RPC requests, and the tenant has access to the requested privacy data.
-Private data is isolated and each tenant uses a JSON Web Token (JWT) for authentication.
+Multi-tenancy validates that tenants have permission to use the specified HTTP or WebSocket JSON-RPC requests, and the tenant has access to the requested privacy data. Private data is isolated and each tenant uses a JSON Web Token (JWT) for authentication.
 
-You can
-[create the JWT either externally or internally](../../../public-networks/how-to/use-besu-api/authenticate.md).
+You can [create the JWT either externally or internally](../../../public-networks/how-to/use-besu-api/authenticate.md).

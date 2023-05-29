@@ -1,4 +1,6 @@
 ---
+title: Run Besu from Docker image
+sidebar_position: 1
 description: Run Hyperledger Besu using the official docker image
 ---
 
@@ -10,11 +12,11 @@ Use this Docker image to run a single Besu node without installing Besu.
 
 ## Prerequisites
 
-* [Docker](https://docs.docker.com/install/)
+- [Docker](https://docs.docker.com/install/)
 
-* MacOS or Linux
+- MacOS or Linux
 
-    !!! important
+  !!! important
 
         The Docker image doesn't run on Windows.
 
@@ -36,14 +38,7 @@ docker run hyperledger/besu:latest
 
 ## Expose ports
 
-Expose ports for P2P discovery, GraphQL, metrics, and HTTP and WebSocket JSON-RPC. You need
-to expose the ports to use the default ports or the ports specified using
-[`--rpc-http-port`](../../reference/cli/options.md#rpc-http-port),
-[`--p2p-port`](../../reference/cli/options.md#p2p-port),
-[`--rpc-ws-port`](../../reference/cli/options.md#rpc-ws-port),
-[`--metrics-port`](../../reference/cli/options.md#metrics-port),
-[`--graphql-http-port`](../../reference/cli/options.md#graphql-http-port), and
-[`--metrics-push-port`](../../reference/cli/options.md#metrics-push-port) options.
+Expose ports for P2P discovery, GraphQL, metrics, and HTTP and WebSocket JSON-RPC. You need to expose the ports to use the default ports or the ports specified using [`--rpc-http-port`](../../reference/cli/options.md#rpc-http-port), [`--p2p-port`](../../reference/cli/options.md#p2p-port), [`--rpc-ws-port`](../../reference/cli/options.md#rpc-ws-port), [`--metrics-port`](../../reference/cli/options.md#metrics-port), [`--graphql-http-port`](../../reference/cli/options.md#graphql-http-port), and [`--metrics-push-port`](../../reference/cli/options.md#metrics-push-port) options.
 
 To run Besu exposing local ports for access:
 
@@ -85,9 +80,7 @@ docker run -p <localportJSON-RPC>:8545 -p <localportWS>:8546 -p <localportP2P>:3
     must be set to `DOCKER` or `AUTO` (default). Don't set
     [`--nat-method`](../../how-to/connect/specify-nat.md) to `NONE` or `UPNP`.
 
-You can specify
-[Besu environment variables](../../reference/cli/options.md#specify-options) with the
-Docker image instead of the command line options.
+You can specify [Besu environment variables](../../reference/cli/options.md#specify-options) with the Docker image instead of the command line options.
 
 !!! example
 
@@ -136,9 +129,7 @@ docker run -p 8545:8545 --mount type=bind,source=/<myvolume/besu/mainnet>,target
 
 ## Stop Besu and clean up resources
 
-When done running nodes, you can shut down the node container without deleting resources or you can
-delete the container after stopping it. Run `docker container ls` and `docker volume ls` to get the
-container and volume names.
+When done running nodes, you can shut down the node container without deleting resources or you can delete the container after stopping it. Run `docker container ls` and `docker volume ls` to get the container and volume names.
 
 To stop a container:
 

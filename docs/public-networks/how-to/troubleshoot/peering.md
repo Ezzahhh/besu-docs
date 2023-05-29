@@ -1,18 +1,16 @@
 ---
+title: Troubleshoot peering
+sidebar_position: 3
 description: How to troubleshoot peering
 ---
 
 # Troubleshoot peering
 
-Many factors can affect the ability of your node to find and maintain peers.
-Your network router, machine environment, and node configuration are all important.
-If you have peering issues, start by [configuring your ports](../connect/configure-ports.md) and
-[managing peers](../connect/manage-peers.md).
+Many factors can affect the ability of your node to find and maintain peers. Your network router, machine environment, and node configuration are all important. If you have peering issues, start by [configuring your ports](../connect/configure-ports.md) and [managing peers](../connect/manage-peers.md).
 
 ## Peering FAQ
 
-??? question "Why can’t I find enough peers to sync?"
-    One or more of the following may be the cause:
+??? question "Why can’t I find enough peers to sync?" One or more of the following may be the cause:
 
     - Your hardware doesn't have enough CPU, disk IOPS, or bandwidth to handle all the peers.
     - Your ports aren't open in your firewall and/or router.
@@ -43,8 +41,7 @@ If you have peering issues, start by [configuring your ports](../connect/configu
     [Prysm EL and CL peering documentation](https://docs.prylabs.network/docs/prysm-usage/p2p-host-ip)
     for more information.
 
-??? question "What network or router/modem settings should I check?"
-    Check the following settings:
+??? question "What network or router/modem settings should I check?" Check the following settings:
 
     - Your machine and router's specified DNS should support TCP.
       You can check your DNS online for TCP support.
@@ -55,27 +52,13 @@ If you have peering issues, start by [configuring your ports](../connect/configu
     - If you use [Docker](https://docs.docker.com/network/network-tutorial-host/) or virtualization,
       the container should be able to create outbound connections on the host machine.
 
-??? question "How do I open/forward my ports?"
-    If you’re behind NAT, you probably need to set up port forwarding in your router.
-    You might also need to configure your firewall.
-    Forward and open `30303` (if using the default p2p port) for both UDP and TCP.
-    If your router supports UPNP, you can set
-    [`--nat-method`](../../reference/cli/options.md#nat-method) to
-    [`UPNPP2PONLY`](../connect/specify-nat.md#upnp).
+??? question "How do I open/forward my ports?" If you’re behind NAT, you probably need to set up port forwarding in your router. You might also need to configure your firewall. Forward and open `30303` (if using the default p2p port) for both UDP and TCP. If your router supports UPNP, you can set [`--nat-method`](../../reference/cli/options.md#nat-method) to [`UPNPP2PONLY`](../connect/specify-nat.md#upnp).
 
-??? question "How do I test that my ports are open?"
-    You can use this [open port checker](https://www.yougetsignal.com/tools/open-ports/).
+??? question "How do I test that my ports are open?" You can use this [open port checker](https://www.yougetsignal.com/tools/open-ports/).
 
-??? question "What's the ideal number of peers for Besu?"
-    The default maximum is 25.
-    Increasing the number of peers increases the bandwidth, CPU, and disk access Besu uses to
-    respond to peers.
-    Hardware with low specifications might result in low peer numbers.
-    You'll experience diminishing returns with a larger number of peers (>100).
+??? question "What's the ideal number of peers for Besu?" The default maximum is 25. Increasing the number of peers increases the bandwidth, CPU, and disk access Besu uses to respond to peers. Hardware with low specifications might result in low peer numbers. You'll experience diminishing returns with a larger number of peers (>100).
 
-??? question "What's the benefit of increasing the number of peers?"
-    Increasing the number of max peers won't speed up Besu syncing, because the bottleneck during
-    sync is disk IO and CPU.
+??? question "What's the benefit of increasing the number of peers?" Increasing the number of max peers won't speed up Besu syncing, because the bottleneck during sync is disk IO and CPU.
 
     Note that Besu's peers are only used for the initial sync and transaction gossip, neither of
     which affects attestation performance.
@@ -86,10 +69,6 @@ If you have peering issues, start by [configuring your ports](../connect/configu
 
 Capture [metrics](../monitor/index.md) to gain insights into peering behavior over time.
 
-To [enable Prometheus to access Besu](../monitor/metrics.md), open the metrics port or metrics push
-port to Prometheus or the Prometheus push gateway on TCP.
+To [enable Prometheus to access Besu](../monitor/metrics.md), open the metrics port or metrics push port to Prometheus or the Prometheus push gateway on TCP.
 
-Specify the ports for Prometheus and Prometheus push gateway using the
-[`--metrics-port`](../../reference/cli/options.md#metrics-port) and
-[`--metrics-push-port`](../../reference/cli/options.md#metrics-push-port) options.
-The defaults are `9545` and `9001`.
+Specify the ports for Prometheus and Prometheus push gateway using the [`--metrics-port`](../../reference/cli/options.md#metrics-port) and [`--metrics-push-port`](../../reference/cli/options.md#metrics-push-port) options. The defaults are `9545` and `9001`.

@@ -155,7 +155,8 @@ const config = {
       },
       footer: {
         style: "dark",
-        copyright: `© ${new Date().getFullYear()} Hyperledger.`,
+        copyright: `Copyright © ${new Date().getFullYear()} The Linux Foundation ®.
+        All rights reserved.`,
       },
       prism: {
         theme: lightCodeTheme,

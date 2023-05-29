@@ -1,4 +1,6 @@
 ---
+title: Use a configuration file
+sidebar_position: 3
 description: Using the Hyperledger Besu configuration file
 tags:
   - private networks
@@ -8,14 +10,9 @@ tags:
 
 To specify command line options in a file, use a TOML configuration file.
 
-Save the configuration file and reuse it across node startups. To specify the configuration file,
-use the [`--config-file`](../reference/cli/options.md#config-file) option.
+Save the configuration file and reuse it across node startups. To specify the configuration file, use the [`--config-file`](../reference/cli/options.md#config-file) option.
 
-To override an option specified in the configuration file, either specify the same option on the
-command line or as an
-[environment variable](../reference/cli/options.md#specify-options). For options
-specified in more than one place, the order of precedence is command line, environment variable,
-configuration file.
+To override an option specified in the configuration file, either specify the same option on the command line or as an [environment variable](../reference/cli/options.md#specify-options). For options specified in more than one place, the order of precedence is command line, environment variable, configuration file.
 
 !!! note
 
@@ -24,14 +21,12 @@ configuration file.
 
 ## TOML specification
 
-The configuration file must be a valid TOML file composed of key/value pairs. Each key is the same
-as the corresponding command line option name without the leading dashes (`--`).
+The configuration file must be a valid TOML file composed of key/value pairs. Each key is the same as the corresponding command line option name without the leading dashes (`--`).
 
-Values must conform to TOML specifications for string, numbers, arrays, and booleans. Specific
-differences between the command line and the TOML file format are:
+Values must conform to TOML specifications for string, numbers, arrays, and booleans. Specific differences between the command line and the TOML file format are:
 
-* Comma-separated lists on the command line are string arrays in the TOML file.
-* Enclose file paths, hexadecimal numbers, URLs, and &lt;host:port> values in quotes.
+- Comma-separated lists on the command line are string arrays in the TOML file.
+- Enclose file paths, hexadecimal numbers, URLs, and &lt;host:port> values in quotes.
 
 !!!tip
 

@@ -1,22 +1,18 @@
 ---
+title: Engine API
 description: Engine API methods reference
 ---
 
 # Engine API methods
 
-[Consensus and execution clients](../../concepts/the-merge.md#execution-and-consensus-clients)
-communicate with each other using the Engine API.
-When running Besu as an execution client, [use these API calls](../../how-to/use-engine-api.md) to
-communicate with a consensus client.
+[Consensus and execution clients](../../concepts/the-merge.md#execution-and-consensus-clients) communicate with each other using the Engine API. When running Besu as an execution client, [use these API calls](../../how-to/use-engine-api.md) to communicate with a consensus client.
 
 !!! important
 
     Ensure you enable the Engine API methods with the
     [`--engine-rpc-enabled`](../cli/options.md#engine-rpc-enabled) CLI option.
 
-See the [Ethereum Engine API specification](https://github.com/ethereum/execution-apis/blob/0b965fb714ccd3faa3c939fdce1726e56679cdec/src/engine/specification.md)
-for more information.
-Not all changes to the Engine API are documented on this page.
+See the [Ethereum Engine API specification](https://github.com/ethereum/execution-apis/blob/0b965fb714ccd3faa3c939fdce1726e56679cdec/src/engine/specification.md) for more information. Not all changes to the Engine API are documented on this page.
 
 ## Methods
 
@@ -26,11 +22,11 @@ Exchanges a list of supported Engine API methods between the consensus client an
 
 #### Parameters
 
-`remoteCapabilities`: *array* of *strings* - Engine API method names that the consensus client supports
+`remoteCapabilities`: _array_ of _strings_ - Engine API method names that the consensus client supports
 
 #### Returns
 
-`localCapabilities`: *array* of *strings* - Engine API method names that Besu supports
+`localCapabilities`: _array_ of _strings_ - Engine API method names that Besu supports
 
 !!! example
 
@@ -79,11 +75,11 @@ Sends the transition configuration to the consensus client to verify the configu
 
 #### Parameters
 
-`transitionConfiguration`: *object* - [Transition configuration object](objects.md#transition-configuration-object)
+`transitionConfiguration`: _object_ - [Transition configuration object](objects.md#transition-configuration-object)
 
 #### Returns
 
-`transitionConfiguration`: *object* - [Transition configuration object](objects.md#transition-configuration-object)
+`transitionConfiguration`: _object_ - [Transition configuration object](objects.md#transition-configuration-object)
 
 !!! example
 
@@ -121,15 +117,15 @@ Updates the fork choice with the consensus client.
 
 #### Parameters
 
-* `forkchoiceState`: *object* - [Fork choice state object](objects.md#fork-choice-state-object)
+- `forkchoiceState`: _object_ - [Fork choice state object](objects.md#fork-choice-state-object)
 
-* `payloadAttributes`: *object* - [Payload attribute object](objects.md#payload-attributes-object). Can be `null`.
+- `payloadAttributes`: _object_ - [Payload attribute object](objects.md#payload-attributes-object). Can be `null`.
 
 #### Returns
 
-* `payloadStatus`: *object* - [Payload status object](objects.md#payload-status-object)
+- `payloadStatus`: _object_ - [Payload status object](objects.md#payload-status-object)
 
-* `payloadId`: *data* -  identifier of the payload build process or `null`
+- `payloadId`: _data_ - identifier of the payload build process or `null`
 
 !!! example
 
@@ -230,13 +226,13 @@ Returns the bodies of the execution payloads corresponding to the specified rang
 
 #### Parameters
 
-* `startBlockNumber`: *string* - Number of the starting block of the range, as a hexadecimal string
+- `startBlockNumber`: _string_ - Number of the starting block of the range, as a hexadecimal string
 
-* `count`: *string* - Number of blocks in the range (including the starting block), as a hexadecimal string
+- `count`: _string_ - Number of blocks in the range (including the starting block), as a hexadecimal string
 
 #### Returns
 
-`engineGetPayloadBodiesResultV1`: *array* of *objects* - Execution payload body objects
+`engineGetPayloadBodiesResultV1`: _array_ of _objects_ - Execution payload body objects
 
 !!! example
 
@@ -294,11 +290,11 @@ Prepares the payload to send to the consensus client.
 
 #### Parameters
 
-`payloadId`: *data* - Identifier of the payload build process
+`payloadId`: _data_ - Identifier of the payload build process
 
 #### Returns
 
-`executionPayload`: *object* - [Execution payload object](objects.md#execution-payload-object)
+`executionPayload`: _object_ - [Execution payload object](objects.md#execution-payload-object)
 
 !!! example
 
@@ -345,11 +341,11 @@ Executes the payload with the consensus client.
 
 #### Parameters
 
-`executionPayload`: *object* - [Execution payload object](objects.md#execution-payload-object)
+`executionPayload`: _object_ - [Execution payload object](objects.md#execution-payload-object)
 
 #### Returns
 
-* `payloadStatus`: *object* - [Payload status object](objects.md#payload-status-object)
+- `payloadStatus`: _object_ - [Payload status object](objects.md#payload-status-object)
 
 !!! example
 

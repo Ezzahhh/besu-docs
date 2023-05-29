@@ -1,4 +1,6 @@
 ---
+title: Genesis file items
+sidebar_position: 4
 description: Configuration items specified in the Hyperledger Besu genesis file
 tags:
   - private networks
@@ -6,48 +8,43 @@ tags:
 
 # Genesis file items
 
-The [Besu genesis file](../concepts/genesis-file.md) contains [network configuration items](#configuration-items)
-and [genesis block parameters](#genesis-block-parameters).
+The [Besu genesis file](../concepts/genesis-file.md) contains [network configuration items](#configuration-items) and [genesis block parameters](#genesis-block-parameters).
 
 ## Configuration items
 
 Network configuration items are specified in the genesis file in the `config` object.
 
-| Item                | Description                                                                                                                                                                                 |
-|---------------------|-:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Milestone blocks    | [Milestone blocks for the network](#milestone-blocks).                                                                                                                                      |
-| `chainID`           | [Chain ID for the network](../concepts/network-and-chain-id.md).                                                                                                                           |
-| `ethash`            | Specifies network uses [Ethash](../../private-networks/how-to/configure/consensus/index.md) and contains [`fixeddifficulty`](#fixed-difficulty).                                                 |
-| `clique`            | Specifies network uses [Clique](../../private-networks/how-to/configure/consensus/clique.md) and contains [Clique configuration items](../../private-networks/how-to/configure/consensus/clique.md#genesis-file). |
-| `ibft2`             | Specifies network uses [IBFT 2.0](../../private-networks/how-to/configure/consensus/ibft.md) and contains [IBFT 2.0 configuration items](../../private-networks/how-to/configure/consensus/ibft.md#genesis-file). |
-| `qbft`              | Specifies network uses [QBFT](../../private-networks/how-to/configure/consensus/qbft.md) and contains [QBFT configuration items](../../private-networks/how-to/configure/consensus/qbft.md#genesis-file).         |
-| `transitions`       | Specifies block at which to [change IBFT 2.0 or QBFT validators](../../private-networks/how-to/configure/consensus/add-validators-without-voting.md).                                                                   |
-| `contractSizeLimit` | Maximum contract size in bytes. Specify in [free gas networks](../../private-networks/how-to/configure/free-gas.md). The default is `24576` and the maximum size is `2147483647`.                                 |
-| `evmStackSize`      | Maximum stack size. Specify to increase the maximum stack size in private networks with complex smart contracts. The default is `1024`.                                                     |
-| `ecCurve`           | Specifies [the elliptic curve to use](../../private-networks/how-to/configure/curves.md). Default is `secp256k1`.                                                                                 |
-| `discovery`         | Specifies [discovery configuration items](#discovery-configuration-items). The `discovery` object can be left empty.                                                                        |
+| Item | Description |
+| --- | --: |
+| Milestone blocks | [Milestone blocks for the network](#milestone-blocks). |
+| `chainID` | [Chain ID for the network](../concepts/network-and-chain-id.md). |
+| `ethash` | Specifies network uses [Ethash](../../private-networks/how-to/configure/consensus/index.md) and contains [`fixeddifficulty`](#fixed-difficulty). |
+| `clique` | Specifies network uses [Clique](../../private-networks/how-to/configure/consensus/clique.md) and contains [Clique configuration items](../../private-networks/how-to/configure/consensus/clique.md#genesis-file). |
+| `ibft2` | Specifies network uses [IBFT 2.0](../../private-networks/how-to/configure/consensus/ibft.md) and contains [IBFT 2.0 configuration items](../../private-networks/how-to/configure/consensus/ibft.md#genesis-file). |
+| `qbft` | Specifies network uses [QBFT](../../private-networks/how-to/configure/consensus/qbft.md) and contains [QBFT configuration items](../../private-networks/how-to/configure/consensus/qbft.md#genesis-file). |
+| `transitions` | Specifies block at which to [change IBFT 2.0 or QBFT validators](../../private-networks/how-to/configure/consensus/add-validators-without-voting.md). |
+| `contractSizeLimit` | Maximum contract size in bytes. Specify in [free gas networks](../../private-networks/how-to/configure/free-gas.md). The default is `24576` and the maximum size is `2147483647`. |
+| `evmStackSize` | Maximum stack size. Specify to increase the maximum stack size in private networks with complex smart contracts. The default is `1024`. |
+| `ecCurve` | Specifies [the elliptic curve to use](../../private-networks/how-to/configure/curves.md). Default is `secp256k1`. |
+| `discovery` | Specifies [discovery configuration items](#discovery-configuration-items). The `discovery` object can be left empty. |
 
 ## Genesis block parameters
 
-The purpose of some genesis block parameters varies depending on the consensus protocol (Ethash,
-[Clique](../../private-networks/how-to/configure/consensus/clique.md),
-[IBFT 2.0](../../private-networks/how-to/configure/consensus/ibft.md), or
-[QBFT](../../private-networks/how-to/configure/consensus/qbft.md)). These parameters include:
+The purpose of some genesis block parameters varies depending on the consensus protocol (Ethash, [Clique](../../private-networks/how-to/configure/consensus/clique.md), [IBFT 2.0](../../private-networks/how-to/configure/consensus/ibft.md), or [QBFT](../../private-networks/how-to/configure/consensus/qbft.md)). These parameters include:
 
-* `difficulty`.
-* `extraData`.
-* `mixHash`.
+- `difficulty`.
+- `extraData`.
+- `mixHash`.
 
-The following table describes the genesis block parameters with the same purpose across all
-consensus protocols.
+The following table describes the genesis block parameters with the same purpose across all consensus protocols.
 
-| Item                | Description                                                                                                                             |
-|---------------------|-:---------------------------------------------------------------------------------------------------------------------------------------|
-| `coinbase`          | Address to pay mining rewards to. Can be any value in the genesis block (commonly set to `0x0000000000000000000000000000000000000000`). |
-| `gasLimit`          | Block gas limit. Total gas limit for all transactions in a block.                                                                       |
-| `nonce`             | Used in block computation. Can be any value in the genesis block (commonly set to `0x0`).                                               |
-| `timestamp`         | Creation date and time of the block. Must be before the next block so we recommend specifying `0x0` in the genesis file.                |
-| `alloc`             | Defines [accounts with balances](../../private-networks/reference/accounts-for-testing.md) or [contracts](../../private-networks/how-to/configure/contracts.md).                   |
+| Item | Description |
+| --- | --: |
+| `coinbase` | Address to pay mining rewards to. Can be any value in the genesis block (commonly set to `0x0000000000000000000000000000000000000000`). |
+| `gasLimit` | Block gas limit. Total gas limit for all transactions in a block. |
+| `nonce` | Used in block computation. Can be any value in the genesis block (commonly set to `0x0`). |
+| `timestamp` | Creation date and time of the block. Must be before the next block so we recommend specifying `0x0` in the genesis file. |
+| `alloc` | Defines [accounts with balances](../../private-networks/reference/accounts-for-testing.md) or [contracts](../../private-networks/how-to/configure/contracts.md). |
 
 !!! caution
 
@@ -58,9 +55,7 @@ consensus protocols.
 
 ## Milestone blocks
 
-In public networks, the milestone blocks specify the blocks at which the network changed protocol.
-See a [full list of Ethereum protocol releases](https://github.com/ethereum/execution-specs#ethereum-protocol-releases)
-and their corresponding milestone blocks.
+In public networks, the milestone blocks specify the blocks at which the network changed protocol. See a [full list of Ethereum protocol releases](https://github.com/ethereum/execution-specs#ethereum-protocol-releases) and their corresponding milestone blocks.
 
 !!! example "Ethereum Mainnet milestone blocks"
 
@@ -115,8 +110,7 @@ In private networks, the milestone block defines the protocol version for the ne
 
 ## Fixed difficulty
 
-Use `fixeddifficulty` to specify a fixed difficulty in private networks using Ethash. This will keep
-the network's difficulty constant and override the `difficulty` parameter from the genesis file.
+Use `fixeddifficulty` to specify a fixed difficulty in private networks using Ethash. This will keep the network's difficulty constant and override the `difficulty` parameter from the genesis file.
 
 !!! example
 
@@ -133,17 +127,11 @@ the network's difficulty constant and override the `difficulty` parameter from t
     }
     ```
 
-!!! tip
-    Using `fixeddifficulty` is not recommended for use with Ethash outside of test environments.
-    For production networks using Ethash, we recommend setting a low `difficulty` value in the genesis file instead.
-    Ethash will adjust the difficulty of the network based on hashrate to produce blocks at the targeted frequency.
+!!! tip Using `fixeddifficulty` is not recommended for use with Ethash outside of test environments. For production networks using Ethash, we recommend setting a low `difficulty` value in the genesis file instead. Ethash will adjust the difficulty of the network based on hashrate to produce blocks at the targeted frequency.
 
 ## Discovery configuration items
 
-Use the `discovery` configuration items to specify the [`bootnodes`](cli/options.md#bootnodes) and [`discovery-dns-url`](cli/options.md#discovery-dns-url)
-in the genesis file, in place of using CLI options or listing them in the configuration file.
-If either CLI option is used, it takes precedence over the genesis file.
-Anything listed in the configuration file also takes precedence.
+Use the `discovery` configuration items to specify the [`bootnodes`](cli/options.md#bootnodes) and [`discovery-dns-url`](cli/options.md#discovery-dns-url) in the genesis file, in place of using CLI options or listing them in the configuration file. If either CLI option is used, it takes precedence over the genesis file. Anything listed in the configuration file also takes precedence.
 
 !!! example
 
@@ -162,4 +150,5 @@ Anything listed in the configuration file also takes precedence.
     ```
 
 <!--links-->
+
 [GoQuorum clients]: https://consensys.net/docs/goquorum/en/stable/

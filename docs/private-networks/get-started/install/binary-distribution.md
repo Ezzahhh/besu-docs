@@ -10,17 +10,17 @@ sidebar_position: 3
 
 ### Prerequisites
 
-* [Homebrew](https://brew.sh/)
-* Java JDK
+- [Homebrew](https://brew.sh/)
+- Java JDK
 
-!!!important
+:::caution
 
-    Hyperledger Besu supports:
+Hyperledger Besu supports:
 
-      * MacOS High Sierra 10.13 or later versions.
-      * Java 17+.
-        You can install Java using `brew install openjdk`. Alternatively, you can manually install the
-        [Java JDK](https://www.oracle.com/java/technologies/downloads).
+- MacOS High Sierra 10.13 or later versions.
+- Java 17+. You can install Java using `brew install openjdk`. Alternatively, you can manually install the [Java JDK](https://www.oracle.com/java/technologies/downloads).
+
+:::
 
 ### Install (or upgrade) using Homebrew
 
@@ -63,7 +63,7 @@ besu --help
 
 ### Prerequisites
 
-* [Java JDK 17+](https://www.oracle.com/java/technologies/downloads/)
+- [Java JDK 17+](https://www.oracle.com/java/technologies/downloads/)
 
 !!! note "Linux open file limit"
 

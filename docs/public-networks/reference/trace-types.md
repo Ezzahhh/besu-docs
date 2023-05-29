@@ -1,4 +1,6 @@
 ---
+title: Transaction trace types
+sidebar_position: 6
 description: Transaction trace types
 tags:
   - private networks
@@ -6,8 +8,7 @@ tags:
 
 # Transaction trace types
 
-When [tracing transactions](../how-to/troubleshoot/trace-transactions.md), the trace type options are
-[`trace`](#trace), [`vmTrace`](#vmtrace), and [`stateDiff`](#statediff).
+When [tracing transactions](../how-to/troubleshoot/trace-transactions.md), the trace type options are [`trace`](#trace), [`vmTrace`](#vmtrace), and [`stateDiff`](#statediff).
 
 ## `trace`
 
@@ -38,38 +39,32 @@ An ordered list of calls to other contracts, excluding precompiled contracts.
     ]
     ```
 
-| Key            | Value                                                                          |
-|----------------| -------------------------------------------------------------------------------|
-| `action`       | Transaction details.
-| `callType`     | Whether the transaction is `call` or `create`.
-| `from`         | Address of the transaction sender.
-| `gas`          | Gas provided by sender.
-| `input`        | Transaction data.
-| `to`           | Target of the transaction.
-| `value`        | Value transferred in the transaction.
-| `result`       | Transaction result.
-| `gasUsed`      | Gas used by the transaction. Includes any refunds of unused gas.
-| `output`       | Return value of the contract call. Contains only the actual value sent by a `RETURN` operation. If a `RETURN` was not executed, the output is empty bytes.
-| `subTraces`    | Traces of contract calls made by the transaction.
-| `traceAddress` | Tree list address of where the call occurred, address of the parents, and order of the current sub call.
-| `type`         | Whether the transaction is a `CALL` or `CREATE` series operation.
+| Key | Value |
+| --- | --- |
+| `action` | Transaction details. |
+| `callType` | Whether the transaction is `call` or `create`. |
+| `from` | Address of the transaction sender. |
+| `gas` | Gas provided by sender. |
+| `input` | Transaction data. |
+| `to` | Target of the transaction. |
+| `value` | Value transferred in the transaction. |
+| `result` | Transaction result. |
+| `gasUsed` | Gas used by the transaction. Includes any refunds of unused gas. |
+| `output` | Return value of the contract call. Contains only the actual value sent by a `RETURN` operation. If a `RETURN` was not executed, the output is empty bytes. |
+| `subTraces` | Traces of contract calls made by the transaction. |
+| `traceAddress` | Tree list address of where the call occurred, address of the parents, and order of the current sub call. |
+| `type` | Whether the transaction is a `CALL` or `CREATE` series operation. |
 
 ## `vmTrace`
 
 An ordered list of EVM actions when processing the transaction.
 
-`vmTrace` only reports actual data returned from a `RETURN` opcode and does not return the
-contents of the reserved output space for the call operations. As a result:
+`vmTrace` only reports actual data returned from a `RETURN` opcode and does not return the contents of the reserved output space for the call operations. As a result:
 
-* `vmTrace` reports `null` when a call operation ends because of a `STOP`, `HALT`, `REVERT`,
-  running out of instructions, or any exceptional halts.
-* When a `RETURN` operation returns data of a different length to the space reserved by the call,
-  `vmTrace` reports only the data passed to the `RETURN` operation and does not include
-  pre-existing memory data or trim the returned data.
+- `vmTrace` reports `null` when a call operation ends because of a `STOP`, `HALT`, `REVERT`, running out of instructions, or any exceptional halts.
+- When a `RETURN` operation returns data of a different length to the space reserved by the call, `vmTrace` reports only the data passed to the `RETURN` operation and does not include pre-existing memory data or trim the returned data.
 
-For out of gas operations, `vmTrace` reports the operation that caused the out of gas exception,
-including the calculated gas cost. `vmTrace` does not report `ex` values because the operation is
-not executed.
+For out of gas operations, `vmTrace` reports the operation that caused the out of gas exception, including the calculated gas cost. `vmTrace` does not report `ex` values because the operation is not executed.
 
 !!!example "`vmTrace` example"
 
@@ -95,28 +90,26 @@ not executed.
     }
     ```
 
-| Key       | Value                                                                               |
-|-----------| ------------------------------------------------------------------------------------|
-| `code`    | Code executed by the EVM.
-| `ops`     | Sequence of EVM operations (opcodes) executed in the transaction.
-| `cost`    | Gas cost of the opcode. Includes memory expansion costs but not gas refunds. For precompiled contract calls, reports only the actual cost.
-| `ex`      | Executed operations.
-| `mem`     | Memory read or written by the operation.
-| `push`    | Adjusted stack items. For swap, includes all intermediate values and the result. Otherwise, is the value pushed onto the stack.
-| `store`   | Account storage written by the operation.
-| `used`    | Remaining gas taking into account the all but 1/64th rule for calls.
-| `pc`      | Program counter.
-| `sub`     | Sub call operations.
+| Key | Value |
+| --- | --- |
+| `code` | Code executed by the EVM. |
+| `ops` | Sequence of EVM operations (opcodes) executed in the transaction. |
+| `cost` | Gas cost of the opcode. Includes memory expansion costs but not gas refunds. For precompiled contract calls, reports only the actual cost. |
+| `ex` | Executed operations. |
+| `mem` | Memory read or written by the operation. |
+| `push` | Adjusted stack items. For swap, includes all intermediate values and the result. Otherwise, is the value pushed onto the stack. |
+| `store` | Account storage written by the operation. |
+| `used` | Remaining gas taking into account the all but 1/64th rule for calls. |
+| `pc` | Program counter. |
+| `sub` | Sub call operations. |
 
 ## `stateDiff`
 
-State changes in the requested block for each transaction represented as a map of accounts to an
-object. Besu lists the balance, code, nonce, and storage changes from immediately before the
-transaction to after the transaction. For the `key:value` pairs:
+State changes in the requested block for each transaction represented as a map of accounts to an object. Besu lists the balance, code, nonce, and storage changes from immediately before the transaction to after the transaction. For the `key:value` pairs:
 
-* `+` indicates the field didn’t exist before and now has the specified value
-* `-` indicates a deleted value
-* `*` has a `from` and a `to` value.
+- `+` indicates the field didn’t exist before and now has the specified value
+- `-` indicates a deleted value
+- `*` has a `from` and a `to` value.
 
 An absent value is distinct from zero when creating accounts or clearing storage.
 
@@ -144,31 +137,29 @@ An absent value is distinct from zero when creating accounts or clearing storage
     }
     ```
 
-| Key            | Value                                                                          |
-|-----------     | -------------------------------------------------------------------------------|
-| `balance`      | Change of balance event.
-| `balance.from` | Balance before the transaction.
-| `balance.to`   | Balance after the transaction.
-| `code`         | Changes to code. None in this example.
-| `nonce`        | Change of nonce.
-| `nonce.from`   | Nonce before the transaction.
-| `nonce.to`     | Nonce after the transaction.
-| `storage`      | Changes to storage. None in this example.
+| Key            | Value                                     |
+| -------------- | ----------------------------------------- |
+| `balance`      | Change of balance event.                  |
+| `balance.from` | Balance before the transaction.           |
+| `balance.to`   | Balance after the transaction.            |
+| `code`         | Changes to code. None in this example.    |
+| `nonce`        | Change of nonce.                          |
+| `nonce.from`   | Nonce before the transaction.             |
+| `nonce.to`     | Nonce after the transaction.              |
+| `storage`      | Changes to storage. None in this example. |
 
 ## Applicable API methods
 
-The trace options `trace`, `vmTrace`, and `stateDiff` are available for the following
-[ad-hoc tracing API methods](../how-to/troubleshoot/trace-transactions.md#ad-hoc-tracing-apis):
+The trace options `trace`, `vmTrace`, and `stateDiff` are available for the following [ad-hoc tracing API methods](../how-to/troubleshoot/trace-transactions.md#ad-hoc-tracing-apis):
 
-* [`trace_call`](api/index.md#trace_call)
-* [`trace_callMany`](api/index.md#trace_callmany)
-* [`trace_rawTransaction`](api/index.md#trace_rawtransaction)
-* [`trace_replayBlockTransactions`](api/index.md#trace_replayblocktransactions)
+- [`trace_call`](api/index.md#trace_call)
+- [`trace_callMany`](api/index.md#trace_callmany)
+- [`trace_rawTransaction`](api/index.md#trace_rawtransaction)
+- [`trace_replayBlockTransactions`](api/index.md#trace_replayblocktransactions)
 
-Only the `trace` option is available for the following
-[transaction-trace filtering API methods](../how-to/troubleshoot/trace-transactions.md#transaction-trace-filtering-apis):
+Only the `trace` option is available for the following [transaction-trace filtering API methods](../how-to/troubleshoot/trace-transactions.md#transaction-trace-filtering-apis):
 
-* [`trace_block`](api/index.md#trace_block)
-* [`trace_filter`](api/index.md#trace_filter)
-* [`trace_get`](api/index.md#trace_get)
-* [`trace_transaction`](api/index.md#trace_transaction)
+- [`trace_block`](api/index.md#trace_block)
+- [`trace_filter`](api/index.md#trace_filter)
+- [`trace_get`](api/index.md#trace_get)
+- [`trace_transaction`](api/index.md#trace_transaction)

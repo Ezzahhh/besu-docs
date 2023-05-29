@@ -1,26 +1,21 @@
 ---
+title: Connect to Mainnet
+sidebar_position: 2
 description: How to connect to Mainnet
 ---
 
 # Connect to Mainnet
 
-!!! important
-    [The Merge](../../concepts/the-merge.md) was executed on **September 15, 2022**.
-    Ethereum is now a [proof of stake](../../concepts/proof-of-stake/index.md) network, and a full
-    Ethereum node requires both
-    [an execution client and a consensus client](../../concepts/the-merge.md#execution-and-consensus-clients).
+!!! important [The Merge](../../concepts/the-merge.md) was executed on **September 15, 2022**. Ethereum is now a [proof of stake](../../concepts/proof-of-stake/index.md) network, and a full Ethereum node requires both [an execution client and a consensus client](../../concepts/the-merge.md#execution-and-consensus-clients).
 
-Run Besu as an [execution client](../../concepts/the-merge.md#execution-clients) with any consensus
-client on Ethereum Mainnet.
+Run Besu as an [execution client](../../concepts/the-merge.md#execution-clients) with any consensus client on Ethereum Mainnet.
 
-If you're using [Teku] as a consensus client, you can follow the
-[Besu and Teku Mainnet tutorial](../../tutorials/besu-teku-mainnet.md).
+If you're using [Teku] as a consensus client, you can follow the [Besu and Teku Mainnet tutorial](../../tutorials/besu-teku-mainnet.md).
 
 ## Prerequisites
 
 - [Besu installed](../install/binary-distribution.md).
-- A consensus client installed.
-  For example, [Teku](https://docs.teku.consensys.net/en/latest/).
+- A consensus client installed. For example, [Teku](https://docs.teku.consensys.net/en/latest/).
 
 ## Steps
 
@@ -32,19 +27,15 @@ Run the following command:
 openssl rand -hex 32 | tr -d "\n" > jwtsecret.hex
 ```
 
-You will specify `jwtsecret.hex` when starting Besu and the consensus client.
-This is a shared JWT secret the clients use to authenticate each other when using the
-[Engine API](../../how-to/use-engine-api.md).
+You will specify `jwtsecret.hex` when starting Besu and the consensus client. This is a shared JWT secret the clients use to authenticate each other when using the [Engine API](../../how-to/use-engine-api.md).
 
 ### 2. Generate validator keys
 
 If you're running the consensus client as a beacon node only, skip to the [next step](#3-start-besu).
 
-If you're also running the consensus client as a validator client, have a funded Ethereum address
-ready (32 ETH and gas fees for each validator).
+If you're also running the consensus client as a validator client, have a funded Ethereum address ready (32 ETH and gas fees for each validator).
 
-Generate validator keys for one or more validators using the
-[Staking Launchpad](https://launchpad.ethereum.org/en/).
+Generate validator keys for one or more validators using the [Staking Launchpad](https://launchpad.ethereum.org/en/).
 
 !!! important
 
@@ -53,8 +44,7 @@ Generate validator keys for one or more validators using the
 
 ### 3. Start Besu
 
-Run the following command or specify the options in a
-[configuration file](../../how-to/configuration-file.md):
+Run the following command or specify the options in a [configuration file](../../how-to/configuration-file.md):
 
 ```bash
 besu \
@@ -72,29 +62,20 @@ besu \
 
 Specify:
 
-- The path to the `jwtsecret.hex` file generated in [step 1](#1-generate-the-shared-secret)
-  using the [`--engine-jwt-secret`](../../reference/cli/options.md#engine-jwt-secret) option.
-- The IP address of your Besu node using the [`--host-allowlist`](../../reference/cli/options.md#host-allowlist)
-  and [`--engine-host-allowlist`](../../reference/cli/options.md#engine-host-allowlist) options.
+- The path to the `jwtsecret.hex` file generated in [step 1](#1-generate-the-shared-secret) using the [`--engine-jwt-secret`](../../reference/cli/options.md#engine-jwt-secret) option.
+- The IP address of your Besu node using the [`--host-allowlist`](../../reference/cli/options.md#host-allowlist) and [`--engine-host-allowlist`](../../reference/cli/options.md#engine-host-allowlist) options.
 
 Also, in the command:
 
 - [`--sync-mode`](../../reference/cli/options.md#sync-mode) specifies using [snap sync](sync-node.md#snap-synchronization).
-- [`--data-storage-format`](../../reference/cli/options.md#data-storage-format) specifies using
-  [Bonsai Tries](../../concepts/data-storage-formats.md#bonsai-tries).
-- [`--rpc-http-enabled`](../../reference/cli/options.md#rpc-http-enabled) enables the HTTP JSON-RPC
-  service.
-- [`--rpc-http-host`](../../reference/cli/options.md#rpc-http-host) is set to `0.0.0.0` to allow
-  remote RPC connections.
-- [`--rpc-ws-enabled`](../../reference/cli/options.md#rpc-ws-enabled) enables the WebSocket JSON-RPC
-  service.
-- [`--rpc-ws-host`](../../reference/cli/options.md#rpc-ws-host) is set to `0.0.0.0` to allow remote
-  RPC connections.
-- [`--engine-rpc-enabled`](../../reference/cli/options.md#engine-rpc-enabled) enables the
-    [Engine API](../../reference/engine-api/index.md).
+- [`--data-storage-format`](../../reference/cli/options.md#data-storage-format) specifies using [Bonsai Tries](../../concepts/data-storage-formats.md#bonsai-tries).
+- [`--rpc-http-enabled`](../../reference/cli/options.md#rpc-http-enabled) enables the HTTP JSON-RPC service.
+- [`--rpc-http-host`](../../reference/cli/options.md#rpc-http-host) is set to `0.0.0.0` to allow remote RPC connections.
+- [`--rpc-ws-enabled`](../../reference/cli/options.md#rpc-ws-enabled) enables the WebSocket JSON-RPC service.
+- [`--rpc-ws-host`](../../reference/cli/options.md#rpc-ws-host) is set to `0.0.0.0` to allow remote RPC connections.
+- [`--engine-rpc-enabled`](../../reference/cli/options.md#engine-rpc-enabled) enables the [Engine API](../../reference/engine-api/index.md).
 
-You can modify the option values and add other [command line options](../../reference/cli/options.md)
-as needed.
+You can modify the option values and add other [command line options](../../reference/cli/options.md) as needed.
 
 ### 4. Start the consensus client
 
@@ -104,8 +85,7 @@ Refer to your consensus client documentation to configure and start the consensu
 
     If you're running a validator client, make sure you set a fee recipient address.
 
-If you're using Teku, follow the
-[Besu and Teku Mainnet tutorial](../../tutorials/besu-teku-mainnet.md#5-start-teku).
+If you're using Teku, follow the [Besu and Teku Mainnet tutorial](../../tutorials/besu-teku-mainnet.md#5-start-teku).
 
 ### 5. Wait for the clients to sync
 
@@ -140,19 +120,14 @@ After starting Besu and the consensus client, your node starts syncing and conne
         2022-03-21 20:44:12.353 INFO  - Syncing     *** Target slot: 76096, Head slot: 3519, Remaining slots: 72577, Connected peers: 9
         ```
 
-If you're running the consensus client as a beacon node only, you're all set.
-If you're also running the consensus client as a validator client, ensure your clients are fully
-synced before submitting your staking deposit in the next step.
-Syncing Besu can take several days.
+If you're running the consensus client as a beacon node only, you're all set. If you're also running the consensus client as a validator client, ensure your clients are fully synced before submitting your staking deposit in the next step. Syncing Besu can take several days.
 
 ### 6. Stake ETH
 
-Stake your ETH for one or more validators using the
-[Staking Launchpad](https://launchpad.ethereum.org/en/).
+Stake your ETH for one or more validators using the [Staking Launchpad](https://launchpad.ethereum.org/en/).
 
-You can check your validator status by searching your Ethereum address on the
-[Beacon Chain explorer](https://beaconcha.in/).
-It may take up to multiple days for your validator to be activated and start proposing blocks.
+You can check your validator status by searching your Ethereum address on the [Beacon Chain explorer](https://beaconcha.in/). It may take up to multiple days for your validator to be activated and start proposing blocks.
 
 <!-- links -->
+
 [Teku]: https://docs.teku.consensys.net/en/stable/

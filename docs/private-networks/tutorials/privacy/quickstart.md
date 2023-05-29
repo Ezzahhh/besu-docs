@@ -4,16 +4,9 @@ description: Hyperledger Besu privacy-enabled private network tutorial
 
 # Create a privacy-enabled network using the Quorum Developer Quickstart
 
-You can create a privacy-enabled network using the
-[Quorum Developer Quickstart](../quickstart.md).
-It runs a private Hyperledger Besu network that
-uses [Tessera](https://docs.tessera.consensys.net/en/stable/) as its private transaction manager.
+You can create a privacy-enabled network using the [Quorum Developer Quickstart](../quickstart.md). It runs a private Hyperledger Besu network that uses [Tessera](https://docs.tessera.consensys.net/en/stable/) as its private transaction manager.
 
-You can use the [Block Explorer](../quickstart.md#block-explorer), make
-[JSON-RPC requests](../quickstart.md#run-json-rpc-requests), and
-[create transactions using MetaMask](../quickstart.md#create-a-transaction-using-metamask).
-This tutorial describes how to make private transactions between nodes, and perform read and write operations on private
-contracts.
+You can use the [Block Explorer](../quickstart.md#block-explorer), make [JSON-RPC requests](../quickstart.md#run-json-rpc-requests), and [create transactions using MetaMask](../quickstart.md#create-a-transaction-using-metamask). This tutorial describes how to make private transactions between nodes, and perform read and write operations on private contracts.
 
 !!! important
 
@@ -24,17 +17,17 @@ contracts.
 
 To run this tutorial, you must have the following installed:
 
-* [Docker and Docker-compose](https://docs.docker.com/compose/install/)
+- [Docker and Docker-compose](https://docs.docker.com/compose/install/)
 
-    !!! important
+  !!! important
 
         If using [MacOS](https://docs.docker.com/docker-for-mac/) or
         [Windows](https://docs.docker.com/docker-for-windows/), enable Docker to use up to 6GB of
         memory on the _Advanced_ tab in _Preferences_.
 
-* [Nodejs](https://nodejs.org/en/download/)
-* [Git command line](https://git-scm.com/)
-* [Curl command line](https://curl.haxx.se/download.html).
+- [Nodejs](https://nodejs.org/en/download/)
+- [Git command line](https://git-scm.com/)
+- [Curl command line](https://curl.haxx.se/download.html).
 
 ## Create Docker-compose file
 
@@ -46,14 +39,15 @@ To create the docker-compose file and artifacts, run:
 npx quorum-dev-quickstart
 ```
 
-Follow the prompts displayed to run Hyperledger Besu, private transactions, and [logging with ELK](../../how-to/monitor/elastic-stack.md).
-Enter `n` for [Codefi Orchestrate](https://docs.orchestrate.consensys.net/en/stable/).
+Follow the prompts displayed to run Hyperledger Besu, private transactions, and [logging with ELK](../../how-to/monitor/elastic-stack.md). Enter `n` for [Codefi Orchestrate](https://docs.orchestrate.consensys.net/en/stable/).
 
 ## Start the network
 
-!!!important
+:::caution
 
-    If running in Windows, please run commands from the GitBash shell
+If running in Windows, please run commands from the GitBash shell
+
+:::
 
 In the installation directory, start the network:
 
@@ -61,8 +55,7 @@ In the installation directory, start the network:
 ./run.sh
 ```
 
-The script pulls the Docker images starts the network. Pulling the images takes a few minutes the
-first time. The network details display.
+The script pulls the Docker images starts the network. Pulling the images takes a few minutes the first time. The network details display.
 
 ```bash
 *************************************
@@ -85,15 +78,9 @@ For more information on the endpoints and services, refer to README.md in the in
 
 ## Deploy the private contract and interact with the nodes
 
-To deploy a private contract to another [privacy group](../../concepts/privacy/privacy-groups.md) member, use the
-[web3js-quorum](https://consensys.github.io/web3js-quorum/latest/index.html) library and
-the [`eea_sendRawTransaction`](../../../public-networks/reference/api/index.md#eea_sendrawtransaction) API call.
-You must use this API call instead of [`eth_sendTransaction`](https://ethereum.github.io/execution-apis/api-documentation) because Hyperledger Besu
-keeps account management separate for stronger security.
+To deploy a private contract to another [privacy group](../../concepts/privacy/privacy-groups.md) member, use the [web3js-quorum](https://consensys.github.io/web3js-quorum/latest/index.html) library and the [`eea_sendRawTransaction`](../../../public-networks/reference/api/index.md#eea_sendrawtransaction) API call. You must use this API call instead of [`eth_sendTransaction`](https://ethereum.github.io/execution-apis/api-documentation) because Hyperledger Besu keeps account management separate for stronger security.
 
-This example uses the [web3js](https://www.npmjs.com/package/web3) library to make the API calls, the example
-creates three Besu nodes, with each node having a corresponding Tessera node for privacy. You can access the Besu
-member nodes for API calls on the following ports:
+This example uses the [web3js](https://www.npmjs.com/package/web3) library to make the API calls, the example creates three Besu nodes, with each node having a corresponding Tessera node for privacy. You can access the Besu member nodes for API calls on the following ports:
 
 ```bash
 Member1Besu RPC: http://localhost:20000
@@ -114,10 +101,7 @@ npm install
 node scripts/private_tx.js
 ```
 
-The script deploys the contract and sends an arbitrary value (47) from `Member1` to `Member3`. Once done, it queries
-all three members (Tessera) to check the value at an address. Only `Member1` & `Member3` has
-this information as they were involved in the transaction, `Member2` responds with a `0x` to indicate it is
-unaware of the transaction.
+The script deploys the contract and sends an arbitrary value (47) from `Member1` to `Member3`. Once done, it queries all three members (Tessera) to check the value at an address. Only `Member1` & `Member3` has this information as they were involved in the transaction, `Member2` responds with a `0x` to indicate it is unaware of the transaction.
 
 ```bash
 node scripts/private_tx.js
@@ -146,16 +130,13 @@ The general contract deployment flow is:
 
 1. Obtain the privacy transaction receipt from the transaction hash.
 
-1. Use the contract address in the privacy transaction receipt to
-    [interact with the contract](../contracts/interact.md) from that point on.
+1. Use the contract address in the privacy transaction receipt to [interact with the contract](../contracts/interact.md) from that point on.
 
 ## Further examples
 
-View the [web3js-quorum client library example](web3js-quorum.md) and view the
-[sample code examples](https://github.com/ConsenSys/web3js-quorum/tree/master/example).
+View the [web3js-quorum client library example](web3js-quorum.md) and view the [sample code examples](https://github.com/ConsenSys/web3js-quorum/tree/master/example).
 
-You can also test the erc20 token example by executing `erc20.js` which deploys
-a `HumanStandardToken` contract and transfers 1 token to Node2.
+You can also test the erc20 token example by executing `erc20.js` which deploys a `HumanStandardToken` contract and transfers 1 token to Node2.
 
 This can be verified from the `data` field of the `logs` which is `1`.
 
@@ -163,14 +144,14 @@ This can be verified from the `data` field of the `logs` which is `1`.
 
 Do one of the following to stop the network:
 
-* Stop the network:
+- Stop the network:
 
-    ```bash
-    ./stop.sh
-    ```
+  ```bash
+  ./stop.sh
+  ```
 
-* Stop the network and remove the containers and volumes:
+- Stop the network and remove the containers and volumes:
 
-    ```bash
-    ./remove.sh
-    ```
+  ```bash
+  ./remove.sh
+  ```

@@ -1,4 +1,6 @@
 ---
+title: Manage JVM memory
+sidebar_position: 2
 description: Besu memory management
 tags:
   - private networks
@@ -8,8 +10,7 @@ tags:
 
 You can manage Java Virtual Machine (JVM) memory usage for Besu by modifying the maximum heap size.
 
-By default, the JVM uses 25% of system RAM.
-For example, if you have 16 GB RAM installed, the JVM uses 4 GB by default.
+By default, the JVM uses 25% of system RAM. For example, if you have 16 GB RAM installed, the JVM uses 4 GB by default.
 
 On public networks, we recommend setting the maximum heap size to:
 
@@ -23,8 +24,7 @@ On public networks, we recommend setting the maximum heap size to:
     after sync.
     Thus, we recommend setting it to 8 GB only when you have available RAM.
 
-You can set the maximum heap size using the `BESU_OPTS` environment variable and the `-Xmx` option.
-The following examples set the maximum heap size to 8 GB:
+You can set the maximum heap size using the `BESU_OPTS` environment variable and the `-Xmx` option. The following examples set the maximum heap size to 8 GB:
 
 === "Exported environment variable example"
 
@@ -54,20 +54,15 @@ The following examples set the maximum heap size to 8 GB:
 
 ## Manage the heap dump
 
-Heap dump file generation is disabled by default.
-To enable it, set the `-XX:+HeapDumpOnOutOfMemoryError` Java option.
+Heap dump file generation is disabled by default. To enable it, set the `-XX:+HeapDumpOnOutOfMemoryError` Java option.
 
 ```bash
 BESU_OPTS="-XX:+HeapDumpOnOutOfMemoryError"
 ```
 
-When heap dump file generation is enabled, and an out-of-memory error occurs, the heap dump file is
-saved in the Besu runtime directory by default.
+When heap dump file generation is enabled, and an out-of-memory error occurs, the heap dump file is saved in the Besu runtime directory by default.
 
-The heap dump file might be large and can saturate your drive.
-It can be up to the size of the allocated memory.
-For example, for 8 GB heap memory, the file can be up to 8 GB.
-Specify the directory where you want the dump to be saved using the `-XX:HeapDumpPath` Java option.
+The heap dump file might be large and can saturate your drive. It can be up to the size of the allocated memory. For example, for 8 GB heap memory, the file can be up to 8 GB. Specify the directory where you want the dump to be saved using the `-XX:HeapDumpPath` Java option.
 
 ```bash
 BESU_OPTS="-XX:HeapDumpPath=/<path>/<to>/<directory>"

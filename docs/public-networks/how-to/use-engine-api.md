@@ -1,20 +1,19 @@
 ---
+title: Use the Engine API
+sidebar_position: 2
 description: How to enable and use the Engine API
 ---
 
 # Use the Engine API
 
-[Consensus and execution clients](../concepts/the-merge.md#execution-and-consensus-clients)
-communicate with each other using the [Engine API](../reference/engine-api/index.md).
-These API methods are a separate subsection of the [JSON-RPC API](../how-to/use-besu-api/index.md).
+[Consensus and execution clients](../concepts/the-merge.md#execution-and-consensus-clients) communicate with each other using the [Engine API](../reference/engine-api/index.md). These API methods are a separate subsection of the [JSON-RPC API](../how-to/use-besu-api/index.md).
 
 ## Configure the Engine API
 
 To configure the Engine API:
 
 - [Enable the Engine API](#enable-the-engine-api) (it's disabled by default).
-- [Enable the JSON-RPC API](use-besu-api/index.md#enable-api-access).
-  Ensure the [`ETH` method is enabled](use-besu-api/json-rpc.md#api-methods-enabled-by-default) (it's enabled by default).
+- [Enable the JSON-RPC API](use-besu-api/index.md#enable-api-access). Ensure the [`ETH` method is enabled](use-besu-api/json-rpc.md#api-methods-enabled-by-default) (it's enabled by default).
 - Specify the [service ports](#service-ports).
 - Specify the [host allowlist](#host-allowlist).
 
@@ -35,17 +34,11 @@ Enable the Engine API with the [`--engine-rpc-enabled`](../reference/cli/options
 
 ### Service ports
 
-To specify the port the Engine API service listens on for HTTP and WebSocket, use the
-[`--engine-rpc-port`](../reference/cli/options.md#engine-rpc-port) option.
-The default is `8551`.
+To specify the port the Engine API service listens on for HTTP and WebSocket, use the [`--engine-rpc-port`](../reference/cli/options.md#engine-rpc-port) option. The default is `8551`.
 
 ### Host allowlist
 
-To prevent DNS rebinding attacks, Besu checks incoming HTTP request host headers, WebSocket connections, and GraphQL
-requests.
-Besu accepts requests only when hostnames specified using the
-[`--engine-host-allowlist`](../reference/cli/options.md#engine-host-allowlist) option matches the request host headers.
-By default, Besu accepts requests and connections from `localhost` and `127.0.0.1`.
+To prevent DNS rebinding attacks, Besu checks incoming HTTP request host headers, WebSocket connections, and GraphQL requests. Besu accepts requests only when hostnames specified using the [`--engine-host-allowlist`](../reference/cli/options.md#engine-host-allowlist) option matches the request host headers. By default, Besu accepts requests and connections from `localhost` and `127.0.0.1`.
 
 !!! important
 
@@ -62,8 +55,7 @@ Specify `*` for `--engine-host-allowlist` to effectively disable host protection
 
 ## Authentication
 
-By default, [authentication](../how-to/use-besu-api/authenticate.md) for the Engine API is enabled.
-To disable, set the [`--engine-jwt-disabled`](../reference/cli/options.md#engine-jwt-disabled) option to `true`.
+By default, [authentication](../how-to/use-besu-api/authenticate.md) for the Engine API is enabled. To disable, set the [`--engine-jwt-disabled`](../reference/cli/options.md#engine-jwt-disabled) option to `true`.
 
 !!! warning
 

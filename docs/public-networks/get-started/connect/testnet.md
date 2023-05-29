@@ -1,15 +1,14 @@
 ---
+title: Connect to a testnet
+sidebar_position: 3
 Description: How to connect to a testnet
 ---
 
 # Connect to a testnet
 
-Run Besu as an [execution client](../../concepts/the-merge.md#execution-clients) with any consensus
-client on the [Goerli](https://github.com/eth-clients/goerli) and
-[Sepolia](https://github.com/eth-clients/sepolia) testnets.
+Run Besu as an [execution client](../../concepts/the-merge.md#execution-clients) with any consensus client on the [Goerli](https://github.com/eth-clients/goerli) and [Sepolia](https://github.com/eth-clients/sepolia) testnets.
 
-If you're using [Teku](https://docs.teku.consensys.net/en/latest/) as a consensus client, you can
-follow the [Besu and Teku testnet tutorial](../../tutorials/besu-teku-testnet.md).
+If you're using [Teku](https://docs.teku.consensys.net/en/latest/) as a consensus client, you can follow the [Besu and Teku testnet tutorial](../../tutorials/besu-teku-testnet.md).
 
 !!! note
 
@@ -20,8 +19,7 @@ follow the [Besu and Teku testnet tutorial](../../tutorials/besu-teku-testnet.md
 ## Prerequisites
 
 - [Besu installed](../install/binary-distribution.md).
-- A consensus client installed.
-  For example, [Teku](https://docs.teku.consensys.net/en/latest/).
+- A consensus client installed. For example, [Teku](https://docs.teku.consensys.net/en/latest/).
 
 ## Steps
 
@@ -33,29 +31,20 @@ Run the following command:
 openssl rand -hex 32 | tr -d "\n" > jwtsecret.hex
 ```
 
-You will specify `jwtsecret.hex` when starting Besu and the consensus client.
-This is a shared JWT secret the clients use to authenticate each other when using the
-[Engine API](../../how-to/use-engine-api.md).
+You will specify `jwtsecret.hex` when starting Besu and the consensus client. This is a shared JWT secret the clients use to authenticate each other when using the [Engine API](../../how-to/use-engine-api.md).
 
 ### 2. Generate validator keys
 
 If you're running the consensus client as a beacon node only, skip to the [next step](#3-start-besu).
 
-If you're also running the consensus client as a validator client, create a test Ethereum address
-(you can do this in
-[MetaMask](https://metamask.zendesk.com/hc/en-us/articles/360015289452-How-to-create-an-additional-account-in-your-wallet)).
-Fund this address with testnet ETH (32 ETH and gas fees for each validator) using a faucet.
-See the list of [Goerli faucets](https://github.com/eth-clients/goerli#meta-data-g%C3%B6rli) and
-[Sepolia faucets](https://github.com/eth-clients/sepolia#meta-data-sepolia).
+If you're also running the consensus client as a validator client, create a test Ethereum address (you can do this in [MetaMask](https://metamask.zendesk.com/hc/en-us/articles/360015289452-How-to-create-an-additional-account-in-your-wallet)). Fund this address with testnet ETH (32 ETH and gas fees for each validator) using a faucet. See the list of [Goerli faucets](https://github.com/eth-clients/goerli#meta-data-g%C3%B6rli) and [Sepolia faucets](https://github.com/eth-clients/sepolia#meta-data-sepolia).
 
 !!! note
 
     If you can't get ETH using the faucet, you can ask for help on the
     [EthStaker Discord](https://discord.io/ethstaker).
 
-Generate validator keys for one or more validators using the
-[Goerli Staking Launchpad](https://goerli.launchpad.ethereum.org/) (or
-[request to become validator on Sepolia](https://notes.ethereum.org/zvkfSmYnT0-uxwwEegbCqg)).
+Generate validator keys for one or more validators using the [Goerli Staking Launchpad](https://goerli.launchpad.ethereum.org/) (or [request to become validator on Sepolia](https://notes.ethereum.org/zvkfSmYnT0-uxwwEegbCqg)).
 
 !!! important
 
@@ -64,8 +53,7 @@ Generate validator keys for one or more validators using the
 
 ### 3. Start Besu
 
-Run the following command or specify the options in a
-[configuration file](../../how-to/configuration-file.md):
+Run the following command or specify the options in a [configuration file](../../how-to/configuration-file.md):
 
 === "Goerli"
 
@@ -99,11 +87,9 @@ Run the following command or specify the options in a
       --engine-jwt-secret=<path to jwtsecret.hex>
     ```
 
-Specify the path to the `jwtsecret.hex` file generated in [step 1](#1-generate-the-shared-secret)
-using the [`--engine-jwt-secret`](../../reference/cli/options.md#engine-jwt-secret) option.
+Specify the path to the `jwtsecret.hex` file generated in [step 1](#1-generate-the-shared-secret) using the [`--engine-jwt-secret`](../../reference/cli/options.md#engine-jwt-secret) option.
 
-You can modify the option values and add other [command line options](../../reference/cli/options.md)
-as needed.
+You can modify the option values and add other [command line options](../../reference/cli/options.md) as needed.
 
 ### 4. Start the consensus client
 
@@ -113,8 +99,7 @@ Refer to your consensus client documentation to configure and start the consensu
 
     If you're running a validator client, make sure you set a fee recipient address.
 
-If you're using Teku, follow the
-[Besu and Teku testnet tutorial](../../tutorials/besu-teku-testnet.md#5-start-teku).
+If you're using Teku, follow the [Besu and Teku testnet tutorial](../../tutorials/besu-teku-testnet.md#5-start-teku).
 
 ### 5. Wait for the clients to sync
 
@@ -149,16 +134,10 @@ After starting Besu and the consensus client, your node starts syncing and conne
         2022-03-21 20:44:12.353 INFO  - Syncing     *** Target slot: 76096, Head slot: 3519, Remaining slots: 72577, Connected peers: 9
         ```
 
-If you're running the consensus client as a beacon node only, you're all set.
-If you're also running the consensus client as a validator client, ensure your clients are fully
-synced before submitting your staking deposit in the next step.
-This can take several days.
+If you're running the consensus client as a beacon node only, you're all set. If you're also running the consensus client as a validator client, ensure your clients are fully synced before submitting your staking deposit in the next step. This can take several days.
 
 ### 6. Stake ETH
 
-Stake your testnet ETH for one or more validators using the
-[Goerli Staking Launchpad](https://goerli.launchpad.ethereum.org/).
+Stake your testnet ETH for one or more validators using the [Goerli Staking Launchpad](https://goerli.launchpad.ethereum.org/).
 
-You can check your validator status by searching your Ethereum address on the
-[Goerli Beacon Chain explorer](https://goerli.beaconcha.in/).
-It may take up to multiple days for your validator to be activated and start proposing blocks.
+You can check your validator status by searching your Ethereum address on the [Goerli Beacon Chain explorer](https://goerli.beaconcha.in/). It may take up to multiple days for your validator to be activated and start proposing blocks.

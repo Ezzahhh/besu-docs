@@ -1,4 +1,6 @@
 ---
+title: Use RPC Pub/Sub over WS
+sidebar_position: 2
 description: Using RPC Pub/Sub with Hyperledger Besu WebSockets
 tags:
   - private networks
@@ -8,38 +10,32 @@ tags:
 
 ## Introduction
 
-Subscribe to events by using either RPC Pub/Sub over WebSockets or
-[filters over HTTP](access-logs.md).
+Subscribe to events by using either RPC Pub/Sub over WebSockets or [filters over HTTP](access-logs.md).
 
-Use RPC Pub/Sub over WebSockets to wait for events instead of polling for them. For example, dapps
-subscribe to logs and receive notifications when a specific event occurs.
+Use RPC Pub/Sub over WebSockets to wait for events instead of polling for them. For example, dapps subscribe to logs and receive notifications when a specific event occurs.
 
 Methods specific to RPC Pub/Sub are:
 
-* `eth_subscribe` and `eth_unsubscribe` - create or cancel a subscription for specific events.
-* `priv_subscribe` and `priv_unsubscribe` - create or cancel a subscription for [private logs](../../../private-networks/concepts/privacy/index.md).
+- `eth_subscribe` and `eth_unsubscribe` - create or cancel a subscription for specific events.
+- `priv_subscribe` and `priv_unsubscribe` - create or cancel a subscription for [private logs](../../../private-networks/concepts/privacy/index.md).
 
-!!!important
+:::info
 
-    Unlike other [Hyperledger Besu API methods](../../reference/api/index.md), you cannot call
-    the RPC Pub/Sub methods over HTTP. Use the
-    [`--rpc-ws-enabled`](../../reference/cli/options.md#rpc-ws-enabled) option to enable the
-    WebSockets JSON-RPC service.
+Unlike other [Hyperledger Besu API methods](../../reference/api/index.md), you cannot call the RPC Pub/Sub methods over HTTP. Use the [`--rpc-ws-enabled`](../../reference/cli/options.md#rpc-ws-enabled) option to enable the WebSockets JSON-RPC service.
+
+:::
 
 ### Use RPC Pub/Sub
 
 [WebSockets](json-rpc.md#http-and-websocket-requests) supports the RPC Pub/Sub API.
 
-To create subscriptions, use `eth_subscribe` or `priv_subscribe`. Once subscribed, the API publishes
-notifications using `eth_subscription` or `priv_subscription`.
+To create subscriptions, use `eth_subscribe` or `priv_subscribe`. Once subscribed, the API publishes notifications using `eth_subscription` or `priv_subscription`.
 
-Subscriptions couple with connections. If a connection is closed, all subscriptions
-created over the connection are removed.
+Subscriptions couple with connections. If a connection is closed, all subscriptions created over the connection are removed.
 
 ### Subscription ID
 
-`eth_subscribe` and `priv_subscribe` return a subscription ID for each subscription created.
-Notifications include the subscription ID.
+`eth_subscribe` and `priv_subscribe` return a subscription ID for each subscription created. Notifications include the subscription ID.
 
 !!!example
 
@@ -63,18 +59,24 @@ Notifications include the subscription ID.
 
 ### Notifications when synchronizing
 
-Subscribing to some events (for example, logs) can cause a flood of notifications while the node is
-synchronizing.
+Subscribing to some events (for example, logs) can cause a flood of notifications while the node is synchronizing.
 
 ## Subscribe
 
 Use `eth_subscribe` to create subscriptions for the following event types:
 
-* [New headers](#new-headers)
-* [Logs](#logs)
-* [Pending transactions](#pending-transactions)
-* [Dropped transactions](#dropped-transactions)
-* [Synchronizing](#synchronizing)
+- [Use RPC Pub/Sub over WebSockets](#use-rpc-pubsub-over-websockets)
+  - [Introduction](#introduction)
+    - [Use RPC Pub/Sub](#use-rpc-pubsub)
+    - [Subscription ID](#subscription-id)
+    - [Notifications when synchronizing](#notifications-when-synchronizing)
+  - [Subscribe](#subscribe)
+    - [New headers](#new-headers)
+    - [Logs](#logs)
+    - [Pending transactions](#pending-transactions)
+    - [Dropped transactions](#dropped-transactions)
+    - [Synchronizing](#synchronizing)
+  - [Unsubscribe](#unsubscribe)
 
 Use `priv_subscribe` to [create subscriptions for logs on private contracts](#logs).
 
@@ -85,18 +87,11 @@ Use `priv_subscribe` to [create subscriptions for logs on private contracts](#lo
 
 ### New headers
 
-To notify you about each block added to the blockchain, use the `newHeads` parameter with
-`eth_subscribe`.
+To notify you about each block added to the blockchain, use the `newHeads` parameter with `eth_subscribe`.
 
-If a chain reorganization occurs, the subscription publishes notifications for blocks in the new
-chain. This means the subscription can publish notifications for multiple blocks at the same height
-on the blockchain.
+If a chain reorganization occurs, the subscription publishes notifications for blocks in the new chain. This means the subscription can publish notifications for multiple blocks at the same height on the blockchain.
 
-The new headers notification returns
-[block objects](../../reference/api/objects.md#block-object). The second parameter is optional.
-If specified, the notifications include whole
-[transaction objects](../../reference/api/objects.md#transaction-object), Otherwise, the
-notifications include transaction hashes.
+The new headers notification returns [block objects](../../reference/api/objects.md#block-object). The second parameter is optional. If specified, the notifications include whole [transaction objects](../../reference/api/objects.md#transaction-object), Otherwise, the notifications include transaction hashes.
 
 !!!example
 
@@ -180,27 +175,18 @@ notifications include transaction hashes.
 
 ### Logs
 
-To notify you about [logs](../../concepts/events-and-logs.md) included in new blocks, use the
-`logs` parameter with `eth_subscribe` or `priv_subscribe`. Specify a filter object to receive
-notifications only for logs matching your filter.
+To notify you about [logs](../../concepts/events-and-logs.md) included in new blocks, use the `logs` parameter with `eth_subscribe` or `priv_subscribe`. Specify a filter object to receive notifications only for logs matching your filter.
 
 Logs subscriptions have an filter object parameter with the following fields:
 
-* `address` - (optional) Either an address or an array of addresses. Returns only logs created from
-  these addresses.
-* `topics` - (optional) Returns only logs that match the
-  [specified topics](../../concepts/events-and-logs.md#topic-filters).
-* `fromBlock` - (optional) The earliest block from which to return logs.
-* `toBlock` - (optional) The last block from which to return logs.
+- `address` - (optional) Either an address or an array of addresses. Returns only logs created from these addresses.
+- `topics` - (optional) Returns only logs that match the [specified topics](../../concepts/events-and-logs.md#topic-filters).
+- `fromBlock` - (optional) The earliest block from which to return logs.
+- `toBlock` - (optional) The last block from which to return logs.
 
-For private contracts, the privacy group ID must be specified. Only members of a privacy group receive
-logs for a private contract subscription. If you create a subscription for a privacy group you are
-not a member of, you will not receive any notifications.
+For private contracts, the privacy group ID must be specified. Only members of a privacy group receive logs for a private contract subscription. If you create a subscription for a privacy group you are not a member of, you will not receive any notifications.
 
-If a chain reorganization occurs, the subscription publishes notifications for logs from the old
-chain with the `removed` property in the [log object](../../reference/api/objects.md#log-object)
-set to `true`. This means the subscription can publish notifications for multiple logs for the same
-transaction.
+If a chain reorganization occurs, the subscription publishes notifications for logs from the old chain with the `removed` property in the [log object](../../reference/api/objects.md#log-object) set to `true`. This means the subscription can publish notifications for multiple logs for the same transaction.
 
 The logs subscription returns [log objects](../../reference/api/objects.md#log-object).
 
@@ -293,16 +279,11 @@ The logs subscription returns [log objects](../../reference/api/objects.md#log-o
 
 ### Pending transactions
 
-To notify you about pending transactions added to the transaction pool for the node, use the
-`newPendingTransactions` parameter with `eth_subscribe`.
+To notify you about pending transactions added to the transaction pool for the node, use the `newPendingTransactions` parameter with `eth_subscribe`.
 
-The pending transactions subscription returns the transaction hashes or transaction details of the
-pending transactions. If the `includeTransactions` parameter is not included, the default is
-transaction hashes only.
+The pending transactions subscription returns the transaction hashes or transaction details of the pending transactions. If the `includeTransactions` parameter is not included, the default is transaction hashes only.
 
-If a chain reorganization occurs, Besu resubmits transactions for inclusion in the new canonical
-chain. This means the subscription can publish notifications for the same pending transaction more
-than once.
+If a chain reorganization occurs, Besu resubmits transactions for inclusion in the new canonical chain. This means the subscription can publish notifications for the same pending transaction more than once.
 
 !!!example "Transaction hashes"
 
@@ -372,14 +353,11 @@ than once.
 
 ### Dropped transactions
 
-To notify you about transactions dropped from the transaction pool for the node, use the
-`droppedPendingTransactions` parameter with `eth_subscribe`.
+To notify you about transactions dropped from the transaction pool for the node, use the `droppedPendingTransactions` parameter with `eth_subscribe`.
 
 The dropped transactions subscription returns the transaction hashes of the dropped transactions.
 
-Dropped transactions can be re-added to the transaction pool from a variety of sources. For
-example, receiving a previously dropped transaction from a peer. As a result, it's possible to
-receive multiple dropped transaction notifications for the same transaction.
+Dropped transactions can be re-added to the transaction pool from a variety of sources. For example, receiving a previously dropped transaction from a peer. As a result, it's possible to receive multiple dropped transaction notifications for the same transaction.
 
 !!!example
 
@@ -412,8 +390,7 @@ receive multiple dropped transaction notifications for the same transaction.
 
 To notify you about synchronization progress, use the `syncing` parameter with `eth_subscribe`.
 
-When behind the chain head, the synchronizing subscription returns an object indicating the
-synchronization progress. When fully synchronized, returns `false`.
+When behind the chain head, the synchronizing subscription returns an object indicating the synchronization progress. When fully synchronized, returns `false`.
 
 !!!example
 
@@ -461,13 +438,11 @@ synchronization progress. When fully synchronized, returns `false`.
 
 ## Unsubscribe
 
-To cancel a subscription, use the [subscription ID](#subscription-id) with `eth_unsubscribe` or
-`priv_unsubscribe`. Only the connection that created a subscription can unsubscribe from it.
+To cancel a subscription, use the [subscription ID](#subscription-id) with `eth_unsubscribe` or `priv_unsubscribe`. Only the connection that created a subscription can unsubscribe from it.
 
 When cancelling a subscription for private logs, the privacy group ID must be specified.
 
-`eth_unsubscribe` and `priv_unsubscribe` return `true` if subscription successfully unsubscribed;
-otherwise, returns an error.
+`eth_unsubscribe` and `priv_unsubscribe` return `true` if subscription successfully unsubscribed; otherwise, returns an error.
 
 !!!example
 

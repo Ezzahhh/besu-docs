@@ -1,20 +1,18 @@
 ---
+title: Run Besu and Teku on Mainnet
+sidebar_position: 1
 Description: How to run Besu and Teku on Mainnet
 ---
 
 # Run Besu and Teku on Mainnet
 
-Run Besu as an [execution client](../concepts/the-merge.md#execution-clients) and
-[Teku](https://docs.teku.consensys.net/)
-as a [consensus client](../concepts/the-merge.md#consensus-clients) on Ethereum Mainnet.
+Run Besu as an [execution client](../concepts/the-merge.md#execution-clients) and [Teku](https://docs.teku.consensys.net/) as a [consensus client](../concepts/the-merge.md#consensus-clients) on Ethereum Mainnet.
 
 ## 1. Install Besu and Teku
 
-Install [Besu](../get-started/install/binary-distribution.md) and
-[Teku](https://docs.teku.consensys.net/HowTo/Get-Started/Installation-Options/Install-Binaries/).
+Install [Besu](../get-started/install/binary-distribution.md) and [Teku](https://docs.teku.consensys.net/HowTo/Get-Started/Installation-Options/Install-Binaries/).
 
-Ensure you meet the prerequisites for the installation option you use.
-For example, you must have Java 17+ if using the Besu and Teku binary distributions.
+Ensure you meet the prerequisites for the installation option you use. For example, you must have Java 17+ if using the Besu and Teku binary distributions.
 
 Ensure you meet the [system requirements for Besu on public networks](../get-started/system-requirements.md).
 
@@ -26,19 +24,15 @@ Run the following command:
 openssl rand -hex 32 | tr -d "\n" > jwtsecret.hex
 ```
 
-You will specify `jwtsecret.hex` when starting Besu and Teku.
-This is a shared JWT secret the clients use to authenticate each other when using the
-[Engine API](../how-to/use-engine-api.md).
+You will specify `jwtsecret.hex` when starting Besu and Teku. This is a shared JWT secret the clients use to authenticate each other when using the [Engine API](../how-to/use-engine-api.md).
 
 ## 3. Generate validator keys
 
 If you're running Teku as a beacon node only, skip to the [next step](#4-start-besu).
 
-If you're also running Teku as a validator client, have a funded Ethereum address ready (32 ETH and
-gas fees for each validator).
+If you're also running Teku as a validator client, have a funded Ethereum address ready (32 ETH and gas fees for each validator).
 
-Generate validator keys and stake your ETH for one or more validators using the
-[Staking Launchpad](https://launchpad.ethereum.org/en/).
+Generate validator keys and stake your ETH for one or more validators using the [Staking Launchpad](https://launchpad.ethereum.org/en/).
 
 !!! important
 
@@ -65,28 +59,20 @@ besu \
 
 Specify:
 
-- The path to the `jwtsecret.hex` file generated in [step 2](#2-generate-the-shared-secret) using
-  the [`--engine-jwt-secret`](../reference/cli/options.md#engine-jwt-secret) option.
-- The IP address of your Besu node using the [`--host-allowlist`](../reference/cli/options.md#host-allowlist)
-  and [`--engine-host-allowlist`](../reference/cli/options.md#engine-host-allowlist) options.
+- The path to the `jwtsecret.hex` file generated in [step 2](#2-generate-the-shared-secret) using the [`--engine-jwt-secret`](../reference/cli/options.md#engine-jwt-secret) option.
+- The IP address of your Besu node using the [`--host-allowlist`](../reference/cli/options.md#host-allowlist) and [`--engine-host-allowlist`](../reference/cli/options.md#engine-host-allowlist) options.
 
 Also, in the command:
 
 - [`--sync-mode`](../reference/cli/options.md#sync-mode) specifies using [snap sync](../get-started/connect/sync-node.md#snap-synchronization).
 - [`--data-storage-format`](../reference/cli/options.md#data-storage-format) specifies using [Bonsai Tries](../concepts/data-storage-formats.md#bonsai-tries).
-- [`--rpc-http-enabled`](../reference/cli/options.md#rpc-http-enabled) enables the HTTP JSON-RPC
-  service.
-- [`--rpc-http-host`](../reference/cli/options.md#rpc-http-host) is set to `0.0.0.0` to allow remote
-  RPC connections.
-- [`--rpc-ws-enabled`](../reference/cli/options.md#rpc-ws-enabled) enables the WebSocket JSON-RPC
-  service.
-- [`--rpc-ws-host`](../reference/cli/options.md#rpc-ws-host) is set to `0.0.0.0` to allow remote RPC
-  connections.
-- [`--engine-rpc-enabled`](../reference/cli/options.md#engine-rpc-enabled) enables the
-    [Engine API](../reference/engine-api/index.md).
+- [`--rpc-http-enabled`](../reference/cli/options.md#rpc-http-enabled) enables the HTTP JSON-RPC service.
+- [`--rpc-http-host`](../reference/cli/options.md#rpc-http-host) is set to `0.0.0.0` to allow remote RPC connections.
+- [`--rpc-ws-enabled`](../reference/cli/options.md#rpc-ws-enabled) enables the WebSocket JSON-RPC service.
+- [`--rpc-ws-host`](../reference/cli/options.md#rpc-ws-host) is set to `0.0.0.0` to allow remote RPC connections.
+- [`--engine-rpc-enabled`](../reference/cli/options.md#engine-rpc-enabled) enables the [Engine API](../reference/engine-api/index.md).
 
-You can modify the option values and add other [command line options](../reference/cli/options.md)
-as needed.
+You can modify the option values and add other [command line options](../reference/cli/options.md) as needed.
 
 ## 5. Start Teku
 
@@ -94,8 +80,7 @@ Open a new terminal window.
 
 ### Beacon node only
 
-To run Teku as a beacon node only (without validator duties), run the following command or specify the
-options in the [Teku configuration file]:
+To run Teku as a beacon node only (without validator duties), run the following command or specify the options in the [Teku configuration file]:
 
 ```bash
 teku \
@@ -105,25 +90,19 @@ teku \
   --rest-api-enabled=true
 ```
 
-Specify the path to the `jwtsecret.hex` file generated in [step 2](#2-generate-the-shared-secret) using
-the [`--ee-jwt-secret-file`](https://docs.teku.consensys.net/Reference/CLI/CLI-Syntax/#ee-jwt-secret-file)
-option.
+Specify the path to the `jwtsecret.hex` file generated in [step 2](#2-generate-the-shared-secret) using the [`--ee-jwt-secret-file`](https://docs.teku.consensys.net/Reference/CLI/CLI-Syntax/#ee-jwt-secret-file) option.
 
 Also, in the command:
 
-- [`--ee-endpoint`](https://docs.teku.consensys.net/Reference/CLI/CLI-Syntax/#ee-endpoint)
-  is set to the default URL of Besu's Engine API.
-- [`--metrics-enabled`](https://docs.teku.consensys.net/Reference/CLI/CLI-Syntax/#metrics-enabled)
-  enables Teku's metrics exporter.
-- [`--rest-api-enabled`](https://docs.teku.consensys.net/Reference/CLI/CLI-Syntax/#rest-api-enabled)
-  enables Teku's REST API service.
+- [`--ee-endpoint`](https://docs.teku.consensys.net/Reference/CLI/CLI-Syntax/#ee-endpoint) is set to the default URL of Besu's Engine API.
+- [`--metrics-enabled`](https://docs.teku.consensys.net/Reference/CLI/CLI-Syntax/#metrics-enabled) enables Teku's metrics exporter.
+- [`--rest-api-enabled`](https://docs.teku.consensys.net/Reference/CLI/CLI-Syntax/#rest-api-enabled) enables Teku's REST API service.
 
 You can modify the option values and add other [Teku command line options] as needed.
 
 ### Beacon node and validator client
 
-To run Teku as a beacon node and validator in a single process, run the following command or specify
-the options in the [Teku configuration file]:
+To run Teku as a beacon node and validator in a single process, run the following command or specify the options in the [Teku configuration file]:
 
 ```bash
 teku \
@@ -137,24 +116,15 @@ teku \
 
 Specify:
 
-- The path to the `jwtsecret.hex` file generated in [step 2](#2-generate-the-shared-secret) using the
-  [`--ee-jwt-secret-file`](https://docs.teku.consensys.net/Reference/CLI/CLI-Syntax/#ee-jwt-secret-file) option.
-- An Ethereum address you own as the default fee recipient using the
-  [`--validators-proposer-default-fee-recipient`](https://docs.teku.consensys.net/Reference/CLI/CLI-Syntax/#validators-proposer-default-fee-recipient)
-  option.
-- The paths to the keystore `.json` file and password `.txt` file created in
-  [step 3](#3-generate-validator-keys) for each validator using the
-  [`--validator-keys`](https://docs.teku.consensys.net/Reference/CLI/CLI-Syntax/#validator-keys) option.
-  Separate the `.json` and `.txt` files with a colon, and separate entries for multiple validators with commas.
+- The path to the `jwtsecret.hex` file generated in [step 2](#2-generate-the-shared-secret) using the [`--ee-jwt-secret-file`](https://docs.teku.consensys.net/Reference/CLI/CLI-Syntax/#ee-jwt-secret-file) option.
+- An Ethereum address you own as the default fee recipient using the [`--validators-proposer-default-fee-recipient`](https://docs.teku.consensys.net/Reference/CLI/CLI-Syntax/#validators-proposer-default-fee-recipient) option.
+- The paths to the keystore `.json` file and password `.txt` file created in [step 3](#3-generate-validator-keys) for each validator using the [`--validator-keys`](https://docs.teku.consensys.net/Reference/CLI/CLI-Syntax/#validator-keys) option. Separate the `.json` and `.txt` files with a colon, and separate entries for multiple validators with commas.
 
 Also, in the command:
 
-- [`--ee-endpoint`](https://docs.teku.consensys.net/Reference/CLI/CLI-Syntax/#ee-endpoint)
-  is set to the default URL of Besu's Engine API.
-- [`--metrics-enabled`](https://docs.teku.consensys.net/Reference/CLI/CLI-Syntax/#metrics-enabled)
-  enables Teku's metrics exporter.
-- [`--rest-api-enabled`](https://docs.teku.consensys.net/Reference/CLI/CLI-Syntax/#rest-api-enabled)
-  enables Teku's REST API service.
+- [`--ee-endpoint`](https://docs.teku.consensys.net/Reference/CLI/CLI-Syntax/#ee-endpoint) is set to the default URL of Besu's Engine API.
+- [`--metrics-enabled`](https://docs.teku.consensys.net/Reference/CLI/CLI-Syntax/#metrics-enabled) enables Teku's metrics exporter.
+- [`--rest-api-enabled`](https://docs.teku.consensys.net/Reference/CLI/CLI-Syntax/#rest-api-enabled) enables Teku's REST API service.
 
 You can modify the option values and add other [Teku command line options] as needed.
 
@@ -191,18 +161,13 @@ After starting Besu and Teku, your node starts syncing and connecting to peers.
         2022-03-21 20:44:12.353 INFO  - Syncing     *** Target slot: 76096, Head slot: 3519, Remaining slots: 72577, Connected peers: 9
         ```
 
-If you're running Teku as a beacon node only, you're all set.
-If you're also running Teku as a validator client, ensure Besu and Teku are fully synced before
-submitting your staking deposit in the next step.
-Syncing Besu can take several days.
+If you're running Teku as a beacon node only, you're all set. If you're also running Teku as a validator client, ensure Besu and Teku are fully synced before submitting your staking deposit in the next step. Syncing Besu can take several days.
 
 ## 7. Stake ETH
 
 Stake your ETH for one or more validators using the [Staking Launchpad](https://launchpad.ethereum.org/en/).
 
-You can check your validator status by searching your Ethereum address on the
-[Beacon Chain explorer](https://beaconcha.in/).
-It may take up to multiple days for your validator to be activated and start proposing blocks.
+You can check your validator status by searching your Ethereum address on the [Beacon Chain explorer](https://beaconcha.in/). It may take up to multiple days for your validator to be activated and start proposing blocks.
 
 <!--links-->
 

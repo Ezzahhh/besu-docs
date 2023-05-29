@@ -1,17 +1,14 @@
 ---
 title: Privacy groups
-sidebar_position: 3
+sidebar_position: 2
 description: Privacy groups
 ---
 
 # Privacy groups
 
-A privacy group is a group of nodes identified by a unique privacy group ID by Tessera. Tessera
-stores each private transaction with the privacy group ID.
+A privacy group is a group of nodes identified by a unique privacy group ID by Tessera. Tessera stores each private transaction with the privacy group ID.
 
-The Besu nodes maintain the public world state for the blockchain and a private state for each
-privacy group. The private states contain data that is not shared in the globally replicated world
-state.
+The Besu nodes maintain the public world state for the blockchain and a private state for each privacy group. The private states contain data that is not shared in the globally replicated world state.
 
 !!! important
 
@@ -24,12 +21,10 @@ state.
 
 Besu implements two types of privacy:
 
-* Enterprise Ethereum Alliance (EEA) privacy, where private transactions include `privateFor` as
-  the recipient.
-* Besu-extended privacy, where private transactions include `privacyGroupId` as the recipient.
+- Enterprise Ethereum Alliance (EEA) privacy, where private transactions include `privateFor` as the recipient.
+- Besu-extended privacy, where private transactions include `privacyGroupId` as the recipient.
 
-Both privacy types create privacy groups and store private transactions with their privacy group in
-Tessera.
+Both privacy types create privacy groups and store private transactions with their privacy group in Tessera.
 
 ![Privacy Groups](../../../assets/images/PrivacyGroups.png)
 
@@ -42,18 +37,15 @@ Tessera.
 
 A contract in a privacy group:
 
-* Can read or write to a contract in the same privacy group.
-* Can read from the public state including public contracts.
-* Cannot access contracts from a different privacy group.
+- Can read or write to a contract in the same privacy group.
+- Can read from the public state including public contracts.
+- Cannot access contracts from a different privacy group.
 
 A public contract cannot access a private contract.
 
 ### Enterprise Ethereum Alliance privacy
 
-In the privacy implementation complying with the
-[EEA Client Specification](https://entethalliance.org/technical-documents/) the group of nodes
-specified by `privateFrom` and `privateFor` form a privacy group with a unique privacy group ID
-provided by Tessera.
+In the privacy implementation complying with the [EEA Client Specification](https://entethalliance.org/technical-documents/) the group of nodes specified by `privateFrom` and `privateFor` form a privacy group with a unique privacy group ID provided by Tessera.
 
 !!! example
 
@@ -78,9 +70,7 @@ provided by Tessera.
 
 ### Besu-extended privacy
 
-The Besu-extended privacy implementation creates a privacy group using
-[`priv_createPrivacyGroup`](../../../public-networks/reference/api/index.md#priv_createprivacygroup) with private
-transactions sent to the privacy group ID.
+The Besu-extended privacy implementation creates a privacy group using [`priv_createPrivacyGroup`](../../../public-networks/reference/api/index.md#priv_createprivacygroup) with private transactions sent to the privacy group ID.
 
 !!! example
 
@@ -97,5 +87,4 @@ transactions sent to the privacy group ID.
 
 ## Multi-tenancy
 
-When using [multi-tenancy](multi-tenancy.md) with privacy groups, each user provides a JSON Web Token (JWT) which
-allows Besu to check that the user has access to functionality and data associated with a privacy group.
+When using [multi-tenancy](multi-tenancy.md) with privacy groups, each user provides a JSON Web Token (JWT) which allows Besu to check that the user has access to functionality and data associated with a privacy group.

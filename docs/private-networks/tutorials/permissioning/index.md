@@ -6,13 +6,13 @@ description: Hyperledger Besu create a permissioned network
 
 # Create a permissioned network
 
-The following steps set up a permissioned network with local node and account permissions. The network
-uses the [IBFT 2.0 proof of authority consensus protocol].
+The following steps set up a permissioned network with local node and account permissions. The network uses the [IBFT 2.0 proof of authority consensus protocol].
 
-!!!important
+:::danger
 
-    A permissioned Ethereum network as described here is not protected against all attack vectors.
-    We recommend applying defense in depth to protect your infrastructure.
+A permissioned Ethereum network as described here is not protected against all attack vectors. We recommend applying defense in depth to protect your infrastructure.
+
+:::
 
 ## Prerequisites
 
@@ -25,8 +25,7 @@ uses the [IBFT 2.0 proof of authority consensus protocol].
 
 Each node requires a data directory for the blockchain data.
 
-Create directories for your permissioned network and each of the three nodes, and a data directory for
-each node:
+Create directories for your permissioned network and each of the three nodes, and a data directory for each node:
 
 ```bash
 Permissioned-Network/
@@ -42,17 +41,11 @@ Permissioned-Network/
 
 ### 2. Create the configuration file
 
-The configuration file defines the
-[IBFT 2.0 genesis file](../../how-to/configure/consensus/ibft.md#genesis-file) and the
-number of node key pairs to generate.
+The configuration file defines the [IBFT 2.0 genesis file](../../how-to/configure/consensus/ibft.md#genesis-file) and the number of node key pairs to generate.
 
-The configuration file has two nested JSON nodes. The first is the `genesis` property defining
-the IBFT 2.0 genesis file, except for the `extraData` string, which Besu generates automatically in
-the resulting genesis file. The second is the `blockchain` property defining the number of key
-pairs to generate.
+The configuration file has two nested JSON nodes. The first is the `genesis` property defining the IBFT 2.0 genesis file, except for the `extraData` string, which Besu generates automatically in the resulting genesis file. The second is the `blockchain` property defining the number of key pairs to generate.
 
-Copy the following configuration file definition to a file called `ibftConfigFile.json` and save it
-in the `Permissioned-Network` directory:
+Copy the following configuration file definition to a file called `ibftConfigFile.json` and save it in the `Permissioned-Network` directory:
 
 ```json
 {
@@ -116,10 +109,8 @@ In the `Permissioned-Network` directory, generate the node key and genesis file:
 
 Besu creates the following in the `networkFiles` directory:
 
-- `genesis.json` - The genesis file including the `extraData` property specifying the four nodes
-  are validators.
-- A directory for each node named using the node address and containing the public and private key
-  for each node.
+- `genesis.json` - The genesis file including the `extraData` property specifying the four nodes are validators.
+- A directory for each node named using the node address and containing the public and private key for each node.
 
 ```bash
 networkFiles/
@@ -170,11 +161,9 @@ Permissioned-Network/
 
 ### 6. Create the permissions configuration file
 
-The [permissions configuration file](../../how-to/use-permissioning/local.md#permissions-configuration-file)
-defines the nodes and accounts allowlists.
+The [permissions configuration file](../../how-to/use-permissioning/local.md#permissions-configuration-file) defines the nodes and accounts allowlists.
 
-Copy the following permissions configuration to a file called `permissions_config.toml` and save a copy in the
-`Node-1/data`, `Node-2/data`, `Node-3/data`, and `Node-4/data` directories:
+Copy the following permissions configuration to a file called `permissions_config.toml` and save a copy in the `Node-1/data`, `Node-2/data`, `Node-3/data`, and `Node-4/data` directories:
 
 !!! example "`permissions_config.toml`"
 
@@ -206,19 +195,13 @@ Use the following command:
 
 The command line allows you to enable:
 
-- Nodes and accounts permissions using [`--permissions-nodes-config-file-enabled`](../../reference/cli/options.md#permissions-nodes-config-file-enabled)
-  and [`--permissions-accounts-config-file-enabled`](../../reference/cli/options.md#permissions-accounts-config-file-enabled).
+- Nodes and accounts permissions using [`--permissions-nodes-config-file-enabled`](../../reference/cli/options.md#permissions-nodes-config-file-enabled) and [`--permissions-accounts-config-file-enabled`](../../reference/cli/options.md#permissions-accounts-config-file-enabled).
 - The JSON-RPC API using [`--rpc-http-enabled`](../../../public-networks/reference/cli/options.md#rpc-http-enabled).
-- The `ADMIN`, `ETH`, `NET`, `PERM`, and `IBFT` APIs using
-  [`--rpc-http-api`](../../../public-networks/reference/cli/options.md#rpc-http-api).
-- All-host access to the HTTP JSON-RPC API using
-  [`--host-allowlist`](../../../public-networks/reference/cli/options.md#host-allowlist).
-- All-domain access to the node through the HTTP JSON-RPC API using
-  [`--rpc-http-cors-origins`](../../../public-networks/reference/cli/options.md#rpc-http-cors-origins).
+- The `ADMIN`, `ETH`, `NET`, `PERM`, and `IBFT` APIs using [`--rpc-http-api`](../../../public-networks/reference/cli/options.md#rpc-http-api).
+- All-host access to the HTTP JSON-RPC API using [`--host-allowlist`](../../../public-networks/reference/cli/options.md#host-allowlist).
+- All-domain access to the node through the HTTP JSON-RPC API using [`--rpc-http-cors-origins`](../../../public-networks/reference/cli/options.md#rpc-http-cors-origins).
 
-When the node starts, the [enode URL](../../../public-networks/concepts/node-keys.md#enode-url) displays. You need the
-enode URL to specify Node-1 as a peer and update the permissions configuration file in the
-following steps.
+When the node starts, the [enode URL](../../../public-networks/concepts/node-keys.md#enode-url) displays. You need the enode URL to specify Node-1 as a peer and update the permissions configuration file in the following steps.
 
 ![Node 1 Enode URL](../../../assets/images/EnodeStartup.png)
 
@@ -245,8 +228,7 @@ The command line specifies:
 - A data directory for Node-2 using [`--data-path`](../../../public-networks/reference/cli/options.md#data-path).
 - Other options as for [Node-1](#7-start-node-1).
 
-When the node starts, the [enode URL](../../../public-networks/concepts/node-keys.md#enode-url) displays. You need
-the enode URL to update the permissions configuration file in the following steps.
+When the node starts, the [enode URL](../../../public-networks/concepts/node-keys.md#enode-url) displays. You need the enode URL to update the permissions configuration file in the following steps.
 
 ### 9. Start Node-3
 
@@ -271,8 +253,7 @@ The command line specifies:
 - A data directory for Node-3 using [`--data-path`](../../../public-networks/reference/cli/options.md#data-path).
 - Other options as for [Node-1](#7-start-node-1).
 
-When the node starts, the [enode URL](../../../public-networks/concepts/node-keys.md#enode-url) displays. You need
-the enode URL to update the permissions configuration file in the following steps.
+When the node starts, the [enode URL](../../../public-networks/concepts/node-keys.md#enode-url) displays. You need the enode URL to update the permissions configuration file in the following steps.
 
 ### 10. Start Node-4
 
@@ -297,17 +278,13 @@ The command line specifies:
 - A data directory for Node-4 using [`--data-path`](../../../public-networks/reference/cli/options.md#data-path).
 - Other options as for [Node-1](#7-start-node-1).
 
-When the node starts, the [enode URL](../../../public-networks/concepts/node-keys.md#enode-url) displays. You need
-the enode URL to update the permissions configuration file in the following steps.
+When the node starts, the [enode URL](../../../public-networks/concepts/node-keys.md#enode-url) displays. You need the enode URL to update the permissions configuration file in the following steps.
 
 ### 11. Add enode URLs for nodes to permissions configuration file
 
-Start another terminal and use the
-[`perm_addNodesToAllowlist`](../../reference/api/index.md#perm_addnodestoallowlist) JSON-RPC API
-method to add the nodes to the permissions configuration file for each node.
+Start another terminal and use the [`perm_addNodesToAllowlist`](../../reference/api/index.md#perm_addnodestoallowlist) JSON-RPC API method to add the nodes to the permissions configuration file for each node.
 
-Replace `<EnodeNode1>`, `<EnodeNode2>`, `<EnodeNode3>`, and `<EnodeNode4>` with the enode URL displayed when
-starting each node.
+Replace `<EnodeNode1>`, `<EnodeNode2>`, `<EnodeNode3>`, and `<EnodeNode4>` with the enode URL displayed when starting each node.
 
 === "Node-1"
 
@@ -339,8 +316,7 @@ starting each node.
 
 ### 12. Add nodes as peers
 
-Use the [`admin_addPeer`](../../../public-networks/reference/api/index.md#admin_addpeer) JSON-RPC API method to add
-Node-1 as a peer for Node-2, Node-3, and Node-4.
+Use the [`admin_addPeer`](../../../public-networks/reference/api/index.md#admin_addpeer) JSON-RPC API method to add Node-1 as a peer for Node-2, Node-3, and Node-4.
 
 Replace `<EnodeNode1>` with the enode URL displayed when starting Node-1.
 
@@ -392,8 +368,7 @@ Replace `<EnodeNode3>` with the enode URL displayed when starting Node-3.
 
 #### Check peer count
 
-Use curl to call the JSON-RPC API [`net_peerCount`](../../../public-networks/reference/api/index.md#net_peercount) method and confirm the
-nodes are functioning as peers:
+Use curl to call the JSON-RPC API [`net_peerCount`](../../../public-networks/reference/api/index.md#net_peercount) method and confirm the nodes are functioning as peers:
 
 ```bash
 curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":1}' localhost:8545
@@ -403,16 +378,15 @@ The result confirms Node-1 (the node running the JSON-RPC service) has three pee
 
 ```json
 {
-  "jsonrpc" : "2.0",
-  "id" : 1,
-  "result" : "0x3"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "0x3"
 }
 ```
 
 #### Send a transaction from an account in the allowlist
 
-Import the first account from the genesis file into MetaMask and send transactions, as described in
-[Quickstart tutorial]:
+Import the first account from the genesis file into MetaMask and send transactions, as described in [Quickstart tutorial]:
 
 !!! example "Account 1"
 
@@ -426,8 +400,7 @@ Import the first account from the genesis file into MetaMask and send transactio
 
 ### Try sending a transaction from an account not in the accounts allowlist
 
-Import the third account from the genesis file into MetaMask and try to send a transaction, as
-described in [Quickstart tutorial]:
+Import the third account from the genesis file into MetaMask and try to send a transaction, as described in [Quickstart tutorial]:
 
 !!! example "Account 3"
 
@@ -437,8 +410,7 @@ described in [Quickstart tutorial]:
 
 ### Start a node not on the nodes allowlist
 
-In your `Permissioned-Network` directory, create a `Node-5` directory and `data` directory inside
-it.
+In your `Permissioned-Network` directory, create a `Node-5` directory and `data` directory inside it.
 
 Change to the `Node-5` directory and start Node-5 specifying the Node-1 enode URL as the bootnode:
 
@@ -454,8 +426,7 @@ Change to the `Node-5` directory and start Node-5 specifying the Node-1 enode UR
     besu --data-path=data --bootnodes="<EnodeNode1>" --genesis-file=..\genesis.json --rpc-http-enabled --rpc-http-api=ADMIN,ETH,NET,PERM,IBFT --host-allowlist="*" --rpc-http-cors-origins="*" --p2p-port=30307 --rpc-http-port=8549
     ```
 
-Start another terminal and use curl to call the JSON-RPC API
-[`net_peerCount`](../../../public-networks/reference/api/index.md#net_peercount) method:
+Start another terminal and use curl to call the JSON-RPC API [`net_peerCount`](../../../public-networks/reference/api/index.md#net_peercount) method:
 
 ```bash
 curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":1}' localhost:8549
@@ -465,21 +436,21 @@ The result confirms Node-5 has no peers even though it specifies Node-1 as a boo
 
 ```json
 {
-  "jsonrpc" : "2.0",
-  "id" : 1,
-  "result" : "0x0"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "0x0"
 }
 ```
 
 ## Stop nodes
 
-When finished using the permissioned network, stop all nodes using ++ctrl+c++ in each terminal
-window.
+When finished using the permissioned network, stop all nodes using ++ctrl+c++ in each terminal window.
 
 !!!tip
 
     To restart the permissioned network in the future, start from [step 7](#7-start-node-1).
 
 <!-- Links -->
+
 [IBFT 2.0 proof of authority consensus protocol]: ../../how-to/configure/consensus/ibft.md
 [Private network example tutorial]: ../quickstart.md#create-a-transaction-using-metamask

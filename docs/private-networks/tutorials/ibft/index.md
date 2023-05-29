@@ -4,33 +4,30 @@ description: Hyperledger Besu private network using the IBFT 2.0 (Proof of Autho
 
 # Create a private network using IBFT 2.0
 
-A private network provides a configurable network for testing. This private network uses the
-[IBFT 2.0 (proof of authority) consensus protocol](../../how-to/configure/consensus/ibft.md).
+A private network provides a configurable network for testing. This private network uses the [IBFT 2.0 (proof of authority) consensus protocol](../../how-to/configure/consensus/ibft.md).
 
-!!!important
+:::danger
 
-    The steps in this tutorial create an isolated, but not protected or secure, Ethereum private
-    network. We recommend running the private network behind a properly configured firewall.
+The steps in this tutorial create an isolated, but not protected or secure, Ethereum private network. We recommend running the private network behind a properly configured firewall.
 
-    This tutorial configures a private network using IBFT 2.0 for educational purposes only. IBFT
-    2.0 requires 4 validators to be Byzantine fault tolerant.
+This tutorial configures a private network using IBFT 2.0 for educational purposes only. IBFT 2.0 requires 4 validators to be Byzantine fault tolerant.
+
+:::
 
 ## Prerequisites
 
-* [Hyperledger Besu](../../get-started/install/binary-distribution.md)
-* [Curl (or similar webservice client)](https://curl.haxx.se/download.html).
+- [Hyperledger Besu](../../get-started/install/binary-distribution.md)
+- [Curl (or similar webservice client)](https://curl.haxx.se/download.html).
 
 ## Steps
 
-Listed on the right-hand side of the page are the steps to create a private network using IBFT 2.0
-with four nodes. The four nodes are all validators.
+Listed on the right-hand side of the page are the steps to create a private network using IBFT 2.0 with four nodes. The four nodes are all validators.
 
 ### 1. Create directories
 
 Each node requires a data directory for the blockchain data.
 
-Create directories for your private network, each of the four nodes, and a data directory for each
-node:
+Create directories for your private network, each of the four nodes, and a data directory for each node:
 
 ```bash
 IBFT-Network/
@@ -46,17 +43,11 @@ IBFT-Network/
 
 ### 2. Create a configuration file
 
-The configuration file defines the
-[IBFT 2.0 genesis file](../../how-to/configure/consensus/ibft.md#genesis-file) and the
-number of node key pairs to generate.
+The configuration file defines the [IBFT 2.0 genesis file](../../how-to/configure/consensus/ibft.md#genesis-file) and the number of node key pairs to generate.
 
-The configuration file has two nested JSON nodes. The first is the `genesis` property defining
-the IBFT 2.0 genesis file, except for the `extraData` string, which Besu generates automatically in
-the resulting genesis file. The second is the `blockchain` property defining the number of key
-pairs to generate.
+The configuration file has two nested JSON nodes. The first is the `genesis` property defining the IBFT 2.0 genesis file, except for the `extraData` string, which Besu generates automatically in the resulting genesis file. The second is the `blockchain` property defining the number of key pairs to generate.
 
-Copy the following configuration file definition to a file called `ibftConfigFile.json` and save it
-in the `IBFT-Network` directory:
+Copy the following configuration file definition to a file called `ibftConfigFile.json` and save it in the `IBFT-Network` directory:
 
 ```json
 {
@@ -126,10 +117,8 @@ In the `IBFT-Network` directory, generate the node key and genesis file:
 
 Besu creates the following in the `networkFiles` directory:
 
-* `genesis.json` - The genesis file including the `extraData` property specifying the four nodes
-  are validators.
-* A directory for each node named using the node address and containing the public and private key
-  for each node.
+- `genesis.json` - The genesis file including the `extraData` property specifying the four nodes are validators.
+- A directory for each node named using the node address and containing the public and private key for each node.
 
 ```bash
 networkFiles/
@@ -196,26 +185,19 @@ In the `Node-1` directory, start Node-1:
 
 The command line:
 
-* Specifies the data directory for Node-1 using the
-  [`--data-path`](../../../public-networks/reference/cli/options.md#data-path) option.
-* Enables the JSON-RPC API using the
-  [`--rpc-http-enabled`](../../../public-networks/reference/cli/options.md#rpc-http-enabled) option.
-* Enables the ETH, NET, and IBFT APIs using the
-  [`--rpc-http-api`](../../../public-networks/reference/cli/options.md#rpc-http-api) option.
-* Enables all-host access to the HTTP JSON-RPC API using the
-  [`--host-allowlist`](../../../public-networks/reference/cli/options.md#host-allowlist) option.
-* Enables all-domain access to the node through the HTTP JSON-RPC API using the
-  [`--rpc-http-cors-origins`](../../../public-networks/reference/cli/options.md#rpc-http-cors-origins) option.
+- Specifies the data directory for Node-1 using the [`--data-path`](../../../public-networks/reference/cli/options.md#data-path) option.
+- Enables the JSON-RPC API using the [`--rpc-http-enabled`](../../../public-networks/reference/cli/options.md#rpc-http-enabled) option.
+- Enables the ETH, NET, and IBFT APIs using the [`--rpc-http-api`](../../../public-networks/reference/cli/options.md#rpc-http-api) option.
+- Enables all-host access to the HTTP JSON-RPC API using the [`--host-allowlist`](../../../public-networks/reference/cli/options.md#host-allowlist) option.
+- Enables all-domain access to the node through the HTTP JSON-RPC API using the [`--rpc-http-cors-origins`](../../../public-networks/reference/cli/options.md#rpc-http-cors-origins) option.
 
-When the node starts, the [enode URL](../../../public-networks/concepts/node-keys.md#enode-url) displays. Copy the
-enode URL to specify Node-1 as the bootnode in the following steps.
+When the node starts, the [enode URL](../../../public-networks/concepts/node-keys.md#enode-url) displays. Copy the enode URL to specify Node-1 as the bootnode in the following steps.
 
 ![Node 1 Enode URL](../../../assets/images/EnodeStartup.png)
 
 ### 7. Start Node-2
 
-Start another terminal, change to the `Node-2` directory and start Node-2 specifying the Node-1
-enode URL copied when starting Node-1 as the bootnode:
+Start another terminal, change to the `Node-2` directory and start Node-2 specifying the Node-1 enode URL copied when starting Node-1 as the bootnode:
 
 === "MacOS"
 
@@ -231,20 +213,15 @@ enode URL copied when starting Node-1 as the bootnode:
 
 The command line specifies:
 
-* The data directory for Node-2 using the
-  [`--data-path`](../../../public-networks/reference/cli/options.md#data-path) option.
-* A different port to Node-1 for P2P discovery using the
-  [`--p2p-port`](../../../public-networks/reference/cli/options.md#p2p-port) option.
-* A different port to Node-1 for HTTP JSON-RPC using the
-  [`--rpc-http-port`](../../../public-networks/reference/cli/options.md#rpc-http-port) option.
-* The enode URL of Node-1 using the
-  [`--bootnodes`](../../../public-networks/reference/cli/options.md#bootnodes) option.
-* Other options as for [Node-1](#6-start-the-first-node-as-the-bootnode).
+- The data directory for Node-2 using the [`--data-path`](../../../public-networks/reference/cli/options.md#data-path) option.
+- A different port to Node-1 for P2P discovery using the [`--p2p-port`](../../../public-networks/reference/cli/options.md#p2p-port) option.
+- A different port to Node-1 for HTTP JSON-RPC using the [`--rpc-http-port`](../../../public-networks/reference/cli/options.md#rpc-http-port) option.
+- The enode URL of Node-1 using the [`--bootnodes`](../../../public-networks/reference/cli/options.md#bootnodes) option.
+- Other options as for [Node-1](#6-start-the-first-node-as-the-bootnode).
 
 ### 8. Start Node-3
 
-Start another terminal, change to the `Node-3` directory and start Node-3 specifying the Node-1
-enode URL copied when starting Node-1 as the bootnode:
+Start another terminal, change to the `Node-3` directory and start Node-3 specifying the Node-1 enode URL copied when starting Node-1 as the bootnode:
 
 === "MacOS"
 
@@ -260,19 +237,15 @@ enode URL copied when starting Node-1 as the bootnode:
 
 The command line specifies:
 
-* The data directory for Node-3 using the
-  [`--data-path`](../../../public-networks/reference/cli/options.md#data-path) option.
-* A different port to Node-1 and Node-2 for P2P discovery using the
-  [`--p2p-port`](../../../public-networks/reference/cli/options.md#p2p-port) option.
-* A different port to Node-1 and Node-2 for HTTP JSON-RPC using the
-  [`--rpc-http-port`](../../../public-networks/reference/cli/options.md#rpc-http-port) option.
-* The bootnode as for [Node-2](#7-start-node-2).
-* Other options as for [Node-1](#6-start-the-first-node-as-the-bootnode).
+- The data directory for Node-3 using the [`--data-path`](../../../public-networks/reference/cli/options.md#data-path) option.
+- A different port to Node-1 and Node-2 for P2P discovery using the [`--p2p-port`](../../../public-networks/reference/cli/options.md#p2p-port) option.
+- A different port to Node-1 and Node-2 for HTTP JSON-RPC using the [`--rpc-http-port`](../../../public-networks/reference/cli/options.md#rpc-http-port) option.
+- The bootnode as for [Node-2](#7-start-node-2).
+- Other options as for [Node-1](#6-start-the-first-node-as-the-bootnode).
 
 ### 9. Start Node-4
 
-Start another terminal, change to the `Node-4` directory and start Node-4 specifying the Node-1
-enode URL copied when starting Node-1 as the bootnode:
+Start another terminal, change to the `Node-4` directory and start Node-4 specifying the Node-1 enode URL copied when starting Node-1 as the bootnode:
 
 === "MacOS"
 
@@ -288,20 +261,15 @@ enode URL copied when starting Node-1 as the bootnode:
 
 The command line specifies:
 
-* The data directory for Node-4 using the
-  [`--data-path`](../../../public-networks/reference/cli/options.md#data-path) option.
-* A different port to Node-1, Node-2, and Node-3 for P2P discovery using the
-  [`--p2p-port`](../../../public-networks/reference/cli/options.md#p2p-port) option.
-* A different port to Node-1, Node-2, and Node-3 for HTTP JSON-RPC using the
-  [`--rpc-http-port`](../../../public-networks/reference/cli/options.md#rpc-http-port) option.
-* The bootnode as for [Node-2](#7-start-node-2).
-* Other options as for [Node-1](#6-start-the-first-node-as-the-bootnode).
+- The data directory for Node-4 using the [`--data-path`](../../../public-networks/reference/cli/options.md#data-path) option.
+- A different port to Node-1, Node-2, and Node-3 for P2P discovery using the [`--p2p-port`](../../../public-networks/reference/cli/options.md#p2p-port) option.
+- A different port to Node-1, Node-2, and Node-3 for HTTP JSON-RPC using the [`--rpc-http-port`](../../../public-networks/reference/cli/options.md#rpc-http-port) option.
+- The bootnode as for [Node-2](#7-start-node-2).
+- Other options as for [Node-1](#6-start-the-first-node-as-the-bootnode).
 
 ### 10. Confirm the private network is working
 
-Start another terminal, use curl to call the JSON-RPC API
-[`ibft_getvalidatorsbyblocknumber`](../../reference/api/index.md#ibft_getvalidatorsbyblocknumber)
-method and confirm the network has four validators:
+Start another terminal, use curl to call the JSON-RPC API [`ibft_getvalidatorsbyblocknumber`](../../reference/api/index.md#ibft_getvalidatorsbyblocknumber) method and confirm the network has four validators:
 
 ```bash
 curl -X POST --data '{"jsonrpc":"2.0","method":"ibft_getValidatorsByBlockNumber","params":["latest"], "id":1}' localhost:8545
@@ -311,9 +279,14 @@ The result displays the four validators:
 
 ```json
 {
-  "jsonrpc" : "2.0",
-  "id" : 1,
-  "result" : [ "0x1e326b6da177ede2d3eb6d7247bd9f6901d40234", "0x4aaac297fefe4466ebcb0b23ab90c5f466b11556", "0xa267ead2e91e1673e0943b925176b51d9cd4f6d2", "0xe3e680bc0ff485d1d415a384721f19e0db65fea7" ]
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": [
+    "0x1e326b6da177ede2d3eb6d7247bd9f6901d40234",
+    "0x4aaac297fefe4466ebcb0b23ab90c5f466b11556",
+    "0xa267ead2e91e1673e0943b925176b51d9cd4f6d2",
+    "0xe3e680bc0ff485d1d415a384721f19e0db65fea7"
+  ]
 }
 ```
 
@@ -360,8 +333,7 @@ Use the [IBFT API](../../reference/api/index.md#ibft-20-methods) to remove or ad
     This tutorial configures a private network using IBFT 2.0 for educational purposes only. IBFT
     2.0 requires four validators to be Byzantine fault tolerant.
 
-Import accounts to MetaMask and send transactions as described in the
-[Quickstart tutorial](../quickstart.md#create-a-transaction-using-metamask).
+Import accounts to MetaMask and send transactions as described in the [Quickstart tutorial](../quickstart.md#create-a-transaction-using-metamask).
 
 !!! info
 
@@ -377,7 +349,9 @@ When finished using the private network, stop all nodes using ++ctrl+c++ in each
     [6. Start First Node as Bootnode](#6-start-the-first-node-as-the-bootnode).
 
 <!-- Links -->
+
 [IBFT 2.0 (proof of authority)consensus protocol]: ../../how-to/configure/consensus/ibft.md
 
 <!-- Acronyms and Definitions -->
-*[Byzantine fault tolerant]: Ability to function correctly and reach consensus despite nodes failing or propagating incorrect information to peers.
+
+\*[Byzantine fault tolerant]: Ability to function correctly and reach consensus despite nodes failing or propagating incorrect information to peers.

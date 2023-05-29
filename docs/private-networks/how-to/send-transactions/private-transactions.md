@@ -1,25 +1,21 @@
 ---
 title: Create and send private transactions
 description: Creating and sending private transactions with Hyperledger Besu
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 # Create and send private transactions
 
 Create and send [private transactions](../../concepts/privacy/index.md) using:
 
-* [web3js-quorum client library](../use-privacy/web3js-quorum.md) or
-    [web3j client library](https://github.com/web3j/web3j)
-* [`eea_sendTransaction` with EthSigner](https://docs.ethsigner.consensys.net/Reference/API-Methods#eea_sendtransaction)
-* [`eea_sendRawTransaction`](#eea_sendrawtransaction)
-* [`priv_distributeRawTransaction`](#priv_distributerawtransaction).
+- [web3js-quorum client library](../use-privacy/web3js-quorum.md) or [web3j client library](https://github.com/web3j/web3j)
+- [`eea_sendTransaction` with EthSigner](https://docs.ethsigner.consensys.net/Reference/API-Methods#eea_sendtransaction)
+- [`eea_sendRawTransaction`](#eea_sendrawtransaction)
+- [`priv_distributeRawTransaction`](#priv_distributerawtransaction).
 
-All private transaction participants must be online for a private transaction to be successfully
-distributed. If any participants are offline when submitting the private transaction, the
-transaction is not attempted and you must resubmit the transaction.
+All private transaction participants must be online for a private transaction to be successfully distributed. If any participants are offline when submitting the private transaction, the transaction is not attempted and you must resubmit the transaction.
 
-The `gas` and `gasPrice` specified when sending a private transaction are used by the
-[privacy marker transaction (PMT)](../../concepts/privacy/private-transactions/processing.md), not the private transaction itself.
+The `gas` and `gasPrice` specified when sending a private transaction are used by the [privacy marker transaction (PMT)](../../concepts/privacy/private-transactions/processing.md), not the private transaction itself.
 
 !!! note
 
@@ -28,9 +24,7 @@ The `gas` and `gasPrice` specified when sending a private transaction are used b
 
 ## eea_sendRawTransaction
 
-[`eea_sendRawTransaction`](../../reference/api/index.md#eea_sendrawtransaction) distributes the
-private transaction to the participating nodes, and signs and submits the PMT, as described in
-[Private transaction processing](../../concepts/privacy/private-transactions/processing.md).
+[`eea_sendRawTransaction`](../../reference/api/index.md#eea_sendrawtransaction) distributes the private transaction to the participating nodes, and signs and submits the PMT, as described in [Private transaction processing](../../concepts/privacy/private-transactions/processing.md).
 
 !!! note
 
@@ -40,29 +34,13 @@ private transaction to the participating nodes, and signs and submits the PMT, a
 
 ## priv_distributeRawTransaction
 
-Use [`priv_distributeRawTransaction`](../../reference/api/index.md#priv_distributerawtransaction) instead of
-[`eea_sendRawTransaction`](#eea_sendrawtransaction) when sending [concurrent private transactions](concurrent-private-transactions.md).
+Use [`priv_distributeRawTransaction`](../../reference/api/index.md#priv_distributerawtransaction) instead of [`eea_sendRawTransaction`](#eea_sendrawtransaction) when sending [concurrent private transactions](concurrent-private-transactions.md).
 
-[`priv_distributeRawTransaction`](../../reference/api/index.md#priv_distributerawtransaction)
-distributes the private transaction to the participating nodes but does not sign and submit the PMT.
-That is, it performs steps 1 to 5 of [private transaction processing](../../concepts/privacy/private-transactions/processing.md).
+[`priv_distributeRawTransaction`](../../reference/api/index.md#priv_distributerawtransaction) distributes the private transaction to the participating nodes but does not sign and submit the PMT. That is, it performs steps 1 to 5 of [private transaction processing](../../concepts/privacy/private-transactions/processing.md).
 
-If using
-[`priv_distributeRawTransaction`](../../reference/api/index.md#priv_distributerawtransaction)
-instead of [`eea_sendRawTransaction`](../../reference/api/index.md#eea_sendrawtransaction), use
-the value returned by
-[`priv_distributeRawTransaction`](../../reference/api/index.md#priv_distributerawtransaction),
-which is the enclave key to the private transaction in [Tessera](https://docs.tessera.consensys.net/),
-in the `data` field of a call to
-[`eth_sendRawTransaction`](../../../public-networks/reference/api/index.md#eth_sendrawtransaction).
-Use the value returned by
-[`priv_getPrivacyPrecompileAddress`](../../reference/api/index.md#priv_getprivacyprecompileaddress), which is the
-address of the [privacy precompiled contract](../../concepts/privacy/private-transactions/processing.md), in the `to`
-field of the call.
+If using [`priv_distributeRawTransaction`](../../reference/api/index.md#priv_distributerawtransaction) instead of [`eea_sendRawTransaction`](../../reference/api/index.md#eea_sendrawtransaction), use the value returned by [`priv_distributeRawTransaction`](../../reference/api/index.md#priv_distributerawtransaction), which is the enclave key to the private transaction in [Tessera](https://docs.tessera.consensys.net/), in the `data` field of a call to [`eth_sendRawTransaction`](../../../public-networks/reference/api/index.md#eth_sendrawtransaction). Use the value returned by [`priv_getPrivacyPrecompileAddress`](../../reference/api/index.md#priv_getprivacyprecompileaddress), which is the address of the [privacy precompiled contract](../../concepts/privacy/private-transactions/processing.md), in the `to` field of the call.
 
-By using the [public Ethereum transaction](../../how-to/send-transactions/index.md),
-[`eth_sendRawTransaction`](../../../public-networks/reference/api/index.md#eth_sendrawtransaction), you are signing
-and submitting the PMT yourself instead of having it signed by the Besu node, giving you greater control over the PMT.
+By using the [public Ethereum transaction](../../how-to/send-transactions/index.md), [`eth_sendRawTransaction`](../../../public-networks/reference/api/index.md#eth_sendrawtransaction), you are signing and submitting the PMT yourself instead of having it signed by the Besu node, giving you greater control over the PMT.
 
 !!! warning
 
@@ -111,19 +89,13 @@ and submitting the PMT yourself instead of having it signed by the Besu node, gi
 
 ## EEA-compliant or Besu-extended privacy
 
-To create an [EEA-compliant private transaction], specify `privateFor` when creating the signed
-transaction passed as an input parameter to
-[`eea_sendRawTransaction`](../../reference/api/index.md#eea_sendrawtransaction).
+To create an [EEA-compliant private transaction], specify `privateFor` when creating the signed transaction passed as an input parameter to [`eea_sendRawTransaction`](../../reference/api/index.md#eea_sendrawtransaction).
 
-To create a [Besu-extended private transaction], specify a `privacyGroupId` when creating the
-signed transaction passed as an input parameter to
-[`eea_sendRawTransaction`](../../reference/api/index.md#eea_sendrawtransaction).
+To create a [Besu-extended private transaction], specify a `privacyGroupId` when creating the signed transaction passed as an input parameter to [`eea_sendRawTransaction`](../../reference/api/index.md#eea_sendrawtransaction).
 
 ## Unsigned and unencoded private transactions
 
-The [`eea_sendRawTransaction`](../../reference/api/index.md#eea_sendrawtransaction) parameter is
-a signed RLP-encoded private transaction. Shown below are examples of unsigned and unencoded
-private transactions to create a contract.
+The [`eea_sendRawTransaction`](../../reference/api/index.md#eea_sendrawtransaction) parameter is a signed RLP-encoded private transaction. Shown below are examples of unsigned and unencoded private transactions to create a contract.
 
 !!! example "Unencoded and unsigned EEA-compliant private transaction"
 

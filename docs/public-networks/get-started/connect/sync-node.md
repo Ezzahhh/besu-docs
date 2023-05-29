@@ -1,41 +1,31 @@
 ---
+title: Sync Besu
+sidebar_position: 1
 description: Full and archive node types
 ---
 
 # Sync Besu
 
-Besu supports two node types, commonly referred to as [full nodes](#run-a-full-node) and
-[archive nodes](#run-an-archive-node).
+Besu supports two node types, commonly referred to as [full nodes](#run-a-full-node) and [archive nodes](#run-an-archive-node).
 
-Full nodes have the current state of the blockchain.
-They can't serve the network with all data requests (for example, the balance of an account at an
-old block).
-Full nodes can guarantee the latest state for the blockchain (and some older states, but not all).
-You can check current balances, sign and send transactions, and look at current dapp data.
+Full nodes have the current state of the blockchain. They can't serve the network with all data requests (for example, the balance of an account at an old block). Full nodes can guarantee the latest state for the blockchain (and some older states, but not all). You can check current balances, sign and send transactions, and look at current dapp data.
 
-Archive nodes also store the intermediary state of every account and contract for every block since
-the genesis block.
-Archive nodes can do everything full nodes do, and they can access historical state data.
-Archive nodes require more disk space than full nodes.
+Archive nodes also store the intermediary state of every account and contract for every block since the genesis block. Archive nodes can do everything full nodes do, and they can access historical state data. Archive nodes require more disk space than full nodes.
 
-Besu must connect with other peers to sync with the network.
-If your node is having trouble peering, try [troubleshooting peering](../../how-to/troubleshoot/peering.md).
+Besu must connect with other peers to sync with the network. If your node is having trouble peering, try [troubleshooting peering](../../how-to/troubleshoot/peering.md).
 
 ## Sync times
 
-To sync with a public network, Besu runs two processes in parallel: the world state sync and the
-blockchain download.
+To sync with a public network, Besu runs two processes in parallel: the world state sync and the blockchain download.
 
-The following table shows the average world state sync time for each sync mode on Mainnet.
-All times are hardware dependent; this table is based on running AWS instances m6gd.2xlarge.
-Each sync mode also has its own world state database size.
+The following table shows the average world state sync time for each sync mode on Mainnet. All times are hardware dependent; this table is based on running AWS instances m6gd.2xlarge. Each sync mode also has its own world state database size.
 
-| Sync mode   | Time to sync world state | Disk usage    |
-| ----------- | ------------------------ | ------------- |
-| Snap        | ~6 hours                 | Average disk  |
-| Checkpoint  | ~5 hours                 | Smallest disk |
-| Fast        | ~1.5 days                | Average disk  |
-| Full        | ~weeks                   | Largest disk  |
+| Sync mode  | Time to sync world state | Disk usage    |
+| ---------- | ------------------------ | ------------- |
+| Snap       | ~6 hours                 | Average disk  |
+| Checkpoint | ~5 hours                 | Smallest disk |
+| Fast       | ~1.5 days                | Average disk  |
+| Full       | ~weeks                   | Largest disk  |
 
 !!! note
 
@@ -45,23 +35,17 @@ Each sync mode also has its own world state database size.
 
     - Testnets take significantly less time and space to sync.
 
-While the world state syncs, Besu downloads and imports the blockchain in the background.
-The blockchain download time depends on CPU, the network, Besu's peers, and disk speed.
-It generally takes longer than the world state sync.
+While the world state syncs, Besu downloads and imports the blockchain in the background. The blockchain download time depends on CPU, the network, Besu's peers, and disk speed. It generally takes longer than the world state sync.
 
 Besu must catch up to the current chain head and sync the world state to participate on Mainnet.
 
 ## Storage
 
-You can store the world state using [Forest of Tries](../../concepts/data-storage-formats.md#forest-of-tries)
-or [Bonsai Tries](../../concepts/data-storage-formats.md#bonsai-tries).
-We recommend using Bonsai Tries for the lowest storage requirements.
+You can store the world state using [Forest of Tries](../../concepts/data-storage-formats.md#forest-of-tries) or [Bonsai Tries](../../concepts/data-storage-formats.md#bonsai-tries). We recommend using Bonsai Tries for the lowest storage requirements.
 
 ## Run a full node
 
-You can run a full node using [snap synchronization (snap sync)](#snap-synchronization),
-[checkpoint synchronization (checkpoint sync)](#checkpoint-synchronization), or
-[fast synchronization (fast sync)](#fast-synchronization).
+You can run a full node using [snap synchronization (snap sync)](#snap-synchronization), [checkpoint synchronization (checkpoint sync)](#checkpoint-synchronization), or [fast synchronization (fast sync)](#fast-synchronization).
 
 ### Snap synchronization
 
@@ -71,19 +55,13 @@ You can run a full node using [snap synchronization (snap sync)](#snap-synchroni
     We recommend using snap sync with the [Bonsai](../../concepts/data-storage-formats.md#bonsai-tries)
     data storage format for the fastest sync and lowest storage requirements.
 
-Enable snap sync using [`--sync-mode=X_SNAP`](../../reference/cli/options.md#sync-mode).
-You need Besu version 22.4.0 or later to use snap sync.
+Enable snap sync using [`--sync-mode=X_SNAP`](../../reference/cli/options.md#sync-mode). You need Besu version 22.4.0 or later to use snap sync.
 
-Instead of downloading the [state trie](../../concepts/data-storage-formats.md) node by node, snap sync downloads as many leaves of the
-trie as possible, and reconstructs the trie locally.
+Instead of downloading the [state trie](../../concepts/data-storage-formats.md) node by node, snap sync downloads as many leaves of the trie as possible, and reconstructs the trie locally.
 
-You can't switch from fast sync to snap sync.
-If your node is blocked in the middle of a fast sync, you can start over using snap sync instead by stopping the node,
-deleting the data directory, and starting over using `--sync-mode=X_SNAP`.
+You can't switch from fast sync to snap sync. If your node is blocked in the middle of a fast sync, you can start over using snap sync instead by stopping the node, deleting the data directory, and starting over using `--sync-mode=X_SNAP`.
 
-You can restart Besu during a snap sync in case of hardware or software problems.
-The sync resumes from the last valid world state and continues to download blocks starting from the
-last downloaded block.
+You can restart Besu during a snap sync in case of hardware or software problems. The sync resumes from the last valid world state and continues to download blocks starting from the last downloaded block.
 
 See [how to read the Besu metrics charts](../../how-to/monitor/understand-metrics.md) when using snap sync.
 
@@ -93,18 +71,13 @@ See [how to read the Besu metrics charts](../../how-to/monitor/understand-metric
 
     Checkpoint sync is an early access feature.
 
-Enable checkpoint sync using [`--sync-mode=X_CHECKPOINT`](../../reference/cli/options.md#sync-mode).
-You need Besu version 22.4.3 or later to use checkpoint sync.
+Enable checkpoint sync using [`--sync-mode=X_CHECKPOINT`](../../reference/cli/options.md#sync-mode). You need Besu version 22.4.3 or later to use checkpoint sync.
 
-Checkpoint sync behaves like [snap sync](#snap-synchronization), but instead of syncing from the
-genesis block, it syncs from a specific checkpoint block configured in the [Besu genesis
-file](../../concepts/genesis-file.md).
+Checkpoint sync behaves like [snap sync](#snap-synchronization), but instead of syncing from the genesis block, it syncs from a specific checkpoint block configured in the [Besu genesis file](../../concepts/genesis-file.md).
 
-Ethereum Mainnet and the Goerli testnet configurations already define default checkpoints, so you
-don't have to add this yourself.
+Ethereum Mainnet and the Goerli testnet configurations already define default checkpoints, so you don't have to add this yourself.
 
-For other networks, you can configure a checkpoint in the genesis file by specifying the block hash,
-number, and total difficulty as in the following example.
+For other networks, you can configure a checkpoint in the genesis file by specifying the block hash, number, and total difficulty as in the following example.
 
 !!! example "Checkpoint configuration example"
 
@@ -121,12 +94,9 @@ number, and total difficulty as in the following example.
     If using [Clique](../../../private-networks/how-to/configure/consensus/clique.md) consensus, the
     checkpoint must be the beginning of an epoch.
 
-If you enable checkpoint sync without a checkpoint configuration in the genesis file, Besu snap
-syncs from the genesis block.
+If you enable checkpoint sync without a checkpoint configuration in the genesis file, Besu snap syncs from the genesis block.
 
-You can restart Besu during a checkpoint sync in case of hardware or software problems.
-The sync resumes from the last valid world state and continues to download blocks starting from the
-last downloaded block.
+You can restart Besu during a checkpoint sync in case of hardware or software problems. The sync resumes from the last valid world state and continues to download blocks starting from the last downloaded block.
 
 ### Fast synchronization
 
@@ -138,22 +108,15 @@ last downloaded block.
 
 Enable fast sync using [`--sync-mode=FAST`](../../reference/cli/options.md#sync-mode).
 
-Fast sync downloads the block headers and transaction receipts, and verifies the chain of block headers from the genesis
-block.
+Fast sync downloads the block headers and transaction receipts, and verifies the chain of block headers from the genesis block.
 
-When starting fast sync, Besu first downloads the world state for a recent block verified by its peers (referred to as a
-pivot block), and then begins fast sync from the genesis block.
+When starting fast sync, Besu first downloads the world state for a recent block verified by its peers (referred to as a pivot block), and then begins fast sync from the genesis block.
 
-Fast sync is the default for named networks specified using the [`--network`](../../reference/cli/options.md#network)
-option, except for the `dev` development network.
-It's also the default if connecting to Ethereum Mainnet by not specifying the
-[`--network`](../../reference/cli/options.md#network) or [`--genesis-file`](../../reference/cli/options.md#genesis-file)
-options.
+Fast sync is the default for named networks specified using the [`--network`](../../reference/cli/options.md#network) option, except for the `dev` development network. It's also the default if connecting to Ethereum Mainnet by not specifying the [`--network`](../../reference/cli/options.md#network) or [`--genesis-file`](../../reference/cli/options.md#genesis-file) options.
 
 Using fast sync with [private transactions](../../../private-networks/concepts/privacy/index.md) isn't supported.
 
-You can observe the `besu_synchronizer_fast_sync_*` and `besu_synchronizer_world_state_*`
-[metrics](../../how-to/monitor/metrics.md#metrics-list) to monitor fast sync.
+You can observe the `besu_synchronizer_fast_sync_*` and `besu_synchronizer_world_state_*` [metrics](../../how-to/monitor/metrics.md#metrics-list) to monitor fast sync.
 
 !!! note
 
@@ -198,7 +161,6 @@ You can observe the `besu_synchronizer_fast_sync_*` and `besu_synchronizer_world
 
 ## Run an archive node
 
-To run an archive node, enable full synchronization (full sync) using
-[`--sync-mode=FULL`](../../reference/cli/options.md#sync-mode).
+To run an archive node, enable full synchronization (full sync) using [`--sync-mode=FULL`](../../reference/cli/options.md#sync-mode).
 
 Full sync starts from the genesis block and reprocesses all transactions.

@@ -6,10 +6,7 @@ sidebar_position: 3
 
 # Revert reason
 
-In smart contracts, the
-[`revert`](https://docs.soliditylang.org/en/v0.8.12/control-structures.html#revert) operation
-triggers an exception to flag an error and revert the current call. The EVM passes back to the
-client an optional string message containing information about the error.
+In smart contracts, the [`revert`](https://docs.soliditylang.org/en/v0.8.12/control-structures.html#revert) operation triggers an exception to flag an error and revert the current call. The EVM passes back to the client an optional string message containing information about the error.
 
 !!! example
 
@@ -43,11 +40,7 @@ client an optional string message containing information about the error.
 
 ## Enable revert reason
 
-Use the [`--revert-reason-enabled`](../../../public-networks/reference/cli/options.md#revert-reason-enabled)
-command line option to include the revert reason in the transaction receipt,
-[`eth_estimateGas`](../../../public-networks/reference/api/index.md#eth_estimategas) error,
-[`eth_call`](../../../public-networks/reference/api/index.md#eth_call) error, and
-[`trace`](../../../public-networks/reference/trace-types.md#trace) response in Hyperledger Besu.
+Use the [`--revert-reason-enabled`](../../../public-networks/reference/cli/options.md#revert-reason-enabled) command line option to include the revert reason in the transaction receipt, [`eth_estimateGas`](../../../public-networks/reference/api/index.md#eth_estimategas) error, [`eth_call`](../../../public-networks/reference/api/index.md#eth_call) error, and [`trace`](../../../public-networks/reference/trace-types.md#trace) response in Hyperledger Besu.
 
 !!! caution
 
@@ -56,9 +49,7 @@ command line option to include the revert reason in the transaction receipt,
 
 ## Where the revert reason is included
 
-With revert reason enabled, the transaction receipt returned by
-[`eth_getTransactionReceipt`](../../../public-networks/reference/api/index.md#eth_gettransactionreceipt) includes
-the revert reason as an ABI-encoded string.
+With revert reason enabled, the transaction receipt returned by [`eth_getTransactionReceipt`](../../../public-networks/reference/api/index.md#eth_gettransactionreceipt) includes the revert reason as an ABI-encoded string.
 
 !!! important
 
@@ -91,8 +82,7 @@ the revert reason as an ABI-encoded string.
     }
     ```
 
-The error returned by [`eth_estimateGas`](../../../public-networks/reference/api/index.md#eth_estimategas) and
-[`eth_call`](../../../public-networks/reference/api/index.md#eth_call) includes the revert reason as an ABI-encoded string in the `data` field.
+The error returned by [`eth_estimateGas`](../../../public-networks/reference/api/index.md#eth_estimategas) and [`eth_call`](../../../public-networks/reference/api/index.md#eth_call) includes the revert reason as an ABI-encoded string in the `data` field.
 
 !!! example "Example of `eth_estimateGas` and `eth_call` error"
 
@@ -108,10 +98,7 @@ The error returned by [`eth_estimateGas`](../../../public-networks/reference/api
     }
     ```
 
-The list items in the [`trace`](../../../public-networks/reference/trace-types.md#trace) response returned by
-[`trace_replayBlockTransactions`](../../../public-networks/reference/api/index.md#trace_replayblocktransactions),
-[`trace_block`](../../../public-networks/reference/api/index.md#trace_block), and
-[`trace_transaction`](../../../public-networks/reference/api/index.md#trace_transaction) include the revert reason as an ABI-encoded string.
+The list items in the [`trace`](../../../public-networks/reference/trace-types.md#trace) response returned by [`trace_replayBlockTransactions`](../../../public-networks/reference/api/index.md#trace_replayblocktransactions), [`trace_block`](../../../public-networks/reference/api/index.md#trace_block), and [`trace_transaction`](../../../public-networks/reference/api/index.md#trace_transaction) include the revert reason as an ABI-encoded string.
 
 !!! example "Example of `trace` response list item"
 
@@ -162,9 +149,8 @@ As described in the [Solidity documentation], the revert reason is an ABI-encode
 
 ## Dapp support
 
-Client libraries, such as web3j, do not support extracting the revert reason from the transaction
-receipt. To extract the revert reason your dapp must interact directly with Besu using a custom
-JSON -> Object converter.
+Client libraries, such as web3j, do not support extracting the revert reason from the transaction receipt. To extract the revert reason your dapp must interact directly with Besu using a custom JSON -> Object converter.
 
 <!-- Links -->
+
 [Solidity documentation]: https://docs.soliditylang.org/en/v0.8.12/control-structures.html#revert

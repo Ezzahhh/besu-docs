@@ -1,14 +1,12 @@
 ---
 title: Onchain permissioning
 description: Onchain permissioning
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 # Onchain permissioning
 
-Onchain [permissioning](index.md) uses smart contracts to store and administer the node, account, and admin
-allowlists. Using onchain permissioning enables all nodes to read the allowlists from a single
-source, the blockchain.
+Onchain [permissioning](index.md) uses smart contracts to store and administer the node, account, and admin allowlists. Using onchain permissioning enables all nodes to read the allowlists from a single source, the blockchain.
 
 !!! important
 
@@ -34,9 +32,9 @@ source, the blockchain.
 
 Permissioning implements three allowlists:
 
-* Accounts, which can submit transactions to the network.
-* Nodes, which can join the network.
-* Admins, which are accounts able to update the accounts and nodes allowlists.
+- Accounts, which can submit transactions to the network.
+- Nodes, which can join the network.
+- Admins, which are accounts able to update the accounts and nodes allowlists.
 
 !!! caution "Using account permissioning and privacy"
 
@@ -62,16 +60,14 @@ Permissioning implements three allowlists:
 
 ## Bootnodes
 
-When a node joins the network, the node connects to the [bootnodes](../../how-to/configure/bootnodes.md) until it
-synchronizes to the chain head, regardless of node permissions. After synchronization, the Account Rules and Node
-Rules smart contracts apply the permissioning rules.
+When a node joins the network, the node connects to the [bootnodes](../../how-to/configure/bootnodes.md) until it synchronizes to the chain head, regardless of node permissions. After synchronization, the Account Rules and Node Rules smart contracts apply the permissioning rules.
 
-If a synchronized node loses all peer connections (that is, it has zero peers), it reconnects to the
-bootnodes to rediscover peers.
+If a synchronized node loses all peer connections (that is, it has zero peers), it reconnects to the bootnodes to rediscover peers.
 
 !!! important
 
     All bootnodes must be on the nodes allowlist.
 
 <!-- Links -->
+
 [specify the permissioning contract interface]: ../../how-to/use-permissioning/onchain.md#specify-the-permissioning-contract-interface-version

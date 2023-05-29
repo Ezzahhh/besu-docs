@@ -1,14 +1,12 @@
 ---
+title: Run Besu and Teku on a testnet
+sidebar_position: 2
 Description: How to run Besu and Teku on a testnet
 ---
 
 # Run Besu and Teku on a testnet
 
-Run Besu as an [execution client](../concepts/the-merge.md#execution-clients) and
-[Teku](https://docs.teku.consensys.net/)
-as a [consensus client](../concepts/the-merge.md#consensus-clients) on the
-[Goerli](https://github.com/eth-clients/goerli) and [Sepolia](https://github.com/eth-clients/sepolia)
-Ethereum testnets.
+Run Besu as an [execution client](../concepts/the-merge.md#execution-clients) and [Teku](https://docs.teku.consensys.net/) as a [consensus client](../concepts/the-merge.md#consensus-clients) on the [Goerli](https://github.com/eth-clients/goerli) and [Sepolia](https://github.com/eth-clients/sepolia) Ethereum testnets.
 
 !!! note
 
@@ -18,11 +16,9 @@ Ethereum testnets.
 
 ## 1. Install Besu and Teku
 
-Install [Besu](../get-started/install/binary-distribution.md) and
-[Teku](https://docs.teku.consensys.net/HowTo/Get-Started/Installation-Options/Install-Binaries/).
+Install [Besu](../get-started/install/binary-distribution.md) and [Teku](https://docs.teku.consensys.net/HowTo/Get-Started/Installation-Options/Install-Binaries/).
 
-Ensure you meet the prerequisites for the installation option you use.
-For example, you must have Java 17+ if using the Besu and Teku binary distributions.
+Ensure you meet the prerequisites for the installation option you use. For example, you must have Java 17+ if using the Besu and Teku binary distributions.
 
 Ensure you meet the [system requirements for Besu on public networks](../get-started/system-requirements.md).
 
@@ -34,28 +30,20 @@ Run the following command:
 openssl rand -hex 32 | tr -d "\n" > jwtsecret.hex
 ```
 
-You will specify `jwtsecret.hex` when starting Besu and Teku.
-This is a shared JWT secret the clients use to authenticate each other when using the
-[Engine API](../how-to/use-engine-api.md).
+You will specify `jwtsecret.hex` when starting Besu and Teku. This is a shared JWT secret the clients use to authenticate each other when using the [Engine API](../how-to/use-engine-api.md).
 
 ## 3. Generate validator keys
 
 If you're running Teku as a beacon node only, skip to the [next step](#4-start-besu).
 
-If you're also running Teku as a validator client, create a test Ethereum address (you can do this in
-[MetaMask](https://metamask.zendesk.com/hc/en-us/articles/360015289452-How-to-create-an-additional-account-in-your-wallet)).
-Fund this address with testnet ETH (32 ETH and gas fees for each validator) using a faucet.
-See the list of [Goerli faucets](https://github.com/eth-clients/goerli#meta-data-g%C3%B6rli) and
-[Sepolia faucets](https://github.com/eth-clients/sepolia#meta-data-sepolia).
+If you're also running Teku as a validator client, create a test Ethereum address (you can do this in [MetaMask](https://metamask.zendesk.com/hc/en-us/articles/360015289452-How-to-create-an-additional-account-in-your-wallet)). Fund this address with testnet ETH (32 ETH and gas fees for each validator) using a faucet. See the list of [Goerli faucets](https://github.com/eth-clients/goerli#meta-data-g%C3%B6rli) and [Sepolia faucets](https://github.com/eth-clients/sepolia#meta-data-sepolia).
 
 !!! note
 
     If you can't get ETH using the faucet, you can ask for help on the
     [EthStaker Discord](https://discord.io/ethstaker).
 
-Generate validator keys for one or more validators using the
-[Goerli Staking Launchpad](https://goerli.launchpad.ethereum.org/) (or
-[request to become validator on Sepolia](https://notes.ethereum.org/zvkfSmYnT0-uxwwEegbCqg)).
+Generate validator keys for one or more validators using the [Goerli Staking Launchpad](https://goerli.launchpad.ethereum.org/) (or [request to become validator on Sepolia](https://notes.ethereum.org/zvkfSmYnT0-uxwwEegbCqg)).
 
 !!! important
 
@@ -98,11 +86,9 @@ Run the following command or specify the options in a [configuration file](../ho
       --engine-jwt-secret=<path to jwtsecret.hex>
     ```
 
-Specify the path to the `jwtsecret.hex` file generated in [step 2](#2-generate-the-shared-secret) using the
-[`--engine-jwt-secret`](../reference/cli/options.md#engine-jwt-secret) option.
+Specify the path to the `jwtsecret.hex` file generated in [step 2](#2-generate-the-shared-secret) using the [`--engine-jwt-secret`](../reference/cli/options.md#engine-jwt-secret) option.
 
-You can modify the option values and add other [command line options](../reference/cli/options.md)
-as needed.
+You can modify the option values and add other [command line options](../reference/cli/options.md) as needed.
 
 ## 5. Start Teku
 
@@ -110,8 +96,7 @@ Open a new terminal window.
 
 ### Beacon node only
 
-To run Teku as a beacon node only (without validator duties), run the following command or specify the
-options in the [Teku configuration file]:
+To run Teku as a beacon node only (without validator duties), run the following command or specify the options in the [Teku configuration file]:
 
 === "Goerli"
 
@@ -135,16 +120,13 @@ options in the [Teku configuration file]:
       --rest-api-enabled=true
     ```
 
-Specify the path to the `jwtsecret.hex` file generated in [step 2](#2-generate-the-shared-secret) using
-the [`--ee-jwt-secret-file`](https://docs.teku.consensys.net/Reference/CLI/CLI-Syntax/#ee-jwt-secret-file)
-option.
+Specify the path to the `jwtsecret.hex` file generated in [step 2](#2-generate-the-shared-secret) using the [`--ee-jwt-secret-file`](https://docs.teku.consensys.net/Reference/CLI/CLI-Syntax/#ee-jwt-secret-file) option.
 
 You can modify the option values and add other [Teku command line options] as needed.
 
 ### Beacon node and validator client
 
-To run Teku as a beacon node and validator in a single process, run the following command or specify
-the options in the [Teku configuration file]:
+To run Teku as a beacon node and validator in a single process, run the following command or specify the options in the [Teku configuration file]:
 
 === "Goerli"
 
@@ -166,16 +148,9 @@ the options in the [Teku configuration file]:
 
 Specify:
 
-- The path to the `jwtsecret.hex` file generated in [step 2](#2-generate-the-shared-secret) using the
-  [`--ee-jwt-secret-file`](https://docs.teku.consensys.net/Reference/CLI/CLI-Syntax/#ee-jwt-secret-file) option.
-- The test Ethereum address created in [step 3](#3-generate-validator-keys) as the default fee
-  recipient using the
-  [`--validators-proposer-default-fee-recipient`](https://docs.teku.consensys.net/Reference/CLI/CLI-Syntax/#validators-proposer-default-fee-recipient)
-  option.
-- The paths to the keystore `.json` file and password `.txt` file created in
-  [step 3](#3-generate-validator-keys) for each validator using the
-  [`--validator-keys`](https://docs.teku.consensys.net/Reference/CLI/CLI-Syntax/#validator-keys) option.
-  Separate the `.json` and `.txt` files with a colon, and separate entries for multiple validators with commas.
+- The path to the `jwtsecret.hex` file generated in [step 2](#2-generate-the-shared-secret) using the [`--ee-jwt-secret-file`](https://docs.teku.consensys.net/Reference/CLI/CLI-Syntax/#ee-jwt-secret-file) option.
+- The test Ethereum address created in [step 3](#3-generate-validator-keys) as the default fee recipient using the [`--validators-proposer-default-fee-recipient`](https://docs.teku.consensys.net/Reference/CLI/CLI-Syntax/#validators-proposer-default-fee-recipient) option.
+- The paths to the keystore `.json` file and password `.txt` file created in [step 3](#3-generate-validator-keys) for each validator using the [`--validator-keys`](https://docs.teku.consensys.net/Reference/CLI/CLI-Syntax/#validator-keys) option. Separate the `.json` and `.txt` files with a colon, and separate entries for multiple validators with commas.
 
 You can modify the option values and add other [Teku command line options] as needed.
 
@@ -212,19 +187,13 @@ After starting Besu and Teku, your node starts syncing and connecting to peers.
         2022-03-21 20:44:12.353 INFO  - Syncing     *** Target slot: 76096, Head slot: 3519, Remaining slots: 72577, Connected peers: 9
         ```
 
-If you're running Teku as a beacon node only, you're all set.
-If you're also running Teku as a validator client, ensure Besu and Teku are fully synced before
-submitting your staking deposit in the next step.
-Syncing Besu can take several days.
+If you're running Teku as a beacon node only, you're all set. If you're also running Teku as a validator client, ensure Besu and Teku are fully synced before submitting your staking deposit in the next step. Syncing Besu can take several days.
 
 ## 7. Stake ETH
 
-Stake your testnet ETH for one or more validators using the
-[Goerli Staking Launchpad](https://goerli.launchpad.ethereum.org/).
+Stake your testnet ETH for one or more validators using the [Goerli Staking Launchpad](https://goerli.launchpad.ethereum.org/).
 
-You can check your validator status by searching your Ethereum address on the
-[Goerli Beacon Chain explorer](https://goerli.beaconcha.in/).
-It may take up to multiple days for your validator to be activated and start proposing blocks.
+You can check your validator status by searching your Ethereum address on the [Goerli Beacon Chain explorer](https://goerli.beaconcha.in/). It may take up to multiple days for your validator to be activated and start proposing blocks.
 
 <!--links-->
 

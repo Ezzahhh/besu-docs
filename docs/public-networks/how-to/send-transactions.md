@@ -1,22 +1,18 @@
 ---
+title: Create and send transactions
+sidebar_position: 4
 description: Some use cases of creating transactions on a Hyperledger Besu network
 ---
 
 # Create and send transactions
 
-You can send signed transactions using the
-[`eth_sendRawTransaction`](../reference/api/index.md#eth_sendrawtransaction) JSON-RPC API
-method.
+You can send signed transactions using the [`eth_sendRawTransaction`](../reference/api/index.md#eth_sendrawtransaction) JSON-RPC API method.
 
-Signed transactions can be simple value transfers, contract creation, or contract invocation. Set
-the maximum transaction fee for transactions using the [`--rpc-tx-feecap`](../reference/cli/options.md#rpc-tx-feecap)
-CLI option.
+Signed transactions can be simple value transfers, contract creation, or contract invocation. Set the maximum transaction fee for transactions using the [`--rpc-tx-feecap`](../reference/cli/options.md#rpc-tx-feecap) CLI option.
 
-To accept signed transactions from remote connections, set the
-[API listening host](use-besu-api/index.md#service-hosts) to `0.0.0.0`.
+To accept signed transactions from remote connections, set the [API listening host](use-besu-api/index.md#service-hosts) to `0.0.0.0`.
 
-[Use client libraries](develop/client-libraries.md) to create and send a signed raw transaction to transfer
-Ether and create a smart contract.
+[Use client libraries](develop/client-libraries.md) to create and send a signed raw transaction to transfer Ether and create a smart contract.
 
 !!! warning "Private keys"
 
@@ -47,27 +43,23 @@ Ether and create a smart contract.
 
 ## `eth_call` vs `eth_sendRawTransaction`
 
-You can interact with contracts using [`eth_call`](../reference/api/index.md#eth_call) or
-[`eth_sendRawTransaction`](../reference/api/index.md#eth_sendrawtransaction). The table below
-compares the characteristics of both calls.
+You can interact with contracts using [`eth_call`](../reference/api/index.md#eth_call) or [`eth_sendRawTransaction`](../reference/api/index.md#eth_sendrawtransaction). The table below compares the characteristics of both calls.
 
-| `eth_call`                                                     | `eth_sendRawTransaction`                                                                                                      |
-|----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
-| Read-only                                                      | Write                                                                                                                         |
-| Invokes contract function locally                              | Broadcasts to the network                                                                                                     |
-| Does not change state of blockchain                            | Updates the blockchain (for example, transfers ether between accounts)                                                        |
-| Does not consume gas                                           | Requires gas                                                                                                                  |
-| Synchronous                                                    | Asynchronous                                                                                                                  |
+| `eth_call` | `eth_sendRawTransaction` |
+| --- | --- |
+| Read-only | Write |
+| Invokes contract function locally | Broadcasts to the network |
+| Does not change state of blockchain | Updates the blockchain (for example, transfers ether between accounts) |
+| Does not consume gas | Requires gas |
+| Synchronous | Asynchronous |
 | Returns the value of a contract function available immediately | Returns transaction hash only. A block might not include all possible transactions (for example, if the gas price is too low). |
 
 ## Use wallets for key management
 
 Besu doesn't support key management inside the client. Use:
 
-* [EthSigner](http://docs.ethsigner.consensys.net/en/latest/) with Besu to provide access to your
-  key store and sign transactions.
-* Third-party tools (for example, [MetaMask](https://metamask.io/) and [web3j](https://web3j.io/))
-  for creating accounts.
+- [EthSigner](http://docs.ethsigner.consensys.net/en/latest/) with Besu to provide access to your key store and sign transactions.
+- Third-party tools (for example, [MetaMask](https://metamask.io/) and [web3j](https://web3j.io/)) for creating accounts.
 
 !!! tip
 

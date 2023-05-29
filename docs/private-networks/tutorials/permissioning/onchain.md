@@ -1,21 +1,20 @@
 ---
 title: Get started with onchain permissioning
-sidebar_position: 2
+sidebar_position: 1
 description: Setting up and using Hyperledger Besu onchain permissioning
 ---
 
 # Get started with onchain permissioning
 
-The following steps describe bootstrapping a permissioned network using a Hyperledger Besu
-node.
+The following steps describe bootstrapping a permissioned network using a Hyperledger Besu node.
 
 This tutorial configures permissioning on a [IBFT 2.0 proof of authority (PoA)] network.
 
 ## Prerequisites
 
-* [Node.js](https://nodejs.org/en/) v10.16.0 or later
-* [Yarn](https://yarnpkg.com/en/) v1.15 or later
-* Browser with [MetaMask installed](https://metamask.io/)
+- [Node.js](https://nodejs.org/en/) v10.16.0 or later
+- [Yarn](https://yarnpkg.com/en/) v1.15 or later
+- Browser with [MetaMask installed](https://metamask.io/)
 
 ## Steps
 
@@ -23,8 +22,7 @@ This tutorial configures permissioning on a [IBFT 2.0 proof of authority (PoA)] 
 
 Each node requires a data directory for the blockchain data.
 
-Create directories for your permissioned network and each of the three nodes, and a data directory for
-each node:
+Create directories for your permissioned network and each of the three nodes, and a data directory for each node:
 
 ```bash
 Permissioned-Network/
@@ -40,17 +38,11 @@ Permissioned-Network/
 
 ### 2. Create the configuration file
 
-The configuration file defines the
-[IBFT 2.0 genesis file](../../how-to/configure/consensus/ibft.md#genesis-file) and the
-number of node key pairs to generate.
+The configuration file defines the [IBFT 2.0 genesis file](../../how-to/configure/consensus/ibft.md#genesis-file) and the number of node key pairs to generate.
 
-The configuration file has two nested JSON nodes. The first is the `genesis` property defining
-the IBFT 2.0 genesis file, except for the `extraData` string, which Besu generates automatically in
-the resulting genesis file. The second is the `blockchain` property defining the number of key
-pairs to generate.
+The configuration file has two nested JSON nodes. The first is the `genesis` property defining the IBFT 2.0 genesis file, except for the `extraData` string, which Besu generates automatically in the resulting genesis file. The second is the `blockchain` property defining the number of key pairs to generate.
 
-Copy the following configuration file definition to a file called `ibftConfigFile.json` and save it
-in the `Permissioned-Network` directory:
+Copy the following configuration file definition to a file called `ibftConfigFile.json` and save it in the `Permissioned-Network` directory:
 
 ```json
 {
@@ -112,10 +104,8 @@ besu operator generate-blockchain-config --config-file=ibftConfigFile.json --to=
 
 Besu creates the following in the `networkFiles` directory:
 
-* `genesis.json` - The genesis file including the `extraData` property specifying the four nodes
-  are validators.
-* A directory for each node named using the node address and containing the public and private key
-  for each node.
+- `genesis.json` - The genesis file including the `extraData` property specifying the four nodes are validators.
+- A directory for each node named using the node address and containing the public and private key for each node.
 
 ```bash
 networkFiles/
@@ -146,10 +136,7 @@ Copy the `genesis.json` file to the `Permisssioned-Network` directory.
     If the network is using only account or node permissioning, add only the relevant Ingress
     contract to the genesis file.
 
-Add the Ingress contracts to the genesis file for your network by copying them from
-[`genesis.json`](https://github.com/ConsenSys/permissioning-smart-contracts/blob/e6c2d4d5a728c11cdb8e97a07ddda3c0bfb57b5d/genesis.json)
-in the [`permissioning-smart-contracts` repository](https://github.com/ConsenSys/permissioning-smart-contracts) to
-the `alloc` section of the contract:
+Add the Ingress contracts to the genesis file for your network by copying them from [`genesis.json`](https://github.com/ConsenSys/permissioning-smart-contracts/blob/e6c2d4d5a728c11cdb8e97a07ddda3c0bfb57b5d/genesis.json) in the [`permissioning-smart-contracts` repository](https://github.com/ConsenSys/permissioning-smart-contracts) to the `alloc` section of the contract:
 
 ```json
 "0x0000000000000000000000000000000000008888": {
@@ -217,8 +204,7 @@ Permissioned-Network/
     If your network is not a [free gas network](../../how-to/configure/free-gas.md), the account used
     to interact with the permissioning contracts must have a balance.
 
-Start the first node with command line options to enable onchain permissioning and the location of
-the **data** folder and genesis file:
+Start the first node with command line options to enable onchain permissioning and the location of the **data** folder and genesis file:
 
 ```cmd
 besu --data-path=data --genesis-file=../genesis.json --permissions-accounts-contract-enabled --permissions-accounts-contract-address "0x0000000000000000000000000000000000008888" --permissions-nodes-contract-enabled  --permissions-nodes-contract-address "0x0000000000000000000000000000000000009999" --permissions-nodes-contract-version=2 --rpc-http-enabled --rpc-http-cors-origins="*" --rpc-http-api=ADMIN,ETH,NET,PERM,IBFT --host-allowlist="*"
@@ -226,27 +212,17 @@ besu --data-path=data --genesis-file=../genesis.json --permissions-accounts-cont
 
 On the command line:
 
-* Enable onchain accounts permissioning using
-    [`--permissions-accounts-contract-enabled`](../../reference/cli/options.md#permissions-accounts-contract-enabled).
-* Set the address of the Account Ingress contract in the genesis file using
-    [`--permissions-accounts-contract-address`](../../reference/cli/options.md#permissions-accounts-contract-address).
-* Enable onchain nodes permissioning using
-    [`--permissions-nodes-contract-enabled`](../../reference/cli/options.md#permissions-nodes-contract-enabled).
-* Set the address of the Node Ingress contract in the genesis file using
-    [`--permissions-nodes-contract-address`](../../reference/cli/options.md#permissions-nodes-contract-address).
-* Set the version of the [permissioning contract interface](../../how-to/use-permissioning/onchain.md#specify-the-permissioning-contract-interface-version)
-    using [`--permissions-nodes-contract-version`](../../reference/cli/options.md#permissions-nodes-contract-version).
-* Enable the JSON-RPC API using
-    [`--rpc-http-enabled`](../../../public-networks/reference/cli/options.md#rpc-http-enabled).
-* Enable the `ADMIN`, `ETH`, `NET`, `PERM`, and `IBFT` APIs using
-    [`--rpc-http-api`](../../../public-networks/reference/cli/options.md#rpc-http-api).
-* Allow all-host access to the HTTP JSON-RPC API using
-    [`--host-allowlist`](../../../public-networks/reference/cli/options.md#host-allowlist).
-* Allow all-domain access to the node through the HTTP JSON-RPC API using
-    [`--rpc-http-cors-origins`](../../../public-networks/reference/cli/options.md#rpc-http-cors-origins).
+- Enable onchain accounts permissioning using [`--permissions-accounts-contract-enabled`](../../reference/cli/options.md#permissions-accounts-contract-enabled).
+- Set the address of the Account Ingress contract in the genesis file using [`--permissions-accounts-contract-address`](../../reference/cli/options.md#permissions-accounts-contract-address).
+- Enable onchain nodes permissioning using [`--permissions-nodes-contract-enabled`](../../reference/cli/options.md#permissions-nodes-contract-enabled).
+- Set the address of the Node Ingress contract in the genesis file using [`--permissions-nodes-contract-address`](../../reference/cli/options.md#permissions-nodes-contract-address).
+- Set the version of the [permissioning contract interface](../../how-to/use-permissioning/onchain.md#specify-the-permissioning-contract-interface-version) using [`--permissions-nodes-contract-version`](../../reference/cli/options.md#permissions-nodes-contract-version).
+- Enable the JSON-RPC API using [`--rpc-http-enabled`](../../../public-networks/reference/cli/options.md#rpc-http-enabled).
+- Enable the `ADMIN`, `ETH`, `NET`, `PERM`, and `IBFT` APIs using [`--rpc-http-api`](../../../public-networks/reference/cli/options.md#rpc-http-api).
+- Allow all-host access to the HTTP JSON-RPC API using [`--host-allowlist`](../../../public-networks/reference/cli/options.md#host-allowlist).
+- Allow all-domain access to the node through the HTTP JSON-RPC API using [`--rpc-http-cors-origins`](../../../public-networks/reference/cli/options.md#rpc-http-cors-origins).
 
-When the node starts, the [enode URL](../../../public-networks/concepts/node-keys.md#enode-url) displays. Copy the
-enode URL to use when starting Node-2, Node-3, and Node-4.
+When the node starts, the [enode URL](../../../public-networks/concepts/node-keys.md#enode-url) displays. Copy the enode URL to use when starting Node-2, Node-3, and Node-4.
 
 ### 8. Start Node-2
 
@@ -258,10 +234,10 @@ besu --data-path=data --genesis-file=../genesis.json --bootnodes=<Node-1 Enode U
 
 The command line specifies:
 
-* A different port to Node-1 for P2P discovery using [`--p2p-port`](../../../public-networks/reference/cli/options.md#p2p-port).
-* A different port to Node-1 for HTTP JSON-RPC using [`--rpc-http-port`](../../../public-networks/reference/cli/options.md#rpc-http-port).
-* The enode URL of Node-1 using [`--bootnodes`](../../../public-networks/reference/cli/options.md#bootnodes).
-* Other options as for [Node-1](#7-start-node-1).
+- A different port to Node-1 for P2P discovery using [`--p2p-port`](../../../public-networks/reference/cli/options.md#p2p-port).
+- A different port to Node-1 for HTTP JSON-RPC using [`--rpc-http-port`](../../../public-networks/reference/cli/options.md#rpc-http-port).
+- The enode URL of Node-1 using [`--bootnodes`](../../../public-networks/reference/cli/options.md#bootnodes).
+- Other options as for [Node-1](#7-start-node-1).
 
 ### 9. Start Node-3
 
@@ -273,10 +249,10 @@ besu --data-path=data --genesis-file=../genesis.json --bootnodes=<Node-1 Enode U
 
 The command line specifies:
 
-* A different port to Node-1 and Node-2 for P2P discovery using [`--p2p-port`](../../../public-networks/reference/cli/options.md#p2p-port).
-* A different port to Node-1 and Node-2 for HTTP JSON-RPC using [`--rpc-http-port`](../../../public-networks/reference/cli/options.md#rpc-http-port).
-* The enode URL of Node-1 using [`--bootnodes`](../../../public-networks/reference/cli/options.md#bootnodes).
-* Other options as for [Node-1](#7-start-node-1).
+- A different port to Node-1 and Node-2 for P2P discovery using [`--p2p-port`](../../../public-networks/reference/cli/options.md#p2p-port).
+- A different port to Node-1 and Node-2 for HTTP JSON-RPC using [`--rpc-http-port`](../../../public-networks/reference/cli/options.md#rpc-http-port).
+- The enode URL of Node-1 using [`--bootnodes`](../../../public-networks/reference/cli/options.md#bootnodes).
+- Other options as for [Node-1](#7-start-node-1).
 
 ### 10. Start Node-4
 
@@ -288,10 +264,10 @@ besu --data-path=data --genesis-file=../genesis.json --bootnodes=<Node-1 Enode U
 
 The command line specifies:
 
-* A different port to Node-1, Node-2, and Node-3 for P2P discovery using [`--p2p-port`](../../../public-networks/reference/cli/options.md#p2p-port).
-* A different port to Node-1, Node-2, and Node-3 for HTTP JSON-RPC using [`--rpc-http-port`](../../../public-networks/reference/cli/options.md#rpc-http-port).
-* The enode URL of Node-1 using [`--bootnodes`](../../../public-networks/reference/cli/options.md#bootnodes).
-* Other options as for [Node-1](#7-start-node-1).
+- A different port to Node-1, Node-2, and Node-3 for P2P discovery using [`--p2p-port`](../../../public-networks/reference/cli/options.md#p2p-port).
+- A different port to Node-1, Node-2, and Node-3 for HTTP JSON-RPC using [`--rpc-http-port`](../../../public-networks/reference/cli/options.md#rpc-http-port).
+- The enode URL of Node-1 using [`--bootnodes`](../../../public-networks/reference/cli/options.md#bootnodes).
+- Other options as for [Node-1](#7-start-node-1).
 
 !!! tip
 
@@ -312,17 +288,13 @@ Change into the `permissioning-smart-contracts` directory.
 
 Create the following environment variables and set to the specified values:
 
-* `BESU_NODE_PERM_ACCOUNT` - Account to deploy the permissioning contracts and become the first
-  admin account.
-* `BESU_NODE_PERM_KEY` - Private key of the account to deploy the permissioning contracts.
-* `ACCOUNT_INGRESS_CONTRACT_ADDRESS` - Address of the Account Ingress contract in the genesis file.
-* `NODE_INGRESS_CONTRACT_ADDRESS` - Address of the Node Ingress contract in the genesis file.
-* `BESU_NODE_PERM_ENDPOINT` - Required only if your node is not using the default JSON-RPC host and
-  port (`http://127.0.0.1:8545`). Set to JSON-RPC host and port. When bootstrapping the network,
-  Besu uses the specified node to deploy the contracts and is the first node in the network.
-* `CHAIN_ID` - The chain ID from the genesis file.
-* `INITIAL_ALLOWLISTED_NODES`(optional) - The enode URLs of permitted nodes. Specify multiple nodes
-(Node-1, Node-2, Node-3) as a comma-separated list.
+- `BESU_NODE_PERM_ACCOUNT` - Account to deploy the permissioning contracts and become the first admin account.
+- `BESU_NODE_PERM_KEY` - Private key of the account to deploy the permissioning contracts.
+- `ACCOUNT_INGRESS_CONTRACT_ADDRESS` - Address of the Account Ingress contract in the genesis file.
+- `NODE_INGRESS_CONTRACT_ADDRESS` - Address of the Node Ingress contract in the genesis file.
+- `BESU_NODE_PERM_ENDPOINT` - Required only if your node is not using the default JSON-RPC host and port (`http://127.0.0.1:8545`). Set to JSON-RPC host and port. When bootstrapping the network, Besu uses the specified node to deploy the contracts and is the first node in the network.
+- `CHAIN_ID` - The chain ID from the genesis file.
+- `INITIAL_ALLOWLISTED_NODES`(optional) - The enode URLs of permitted nodes. Specify multiple nodes (Node-1, Node-2, Node-3) as a comma-separated list.
 
 !!! tip
 
@@ -348,13 +320,13 @@ In the `permissioning-smart-contracts` directory, while your network is running,
 yarn truffle migrate --reset --network besu
 ```
 
-This also updates the Ingress contract with the name and version of the Admin and Rules contracts.
-The migration logs the addresses of the Admin and Rules contracts.
+This also updates the Ingress contract with the name and version of the Admin and Rules contracts. The migration logs the addresses of the Admin and Rules contracts.
 
 !!! important
 
     The account that deploys the contracts is automatically an admin account.
 
 <!-- Links -->
+
 [Node-1, Node-2, Node-3, and Node-4 to the allowlist]: ../../how-to/use-permissioning/onchain.md#update-nodes-allowlist
 [IBFT 2.0 proof of authority (PoA)]: ../../how-to/configure/consensus/ibft.md

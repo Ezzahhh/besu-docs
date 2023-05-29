@@ -1,8 +1,12 @@
 ---
+title: Besu API
+sidebar_position: 2
 description: Hyperledger Besu JSON-RPC API methods reference
 tags:
   - private networks
 ---
+
+import Postman from '../../../global/postman.md'
 
 # Besu API methods
 
@@ -17,7 +21,7 @@ tags:
     * Most example requests are made against private networks.
       Depending on network configuration and activity, your example results might be different.
 
---8<-- "global/postman.md"
+<Postman />
 
 ## `ADMIN` methods
 
@@ -40,12 +44,11 @@ Adds a [static node](../../how-to/connect/static-nodes.md).
 
 #### Parameters
 
-`enode`: *string* - [enode URL](../../concepts/node-keys.md#enode-url) of peer to add
+`enode`: _string_ - [enode URL](../../concepts/node-keys.md#enode-url) of peer to add
 
 #### Returns
 
-`result`: *boolean* - `true` if peer added or `false` if peer already a
-[static node](../../how-to/connect/static-nodes.md)
+`result`: _boolean_ - `true` if peer added or `false` if peer already a [static node](../../how-to/connect/static-nodes.md)
 
 !!! example
 
@@ -73,20 +76,19 @@ Adds a [static node](../../how-to/connect/static-nodes.md).
 
 ### `admin_changeLogLevel`
 
-Changes the log level without restarting Besu. You can change the log level for all logs, or you
-can change the log level for specific packages or classes.
+Changes the log level without restarting Besu. You can change the log level for all logs, or you can change the log level for specific packages or classes.
 
 You can specify only one log level per RPC call.
 
 #### Parameters
 
-* `level`: *string* - [log level](../cli/options.md#logging)
+- `level`: _string_ - [log level](../cli/options.md#logging)
 
-* `log_filter`: *array* - (optional) packages or classes for which to change the log level
+- `log_filter`: _array_ - (optional) packages or classes for which to change the log level
 
 #### Returns
 
-`result`: *string* - `Success` if the log level has changed, otherwise `error`
+`result`: _string_ - `Success` if the log level has changed, otherwise `error`
 
 !!! example
 
@@ -140,8 +142,7 @@ You can specify only one log level per RPC call.
 
 ### `admin_generateLogBloomCache`
 
-Generates cached log bloom indexes for blocks. APIs such as [`eth_getLogs`](#eth_getlogs) and
-[`eth_getFilterLogs`](#eth_getfilterlogs) use the cache for improved performance.
+Generates cached log bloom indexes for blocks. APIs such as [`eth_getLogs`](#eth_getlogs) and [`eth_getFilterLogs`](#eth_getfilterlogs) use the cache for improved performance.
 
 !!! tip
 
@@ -156,23 +157,23 @@ Generates cached log bloom indexes for blocks. APIs such as [`eth_getLogs`](#eth
 
 #### Parameters
 
-* `startBlock`: *string* - block to start generating indexes
+- `startBlock`: _string_ - block to start generating indexes
 
-* `endBlock`: *string* - block to stop generating indexes
+- `endBlock`: _string_ - block to stop generating indexes
 
 #### Returns
 
-`result`: *object* - log bloom index details:
+`result`: _object_ - log bloom index details:
 
-* `startBlock`: *string* - starting block for the last requested cache generation
+- `startBlock`: _string_ - starting block for the last requested cache generation
 
-* `endBlock`: *string* - ending block for the last requested cache generation
+- `endBlock`: _string_ - ending block for the last requested cache generation
 
-* `currentBlock`: *string* - most recent block added to the cache
+- `currentBlock`: _string_ - most recent block added to the cache
 
-* `indexing`: *boolean* - indicates if indexing is in progress
+- `indexing`: _boolean_ - indicates if indexing is in progress
 
-* *boolean* - indicates acceptance of the request from this call to generate the cache
+- _boolean_ - indicates acceptance of the request from this call to generate the cache
 
 !!! example
 
@@ -210,26 +211,21 @@ Removes cache files for the specified range of blocks.
 
 #### Parameters
 
-* `fromBlock`: *string* - integer representing a block number or one of the string tags `latest`,
-`earliest`, or `pending`, as described in
-[block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
+- `fromBlock`: _string_ - integer representing a block number or one of the string tags `latest`, `earliest`, or `pending`, as described in [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
 
-* `toBlock`: *string* - integer representing a block number or one of the string tags `latest`,
-`earliest`, or `pending`, as described in
-[block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
+- `toBlock`: _string_ - integer representing a block number or one of the string tags `latest`, `earliest`, or `pending`, as described in [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
 
-You can skip a parameter by using an empty string, `""`.
-If you specify:
+You can skip a parameter by using an empty string, `""`. If you specify:
 
-* No parameters, the call removes cache files for all blocks.
+- No parameters, the call removes cache files for all blocks.
 
-* Only `fromBlock`, the call removes cache files for the specified block.
+- Only `fromBlock`, the call removes cache files for the specified block.
 
-* Only `toBlock`, the call removes cache files from the genesis block to the specified block.
+- Only `toBlock`, the call removes cache files from the genesis block to the specified block.
 
 #### Returns
 
-`result`: *object* - `Cache Removed` status or `error`.
+`result`: _object_ - `Cache Removed` status or `error`.
 
 !!! example
 
@@ -263,11 +259,11 @@ Repairs cached logs by fixing all segments starting with the specified block num
 
 #### Parameters
 
-`startBlock`: *string* - decimal index of the starting block to fix; defaults to the head block
+`startBlock`: _string_ - decimal index of the starting block to fix; defaults to the head block
 
 #### Returns
 
-`result`: *object* -  status of the repair request; `Started` or `Already running`
+`result`: _object_ - status of the repair request; `Started` or `Already running`
 
 !!! example
 
@@ -297,8 +293,7 @@ Repairs cached logs by fixing all segments starting with the specified block num
 
 ### `admin_nodeInfo`
 
-Returns networking information about the node. The information includes general information about
-the node and specific information from each running Ethereum sub-protocol (for example, `eth`).
+Returns networking information about the node. The information includes general information about the node and specific information from each running Ethereum sub-protocol (for example, `eth`).
 
 #### Parameters
 
@@ -306,20 +301,19 @@ None
 
 #### Returns
 
-`result`: *object* - node object with the following fields:
+`result`: _object_ - node object with the following fields:
 
-* `enode`: *string* - [enode URL](../../concepts/node-keys.md#enode-url) of the node
+- `enode`: _string_ - [enode URL](../../concepts/node-keys.md#enode-url) of the node
 
-* `listenAddr`: *string* - host and port for the node
+- `listenAddr`: _string_ - host and port for the node
 
-* `name`: *string* - client name
+- `name`: _string_ - client name
 
-* `id`: *string* - [node public key](../../concepts/node-keys.md#node-public-key)
+- `id`: _string_ - [node public key](../../concepts/node-keys.md#node-public-key)
 
-* `ports`: *object* - peer discovery and listening
-  [ports](../../how-to/connect/manage-peers.md#port-configuration)
+- `ports`: _object_ - peer discovery and listening [ports](../../how-to/connect/manage-peers.md#port-configuration)
 
-* `protocols`: *object* - list of objects containing information for each Ethereum sub-protocol
+- `protocols`: _object_ - list of objects containing information for each Ethereum sub-protocol
 
 !!! note
 
@@ -393,27 +387,23 @@ None
 
 #### Returns
 
-`result`: *array* of *objects* - list of objects returned for each remote node, with the following fields.
+`result`: _array_ of _objects_ - list of objects returned for each remote node, with the following fields.
 
-* `version`: *string* - P2P protocol version
+- `version`: _string_ - P2P protocol version
 
-* `name`: *string* - client name
+- `name`: _string_ - client name
 
-* `caps`: *array* of *strings* - list of Ethereum sub-protocol capabilities
+- `caps`: _array_ of _strings_ - list of Ethereum sub-protocol capabilities
 
-* `network`: *object* - local and remote addresses established at time of bonding with the peer (the remote
-  address might not match the hex value for `port`; it depends on which node
-  initiated the connection.)
+- `network`: _object_ - local and remote addresses established at time of bonding with the peer (the remote address might not match the hex value for `port`; it depends on which node initiated the connection.)
 
-* `port`: *string* - port on the remote node on which P2P discovery is listening
+- `port`: _string_ - port on the remote node on which P2P discovery is listening
 
-* `id`: *string* - node public key (excluding the `0x` prefix, the node public key is the ID in the
-  [enode URL](../../concepts/node-keys.md#enode-url) `enode://<id ex 0x>@<host>:<port>`.)
+- `id`: _string_ - node public key (excluding the `0x` prefix, the node public key is the ID in the [enode URL](../../concepts/node-keys.md#enode-url) `enode://<id ex 0x>@<host>:<port>`.)
 
-* `protocols`: *object* - [current state of peer](../../how-to/connect/manage-peers.md#monitor-peer-connections)
-  including `difficulty` and `head` (`head` is the hash of the highest known block for the peer.)
+- `protocols`: _object_ - [current state of peer](../../how-to/connect/manage-peers.md#monitor-peer-connections) including `difficulty` and `head` (`head` is the hash of the highest known block for the peer.)
 
-* `enode`: *string* - enode URL of the remote node
+- `enode`: _string_ - enode URL of the remote node
 
 !!! example
 
@@ -471,12 +461,11 @@ Removes a [static node](../../how-to/connect/static-nodes.md).
 
 #### Parameters
 
-`enode`: *string* - [enode URL](../../concepts/node-keys.md#enode-url) of peer to remove
+`enode`: _string_ - [enode URL](../../concepts/node-keys.md#enode-url) of peer to remove
 
 #### Returns
 
-`result`: *boolean* - `true` if peer removed or `false` if peer not a
-[static node](../../how-to/connect/static-nodes.md)
+`result`: _boolean_ - `true` if peer removed or `false` if peer not a [static node](../../how-to/connect/static-nodes.md)
 
 !!! example
 
@@ -504,12 +493,7 @@ Removes a [static node](../../how-to/connect/static-nodes.md).
 
 ## `DEBUG` methods
 
-The `DEBUG` API methods allow you to inspect and debug the network.
-The `DEBUG` API is a more verbose alternative to the [`TRACE` API](#trace-methods), and its main purpose is
-compatibility with tools such as [Remix](https://remix.ethereum.org/).
-Where these APIs overlap, we recommend using the [`TRACE` API](#trace-methods) for production use over the
-`DEBUG` API. Specifically, we recommend `trace_block` over `debug_traceBlock`, and `trace_transaction` over
-`debug_traceTransaction`.
+The `DEBUG` API methods allow you to inspect and debug the network. The `DEBUG` API is a more verbose alternative to the [`TRACE` API](#trace-methods), and its main purpose is compatibility with tools such as [Remix](https://remix.ethereum.org/). Where these APIs overlap, we recommend using the [`TRACE` API](#trace-methods) for production use over the `DEBUG` API. Specifically, we recommend `trace_block` over `debug_traceBlock`, and `trace_transaction` over `debug_traceTransaction`.
 
 !!! note
 
@@ -523,23 +507,23 @@ Returns account information at the specified index of the specified block.
 
 #### Parameters
 
-* `blockHashOrNumber`: *string* - block hash or number at which to retrieve account information
+- `blockHashOrNumber`: _string_ - block hash or number at which to retrieve account information
 
-* `txIndex`: *number* - transaction index at which to retrieve account information
+- `txIndex`: _number_ - transaction index at which to retrieve account information
 
-* `address`: *string* - contract or account address for which to retrieve information
+- `address`: _string_ - contract or account address for which to retrieve information
 
 #### Returns
 
-`result`: *object* - account details object with the following fields:
+`result`: _object_ - account details object with the following fields:
 
-* `code`: *data* - code for the account. Displays `0x0` if the address is an externally owned account.
+- `code`: _data_ - code for the account. Displays `0x0` if the address is an externally owned account.
 
-* `nonce`: *quantity* - number of transactions made by the account before this one
+- `nonce`: _quantity_ - number of transactions made by the account before this one
 
-* `balance`: *quantity* - balance of the account in Wei
+- `balance`: _quantity_ - balance of the account in Wei
 
-* `codehash`: *data* - code hash for the account
+- `codehash`: _data_ - code hash for the account
 
 !!! example
 
@@ -603,29 +587,27 @@ Returns account information at the specified index of the specified block.
 
 ### `debug_accountRange`
 
-[Retesteth](https://github.com/ethereum/retesteth/wiki/Retesteth-Overview) uses
-`debug_accountRange` to implement debugging.
+[Retesteth](https://github.com/ethereum/retesteth/wiki/Retesteth-Overview) uses `debug_accountRange` to implement debugging.
 
 Returns the accounts for a specified block.
 
 #### Parameters
 
-* `blockHashOrNumber`: *string* - block hash or number at which to retrieve account information
+- `blockHashOrNumber`: _string_ - block hash or number at which to retrieve account information
 
-* `txIndex`: *number* - transaction index at which to retrieve account information
+- `txIndex`: _number_ - transaction index at which to retrieve account information
 
-* `address`: *string* - address hash from which to start
+- `address`: _string_ - address hash from which to start
 
-* `limit`: *integer* - maximum number of account entries to return
+- `limit`: _integer_ - maximum number of account entries to return
 
 #### Returns
 
-`result`: *object* - account details object with the following fields:
+`result`: _object_ - account details object with the following fields:
 
-* `addressMap`: *map* of *strings* to *strings* - map of address hashes and account addresses
+- `addressMap`: _map_ of _strings_ to _strings_ - map of address hashes and account addresses
 
-* `nextKey`: *string* - hash of the next address if any addresses remain in the state, otherwise
-  zero
+- `nextKey`: _string_ - hash of the next address if any addresses remain in the state, otherwise zero
 
 !!! example
 
@@ -662,23 +644,21 @@ Returns the accounts for a specified block.
 
 ### `debug_batchSendRawTransaction`
 
-Sends a list of [signed transactions](../../how-to/send-transactions.md).
-This is used to quickly load a network with a lot of transactions.
-This does the same thing as calling [`eth_sendRawTransaction`](#eth_sendrawtransaction) multiple times.
+Sends a list of [signed transactions](../../how-to/send-transactions.md). This is used to quickly load a network with a lot of transactions. This does the same thing as calling [`eth_sendRawTransaction`](#eth_sendrawtransaction) multiple times.
 
 #### Parameters
 
-`data`: *string* -  signed transaction data array
+`data`: _string_ - signed transaction data array
 
 #### Returns
 
-`result`: *array* of *objects* - object returned for each transaction, with the following fields:
+`result`: _array_ of _objects_ - object returned for each transaction, with the following fields:
 
-* `index`: *string* - index of the transaction in the request parameters array
+- `index`: _string_ - index of the transaction in the request parameters array
 
-* `success`: *boolean* - indicates whether or not the transaction has been added to the transaction pool
+- `success`: _boolean_ - indicates whether or not the transaction has been added to the transaction pool
 
-* `errorMessage`: *string* - (optional) error message
+- `errorMessage`: _string_ - (optional) error message
 
 !!! example
 
@@ -725,8 +705,7 @@ This does the same thing as calling [`eth_sendRawTransaction`](#eth_sendrawtrans
 
 ### `debug_getBadBlocks`
 
-Returns a list of invalid blocks.
-This is used to detect and analyze consensus flaws.
+Returns a list of invalid blocks. This is used to detect and analyze consensus flaws.
 
 #### Parameters
 
@@ -734,7 +713,7 @@ None
 
 #### Returns
 
-`result`: *array* of *objects* - list of [block objects](objects.md#block-object)
+`result`: _array_ of _objects_ - list of [block objects](objects.md#block-object)
 
 !!! example
 
@@ -849,18 +828,15 @@ None
 
 ### `debug_getRawBlock`
 
-Returns the [RLP encoding](https://ethereum.org/en/developers/docs/data-structures-and-encoding/rlp/)
-of the specified block.
+Returns the [RLP encoding](https://ethereum.org/en/developers/docs/data-structures-and-encoding/rlp/) of the specified block.
 
 #### Parameters
 
-`blockNumber`: *string* - integer representing a block number or one of the string tags `latest`,
-`earliest`, or `pending`, as described in
-[block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
+`blockNumber`: _string_ - integer representing a block number or one of the string tags `latest`, `earliest`, or `pending`, as described in [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
 
 #### Returns
 
-`result`: *object* - RLP-encoded [block object](objects.md#block-object)
+`result`: _object_ - RLP-encoded [block object](objects.md#block-object)
 
 !!! example
 
@@ -888,18 +864,15 @@ of the specified block.
 
 ### `debug_getRawHeader`
 
-Returns the [RLP encoding](https://ethereum.org/en/developers/docs/data-structures-and-encoding/rlp/)
-of the header of specified block.
+Returns the [RLP encoding](https://ethereum.org/en/developers/docs/data-structures-and-encoding/rlp/) of the header of specified block.
 
 #### Parameters
 
-`blockNumber`: *string* - integer representing a block number or one of the string tags `latest`,
-`earliest`, or `pending`, as described in
-[block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
+`blockNumber`: _string_ - integer representing a block number or one of the string tags `latest`, `earliest`, or `pending`, as described in [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
 
 #### Returns
 
-`result`: *string* - RLP-encoded block header or `error`
+`result`: _string_ - RLP-encoded block header or `error`
 
 !!! example
 
@@ -929,16 +902,15 @@ of the header of specified block.
 
 Returns metrics providing information on the internal operation of Besu.
 
-The available metrics might change over time.
-The JVM metrics might vary based on the JVM implementation used.
+The available metrics might change over time. The JVM metrics might vary based on the JVM implementation used.
 
 The metric types are:
 
-* Timer
+- Timer
 
-* Counter
+- Counter
 
-* Gauge
+- Gauge
 
 #### Parameters
 
@@ -946,7 +918,7 @@ None
 
 #### Returns
 
-`result`: *object* - metrics object
+`result`: _object_ - metrics object
 
 !!! example
 
@@ -1065,18 +1037,15 @@ None
 
 ### `debug_replayBlock`
 
-Re-imports the block matching the specified block number, by rolling the head of the local chain
-back to the block right before the specified block, then importing the specified block.
+Re-imports the block matching the specified block number, by rolling the head of the local chain back to the block right before the specified block, then importing the specified block.
 
 #### Parameters
 
-`blockNumber`: *string* - integer representing a block number or one of the string tags `latest`,
-`earliest`, or `pending`, as described in
-[block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
+`blockNumber`: _string_ - integer representing a block number or one of the string tags `latest`, `earliest`, or `pending`, as described in [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
 
 #### Returns
 
-`result`: *string* - `Success` or `error`
+`result`: _string_ - `Success` or `error`
 
 !!! example
 
@@ -1104,8 +1073,7 @@ back to the block right before the specified block, then importing the specified
 
 ### `debug_resyncWorldstate`
 
-Triggers a re-synchronization of the world state while retaining imported blocks.
-This is useful if there are world state database inconsistencies (for example, Bonsai database issues).
+Triggers a re-synchronization of the world state while retaining imported blocks. This is useful if there are world state database inconsistencies (for example, Bonsai database issues).
 
 #### Parameters
 
@@ -1113,7 +1081,7 @@ None
 
 #### Returns
 
-`result`: *string* - `Success` or `error`
+`result`: _string_ - `Success` or `error`
 
 !!! example
 
@@ -1145,13 +1113,11 @@ Sets the current head of the local chain to the block matching the specified blo
 
 #### Parameters
 
-`blockNumber`: *string* - integer representing a block number or one of the string tags `latest`,
-`earliest`, or `pending`, as described in
-[block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
+`blockNumber`: _string_ - integer representing a block number or one of the string tags `latest`, `earliest`, or `pending`, as described in [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
 
 #### Returns
 
-`result`: *string* - `Success` or `error`
+`result`: _string_ - `Success` or `error`
 
 !!! example
 
@@ -1179,26 +1145,23 @@ Sets the current head of the local chain to the block matching the specified blo
 
 ### `debug_standardTraceBlockToFile`
 
-Generates files containing the block trace. A separate file is generated for each
-transaction in the block.
+Generates files containing the block trace. A separate file is generated for each transaction in the block.
 
 You can also specify a trace file for a specific transaction in a block.
 
-Use [`debug_standardTraceBadBlockToFile`](#debug_standardtracebadblocktofile) to view the trace for
-an invalid block.
+Use [`debug_standardTraceBadBlockToFile`](#debug_standardtracebadblocktofile) to view the trace for an invalid block.
 
 #### Parameters
 
-`blockHash`: *string* - block hash
+`blockHash`: _string_ - block hash
 
-`txHash`: *string* - (optional) transaction hash; if omitted, a trace file is generated for each
-transaction in the block.
+`txHash`: _string_ - (optional) transaction hash; if omitted, a trace file is generated for each transaction in the block.
 
-`disableMemory`: *boolean* - (optional) specifies whether to capture EVM memory during the trace; defaults to `true`
+`disableMemory`: _boolean_ - (optional) specifies whether to capture EVM memory during the trace; defaults to `true`
 
 #### Returns
 
-`result`: *string* - location of the generated trace files
+`result`: _string_ - location of the generated trace files
 
 !!! example
 
@@ -1230,20 +1193,17 @@ transaction in the block.
 
 ### `debug_standardTraceBadBlockToFile`
 
-Generates files containing the block trace of invalid blocks.
-A separate file is generated for each
-transaction in the block.
+Generates files containing the block trace of invalid blocks. A separate file is generated for each transaction in the block.
 
-Use [`debug_standardTraceBlockToFile`](#debug_standardtraceblocktofile) to view the trace for a
-valid block.
+Use [`debug_standardTraceBlockToFile`](#debug_standardtraceblocktofile) to view the trace for a valid block.
 
 #### Parameters
 
-`blockHash`: *string* - block hash
+`blockHash`: _string_ - block hash
 
 #### Returns
 
-`result`: *string* - location of the generated trace files
+`result`: _string_ - location of the generated trace files
 
 !!! example
 
@@ -1273,26 +1233,25 @@ valid block.
 
 ### `debug_storageRangeAt`
 
-[Remix](https://remix.ethereum.org/) uses `debug_storageRangeAt` to implement debugging.
-Use the *Debugger* tab in Remix instead of calling `debug_storageRangeAt` directly.
+[Remix](https://remix.ethereum.org/) uses `debug_storageRangeAt` to implement debugging. Use the _Debugger_ tab in Remix instead of calling `debug_storageRangeAt` directly.
 
 Returns the contract storage for the specified range.
 
 #### Parameters
 
-* `blockHash`: *string* - block hash
+- `blockHash`: _string_ - block hash
 
-* `txIndex`: *number* - transaction index from which to start
+- `txIndex`: _number_ - transaction index from which to start
 
-* `address`: *string* - contract address
+- `address`: _string_ - contract address
 
-* `startKey`: *string* - start key
+- `startKey`: _string_ - start key
 
-* `limit`: *number* - number of storage entries to return
+- `limit`: _number_ - number of storage entries to return
 
 #### Returns
 
-`result`: *object* - [range object](objects.md#range-object).
+`result`: _object_ - [range object](objects.md#range-object).
 
 !!! example
 
@@ -1328,26 +1287,25 @@ Returns the contract storage for the specified range.
 
 ### `debug_traceTransaction`
 
-[Remix](https://remix.ethereum.org/) uses `debug_traceTransaction` to implement debugging.
-Use the *Debugger* tab in Remix instead of calling `debug_traceTransaction` directly.
+[Remix](https://remix.ethereum.org/) uses `debug_traceTransaction` to implement debugging. Use the _Debugger_ tab in Remix instead of calling `debug_traceTransaction` directly.
 
 Reruns the transaction with the same state as when the transaction executed.
 
 #### Parameters
 
-* `transactionHash`: *string* - transaction hash
+- `transactionHash`: _string_ - transaction hash
 
-* `options`: *object* - request options object with the following fields (all optional and default to `false`):
+- `options`: _object_ - request options object with the following fields (all optional and default to `false`):
 
-    * `disableStorage`: *boolean* - `true` disables storage capture.
+  - `disableStorage`: _boolean_ - `true` disables storage capture.
 
-    * `disableMemory`: *boolean* - `true` disables memory capture.
+  - `disableMemory`: _boolean_ - `true` disables memory capture.
 
-    * `disableStack` : *boolean* - `true` disables stack capture.
+  - `disableStack` : _boolean_ - `true` disables stack capture.
 
 #### Returns
 
-`result`: *object* - [trace object](objects.md#trace-object)
+`result`: _object_ - [trace object](objects.md#trace-object)
 
 !!! example
 
@@ -1393,19 +1351,19 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
 #### Parameters
 
-* `block`: *string* - RLP of the block
+- `block`: _string_ - RLP of the block
 
-* `options`: *object* - request options object with the following fields (all optional and default to `false`):
+- `options`: _object_ - request options object with the following fields (all optional and default to `false`):
 
-    * `disableStorage`: *boolean* - `true` disables storage capture.
+  - `disableStorage`: _boolean_ - `true` disables storage capture.
 
-    * `disableMemory`: *boolean* - `true` disables memory capture.
+  - `disableMemory`: _boolean_ - `true` disables memory capture.
 
-    * `disableStack` : *boolean* - `true` disables stack capture.
+  - `disableStack` : _boolean_ - `true` disables stack capture.
 
 #### Returns
 
-`result`: *object* - [trace object](objects.md#trace-object)
+`result`: _object_ - [trace object](objects.md#trace-object)
 
 !!! example
 
@@ -1451,19 +1409,19 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
 #### Parameters
 
-* `blockHash`: *string* - block hash
+- `blockHash`: _string_ - block hash
 
-* `options`: *object* - request options object with the following fields (all optional and default to `false`):
+- `options`: _object_ - request options object with the following fields (all optional and default to `false`):
 
-    * `disableStorage`: *boolean* - `true` disables storage capture.
+  - `disableStorage`: _boolean_ - `true` disables storage capture.
 
-    * `disableMemory`: *boolean* - `true` disables memory capture.
+  - `disableMemory`: _boolean_ - `true` disables memory capture.
 
-    * `disableStack` : *boolean* - `true` disables stack capture.
+  - `disableStack` : _boolean_ - `true` disables stack capture.
 
 #### Returns
 
-`result`: *array* of *objects* - list of [trace objects](objects.md#trace-object)
+`result`: _array_ of _objects_ - list of [trace objects](objects.md#trace-object)
 
 !!! example
 
@@ -1514,21 +1472,19 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
 #### Parameters
 
-* `blockNumber`: *string* - integer representing a block number or one of the string tags `latest`,
-`earliest`, or `pending`, as described in
-[block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
+- `blockNumber`: _string_ - integer representing a block number or one of the string tags `latest`, `earliest`, or `pending`, as described in [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
 
-* `options`: *object* - request options object with the following fields (all optional and default to `false`):
+- `options`: _object_ - request options object with the following fields (all optional and default to `false`):
 
-    * `disableStorage`: *boolean* - `true` disables storage capture.
+  - `disableStorage`: _boolean_ - `true` disables storage capture.
 
-    * `disableMemory`: *boolean* - `true` disables memory capture.
+  - `disableMemory`: _boolean_ - `true` disables memory capture.
 
-    * `disableStack` : *boolean* - `true` disables stack capture.
+  - `disableStack` : _boolean_ - `true` disables stack capture.
 
 #### Returns
 
-`result`: *array* of *objects* - list of [trace objects](objects.md#trace-object)
+`result`: _array_ of _objects_ - list of [trace objects](objects.md#trace-object)
 
 !!! example
 
@@ -1602,7 +1558,7 @@ None
 
 #### Returns
 
-`result`: *array* of *strings* - list of 20-byte account addresses owned by the client
+`result`: _array_ of _strings_ - list of 20-byte account addresses owned by the client
 
 !!! example
 
@@ -1638,8 +1594,7 @@ None
 
 #### Returns
 
-`result`: *string* - hexadecimal integer representing the index corresponding to the block
-number of the current chain head
+`result`: _string_ - hexadecimal integer representing the index corresponding to the block number of the current chain head
 
 !!! example
 
@@ -1699,16 +1654,13 @@ Invokes a contract function locally and does not change the state of the blockch
 
 You can interact with contracts using [`eth_sendRawTransaction`](#eth_sendrawtransaction) or `eth_call`.
 
-If revert reason is enabled with [`--revert-reason-enabled`](../cli/options.md#revert-reason-enabled),
-the `eth_call` error response includes the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
+If revert reason is enabled with [`--revert-reason-enabled`](../cli/options.md#revert-reason-enabled), the `eth_call` error response includes the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
 
 #### Parameters
 
-`call`: *object* - [transaction call object](objects.md#transaction-call-object)
+`call`: _object_ - [transaction call object](objects.md#transaction-call-object)
 
-`blockNumber` or `blockHash`: *string* - integer representing a block number, block hash, or one of
-the string tags `latest`, `earliest`, or `pending`, as described in
-[block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
+`blockNumber` or `blockHash`: _string_ - integer representing a block number, block hash, or one of the string tags `latest`, `earliest`, or `pending`, as described in [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
 
 !!! note
 
@@ -1718,7 +1670,7 @@ the string tags `latest`, `earliest`, or `pending`, as described in
 
 #### Returns
 
-`result`: *string* - return value of the executed contract
+`result`: _string_ - return value of the executed contract
 
 !!! example
 
@@ -1812,7 +1764,7 @@ None
 
 #### Returns
 
-`result`: *string* - chain ID in hexadecimal
+`result`: _string_ - chain ID in hexadecimal
 
 !!! example
 
@@ -1842,9 +1794,7 @@ None
 
 Returns the client coinbase address. The coinbase address is the account to pay mining rewards to.
 
-To set a coinbase address, start Besu with the `--miner-coinbase` option set to a valid Ethereum
-account address. You can get the Ethereum account address from a client such as MetaMask or
-Etherscan. For example:
+To set a coinbase address, start Besu with the `--miner-coinbase` option set to a valid Ethereum account address. You can get the Ethereum account address from a client such as MetaMask or Etherscan. For example:
 
 !!!example
 
@@ -1858,7 +1808,7 @@ None
 
 #### Returns
 
-`result`: *string* - coinbase address
+`result`: _string_ - coinbase address
 
 !!! example
 
@@ -1886,25 +1836,22 @@ None
 
 ### `eth_createAccessList`
 
-Creates an [EIP-2930](https://eips.ethereum.org/EIPS/eip-2930) access list that you can
-[include in a transaction](../../concepts/transactions/types.md#access_list-transactions).
+Creates an [EIP-2930](https://eips.ethereum.org/EIPS/eip-2930) access list that you can [include in a transaction](../../concepts/transactions/types.md#access_list-transactions).
 
 #### Parameters
 
-`transaction`: *object* - [transaction call object](objects.md#transaction-call-object)
+`transaction`: _object_ - [transaction call object](objects.md#transaction-call-object)
 
-`blockNumber` or `blockHash`: *string* - integer representing a block number, block hash, or one of
-the string tags `latest`, `earliest`, or `pending`, as described in
-[block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter).
+`blockNumber` or `blockHash`: _string_ - integer representing a block number, block hash, or one of the string tags `latest`, `earliest`, or `pending`, as described in [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter).
 
 #### Returns
 
-`result`: *object* - access list object with the following fields:
+`result`: _object_ - access list object with the following fields:
 
-* `accessList`: *array* of *objects* - list of objects with the following fields:
-    * `address`: *string* - addresses to be accessed by the transaction
-    * `storageKeys`: *array* - storage keys to be accessed by the transaction
-* `gasUsed`: *string* - approximate gas cost for the transaction if the access list is included
+- `accessList`: _array_ of _objects_ - list of objects with the following fields:
+  - `address`: _string_ - addresses to be accessed by the transaction
+  - `storageKeys`: _array_ - storage keys to be accessed by the transaction
+- `gasUsed`: _string_ - approximate gas cost for the transaction if the access list is included
 
 !!! example
 
@@ -1938,27 +1885,21 @@ the string tags `latest`, `earliest`, or `pending`, as described in
 
 ### `eth_estimateGas`
 
-Returns an estimate of the gas required for a transaction to complete. The estimation process
-does not use gas and the transaction is not added to the blockchain. The resulting estimate can be
-greater than the amount of gas the transaction ends up using, for reasons including EVM mechanics
-and node performance.
+Returns an estimate of the gas required for a transaction to complete. The estimation process does not use gas and the transaction is not added to the blockchain. The resulting estimate can be greater than the amount of gas the transaction ends up using, for reasons including EVM mechanics and node performance.
 
-The `eth_estimateGas` call does not send a transaction. You must call
-[`eth_sendRawTransaction`](#eth_sendrawtransaction) to execute the transaction.
+The `eth_estimateGas` call does not send a transaction. You must call [`eth_sendRawTransaction`](#eth_sendrawtransaction) to execute the transaction.
 
-If revert reason is enabled with [`--revert-reason-enabled`](../cli/options.md#revert-reason-enabled),
-the `eth_estimateGas` error response includes the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
+If revert reason is enabled with [`--revert-reason-enabled`](../cli/options.md#revert-reason-enabled), the `eth_estimateGas` error response includes the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
 
 #### Parameters
 
-For `eth_estimateGas`, all fields are optional because setting a gas limit
-is irrelevant to the estimation process (unlike transactions, in which gas limits apply).
+For `eth_estimateGas`, all fields are optional because setting a gas limit is irrelevant to the estimation process (unlike transactions, in which gas limits apply).
 
-`call`: *object* - [transaction call object](objects.md#transaction-call-object)
+`call`: _object_ - [transaction call object](objects.md#transaction-call-object)
 
 #### Returns
 
-`result`: *string* -  amount of gas used
+`result`: _string_ - amount of gas used
 
 !!! example "Example of cost estimate of a value transaction"
 
@@ -2050,25 +1991,19 @@ is irrelevant to the estimation process (unlike transactions, in which gas limit
 
 ### `eth_feeHistory`
 
-Returns base fee per gas and transaction effective priority fee per gas history
-for the requested block range, allowing you to track trends over time.
+Returns base fee per gas and transaction effective priority fee per gas history for the requested block range, allowing you to track trends over time.
 
 #### Parameters
 
-* `blockCount`: *integer* or *string* - Number of blocks in the requested range. Between 1 and 1024 blocks can be requested in a single query.
-If blocks in the specified block range are not available, then only the fee history for available blocks is returned.
-Accepts hexadecimal or integer values.
+- `blockCount`: _integer_ or _string_ - Number of blocks in the requested range. Between 1 and 1024 blocks can be requested in a single query. If blocks in the specified block range are not available, then only the fee history for available blocks is returned. Accepts hexadecimal or integer values.
 
-* `newestBlock`: *string* - Integer representing the highest number block of the requested range or one of the string tags `latest`,
-  `earliest`, or `pending`, as described in
-  [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter).
+- `newestBlock`: _string_ - Integer representing the highest number block of the requested range or one of the string tags `latest`, `earliest`, or `pending`, as described in [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter).
 
-* `array` of `integers` - (optional) A monotonically increasing list of percentile values to sample from each block's
-    effective priority fees per gas in ascending order, weighted by gas used.
+- `array` of `integers` - (optional) A monotonically increasing list of percentile values to sample from each block's effective priority fees per gas in ascending order, weighted by gas used.
 
 #### Returns
 
-`result`: *object* - [Fee history results object](objects.md#fee-history-results-object).
+`result`: _object_ - [Fee history results object](objects.md#fee-history-results-object).
 
 !!! example
 
@@ -2135,18 +2070,11 @@ Accepts hexadecimal or integer values.
 
 ### `eth_gasPrice`
 
-Returns a percentile gas unit price for the most recent blocks, in Wei. By default,
-the last 100 blocks are examined and the 50th percentile gas unit price (that is, the median value)
-is returned.
+Returns a percentile gas unit price for the most recent blocks, in Wei. By default, the last 100 blocks are examined and the 50th percentile gas unit price (that is, the median value) is returned.
 
-If there are no blocks, the value for [`--min-gas-price`](../cli/options.md#min-gas-price) is returned.
-The value returned is restricted to values between [`--min-gas-price`](../cli/options.md#min-gas-price)
-and [`--api-gas-price-max`](../cli/options.md#api-gas-price-max). By default, 1000 Wei and
-500GWei.
+If there are no blocks, the value for [`--min-gas-price`](../cli/options.md#min-gas-price) is returned. The value returned is restricted to values between [`--min-gas-price`](../cli/options.md#min-gas-price) and [`--api-gas-price-max`](../cli/options.md#api-gas-price-max). By default, 1000 Wei and 500GWei.
 
-Use the [`--api-gas-price-blocks`](../cli/options.md#api-gas-price-blocks), [`--api-gas-price-percentile`](../cli/options.md#api-gas-price-percentile)
-, and [`--api-gas-price-max`](../cli/options.md#api-gas-price-max) command line
-options to configure the `eth_gasPrice` default values.
+Use the [`--api-gas-price-blocks`](../cli/options.md#api-gas-price-blocks), [`--api-gas-price-percentile`](../cli/options.md#api-gas-price-percentile) , and [`--api-gas-price-max`](../cli/options.md#api-gas-price-max) command line options to configure the `eth_gasPrice` default values.
 
 #### Parameters
 
@@ -2154,7 +2082,7 @@ None
 
 #### Returns
 
-`result`: *string* - percentile gas unit price for the most recent blocks, in Wei, as a hexadecimal value
+`result`: _string_ - percentile gas unit price for the most recent blocks, in Wei, as a hexadecimal value
 
 !!! example
 
@@ -2210,15 +2138,13 @@ Returns the account balance of the specified address.
 
 #### Parameters
 
-* `address`: *string* - 20-byte account address from which to retrieve the balance
+- `address`: _string_ - 20-byte account address from which to retrieve the balance
 
-* `blockNumber` or `blockHash`: *string*  - integer representing a block number, block hash, or one
-of the string tags `latest`, `earliest`, or `pending`, as described in
-[block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
+- `blockNumber` or `blockHash`: _string_ - integer representing a block number, block hash, or one of the string tags `latest`, `earliest`, or `pending`, as described in [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
 
 #### Returns
 
-`result`: *string* - current balance, in Wei, as a hexadecimal value
+`result`: _string_ - current balance, in Wei, as a hexadecimal value
 
 !!! example
 
@@ -2278,15 +2204,13 @@ Returns information about the block matching the specified block hash.
 
 #### Parameters
 
-* `hash`: *string* - 32-byte hash of a block
+- `hash`: _string_ - 32-byte hash of a block
 
-* `verbose`: *boolean* - if `true`, returns the full [transaction objects](objects.md#transaction-object);
-if `false`, returns the transaction hashes
+- `verbose`: _boolean_ - if `true`, returns the full [transaction objects](objects.md#transaction-object); if `false`, returns the transaction hashes
 
 #### Returns
 
-`result`: *object* - [block object](objects.md#block-object), or `null` when there is no
-block
+`result`: _object_ - [block object](objects.md#block-object), or `null` when there is no block
 
 !!! example
 
@@ -2405,17 +2329,13 @@ Returns information about the block matching the specified block number.
 
 #### Parameters
 
-* `blockNumber`: *string* - integer representing a block number or one of the string tags `latest`,
-`earliest`, `pending`, `finalized`, or `safe` as described in
-[block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
+- `blockNumber`: _string_ - integer representing a block number or one of the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe` as described in [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
 
-* `verbose`: *boolean* - if `true`, returns the full [transaction objects](objects.md#transaction-object);
-if `false`, returns only the hashes of the transactions.
+- `verbose`: _boolean_ - if `true`, returns the full [transaction objects](objects.md#transaction-object); if `false`, returns only the hashes of the transactions.
 
 #### Returns
 
-`result`: *object* - [block object](objects.md#block-object), or `null` when there is no
-block.
+`result`: _object_ - [block object](objects.md#block-object), or `null` when there is no block.
 
 !!! example
 
@@ -2558,12 +2478,11 @@ Returns the number of transactions in the block matching the specified block has
 
 #### Parameters
 
-`hash`: *string* - 32-byte block hash
+`hash`: _string_ - 32-byte block hash
 
 #### Returns
 
-`result`: *number* - integer representing the number of transactions in the specified block,
-or `null` if no matching block hash is found
+`result`: _number_ - integer representing the number of transactions in the specified block, or `null` if no matching block hash is found
 
 !!! example
 
@@ -2623,14 +2542,11 @@ Returns the number of transactions in a block matching the specified block numbe
 
 #### Parameters
 
-`blockNumber`: *string* - integer representing a block number or one of the string tags `latest`,
-`earliest`, or `pending`, as described in
-[block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
+`blockNumber`: _string_ - integer representing a block number or one of the string tags `latest`, `earliest`, or `pending`, as described in [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
 
 #### Returns
 
-`result`: *string* - integer representing the number of transactions in the specified block,
-or `null` if no matching block number is found
+`result`: _string_ - integer representing the number of transactions in the specified block, or `null` if no matching block number is found
 
 !!! example
 
@@ -2686,20 +2602,17 @@ or `null` if no matching block number is found
 
 ### `eth_getCode`
 
-Returns the code of the smart contract at the specified address.
-Besu stores compiled smart contract code as a hexadecimal value.
+Returns the code of the smart contract at the specified address. Besu stores compiled smart contract code as a hexadecimal value.
 
 #### Parameters
 
-`address`: *string* - 20-byte contract address
+`address`: _string_ - 20-byte contract address
 
-`blockNumber` or `blockHash`: *string* - integer representing a block number, block hash, or one of
-the string tags `latest`, `earliest`, or `pending`, as described in
-[block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
+`blockNumber` or `blockHash`: _string_ - integer representing a block number, block hash, or one of the string tags `latest`, `earliest`, or `pending`, as described in [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
 
 #### Returns
 
-`result`: *data* - code stored at the specified address
+`result`: _data_ - code stored at the specified address
 
 !!! example
 
@@ -2759,17 +2672,17 @@ Polls the specified filter and returns an array of changes that have occurred si
 
 #### Parameters
 
-`filterId`: *string* - filter ID
+`filterId`: _string_ - filter ID
 
 #### Returns
 
-`result`: *array* of *strings* or *objects* - if nothing changed since the last poll, an empty list; otherwise:
+`result`: _array_ of _strings_ or _objects_ - if nothing changed since the last poll, an empty list; otherwise:
 
-* For filters created with `eth_newBlockFilter`, returns block hashes.
+- For filters created with `eth_newBlockFilter`, returns block hashes.
 
-* For filters created with `eth_newPendingTransactionFilter`, returns transaction hashes.
+- For filters created with `eth_newPendingTransactionFilter`, returns transaction hashes.
 
-* For filters created with `eth_newFilter`, returns [log objects](objects.md#log-object).
+- For filters created with `eth_newFilter`, returns [log objects](objects.md#log-object).
 
 !!! example
 
@@ -2855,8 +2768,7 @@ Polls the specified filter and returns an array of changes that have occurred si
 
 Returns an array of [logs](../../concepts/events-and-logs.md) for the specified filter.
 
-Leave the [`--auto-log-bloom-caching-enabled`](../cli/options.md#auto-log-bloom-caching-enabled)
-command line option at the default value of `true` to improve log retrieval performance.
+Leave the [`--auto-log-bloom-caching-enabled`](../cli/options.md#auto-log-bloom-caching-enabled) command line option at the default value of `true` to improve log retrieval performance.
 
 !!! note
 
@@ -2865,11 +2777,11 @@ command line option at the default value of `true` to improve log retrieval perf
 
 #### Parameters
 
-`filterId`: *string* - filter ID
+`filterId`: _string_ - filter ID
 
 #### Returns
 
-`result`: *array* of *objects* - list of [log objects](objects.md#log-object)
+`result`: _array_ of _objects_ - list of [log objects](objects.md#log-object)
 
 !!! example
 
@@ -2919,23 +2831,17 @@ command line option at the default value of `true` to improve log retrieval perf
 
 Returns an array of [logs](../../concepts/events-and-logs.md) matching a specified filter object.
 
-Leave the [`--auto-log-bloom-caching-enabled`](../cli/options.md#auto-log-bloom-caching-enabled)
-command line option at the default value of `true` to improve log retrieval performance.
+Leave the [`--auto-log-bloom-caching-enabled`](../cli/options.md#auto-log-bloom-caching-enabled) command line option at the default value of `true` to improve log retrieval performance.
 
-!!! important
-    Using `eth_getLogs` to get logs from a large range of blocks, especially an entire chain from
-    its genesis block, might cause Besu to hang for an indeterminable amount of time while generating
-    the response.
-    We recommend setting a range limit using the [`--rpc-max-logs-range`](../cli/options.md#rpc-max-logs-range)
-    option (or leaving it at its default value of 1000).
+!!! important Using `eth_getLogs` to get logs from a large range of blocks, especially an entire chain from its genesis block, might cause Besu to hang for an indeterminable amount of time while generating the response. We recommend setting a range limit using the [`--rpc-max-logs-range`](../cli/options.md#rpc-max-logs-range) option (or leaving it at its default value of 1000).
 
 #### Parameters
 
-`filterOptions`: *object* - [filter options object](objects.md#filter-options-object)
+`filterOptions`: _object_ - [filter options object](objects.md#filter-options-object)
 
 #### Returns
 
-`result`: *array* of *objects* - list of [log objects](objects.md#log-object)
+`result`: _array_ of _objects_ - list of [log objects](objects.md#log-object)
 
 !!! example
 
@@ -3052,11 +2958,11 @@ Returns miner data for the specified block.
 
 #### Parameters
 
-`hash`: *string* - 32-byte block hash
+`hash`: _string_ - 32-byte block hash
 
 #### Returns
 
-`result`: *object* - [miner data object](objects.md#miner-data-object)
+`result`: _object_ - [miner data object](objects.md#miner-data-object)
 
 !!! example
 
@@ -3103,13 +3009,11 @@ Returns miner data for the specified block.
 
 #### Parameters
 
-`blockNumber`: *string* - integer representing a block number or one of the string tags `latest`,
-`earliest`, or `pending`, as described in
-[block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
+`blockNumber`: _string_ - integer representing a block number or one of the string tags `latest`, `earliest`, or `pending`, as described in [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
 
 #### Returns
 
-`result`: *object* - [miner data object](objects.md#miner-data-object)
+`result`: _object_ - [miner data object](objects.md#miner-data-object)
 
 !!! example
 
@@ -3154,40 +3058,37 @@ Returns miner data for the specified block.
 
 Returns the account and storage values of the specified account, including the Merkle proof.
 
-The API allows IoT devices or mobile apps which are unable to run light clients to verify responses
-from untrusted sources, by using a trusted block hash.
+The API allows IoT devices or mobile apps which are unable to run light clients to verify responses from untrusted sources, by using a trusted block hash.
 
 #### Parameters
 
-`address`: *string* - 20-byte address of the account or contract
+`address`: _string_ - 20-byte address of the account or contract
 
-`keys`: *array* of *strings* - list of 32-byte storage keys to generate proofs for
+`keys`: _array_ of _strings_ - list of 32-byte storage keys to generate proofs for
 
-`blockNumber` or `blockHash`: *string* - integer representing a block number, block hash, or one of
-the string tags `latest`, `earliest`, or `pending`, as described in
-[block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
+`blockNumber` or `blockHash`: _string_ - integer representing a block number, block hash, or one of the string tags `latest`, `earliest`, or `pending`, as described in [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
 
 #### Returns
 
-`result`: *object* - account details object with the following fields:
+`result`: _object_ - account details object with the following fields:
 
-* `balance`: *string* - account balance
+- `balance`: _string_ - account balance
 
-* `codeHash`: *string* - 32-byte hash of the account code
+- `codeHash`: _string_ - 32-byte hash of the account code
 
-* `nonce`: *string* - number of transactions sent from the account
+- `nonce`: _string_ - number of transactions sent from the account
 
-* `storageHash`: *string* - 32-byte SHA3 of the `storageRoot`
+- `storageHash`: _string_ - 32-byte SHA3 of the `storageRoot`
 
-* `accountProof`: *array* of *strings* - list of RLP-encoded Merkle tree nodes, starting with the `stateRoot`
+- `accountProof`: _array_ of _strings_ - list of RLP-encoded Merkle tree nodes, starting with the `stateRoot`
 
-* `storageProof`: *array* of *objects* - list of storage entry objects with the following fields:
+- `storageProof`: _array_ of _objects_ - list of storage entry objects with the following fields:
 
-    * `key`: *string* - storage key
+  - `key`: _string_ - storage key
 
-    * `value`: *string* - storage value
+  - `value`: _string_ - storage value
 
-    * `proof`: *array* of *strings* - list of RLP-encoded Merkle tree nodes, starting with the `storageHash`
+  - `proof`: _array_ of _strings_ - list of RLP-encoded Merkle tree nodes, starting with the `storageHash`
 
 !!! example
 
@@ -3244,17 +3145,15 @@ Returns the value of a storage position at a specified address.
 
 #### Parameters
 
-`address`: *string* - 20-byte storage address
+`address`: _string_ - 20-byte storage address
 
-`index`: *string* - integer index of the storage position
+`index`: _string_ - integer index of the storage position
 
-`blockNumber` or `blockHash`: *string* - integer representing a block number, block hash, or one of
-the string tags `latest`, `earliest`, or `pending`, as described in
-[block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
+`blockNumber` or `blockHash`: _string_ - integer representing a block number, block hash, or one of the string tags `latest`, `earliest`, or `pending`, as described in [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
 
 #### Returns
 
-`result` : *string* - value at the specified storage position
+`result` : _string_ - value at the specified storage position
 
 !!! example
 
@@ -3316,14 +3215,13 @@ Returns transaction information for the specified block hash and transaction ind
 
 #### Parameters
 
-`block`: *string* - 32-byte hash of a block
+`block`: _string_ - 32-byte hash of a block
 
-`index`: *string* - integer representing the transaction index position
+`index`: _string_ - integer representing the transaction index position
 
 #### Returns
 
-`result`: *object* - [transaction object](objects.md#transaction-object), or `null` when there is no
-transaction
+`result`: _object_ - [transaction object](objects.md#transaction-object), or `null` when there is no transaction
 
 !!! example
 
@@ -3409,16 +3307,13 @@ Returns transaction information for the specified block number and transaction i
 
 #### Parameters
 
-`blockNumber`: *string* - integer representing a block number or one of the string tags `latest`,
-`earliest`, or `pending`, as described in
-[block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
+`blockNumber`: _string_ - integer representing a block number or one of the string tags `latest`, `earliest`, or `pending`, as described in [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
 
-`index`: *string* - transaction index position
+`index`: _string_ - transaction index position
 
 #### Returns
 
-`result`: *object* - [transaction object](objects.md#transaction-object), or `null` when there is no
-transaction
+`result`: _object_ - [transaction object](objects.md#transaction-object), or `null` when there is no transaction
 
 !!! example
 
@@ -3508,12 +3403,11 @@ Returns transaction information for the specified transaction hash.
 
 #### Parameters
 
-`transaction`: *string* - 32-byte transaction hash
+`transaction`: _string_ - 32-byte transaction hash
 
 #### Returns
 
-`result`: *object* - [transaction object](objects.md#transaction-object), or `null` when there is no
-transaction
+`result`: _object_ - [transaction object](objects.md#transaction-object), or `null` when there is no transaction
 
 !!! example
 
@@ -3613,20 +3507,17 @@ transaction
 
 ### `eth_getTransactionCount`
 
-Returns the number of transactions sent from a specified address. Use the `pending` tag to get the
-next account nonce not used by any pending transactions.
+Returns the number of transactions sent from a specified address. Use the `pending` tag to get the next account nonce not used by any pending transactions.
 
 #### Parameters
 
-`address`: *string* - 20-byte account address
+`address`: _string_ - 20-byte account address
 
-`blockNumber` or `blockHash`: *string* - integer representing a block number, block hash, or one of
-the string tags `latest`, `earliest`, or `pending`, as described in
-[block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
+`blockNumber` or `blockHash`: _string_ - integer representing a block number, block hash, or one of the string tags `latest`, `earliest`, or `pending`, as described in [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
 
 #### Returns
 
-`result`: *string* - integer representing the number of transactions sent from the specified address
+`result`: _string_ - integer representing the number of transactions sent from the specified address
 
 !!! example
 
@@ -3682,20 +3573,17 @@ the string tags `latest`, `earliest`, or `pending`, as described in
 
 ### `eth_getTransactionReceipt`
 
-Returns the receipt of a transaction by transaction hash. Receipts for pending transactions are not
-available.
+Returns the receipt of a transaction by transaction hash. Receipts for pending transactions are not available.
 
-If you enabled [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md), the receipt includes
-available revert reasons in the response.
+If you enabled [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md), the receipt includes available revert reasons in the response.
 
 #### Parameters
 
-`transaction`: *string* - 32-byte hash of a transaction
+`transaction`: _string_ - 32-byte hash of a transaction
 
 #### Returns
 
-`result`: *object* - [transaction receipt object](objects.md#transaction-receipt-object), or `null` when
-there is no receipt
+`result`: _object_ - [transaction receipt object](objects.md#transaction-receipt-object), or `null` when there is no receipt
 
 !!! example
 
@@ -3806,13 +3694,13 @@ Returns uncle specified by block hash and index.
 
 #### Parameters
 
-`block`: *string* - 32-byte block hash
+`block`: _string_ - 32-byte block hash
 
-`uncleIndex`: *string* - index of the uncle
+`uncleIndex`: _string_ - index of the uncle
 
 #### Returns
 
-`result`: *object* - [block object](objects.md#block-object)
+`result`: _object_ - [block object](objects.md#block-object)
 
 !!! note
 
@@ -3924,15 +3812,13 @@ Returns uncle specified by block number and index.
 
 #### Parameters
 
-* `blockNumber`: *string* - integer representing a block number or one of the string tags `latest`,
-`earliest`, or `pending`, as described in
-[block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
+- `blockNumber`: _string_ - integer representing a block number or one of the string tags `latest`, `earliest`, or `pending`, as described in [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
 
-* `uncleIndex`: *string* - index of the uncle
+- `uncleIndex`: _string_ - index of the uncle
 
 #### Returns
 
-`result`: *object* - [block object](objects.md#block-object)
+`result`: _object_ - [block object](objects.md#block-object)
 
 !!! note
 
@@ -4031,11 +3917,11 @@ Returns the number of uncles in a block from a block matching the given block ha
 
 #### Parameters
 
-`block`: *string* - 32-byte block hash
+`block`: _string_ - 32-byte block hash
 
 #### Returns
 
-`result`: *string* - integer representing the number of uncles in the specified block
+`result`: _string_ - integer representing the number of uncles in the specified block
 
 !!! example
 
@@ -4095,13 +3981,11 @@ Returns the number of uncles in a block matching the specified block number.
 
 #### Parameters
 
-`blockNumber`: *string* - integer representing a block number or one of the string tags `latest`,
-`earliest`, or `pending`, as described in
-[block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
+`blockNumber`: _string_ - integer representing a block number or one of the string tags `latest`, `earliest`, or `pending`, as described in [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
 
 #### Returns
 
-`result`: *string* - integer representing the number of uncles in the specified block
+`result`: _string_ - integer representing the number of uncles in the specified block
 
 !!! example
 
@@ -4165,15 +4049,15 @@ None
 
 #### Returns
 
-`result`: *array* of *strings* - array with the following items:
+`result`: _array_ of _strings_ - array with the following items:
 
-* `header`: *string* - 32-byte hash of the current block header (PoW-hash)
+- `header`: _string_ - 32-byte hash of the current block header (PoW-hash)
 
-* `seed`: *string* - 32-byte seed hash used for the DAG
+- `seed`: _string_ - 32-byte seed hash used for the DAG
 
-* `target`: *string* - 32-byte required target boundary condition: 2^256 / difficulty
+- `target`: _string_ - 32-byte required target boundary condition: 2^256 / difficulty
 
-* `blockNumber`: *string* - hexadecimal integer representing the current block number
+- `blockNumber`: _string_ - hexadecimal integer representing the current block number
 
 !!! example
 
@@ -4208,8 +4092,7 @@ None
 
 Returns the number of hashes per second with which the node is mining.
 
-When the stratum server is enabled, this method returns the cumulative hashrate of all sealers
-reporting their hashrate.
+When the stratum server is enabled, this method returns the cumulative hashrate of all sealers reporting their hashrate.
 
 #### Parameters
 
@@ -4217,7 +4100,7 @@ None
 
 #### Returns
 
-`result`: *string* - number of hashes per second
+`result`: _string_ - number of hashes per second
 
 !!! example
 
@@ -4245,8 +4128,7 @@ None
 
 ### `eth_mining`
 
-Whether the client is actively mining new blocks. Besu pauses mining while the client synchronizes
-with the network regardless of command settings or methods called.
+Whether the client is actively mining new blocks. Besu pauses mining while the client synchronizes with the network regardless of command settings or methods called.
 
 #### Parameters
 
@@ -4254,7 +4136,7 @@ None
 
 #### Returns
 
-`result`: *boolean* - indicates if the client is actively mining new blocks
+`result`: _boolean_ - indicates if the client is actively mining new blocks
 
 !!! example
 
@@ -4282,8 +4164,7 @@ None
 
 ### `eth_newBlockFilter`
 
-Creates a filter to retrieve new block hashes.
-To poll for new blocks, use [`eth_getFilterChanges`](#eth_getfilterchanges).
+Creates a filter to retrieve new block hashes. To poll for new blocks, use [`eth_getFilterChanges`](#eth_getfilterchanges).
 
 #### Parameters
 
@@ -4291,7 +4172,7 @@ None
 
 #### Returns
 
-`result`: *string* - filter ID
+`result`: _string_ - filter ID
 
 !!! example
 
@@ -4319,13 +4200,11 @@ None
 
 ### `eth_newFilter`
 
-Creates a [log filter](../../concepts/events-and-logs.md).
-To poll for logs associated with the created filter, use [`eth_getFilterChanges`](#eth_getfilterchanges).
-To get all logs associated with the filter, use [`eth_getFilterLogs`](#eth_getfilterlogs).
+Creates a [log filter](../../concepts/events-and-logs.md). To poll for logs associated with the created filter, use [`eth_getFilterChanges`](#eth_getfilterchanges). To get all logs associated with the filter, use [`eth_getFilterLogs`](#eth_getfilterlogs).
 
 #### Parameters
 
-`filterOptions`: *object* - [filter options object](objects.md#filter-options-object)
+`filterOptions`: _object_ - [filter options object](objects.md#filter-options-object)
 
 !!! note
 
@@ -4333,7 +4212,7 @@ To get all logs associated with the filter, use [`eth_getFilterLogs`](#eth_getfi
 
 #### Returns
 
-`result`: *string* - filter ID
+`result`: _string_ - filter ID
 
 !!! example
 
@@ -4361,8 +4240,7 @@ To get all logs associated with the filter, use [`eth_getFilterLogs`](#eth_getfi
 
 ### `eth_newPendingTransactionFilter`
 
-Creates a filter to retrieve new pending transactions hashes.
-To poll for new pending transactions, use [`eth_getFilterChanges`](#eth_getfilterchanges).
+Creates a filter to retrieve new pending transactions hashes. To poll for new pending transactions, use [`eth_getFilterChanges`](#eth_getfilterchanges).
 
 #### Parameters
 
@@ -4370,7 +4248,7 @@ None
 
 #### Returns
 
-`result`: *string* - filter ID
+`result`: _string_ - filter ID
 
 !!! example
 
@@ -4406,7 +4284,7 @@ None
 
 #### Returns
 
-`result`: *string* - Ethereum protocol version
+`result`: _string_ - Ethereum protocol version
 
 !!! example
 
@@ -4458,14 +4336,11 @@ None
 
 ### `eth_sendRawTransaction`
 
-Sends a [signed transaction](../../how-to/send-transactions.md).
-A transaction can send ether, deploy a contract, or interact with a contract.
-Set the maximum transaction fee for transactions using the [`--rpc-tx-feecap`](../cli/options.md#rpc-tx-feecap) CLI option.
+Sends a [signed transaction](../../how-to/send-transactions.md). A transaction can send ether, deploy a contract, or interact with a contract. Set the maximum transaction fee for transactions using the [`--rpc-tx-feecap`](../cli/options.md#rpc-tx-feecap) CLI option.
 
 You can interact with contracts using `eth_sendRawTransaction` or [`eth_call`](#eth_call).
 
-To avoid exposing your private key, create signed transactions offline and send the signed
-transaction data using `eth_sendRawTransaction`.
+To avoid exposing your private key, create signed transactions offline and send the signed transaction data using `eth_sendRawTransaction`.
 
 !!! important
 
@@ -4476,7 +4351,7 @@ transaction data using `eth_sendRawTransaction`.
 
 #### Parameters
 
-`transaction`: *string* -  signed transaction serialized to hexadecimal format
+`transaction`: _string_ - signed transaction serialized to hexadecimal format
 
 !!! note
 
@@ -4486,7 +4361,7 @@ transaction data using `eth_sendRawTransaction`.
 
 #### Returns
 
-`result`: *string* - 32-byte transaction hash
+`result`: _string_ - 32-byte transaction hash
 
 !!! example
 
@@ -4542,13 +4417,13 @@ Submits the mining hashrate. This is used by mining software such as [Ethminer](
 
 #### Parameters
 
-* `hashrate`: *string* - 32-byte hexadecimal string representation of the hashrate
+- `hashrate`: _string_ - 32-byte hexadecimal string representation of the hashrate
 
-* `id`: *string* - 32-byte random hexadecimal ID identifying the client
+- `id`: _string_ - 32-byte random hexadecimal ID identifying the client
 
 #### Returns
 
-`result`: *boolean* - indicates if submission is successful
+`result`: _boolean_ - indicates if submission is successful
 
 !!! example
 
@@ -4576,20 +4451,19 @@ Submits the mining hashrate. This is used by mining software such as [Ethminer](
 
 ### `eth_submitWork`
 
-Submits a proof of work (Ethash) solution.
-This is used by mining software such as [Ethminer](https://github.com/ethereum-mining/ethminer).
+Submits a proof of work (Ethash) solution. This is used by mining software such as [Ethminer](https://github.com/ethereum-mining/ethminer).
 
 #### Parameters
 
-* `nonce`: *string* - retrieved 8-byte nonce
+- `nonce`: _string_ - retrieved 8-byte nonce
 
-* `header`: *string* - 32-byte hash of the block header (PoW-hash)
+- `header`: _string_ - 32-byte hash of the block header (PoW-hash)
 
-* `digest`: *string* - 32-bytes mix digest
+- `digest`: _string_ - 32-bytes mix digest
 
 #### Returns
 
-`result`: *boolean* - indicates if the provided solution is valid
+`result`: _boolean_ - indicates if the provided solution is valid
 
 !!! example
 
@@ -4629,26 +4503,17 @@ None
 
 #### Returns
 
-`result`: *object* or *boolean* - synchronization status data object with the following fields, or `false` if not
-synchronizing:
+`result`: _object_ or _boolean_ - synchronization status data object with the following fields, or `false` if not synchronizing:
 
-* `startingBlock`: *string* - index of the highest block on the blockchain when the network
-  synchronization starts
+- `startingBlock`: _string_ - index of the highest block on the blockchain when the network synchronization starts
 
-* `currentBlock`: *string* - index of the latest block (also known as the best block) for the
-  current node (this is the same index that [`eth_blockNumber`](#eth_blocknumber) returns.)
+- `currentBlock`: _string_ - index of the latest block (also known as the best block) for the current node (this is the same index that [`eth_blockNumber`](#eth_blocknumber) returns.)
 
-* `highestBlock`: *string* - index of the highest known block in the peer network (that is, the
-  highest block so far discovered among peer nodes. This is the same value as `currentBlock` if
-  the current node has no peers.)
+- `highestBlock`: _string_ - index of the highest known block in the peer network (that is, the highest block so far discovered among peer nodes. This is the same value as `currentBlock` if the current node has no peers.)
 
-* `pulledStates`: *string* - if fast synchronizing, the number of state entries fetched so far,
-  or `null` if this is not known or not relevant (if full synchronizing or fully synchronized, this
-  field is not returned.)
+- `pulledStates`: _string_ - if fast synchronizing, the number of state entries fetched so far, or `null` if this is not known or not relevant (if full synchronizing or fully synchronized, this field is not returned.)
 
-* `knownStates`: *string* - if fast synchronizing, the number of states the node knows of so
-  far, or `null` if this is not known or not relevant (if full synchronizing or fully synchronized,
-  this field is not returned.)
+- `knownStates`: _string_ - if fast synchronizing, the number of states the node knows of so far, or `null` if this is not known or not relevant (if full synchronizing or fully synchronized, this field is not returned.)
 
 !!! example
 
@@ -4718,19 +4583,17 @@ synchronizing:
 
 ### `eth_uninstallFilter`
 
-Uninstalls a filter with the specified ID.
-When a filter is no longer required, call this method.
+Uninstalls a filter with the specified ID. When a filter is no longer required, call this method.
 
-Filters time out when not requested by [`eth_getFilterChanges`](#eth_getfilterchanges) or
-[`eth_getFilterLogs`](#eth_getfilterlogs) for 10 minutes.
+Filters time out when not requested by [`eth_getFilterChanges`](#eth_getfilterchanges) or [`eth_getFilterLogs`](#eth_getfilterlogs) for 10 minutes.
 
 #### Parameters
 
-`filterId`: *string* - filter ID
+`filterId`: _string_ - filter ID
 
 #### Returns
 
-`result`: *boolean* - indicates if the filter is successfully uninstalled
+`result`: _boolean_ - indicates if the filter is successfully uninstalled
 
 !!! example
 
@@ -4768,16 +4631,15 @@ The `MINER` API methods allow you to control the node’s mining operation.
 
 ### `miner_changeTargetGasLimit`
 
-Updates the target gas limit set using the [`--target-gas-limit`](../cli/options.md#target-gas-limit)
-command line option.
+Updates the target gas limit set using the [`--target-gas-limit`](../cli/options.md#target-gas-limit) command line option.
 
 #### Parameters
 
-`gasPrice`: *number* - target gas price in Wei
+`gasPrice`: _number_ - target gas price in Wei
 
 #### Returns
 
-`result`: *string* - `Success` or `error`
+`result`: _string_ - `Success` or `error`
 
 !!! example
 
@@ -4814,11 +4676,11 @@ Sets the coinbase, the address for the mining rewards.
 
 #### Parameters
 
-`coinbase`: *string* - Account address you pay mining rewards to
+`coinbase`: _string_ - Account address you pay mining rewards to
 
 #### Returns
 
-`result`: *boolean* - `true` when address is set
+`result`: _boolean_ - `true` when address is set
 
 !!! example
 
@@ -4846,8 +4708,7 @@ Sets the coinbase, the address for the mining rewards.
 
 ### `miner_start`
 
-Starts the mining process. To start mining, you must first specify a miner coinbase using the
-[`--miner-coinbase`](../cli/options.md#miner-coinbase) command line option or using [`miner_setCoinbase`](#miner_setcoinbase).
+Starts the mining process. To start mining, you must first specify a miner coinbase using the [`--miner-coinbase`](../cli/options.md#miner-coinbase) command line option or using [`miner_setCoinbase`](#miner_setcoinbase).
 
 #### Parameters
 
@@ -4855,7 +4716,7 @@ None
 
 #### Returns
 
-`result`: *boolean* - `true` if mining starts, or if the node is already mining
+`result`: _boolean_ - `true` if mining starts, or if the node is already mining
 
 !!! example
 
@@ -4891,7 +4752,7 @@ None
 
 #### Returns
 
-`result`: *boolean* - `true` if mining stops, or if the node is not mining
+`result`: _boolean_ - `true` if mining stops, or if the node is not mining
 
 !!! example
 
@@ -4931,7 +4792,7 @@ None
 
 #### Returns
 
-`result`: *string* - [enode URL](../../concepts/node-keys.md#enode-url) of the node
+`result`: _string_ - [enode URL](../../concepts/node-keys.md#enode-url) of the node
 
 !!! example
 
@@ -4967,7 +4828,7 @@ None
 
 #### Returns
 
-`result`: *boolean* - indicates if the client is actively listening for network connections
+`result`: _boolean_ - indicates if the client is actively listening for network connections
 
 !!! example
 
@@ -5003,7 +4864,7 @@ None
 
 #### Returns
 
-`result`: *string* - number of connected peers in hexadecimal
+`result`: _string_ - number of connected peers in hexadecimal
 
 !!! example
 
@@ -5044,7 +4905,7 @@ None
 
 #### Returns
 
-`result`: *object* - enabled services
+`result`: _object_ - enabled services
 
 !!! example
 
@@ -5093,10 +4954,10 @@ None
 
 #### Returns
 
-`result`: *string* - current network ID
+`result`: _string_ - current network ID
 
-| Network ID | Chain | Network | Description
-|------------|-------|---------|-------------------------------|
+| Network ID | Chain | Network | Description                   |
+| ---------- | ----- | ------- | ----------------------------- |
 | `1`        | ETH   | Mainnet | Main Ethereum network         |
 | `5`        | ETH   | Goerli  | PoS test network              |
 | `11155111` | ETH   | Sepolia | PoS test network              |
@@ -5163,11 +5024,11 @@ Reloads specified plugin configuration.
 
 #### Parameters
 
-`plugin`: *string* - plugin
+`plugin`: _string_ - plugin
 
 #### Returns
 
-`result`: *string* - `Success`
+`result`: _string_ - `Success`
 
 !!! example
 
@@ -5215,16 +5076,11 @@ Provides transaction processing of [type `trace`](../trace-types.md#trace) for t
 
 #### Parameters
 
-`blockNumber`: *string* - integer representing a block number or one of the string tags `latest`,
-`earliest`, or `pending`, as described in
-[block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
+`blockNumber`: _string_ - integer representing a block number or one of the string tags `latest`, `earliest`, or `pending`, as described in [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
 
 #### Returns
 
-`result`: *array* of *objects* - list of [calls to other contracts](../trace-types.md#trace) containing
-one object per call, in transaction execution order; if revert reason is enabled with
-[`--revert-reason-enabled`](../cli/options.md#revert-reason-enabled),
-the returned list items include the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
+`result`: _array_ of _objects_ - list of [calls to other contracts](../trace-types.md#trace) containing one object per call, in transaction execution order; if revert reason is enabled with [`--revert-reason-enabled`](../cli/options.md#revert-reason-enabled), the returned list items include the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
 
 !!! example
 
@@ -5316,20 +5172,15 @@ Executes the given call and returns a number of possible traces for it.
 
 #### Parameters
 
-* `call`: *object* - [transaction call object](objects.md#transaction-call-object)
+- `call`: _object_ - [transaction call object](objects.md#transaction-call-object)
 
-* `blockNumber`: *string* - integer representing a block number or one of the string tags `latest`,
-`earliest`, or `pending`, as described in
-[block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
+- `blockNumber`: _string_ - integer representing a block number or one of the string tags `latest`, `earliest`, or `pending`, as described in [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
 
-* `options`: *array* of *strings* - list of tracing options; tracing options are
-[`trace`, `vmTrace`, and `stateDiff`](../trace-types.md). Specify any
-combination of the three options including none of them.
+- `options`: _array_ of _strings_ - list of tracing options; tracing options are [`trace`, `vmTrace`, and `stateDiff`](../trace-types.md). Specify any combination of the three options including none of them.
 
 #### Returns
 
-`result`: *array* of *objects* - list of [calls to other contracts](../trace-types.md#trace) containing
-one object per call, in transaction execution order
+`result`: _array_ of _objects_ - list of [calls to other contracts](../trace-types.md#trace) containing one object per call, in transaction execution order
 
 !!! example
 
@@ -5388,18 +5239,13 @@ Performs multiple call traces on top of the same block. You can trace dependent 
 
 #### Parameters
 
-* `options`: *array* of *strings* - list of tracing options; tracing options are
-  [`trace`, `vmTrace`, and `stateDiff`](../trace-types.md). Specify any
-  combination of the three options including none of them.
+- `options`: _array_ of _strings_ - list of tracing options; tracing options are [`trace`, `vmTrace`, and `stateDiff`](../trace-types.md). Specify any combination of the three options including none of them.
 
-* `blockNumber`: *string* - integer representing a block number or one of the string tags `latest`,
-  `earliest`, or `pending`, as described in
-  [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
+- `blockNumber`: _string_ - integer representing a block number or one of the string tags `latest`, `earliest`, or `pending`, as described in [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
 
 #### Returns
 
-`result`: *array* of *objects* - list of [calls to other contracts](../trace-types.md#trace) containing
-one object per call, in transaction execution order
+`result`: _array_ of _objects_ - list of [calls to other contracts](../trace-types.md#trace) containing one object per call, in transaction execution order
 
 !!! example
 
@@ -5482,12 +5328,11 @@ Returns traces matching the specified filter.
 
 #### Parameters
 
-`traceFilterOptions`: *object* - [trace filter options object](objects.md#trace-filter-options-object)
+`traceFilterOptions`: _object_ - [trace filter options object](objects.md#trace-filter-options-object)
 
 #### Returns
 
-`result`: *array* of *objects* - list of [calls to other contracts](../trace-types.md#trace) containing
-one object per call, in transaction execution order
+`result`: _array_ of _objects_ - list of [calls to other contracts](../trace-types.md#trace) containing one object per call, in transaction execution order
 
 !!! example
 
@@ -5569,14 +5414,13 @@ Returns trace at given position.
 
 #### Parameters
 
-* `transaction`: *string* - transaction hash
+- `transaction`: _string_ - transaction hash
 
-* `indexPositions`: *array* - Index positions of the traces
+- `indexPositions`: _array_ - Index positions of the traces
 
 #### Returns
 
-`result`: *array* of *objects* - list of [calls to other contracts](../trace-types.md#trace) containing
-one object per call, in the order called by the transaction
+`result`: _array_ of _objects_ - list of [calls to other contracts](../trace-types.md#trace) containing one object per call, in the order called by the transaction
 
 !!! example
 
@@ -5636,16 +5480,13 @@ Traces a call to `eth_sendRawTransaction` without making the call, returning the
 
 #### Parameters
 
-* `data` - *string* - Raw transaction data
+- `data` - _string_ - Raw transaction data
 
-* `options`: *array* of *strings* - list of tracing options; tracing options are
-  [`trace`, `vmTrace`, and `stateDiff`](../trace-types.md). Specify any
-  combination of the three options including none of them.
+- `options`: _array_ of _strings_ - list of tracing options; tracing options are [`trace`, `vmTrace`, and `stateDiff`](../trace-types.md). Specify any combination of the three options including none of them.
 
 #### Returns
 
-`result`: *array* of *objects* - list of [calls to other contracts](../trace-types.md#trace) containing
-one object per call, in the order called by the transaction
+`result`: _array_ of _objects_ - list of [calls to other contracts](../trace-types.md#trace) containing one object per call, in the order called by the transaction
 
 !!! example
 
@@ -5702,21 +5543,13 @@ Provides transaction processing tracing per block.
 
 #### Parameters
 
-* `blockNumber`: *string* - integer representing a block number or one of the string tags `latest`,
-`earliest`, or `pending`, as described in
-[block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
+- `blockNumber`: _string_ - integer representing a block number or one of the string tags `latest`, `earliest`, or `pending`, as described in [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
 
-* `options`: *array* of *strings* - list of tracing options; tracing options are
-[`trace`, `vmTrace`, and `stateDiff`](../trace-types.md). Specify any
-combination of the three options including none of them.
+- `options`: _array_ of _strings_ - list of tracing options; tracing options are [`trace`, `vmTrace`, and `stateDiff`](../trace-types.md). Specify any combination of the three options including none of them.
 
 #### Returns
 
-`result`: *array* of *objects* - list of [transaction trace objects](objects.md#transaction-trace-object) containing
-one object per transaction, in transaction execution order; if revert reason is enabled with
-[`--revert-reason-enabled`](../cli/options.md#revert-reason-enabled),
-the [`trace`](../trace-types.md#trace) list items in the returned transaction trace object include the
-[revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
+`result`: _array_ of _objects_ - list of [transaction trace objects](objects.md#transaction-trace-object) containing one object per transaction, in transaction execution order; if revert reason is enabled with [`--revert-reason-enabled`](../cli/options.md#revert-reason-enabled), the [`trace`](../trace-types.md#trace) list items in the returned transaction trace object include the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
 
 !!! example
 
@@ -5819,14 +5652,11 @@ Provides transaction processing of [type `trace`](../trace-types.md#trace) for t
 
 #### Parameters
 
-`transaction`: *string* - transaction hash
+`transaction`: _string_ - transaction hash
 
 #### Returns
 
-`result`: *array* of *objects* - list of [calls to other contracts](../trace-types.md#trace) containing
-one object per call, in the order called by the transaction; if revert reason is enabled with
-[`--revert-reason-enabled`](../cli/options.md#revert-reason-enabled),
-the returned list items include the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
+`result`: _array_ of _objects_ - list of [calls to other contracts](../trace-types.md#trace) containing one object per call, in the order called by the transaction; if revert reason is enabled with [`--revert-reason-enabled`](../cli/options.md#revert-reason-enabled), the returned list items include the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
 
 !!! example
 
@@ -5954,35 +5784,32 @@ Lists pending transactions that match the supplied filter conditions.
 
 #### Parameters
 
-* `numResults`: *number* - integer representing the maximum number of results to return
+- `numResults`: _number_ - integer representing the maximum number of results to return
 
-* `fields`: *object* - object of fields used to create the filter condition
+- `fields`: _object_ - object of fields used to create the filter condition
 
-Each field in the object corresponds to a field name containing an operator, and a value for the operator.
-A field name can only be specified once, and can only contain one operator.
-For example, you cannot query transactions with a gas price between 8 and 9 Gwei by using both the
-`gt` and `lt` operator in the same field name instance.
+Each field in the object corresponds to a field name containing an operator, and a value for the operator. A field name can only be specified once, and can only contain one operator. For example, you cannot query transactions with a gas price between 8 and 9 Gwei by using both the `gt` and `lt` operator in the same field name instance.
 
 All filters must be satisfied for a transaction to be returned.
 
-| Field name | Value                                     | Value type            | Supported operators |
-|------------|-------------------------------------------|:---------------------:|---------------------|
-| `from`     | Address of the sender.                    | *Data*, 20&nbsp;bytes | `eq`                |
-| `to`       | Address of the receiver, or `"contract_creation"`.| *Data*, 20&nbsp;bytes |`eq`, `action`|
-| `gas`      | Gas provided by the sender.               | *Quantity*            | `eq`, `gt`, `lt`    |
-| `gasPrice` | Gas price, in wei, provided by the sender.| *Quantity*            | `eq`, `gt`, `lt`    |
-| `value`    | Value transferred, in wei.                | *Quantity*            | `eq`, `gt`, `lt`    |
-| `nonce`    | Number of transactions made by the sender.| *Quantity*            | `eq`, `gt`, `lt`    |
+| Field name | Value | Value type | Supported operators |
+| --- | --- | :-: | --- |
+| `from` | Address of the sender. | _Data_, 20&nbsp;bytes | `eq` |
+| `to` | Address of the receiver, or `"contract_creation"`. | _Data_, 20&nbsp;bytes | `eq`, `action` |
+| `gas` | Gas provided by the sender. | _Quantity_ | `eq`, `gt`, `lt` |
+| `gasPrice` | Gas price, in wei, provided by the sender. | _Quantity_ | `eq`, `gt`, `lt` |
+| `value` | Value transferred, in wei. | _Quantity_ | `eq`, `gt`, `lt` |
+| `nonce` | Number of transactions made by the sender. | _Quantity_ | `eq`, `gt`, `lt` |
 
 Supported operators:
 
-* `eq` (equal to)
+- `eq` (equal to)
 
-* `lt` (less than)
+- `lt` (less than)
 
-* `gt` (greater than)
+- `gt` (greater than)
 
-* `action`
+- `action`
 
 !!! note
 
@@ -5990,8 +5817,7 @@ Supported operators:
 
 #### Returns
 
-`result`: *array* of *objects* - list of objects with
-[details of the pending transaction](objects.md#pending-transaction-object)
+`result`: _array_ of _objects_ - list of objects with [details of the pending transaction](objects.md#pending-transaction-object)
 
 !!! example
 
@@ -6041,14 +5867,13 @@ None
 
 #### Returns
 
-`result`: *object* - transaction pool statistics object with the following fields:
+`result`: _object_ - transaction pool statistics object with the following fields:
 
-* `maxSize`: *number* - maximum number of transactions kept in the transaction pool; use the
-  [`--tx-pool-max-size`](../cli/options.md#tx-pool-max-size) option to configure the maximum size.
+- `maxSize`: _number_ - maximum number of transactions kept in the transaction pool; use the [`--tx-pool-max-size`](../cli/options.md#tx-pool-max-size) option to configure the maximum size.
 
-* `localCount`: *number* - number of transactions submitted directly to this node
+- `localCount`: _number_ - number of transactions submitted directly to this node
 
-* `remoteCount`: *number* - number of transactions received from remote nodes
+- `remoteCount`: _number_ - number of transactions received from remote nodes
 
 !!! example
 
@@ -6088,7 +5913,7 @@ None
 
 #### Returns
 
-`result`: *array* of *objects* - list of transactions
+`result`: _array_ of _objects_ - list of transactions
 
 !!! example
 
@@ -6139,7 +5964,7 @@ None
 
 #### Returns
 
-`result`: *string* - current client version
+`result`: _string_ - current client version
 
 !!! example
 
@@ -6167,16 +5992,15 @@ None
 
 ### `web3_sha3`
 
-Returns a [SHA3](https://en.wikipedia.org/wiki/SHA-3) hash of the specified data.
-The result value is a [Keccak-256](https://keccak.team/keccak.html) hash, not the standardized SHA3-256.
+Returns a [SHA3](https://en.wikipedia.org/wiki/SHA-3) hash of the specified data. The result value is a [Keccak-256](https://keccak.team/keccak.html) hash, not the standardized SHA3-256.
 
 #### Parameters
 
-`data`: *string* - data to convert to a SHA3 hash
+`data`: _string_ - data to convert to a SHA3 hash
 
 #### Returns
 
-`result`: *string* - SHA3 result of the input data
+`result`: _string_ - SHA3 result of the input data
 
 !!! example
 
@@ -6206,8 +6030,7 @@ The result value is a [Keccak-256](https://keccak.team/keccak.html) hash, not th
 
 ### `rpc_modules`
 
-Lists [enabled APIs](../../how-to/use-besu-api/json-rpc.md#api-methods-enabled-by-default)
-and the version of each.
+Lists [enabled APIs](../../how-to/use-besu-api/json-rpc.md#api-methods-enabled-by-default) and the version of each.
 
 #### Parameters
 
@@ -6215,7 +6038,7 @@ None
 
 #### Returns
 
-`result`: *map* of *strings* to *strings* - enabled APIs and their versions
+`result`: _map_ of _strings_ to _strings_ - enabled APIs and their versions
 
 !!! example
 
@@ -6246,6 +6069,7 @@ None
         ```
 
 <!-- Links -->
+
 [schema]: https://github.com/hyperledger/besu/blob/750580dcca349d22d024cc14a8171b2fa74b505a/ethereum/api/src/main/resources/schema.graphqls
 [eth_sendRawTransaction or eth_call]: ../../how-to/send-transactions.md#eth_call-or-eth_sendrawtransaction
 [transaction]: https://ropsten.etherscan.io/tx/0xfc766a71c406950d4a4955a340a092626c35083c64c7be907060368a5e6811d6

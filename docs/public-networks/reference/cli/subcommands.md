@@ -1,5 +1,7 @@
 ---
+title: Subcommands
 description: Hyperledger Besu command line interface subcommands
+sidebar_position: 2
 tags:
   - private networks
 ---
@@ -46,11 +48,9 @@ Provides blocks related actions.
 
 Imports a block or range of blocks from the specified file into the blockchain database.
 
-You can specify the starting index of the block range to import with `--start-block`.
-If omitted, the default start block is 0 (the beginning of the chain).
+You can specify the starting index of the block range to import with `--start-block`. If omitted, the default start block is 0 (the beginning of the chain).
 
-You can specify the ending index (exclusive) of the block range to import with `--end-block`.
-If omitted, all blocks after the start block will be imported.
+You can specify the ending index (exclusive) of the block range to import with `--end-block`. If omitted, all blocks after the start block will be imported.
 
 Including `--skip-pow-validation-enabled` skips validation of the `mixHash` when importing blocks.
 
@@ -74,11 +74,9 @@ Including `--skip-pow-validation-enabled` skips validation of the `mixHash` when
 
 Exports a block or range of blocks from storage to a file in RLP format.
 
-If you omit `--start-block`, the default start block is 0 (the beginning of the chain), and if you
-omit `--end-block`, the default end block is the current chain head.
+If you omit `--start-block`, the default start block is 0 (the beginning of the chain), and if you omit `--end-block`, the default end block is the current chain head.
 
-If you are not running the command against the default network (Mainnet), specify the `--network`
-or `--genesis-file` parameter.
+If you are not running the command against the default network (Mainnet), specify the `--network` or `--genesis-file` parameter.
 
 ## `public-key`
 
@@ -112,10 +110,7 @@ Provides node public key related actions.
     besu --data-path=<node data path> public-key export --node-private-key-file=/home/me/me_node/myPrivateKey --to=/home/me/me_project/not_precious_pub_key --ec-curve=secp256k1
     ```
 
-Outputs the node public key to standard output or to the file specified by `--to=<key-file>`.
-You can output the public key associated with a specific private key file using the [`--node-private-key-file`](options.md#node-private-key-file) option.
-The default elliptic curve used for the key is `secp256k1`. Use the `--ec-curve` option to choose between
-`secp256k1` or `secp256r1`.
+Outputs the node public key to standard output or to the file specified by `--to=<key-file>`. You can output the public key associated with a specific private key file using the [`--node-private-key-file`](options.md#node-private-key-file) option. The default elliptic curve used for the key is `secp256k1`. Use the `--ec-curve` option to choose between `secp256k1` or `secp256r1`.
 
 ### `export-address`
 
@@ -137,10 +132,7 @@ The default elliptic curve used for the key is `secp256k1`. Use the `--ec-curve`
     besu --data-path=<node data path> public-key export-address --node-private-key-file=/home/me/me_node/myPrivateKey --to=/home/me/me_project/me_node_address --ec-curve=secp256k1
     ```
 
-Outputs the node address to standard output or to the file specified by `--to=<address-file>`.
-You can output the address associated with a specific private key file using the [`--node-private-key-file`](options.md#node-private-key-file) option.
-The default elliptic curve used for the key is `secp256k1`. Use the `--ec-curve` option to choose between
-`secp256k1` or `secp256r1`.
+Outputs the node address to standard output or to the file specified by `--to=<address-file>`. You can output the address associated with a specific private key file using the [`--node-private-key-file`](options.md#node-private-key-file) option. The default elliptic curve used for the key is `secp256k1`. Use the `--ec-curve` option to choose between `secp256k1` or `secp256r1`.
 
 ## `password`
 
@@ -160,9 +152,7 @@ Provides password related actions.
     besu password hash --password=myPassword123
     ```
 
-Generates the hash of a given password. Include the hash in the
-[credentials file](../../how-to/use-besu-api/authenticate.md#credentials-file) for JSON-RPC API
-[authentication](../../how-to/use-besu-api/authenticate.md).
+Generates the hash of a given password. Include the hash in the [credentials file](../../how-to/use-besu-api/authenticate.md#credentials-file) for JSON-RPC API [authentication](../../how-to/use-besu-api/authenticate.md).
 
 ## `operator`
 
@@ -188,16 +178,14 @@ Provides operator actions.
     [`--auto-log-bloom-caching-enabled`](options.md#auto-log-bloom-caching-enabled) command line
     option to false.
 
-Generates cached log bloom indexes for blocks. APIs use the cached indexes for improved log query
-performance.
+Generates cached log bloom indexes for blocks. APIs use the cached indexes for improved log query performance.
 
 !!! note
 
     Each index file contains 100000 blocks. The last fragment of blocks less that 100000 are not
     indexed.
 
-To generate cached log bloom indexes while the node is running, use the
-[`admin_generateLogBloomCache`](../api/index.md#admin_generatelogbloomcache) API.
+To generate cached log bloom indexes while the node is running, use the [`admin_generateLogBloomCache`](../api/index.md#admin_generatelogbloomcache) API.
 
 ## `retesteth`
 
@@ -213,17 +201,15 @@ To generate cached log bloom indexes while the node is running, use the
     besu retesteth --data-path=/home/me/me_node --rpc-http-port=8590 --host-allowlist=*
     ```
 
-Runs a Retesteth-compatible server. [Retesteth](https://github.com/ethereum/retesteth/wiki) is a
-developer tool that can generate and run consensus tests against any Ethereum client running such a
-server.
+Runs a Retesteth-compatible server. [Retesteth](https://github.com/ethereum/retesteth/wiki) is a developer tool that can generate and run consensus tests against any Ethereum client running such a server.
 
 The command accepts the following command line options:
 
-* [`--data-path`](options.md#data-path)
-* [`--host-allowlist`](options.md#host-allowlist)
-* [`--rpc-http-host`](options.md#rpc-http-host)
-* [`--rpc-http-port`](options.md#rpc-http-port)
-* [`--logging`](options.md#logging)
+- [`--data-path`](options.md#data-path)
+- [`--host-allowlist`](options.md#host-allowlist)
+- [`--rpc-http-host`](options.md#rpc-http-host)
+- [`--rpc-http-port`](options.md#rpc-http-port)
+- [`--logging`](options.md#logging)
 
 ## `validate-config`
 
@@ -239,7 +225,4 @@ The command accepts the following command line options:
     besu validate-config --config-file ../besu-local-nodes/config/besu/besu1.conf
     ```
 
-Performs basic syntax validation of the specified
-[TOML configuration file](../../how-to/configuration-file.md).
-Checks TOML syntax (for example, valid format and unmatched quotes) and flags unknown options.
-Doesn't check data types, and doesn't check dependencies between options (this is done at Besu startup).
+Performs basic syntax validation of the specified [TOML configuration file](../../how-to/configuration-file.md). Checks TOML syntax (for example, valid format and unmatched quotes) and flags unknown options. Doesn't check data types, and doesn't check dependencies between options (this is done at Besu startup).

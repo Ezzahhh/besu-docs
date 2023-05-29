@@ -1,25 +1,18 @@
 ---
-title: Configure Kubernetes mode in NAT Manager
+title: Configure Kubernetes mode in NAT manager
 sidebar_position: 9
 description: Tutorial to configure Kubernetes mode for Hyperledger Besu Nat Manager
 ---
 
 # Configure Kubernetes mode in NAT Manager
 
-Use [`--nat-method=AUTO`](../../../public-networks/how-to/connect/specify-nat.md#auto) or
-[`--nat-method=KUBERNETES`](../../../public-networks/how-to/connect/specify-nat.md#kubernetes)
-CLI options to let the Besu node automatically configure its IP address and ports.
+Use [`--nat-method=AUTO`](../../../public-networks/how-to/connect/specify-nat.md#auto) or [`--nat-method=KUBERNETES`](../../../public-networks/how-to/connect/specify-nat.md#kubernetes) CLI options to let the Besu node automatically configure its IP address and ports.
 
-Use mode [`--nat-method=NONE`](../../../public-networks/how-to/connect/specify-nat.md#none) to be able to
-set your Besu ports and IP address manually.
+Use mode [`--nat-method=NONE`](../../../public-networks/how-to/connect/specify-nat.md#none) to be able to set your Besu ports and IP address manually.
 
-Default mode is [`AUTO`](../../../public-networks/how-to/connect/specify-nat.md#auto) but Besu will
-fallback to [`NONE`](../../../public-networks/how-to/connect/specify-nat.md#none)
-mode if automatic configuration fails.
+Default mode is [`AUTO`](../../../public-networks/how-to/connect/specify-nat.md#auto) but Besu will fallback to [`NONE`](../../../public-networks/how-to/connect/specify-nat.md#none) mode if automatic configuration fails.
 
-!!!example
-    The following log shows fallback to [`NONE`](../../../public-networks/how-to/connect/specify-nat.md#none)
-    mode after an automatic detection failure.
+!!!example The following log shows fallback to [`NONE`](../../../public-networks/how-to/connect/specify-nat.md#none) mode after an automatic detection failure.
 
     ```
     INFO  | KubernetesNatManager | Starting kubernetes NAT manager.
@@ -151,12 +144,13 @@ When steps 1 and 2 are completed, deploy Besu using the following YAML example:
 
 ## Automatic detection errors
 
-!!!important
+:::danger
 
-    Automatic detection error messages do not prevent you to use Besu.
+Automatic detection error messages do not prevent you to use Besu.
 
-    Try the fix indicated for each error or use [`--nat-method=KUBERNETES`](../../../public-networks/how-to/connect/specify-nat.md#kubernetes) CLI option
-    and [set IP address and port manually](../../../public-networks/how-to/connect/configure-ports.md).
+Try the fix indicated for each error or use [`--nat-method=KUBERNETES`](../../../public-networks/how-to/connect/specify-nat.md#kubernetes) CLI option and [set IP address and port manually](../../../public-networks/how-to/connect/configure-ports.md).
+
+:::
 
 Possible errors messages for Kubernetes automatic detection failure:
 
@@ -182,11 +176,10 @@ Possible errors messages for Kubernetes automatic detection failure:
 ### `Forbidden` error message
 
 - **Error message:** `Nat manager failed to configure itself automatically due to the following reason Forbidden. NONE mode will be used`
-- **Cause:** Besu don't have permission to list the services via the Kubernetes API
-    to retrieve IP address and ports from the load balancer.
+- **Cause:** Besu don't have permission to list the services via the Kubernetes API to retrieve IP address and ports from the load balancer.
 - **Fix:** Give it the required permissions using [Role-based access control](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
 
-    If you can't manage permissions, define the IP address and ports manually with [`NONE`](../../../public-networks/how-to/connect/specify-nat.md#none) mode
+  If you can't manage permissions, define the IP address and ports manually with [`NONE`](../../../public-networks/how-to/connect/specify-nat.md#none) mode
 
 !!!example "Example error log"
 
@@ -197,8 +190,7 @@ Possible errors messages for Kubernetes automatic detection failure:
     INFO  | NetworkRunner | Starting Network.
     ```
 
-!!!tip
-    For development environment, the permission issue can be fixed by running `kubectl create clusterrolebinding myapp-view-binding --clusterrole=admin --serviceaccount=default:default`
+!!!tip For development environment, the permission issue can be fixed by running `kubectl create clusterrolebinding myapp-view-binding --clusterrole=admin --serviceaccount=default:default`
 
       This command should only be used on developement environment and not in production environment.
 

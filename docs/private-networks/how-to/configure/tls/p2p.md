@@ -1,11 +1,12 @@
 ---
+title: Peer-to-peer TLS
+sidebar_position: 2
 description: Configure P2P TLS communication
 ---
 
 # Configure P2P TLS
 
-You can configure TLS to secure the P2P communication between nodes by ensuring only authorized nodes can communicate
-with each other. Use certificates issued by a trusted authority to connect authorized nodes in the network.
+You can configure TLS to secure the P2P communication between nodes by ensuring only authorized nodes can communicate with each other. Use certificates issued by a trusted authority to connect authorized nodes in the network.
 
 !!! warning
 
@@ -18,10 +19,9 @@ Besu supports PKCS11, PKCS12, and JKS keystore and truststore types for P2P TLS.
 
 **Prerequisites**:
 
-* A configured network. For example,
-    [see steps 1 to 5 in the QBFT tutorial](../../../tutorials/qbft.md).
-* Each node requires a keystore that contains the node's certificate and key.
-* A truststore containing all the trusted certificates for the network.
+- A configured network. For example, [see steps 1 to 5 in the QBFT tutorial](../../../tutorials/qbft.md).
+- Each node requires a keystore that contains the node's certificate and key.
+- A truststore containing all the trusted certificates for the network.
 
 Start Besu and include the following command line options on the required nodes:
 
@@ -38,14 +38,12 @@ besu --Xp2p-tls-enabled=true \
 
 In the command line:
 
-* Enable TLS for P2P communication using [`--Xp2p-tls-enabled=true`](#xp2p-tls-enabled).
-* Specify the keystore type and keystore file using [`--Xp2p-tls-keystore-type`](#xp2p-tls-keystore-type) and
-    [`--Xp2p-tls-keystore-file`](#xp2p-tls-keystore-file).
-* Specify the text file containing the password to unlock the keystore file using [`--Xp2p-tls-keystore-password-file`](#xp2p-tls-keystore-password-file).
-* Specify the optional [certificate revocation list (CRL)] file using [`--Xp2p-tls-crl-file`](#xp2p-tls-crl-file).
-* Specify the truststore type and truststore file using [`--Xp2p-tls-truststore-type`](#xp2p-tls-truststore-type) and
-    [`--Xp2p-tls-truststore-file`](#xp2p-tls-truststore-file).
-* Specify the text file containing the password to unlock the truststore file using [`--Xp2p-tls-truststore-password-file`](#xp2p-tls-keystore-password-file).
+- Enable TLS for P2P communication using [`--Xp2p-tls-enabled=true`](#xp2p-tls-enabled).
+- Specify the keystore type and keystore file using [`--Xp2p-tls-keystore-type`](#xp2p-tls-keystore-type) and [`--Xp2p-tls-keystore-file`](#xp2p-tls-keystore-file).
+- Specify the text file containing the password to unlock the keystore file using [`--Xp2p-tls-keystore-password-file`](#xp2p-tls-keystore-password-file).
+- Specify the optional [certificate revocation list (CRL)] file using [`--Xp2p-tls-crl-file`](#xp2p-tls-crl-file).
+- Specify the truststore type and truststore file using [`--Xp2p-tls-truststore-type`](#xp2p-tls-truststore-type) and [`--Xp2p-tls-truststore-file`](#xp2p-tls-truststore-file).
+- Specify the text file containing the password to unlock the truststore file using [`--Xp2p-tls-truststore-password-file`](#xp2p-tls-keystore-password-file).
 
 ## Command line options
 

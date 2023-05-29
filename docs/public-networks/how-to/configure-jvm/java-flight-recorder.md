@@ -1,4 +1,6 @@
 ---
+title: Use Java Flight Recorder
+sidebar_position: 3
 description: Using Java Flight Recorder with Hyperledger Besu
 tags:
   - private networks
@@ -6,9 +8,7 @@ tags:
 
 # Use Java Flight Recorder
 
-[Java Flight Recorder (JFR)](https://docs.oracle.com/javacomponents/jmc-5-4/jfr-runtime-guide/about.htm#JFRUH170) is a
-monitoring tool that collects information about the Java Virtual Machine (JVM) when Hyperledger Besu is running.
-Use the JFR as a tool to analyze Besu performance.
+[Java Flight Recorder (JFR)](https://docs.oracle.com/javacomponents/jmc-5-4/jfr-runtime-guide/about.htm#JFRUH170) is a monitoring tool that collects information about the Java Virtual Machine (JVM) when Hyperledger Besu is running. Use the JFR as a tool to analyze Besu performance.
 
 ## Enable Java Flight Recorder
 
@@ -25,8 +25,7 @@ settings=profile,path-to-gc-roots=true
     When recording, cleanly exiting Besu results in better data.
     If not possible to cleanly exit, the file may be missing some information not flushed to disk.
 
-Inspect the file written to `/tmp/recording.jfr` with tools such as
-[Mission Control](https://docs.oracle.com/javacomponents/jmc-5-5/jmc-user-guide/intro.htm#JMCCI109).
+Inspect the file written to `/tmp/recording.jfr` with tools such as [Mission Control](https://docs.oracle.com/javacomponents/jmc-5-5/jmc-user-guide/intro.htm#JMCCI109).
 
 !!! warning
 

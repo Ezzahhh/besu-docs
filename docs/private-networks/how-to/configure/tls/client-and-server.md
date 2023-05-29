@@ -1,13 +1,11 @@
 ---
-description: Configure TLS
+title: Client and server TLS
+sidebar_position: 1
 ---
 
 # Configure client and server TLS
 
-Hyperledger Besu supports TLS for client and server communication. For example, you can
-configure TLS for communication between
-[EthSigner](https://docs.ethsigner.consensys.net/en/latest/Concepts/TLS/) and Besu, and Besu and
-[Tessera](https://docs.tessera.consensys.net/HowTo/Configure/TLS/).
+Hyperledger Besu supports TLS for client and server communication. For example, you can configure TLS for communication between [EthSigner](https://docs.ethsigner.consensys.net/en/latest/Concepts/TLS/) and Besu, and Besu and [Tessera](https://docs.tessera.consensys.net/HowTo/Configure/TLS/).
 
 The following diagram displays an example client and server TLS configuration.
 
@@ -17,8 +15,8 @@ Configure TLS communication from the command line.
 
 ## Prerequisites
 
-* Besu's password-protected PKCS12 keystore
-* File containing the keystore password
+- Besu's password-protected PKCS12 keystore
+- File containing the keystore password
 
 ## Configure client TLS
 
@@ -26,19 +24,17 @@ Allow clients (for example a dapp, curl, or EthSigner) to send and receive secur
 
 **Client prerequisites**:
 
-* [Configure the client for TLS]
-* Client's PKCS12 keystore information
+- [Configure the client for TLS]
+- Client's PKCS12 keystore information
 
 ### Create the known clients file
 
-The known clients file allows clients with self-signed certificates or non-public certificates to
-connect to Besu.
+The known clients file allows clients with self-signed certificates or non-public certificates to connect to Besu.
 
-Create a file (in this example, `knownClients`) that lists one or more trusted clients. Use the
-format`<common_name> <hex-string>` where:
+Create a file (in this example, `knownClients`) that lists one or more trusted clients. Use the format`<common_name> <hex-string>` where:
 
-* `<common_name>` is the Common Name specified in the client certificate.
-* `<hex-string>` is the SHA-256 fingerprint of the client certificate.
+- `<common_name>` is the Common Name specified in the client certificate.
+- `<hex-string>` is the SHA-256 fingerprint of the client certificate.
 
 !!! example
 
@@ -47,9 +43,7 @@ format`<common_name> <hex-string>` where:
     curl FC:18:BF:39:45:45:9A:15:46:76:A6:E7:C3:94:64:B8:34:84:A3:8E:B8:EA:67:DC:61:C0:29:E6:38:B8:B7:99
     ```
 
-You can use [`openssl`](https://www.openssl.org/) or
-[`keytool`](https://docs.oracle.com/javase/6/docs/technotes/tools/solaris/keytool.html) to display
-the SHA256 fingerprint.
+You can use [`openssl`](https://www.openssl.org/) or [`keytool`](https://docs.oracle.com/javase/6/docs/technotes/tools/solaris/keytool.html) to display the SHA256 fingerprint.
 
 !!! example
 
@@ -65,23 +59,14 @@ besu --rpc-http-enabled --rpc-http-tls-enabled --rpc-http-tls-client-auth-enable
 
 The command line:
 
-* Enables the HTTP JSON-RPC service using the
-  [`--rpc-http-enabled`](../../../../public-networks/reference/cli/options.md#rpc-http-enabled) option.
-* Enables TLS for the HTTP JSON-RPC service using the
-  [`--rpc-http-tls-enabled`](../../../../public-networks/reference/cli/options.md#rpc-http-tls-enabled) option.
-* Enables TLS client authentication using the
-  [`--rpc-http-tls-client-auth-enabled`](../../../../public-networks/reference/cli/options.md#rpc-http-tls-client-auth-enabled) option.
-* Specifies the keystore using the
-  [`--rpc-http-tls-keystore-file`](../../../../public-networks/reference/cli/options.md#rpc-http-tls-keystore-file)
-  option.
-* Specifies the file that contains the password to decrypt the keystore using the
-  [`--rpc-http-tls-keystore-password-file`](../../../../public-networks/reference/cli/options.md#rpc-http-tls-keystore-password-file) option.
-* [Specifies the clients](#create-the-known-clients-file) allowed to connect to Besu using the
-  [`--rpc-http-tls-known-clients-file`](../../../../public-networks/reference/cli/options.md#rpc-http-tls-known-clients-file) option.
-* specifies the Java cipher suites using the
-  [`--rpc-http-tls-cipher-suite`](../../../../public-networks/reference/cli/options.md#rpc-http-tls-cipher-suite) option.
-* specifies the TLS protocol version using the
-  [`--rpc-http-tls-protocol`](../../../../public-networks/reference/cli/options.md#rpc-http-tls-protocol) option.
+- Enables the HTTP JSON-RPC service using the [`--rpc-http-enabled`](../../../../public-networks/reference/cli/options.md#rpc-http-enabled) option.
+- Enables TLS for the HTTP JSON-RPC service using the [`--rpc-http-tls-enabled`](../../../../public-networks/reference/cli/options.md#rpc-http-tls-enabled) option.
+- Enables TLS client authentication using the [`--rpc-http-tls-client-auth-enabled`](../../../../public-networks/reference/cli/options.md#rpc-http-tls-client-auth-enabled) option.
+- Specifies the keystore using the [`--rpc-http-tls-keystore-file`](../../../../public-networks/reference/cli/options.md#rpc-http-tls-keystore-file) option.
+- Specifies the file that contains the password to decrypt the keystore using the [`--rpc-http-tls-keystore-password-file`](../../../../public-networks/reference/cli/options.md#rpc-http-tls-keystore-password-file) option.
+- [Specifies the clients](#create-the-known-clients-file) allowed to connect to Besu using the [`--rpc-http-tls-known-clients-file`](../../../../public-networks/reference/cli/options.md#rpc-http-tls-known-clients-file) option.
+- specifies the Java cipher suites using the [`--rpc-http-tls-cipher-suite`](../../../../public-networks/reference/cli/options.md#rpc-http-tls-cipher-suite) option.
+- specifies the TLS protocol version using the [`--rpc-http-tls-protocol`](../../../../public-networks/reference/cli/options.md#rpc-http-tls-protocol) option.
 
 !!! note
 
@@ -94,17 +79,16 @@ Allow Besu to securely communicate with the server (Tessera).
 
 **Server prerequisites**:
 
-* [Configure the server to allow TLS communication]
-* Server's certificate information
+- [Configure the server to allow TLS communication]
+- Server's certificate information
 
 ### Create the known servers file
 
-Create a file (in this example, `knownServers`) that lists one or more trusted servers. The file
-contents use the format `<hostame>:<port> <hex-string>` where:
+Create a file (in this example, `knownServers`) that lists one or more trusted servers. The file contents use the format `<hostame>:<port> <hex-string>` where:
 
-* `<hostname>` is the server hostname
-* `<port>` is the port used for communication
-* `<hex-string>` is the SHA-256 fingerprint of the server's certificate.
+- `<hostname>` is the server hostname
+- `<port>` is the port used for communication
+- `<hex-string>` is the SHA-256 fingerprint of the server's certificate.
 
 !!! example
 
@@ -126,16 +110,12 @@ besu --privacy-tls-enabled --privacy-tls-keystore-file=/Users/me/my_node/keystor
 
 The command line:
 
-* Enables TLS with the server using the
-  [`--privacy-tls-enabled`](../../../reference/cli/options.md#privacy-tls-enabled) option.
-* Specifies the keystore using the
-  [`--privacy-tls-keystore-file`](../../../reference/cli/options.md#privacy-tls-keystore-file)
-  option.
-* Specifies the file that contains the password to decrypt the keystore using the
-  [`--privacy-tls-keystore-password-file`](../../../reference/cli/options.md#privacy-tls-keystore-password-file) option.
-* Specifies the trusted servers using the
-  [`--privacy-tls-known-enclave-file`](../../../reference/cli/options.md#privacy-tls-known-enclave-file) option.
+- Enables TLS with the server using the [`--privacy-tls-enabled`](../../../reference/cli/options.md#privacy-tls-enabled) option.
+- Specifies the keystore using the [`--privacy-tls-keystore-file`](../../../reference/cli/options.md#privacy-tls-keystore-file) option.
+- Specifies the file that contains the password to decrypt the keystore using the [`--privacy-tls-keystore-password-file`](../../../reference/cli/options.md#privacy-tls-keystore-password-file) option.
+- Specifies the trusted servers using the [`--privacy-tls-known-enclave-file`](../../../reference/cli/options.md#privacy-tls-known-enclave-file) option.
 
 <!-- Links -->
+
 [Configure the client for TLS]: https://docs.ethsigner.consensys.net/en/latest/HowTo/Configure-TLS/#server-tls-connection
 [Configure the server to allow TLS communication]: https://docs.tessera.consensys.net/HowTo/Configure/TLS/

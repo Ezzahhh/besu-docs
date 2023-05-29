@@ -1,4 +1,6 @@
 ---
+title: Configure static nodes
+sidebar_position: 1
 description: Configuring static nodes
 tags:
   - private networks
@@ -6,12 +8,9 @@ tags:
 
 # Static nodes
 
-Static nodes are a configured set of trusted nodes. Static nodes are exempt from
-[maximum peer](manage-peers.md#limit-peers) and
-[remote connection](manage-peers.md#limit-remote-connections) limits.
+Static nodes are a configured set of trusted nodes. Static nodes are exempt from [maximum peer](manage-peers.md#limit-peers) and [remote connection](manage-peers.md#limit-remote-connections) limits.
 
-Besu attempts to maintain connections with static nodes by periodically initiating a connection to
-any unconnected static node.
+Besu attempts to maintain connections with static nodes by periodically initiating a connection to any unconnected static node.
 
 !!! tip
 
@@ -27,20 +26,13 @@ any unconnected static node.
 
 To configure a network of static nodes:
 
-1. List the [enode URLs](../../concepts/node-keys.md#enode-url) of the nodes in the
-  [`static-nodes.json` file](#static-nodesjson-file).
+1. List the [enode URLs](../../concepts/node-keys.md#enode-url) of the nodes in the [`static-nodes.json` file](#static-nodesjson-file).
 
-1. Save the `static-nodes.json` file in the data directory (specified by
-  [`--data-path`](../../reference/cli/options.md#data-path)) of each node.
-  Alternatively, you can explicitly specify the static nodes file on the command line using
-  [`--static-nodes-file`](../../reference/cli/options.md#static-nodes-file).
+1. Save the `static-nodes.json` file in the data directory (specified by [`--data-path`](../../reference/cli/options.md#data-path)) of each node. Alternatively, you can explicitly specify the static nodes file on the command line using [`--static-nodes-file`](../../reference/cli/options.md#static-nodes-file).
 
-1. Start Besu with discovery disabled using
-  [`--discovery-enabled=false`](../../reference/cli/options.md#discovery-enabled).
+1. Start Besu with discovery disabled using [`--discovery-enabled=false`](../../reference/cli/options.md#discovery-enabled).
 
-To update the list of static peers at run time, use the
-[`admin_addPeer`](../../reference/api/index.md#admin_addpeer) and
-[`admin_removePeer`](../../reference/api/index.md#admin_removepeer) JSON-RPC API methods.
+To update the list of static peers at run time, use the [`admin_addPeer`](../../reference/api/index.md#admin_addpeer) and [`admin_removePeer`](../../reference/api/index.md#admin_removepeer) JSON-RPC API methods.
 
 !!! note
 
@@ -59,9 +51,7 @@ To update the list of static peers at run time, use the
 
 ### `static-nodes.json` file
 
-The `static-nodes.json` file must be in the data directory (specified by
-[`--data-path`](../../reference/cli/options.md#data-path)) and contain a JSON array of
-[enode URLs](../../concepts/node-keys.md#enode-url).
+The `static-nodes.json` file must be in the data directory (specified by [`--data-path`](../../reference/cli/options.md#data-path)) and contain a JSON array of [enode URLs](../../concepts/node-keys.md#enode-url).
 
 !!! example
 

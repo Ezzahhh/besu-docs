@@ -1,21 +1,21 @@
 ---
 title: Upgrade permissioning contracts
-sidebar_position: 3
+sidebar_position: 2
 description: Upgrade the permissioning contracts for onchain permissioning
 ---
 
 # Upgrade permissioning contracts
 
-The following tutorial describes the steps to upgrade the onchain permissioning contracts to the latest
-version.
+The following tutorial describes the steps to upgrade the onchain permissioning contracts to the latest version.
 
 ## Prerequisites
 
 <!-- vale off -->
-* [Node.js](https://nodejs.org/en/) v10.16.0 or later
+
+- [Node.js](https://nodejs.org/en/) v10.16.0 or later
 <!-- vale on -->
-* [Yarn](https://yarnpkg.com/en/) v1.15 or later
-* Browser with [MetaMask installed](https://metamask.io/).
+- [Yarn](https://yarnpkg.com/en/) v1.15 or later
+- Browser with [MetaMask installed](https://metamask.io/).
 
 ## Steps
 
@@ -28,14 +28,13 @@ version.
 
 1. Clone the `permissioning-smart-contracts` repository:
 
-    ```bash
-    git clone https://github.com/ConsenSys/permissioning-smart-contracts.git
-    ```
+   ```bash
+   git clone https://github.com/ConsenSys/permissioning-smart-contracts.git
+   ```
 
 ### 3. Update environment variables
 
-If using a `.env` file to configure environment variables, then
-the file must be in the `permissioning-smart-contracts` directory.
+If using a `.env` file to configure environment variables, then the file must be in the `permissioning-smart-contracts` directory.
 
 !!! tip
 
@@ -45,12 +44,13 @@ the file must be in the `permissioning-smart-contracts` directory.
     * `RETAIN_NODE_RULES_CONTRACT=true` to retain the current Node rules contract
     * `RETAIN_ACCOUNT_RULES_CONTRACT=true` to retain the current Account rules contract
 
-1. Legacy: If they exist, rename the following environment variables:
-    * `PANTHEON_NODE_PERM_ACCOUNT` to `BESU_NODE_PERM_ACCOUNT`
-    * `PANTHEON_NODE_PERM_KEY` to `BESU_NODE_PERM_KEY`
-    * `PANTHEON_NODE_PERM_ENDPOINT` to `BESU_NODE_PERM_ENDPOINT`
+1.  Legacy: If they exist, rename the following environment variables:
 
-2. If updating from v1 to v2, you need to re-deploy the `NodeIngress` contract. In order to do this, first delete the `NODE_INGRESS_CONTRACT_ADDRESS` environment variable.
+    - `PANTHEON_NODE_PERM_ACCOUNT` to `BESU_NODE_PERM_ACCOUNT`
+    - `PANTHEON_NODE_PERM_KEY` to `BESU_NODE_PERM_KEY`
+    - `PANTHEON_NODE_PERM_ENDPOINT` to `BESU_NODE_PERM_ENDPOINT`
+
+2.  If updating from v1 to v2, you need to re-deploy the `NodeIngress` contract. In order to do this, first delete the `NODE_INGRESS_CONTRACT_ADDRESS` environment variable.
 
     !!! important
 
@@ -65,39 +65,39 @@ the file must be in the `permissioning-smart-contracts` directory.
 
 1. Export the current allowlists by setting the following environment variables:
 
-    ```bash
-    RETAIN_ADMIN_CONTRACT=true
-    RETAIN_NODE_RULES_CONTRACT=true
-    RETAIN_ACCOUNT_RULES_CONTRACT=true
-    ```
+   ```bash
+   RETAIN_ADMIN_CONTRACT=true
+   RETAIN_NODE_RULES_CONTRACT=true
+   RETAIN_ACCOUNT_RULES_CONTRACT=true
+   ```
 
 1. Log the current allowlists to console:
 
-    ```bash
-    truffle migrate --reset
-    ```
+   ```bash
+   truffle migrate --reset
+   ```
 
-    The migration scripts will log the existing allowlists to the console, but no contracts will be deployed.
+   The migration scripts will log the existing allowlists to the console, but no contracts will be deployed.
 
 1. Set initial values for updated deployment using the values logged in the previous step:
 
-    ```bash
-    INITIAL_ADMIN_ACCOUNTS=<list-of-admins>
-    INITIAL_ALLOWLISTED_ACCOUNTS=<list-of-accounts>
-    INITIAL_ALLOWLISTED_NODES=<list-of-enode-urls>
-    ```
+   ```bash
+   INITIAL_ADMIN_ACCOUNTS=<list-of-admins>
+   INITIAL_ALLOWLISTED_ACCOUNTS=<list-of-accounts>
+   INITIAL_ALLOWLISTED_NODES=<list-of-enode-urls>
+   ```
 
 1. Update environment variables for contracts that are to be deployed. For example:
 
-    ```bash
-    RETAIN_ADMIN_CONTRACT=true
-    RETAIN_NODE_RULES_CONTRACT=false
-    RETAIN_ACCOUNT_RULES_CONTRACT=false
-    ```
+   ```bash
+   RETAIN_ADMIN_CONTRACT=true
+   RETAIN_NODE_RULES_CONTRACT=false
+   RETAIN_ACCOUNT_RULES_CONTRACT=false
+   ```
 
 ### 5. Deploy the contracts
 
-1. In the `permissioning-smart-contracts` directory, deploy the contracts:
+1.  In the `permissioning-smart-contracts` directory, deploy the contracts:
 
     ```bash
     truffle migrate --reset
@@ -116,14 +116,14 @@ the file must be in the `permissioning-smart-contracts` directory.
         > Deployed AccountStorage contract to address = 0x2362187023D738034B516438Af187356b31E8Fb8
         ```
 
-1. Set the storage contract address environment variables to ensure that the storage contracts are not re-deployed. For example:
+1.  Set the storage contract address environment variables to ensure that the storage contracts are not re-deployed. For example:
 
     ```bash
     NODE_STORAGE_CONTRACT_ADDRESS=0xE0bF6021e023a197DBb3fABE64efA880E13D3f4b
     ACCOUNT_STORAGE_CONTRACT_ADDRESS=0x7153CCD1a20Bbb2f6dc89c1024de368326EC6b4F
     ```
 
-1. Deploy the updated contracts:
+1.  Deploy the updated contracts:
 
     ```bash
     truffle migrate --reset
@@ -131,14 +131,10 @@ the file must be in the `permissioning-smart-contracts` directory.
 
 ### 6. Restart Besu nodes
 
-Restart the Besu nodes with the updated [`NodeIngress`](#5-deploy-the-contracts)
-contract address and [permissioning contract interface](../../how-to/use-permissioning/onchain.md#specify-the-permissioning-contract-interface-version)
-version 2.
+Restart the Besu nodes with the updated [`NodeIngress`](#5-deploy-the-contracts) contract address and [permissioning contract interface](../../how-to/use-permissioning/onchain.md#specify-the-permissioning-contract-interface-version) version 2.
 
-!!! example
-    ```cmd
-        besu --data-path=data --genesis-file=../genesis.json --permissions-accounts-contract-enabled --permissions-accounts-contract-address "0x0000000000000000000000000000000000008888" --permissions-nodes-contract-enabled  --permissions-nodes-contract-address "0x4E72770760c011647D4873f60A3CF6cDeA896CD8" --permissions-nodes-contract-version=2 --rpc-http-enabled --rpc-http-cors-origins="*" --rpc-http-api=ADMIN,ETH,NET,PERM,IBFT --host-allowlist="*"
-    ```
+!!! example `cmd besu --data-path=data --genesis-file=../genesis.json --permissions-accounts-contract-enabled --permissions-accounts-contract-address "0x0000000000000000000000000000000000008888" --permissions-nodes-contract-enabled --permissions-nodes-contract-address "0x4E72770760c011647D4873f60A3CF6cDeA896CD8" --permissions-nodes-contract-version=2 --rpc-http-enabled --rpc-http-cors-origins="*" --rpc-http-api=ADMIN,ETH,NET,PERM,IBFT --host-allowlist="*" `
 
 <!--link-->
+
 [nodes to the allowlist]: ../../how-to/use-permissioning/onchain.md#update-nodes-allowlist
