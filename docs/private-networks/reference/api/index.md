@@ -324,10 +324,11 @@ To avoid exposing your private key, create signed transactions offline and send 
 
 `result`: _string_ - 32-byte transaction hash of the [privacy marker transaction](../../concepts/privacy/private-transactions/processing.md)
 
-!!! tip
+:::tip
 
-    If creating a contract, use [priv_getTransactionReceipt](#priv_gettransactionreceipt) to
-    retrieve the contract address after the transaction is finalized.
+If creating a contract, use [priv_getTransactionReceipt](#priv_gettransactionreceipt) to retrieve the contract address after the transaction is finalized.
+
+:::
 
 !!! example
 
@@ -1135,11 +1136,11 @@ Deletes the specified privacy group.
 
 Distributes a signed, RLP encoded [private transaction](../../how-to/send-transactions/private-transactions.md).
 
-!!! tip
+:::tip
 
-    If you want to sign the [privacy marker transaction](../../how-to/use-privacy/sign-pmts.md)
-    outside of Besu, use [`priv_distributeRawTransaction`](../../how-to/send-transactions/private-transactions.md#priv_distributerawtransaction)
-    instead of [`eea_sendRawTransaction`](#eea_sendrawtransaction).
+If you want to sign the [privacy marker transaction](../../how-to/use-privacy/sign-pmts.md) outside of Besu, use [`priv_distributeRawTransaction`](../../how-to/send-transactions/private-transactions.md#priv_distributerawtransaction) instead of [`eea_sendRawTransaction`](#eea_sendrawtransaction).
+
+:::
 
 #### Parameters
 

@@ -35,11 +35,11 @@ To accept signed transactions from remote connections, set the [API listening ho
     In a production environment, ensure you are using a firewall to avoid exposing your node to the
     internet.
 
-!!! tip
+:::tip
 
-    Libraries such as [web3j](https://github.com/web3j/web3j) or
-    [ethereumj](https://github.com/ethereum/ethereumj) and tools such as
-    [MyCrypto](https://mycrypto.com/) can also create signed transactions.
+Libraries such as [web3j](https://github.com/web3j/web3j) or [ethereumj](https://github.com/ethereum/ethereumj) and tools such as [MyCrypto](https://mycrypto.com/) can also create signed transactions.
+
+:::
 
 ## `eth_call` vs `eth_sendRawTransaction`
 
@@ -61,8 +61,8 @@ Besu doesn't support key management inside the client. Use:
 - [EthSigner](http://docs.ethsigner.consensys.net/en/latest/) with Besu to provide access to your key store and sign transactions.
 - Third-party tools (for example, [MetaMask](https://metamask.io/) and [web3j](https://web3j.io/)) for creating accounts.
 
-!!! tip
+:::tip
 
-    [EthSigner](http://docs.ethsigner.consensys.net/en/latest/) implements
-    [`eth_sendTransaction`](https://docs.ethsigner.consensys.net/Reference/API-Methods#eth_sendtransaction)
-    and [`eea_sendTransaction`](https://docs.ethsigner.consensys.net/Reference/API-Methods#eea_sendtransaction).
+[EthSigner](http://docs.ethsigner.consensys.net/en/latest/) implements [`eth_sendTransaction`](https://docs.ethsigner.consensys.net/Reference/API-Methods#eth_sendtransaction) and [`eea_sendTransaction`](https://docs.ethsigner.consensys.net/Reference/API-Methods#eea_sendtransaction).
+
+:::

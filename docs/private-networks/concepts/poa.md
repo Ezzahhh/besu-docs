@@ -39,10 +39,11 @@ To be Byzantine fault tolerant, QBFT and IBFT 2.0 require a minimum of four vali
 
 Clique can operate with a single validator but operating with a single validator offers no redundancy if the validator fails.
 
-!!! tip
+:::tip
 
-    Byzantine fault tolerant is the ability to function correctly and reach consensus despite nodes
-    failing or propagating incorrect information to peers.
+Byzantine fault tolerant is the ability to function correctly and reach consensus despite nodes failing or propagating incorrect information to peers.
+
+:::
 
 ### Liveness
 

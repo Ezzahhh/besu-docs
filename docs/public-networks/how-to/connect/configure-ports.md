@@ -14,10 +14,11 @@ To enable communication you must expose Hyperledger Besu ports appropriately. Th
 
 When running Besu from the [Docker image](../../get-started/install/run-docker-image.md), [expose ports](../../get-started/install/run-docker-image.md#exposing-ports).
 
-!!! tip
+:::tip
 
-    Besu supports [UPnP](specify-nat.md) for home or small office environments where a wireless
-    router or modem provides NAT isolation.
+Besu supports [UPnP](specify-nat.md) for home or small office environments where a wireless router or modem provides NAT isolation.
+
+:::
 
 ## P2P networking
 

@@ -12,10 +12,11 @@ In public networks, the account submitting the transaction pays the transaction 
 
 In many private networks, network participants run the validators and do not require gas as an incentive. Networks that don't require gas as an incentive usually configure the gas price to be zero (that is, free gas). Some private networks might allocate Ether and use a non-zero gas price to limit resource use.
 
-!!! tip
+:::tip
 
-    We use the term _free gas network_ to refer to a network with a gas price of zero. A network
-    with a gas price of zero is also known as a _zero gas network_ or _no gas network_.
+We use the term _free gas network_ to refer to a network with a gas price of zero. A network with a gas price of zero is also known as a _zero gas network_ or _no gas network_.
+
+:::
 
 :::note
 

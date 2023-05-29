@@ -43,11 +43,11 @@ The nodes permissions list must include the [bootnodes](../configure/bootnodes.m
     The `nodes-allowlist` in the [permissions configuration file](#permissions-configuration-file)
     must contain the specified bootnodes.
 
-!!! tip
+:::tip
 
-    If your node has two different IP addresses for ingress and egress
-    (for example, if you use Kubernetes implementing a load balancer for ingress and a NAT gateway IP address for egress),
-    add both addresses to the allowlist, using the same public key for each IP address. This will allow the node to connect.
+If your node has two different IP addresses for ingress and egress (for example, if you use Kubernetes implementing a load balancer for ingress and a NAT gateway IP address for egress), add both addresses to the allowlist, using the same public key for each IP address. This will allow the node to connect.
+
+:::
 
 ### Enable node allowlisting
 

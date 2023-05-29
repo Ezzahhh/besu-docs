@@ -130,11 +130,11 @@ The [`eea_sendRawTransaction`](../../reference/api/index.md#eea_sendrawtransacti
     }
     ```
 
-!!! tip
+:::tip
 
-    The `example` directory in the
-    [web3js-quorum client library](../use-privacy/web3js-quorum.md) contains examples of
-    signing and encoding private transactions.
+The `example` directory in the [web3js-quorum client library](../use-privacy/web3js-quorum.md) contains examples of signing and encoding private transactions.
+
+:::
 
 <!-- links ---->
 

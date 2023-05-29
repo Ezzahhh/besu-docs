@@ -12,15 +12,13 @@ Static nodes are a configured set of trusted nodes. Static nodes are exempt from
 
 Besu attempts to maintain connections with static nodes by periodically initiating a connection to any unconnected static node.
 
-!!! tip
+:::tip
 
-    Bootnodes and static nodes are parallel methods for finding peers. Depending on your use case,
-    you can use only bootnodes, only static nodes, or both bootnodes and static nodes. For
-    example, you run multiple nodes on Mainnet (discovery using bootnodes), but want to ensure your
-    nodes are always connected (using static nodes).
+Bootnodes and static nodes are parallel methods for finding peers. Depending on your use case, you can use only bootnodes, only static nodes, or both bootnodes and static nodes. For example, you run multiple nodes on Mainnet (discovery using bootnodes), but want to ensure your nodes are always connected (using static nodes).
 
-    To find peers, configure one or more [bootnodes](../../../private-networks/how-to/configure/bootnodes.md).
-    To configure a specific set of peer connections, use static nodes.
+To find peers, configure one or more [bootnodes](../../../private-networks/how-to/configure/bootnodes.md). To configure a specific set of peer connections, use static nodes.
+
+:::
 
 ## Configure static nodes
 
@@ -42,12 +40,11 @@ Nodes not in the list of the static nodes are not prevented from connecting. To 
 
 :::
 
-!!! tip
+:::tip
 
-    If the added peer does not appear in the peer list (returned by
-    [`admin_peers`](../../reference/api/index.md#admin_peers)), check the the supplied
-    [enode URL](../../concepts/node-keys.md#enode-url) is correct, the node is running, and the
-    node is listening for TCP connections on the endpoint.
+If the added peer does not appear in the peer list (returned by [`admin_peers`](../../reference/api/index.md#admin_peers)), check the the supplied [enode URL](../../concepts/node-keys.md#enode-url) is correct, the node is running, and the node is listening for TCP connections on the endpoint.
+
+:::
 
 ### `static-nodes.json` file
 

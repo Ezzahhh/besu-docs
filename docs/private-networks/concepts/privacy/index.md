@@ -29,9 +29,11 @@ Private transactions pass from the Besu node to the associated Tessera node. The
 
 By default, each participant in a privacy-enabled network uses its own Besu and Tessera node. [Multi-tenancy](multi-tenancy.md) allows more than one participant to use the same Besu and Tessera node.
 
-!!! tip
+:::tip
 
-    Private Transaction Managers are also known as Enclaves.
+Private Transaction Managers are also known as Enclaves.
+
+:::
 
 ## Privacy-enabled networks
 

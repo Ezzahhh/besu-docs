@@ -37,13 +37,15 @@ Pull the latest changes if you already have a cloned repository using the `git p
 
 If using a `.env` file to configure environment variables, then the file must be in the `permissioning-smart-contracts` directory.
 
-!!! tip
+:::tip
 
-    You can use environment variables to retain existing contracts if required. For example:
+You can use environment variables to retain existing contracts if required. For example:
 
-    * `RETAIN_ADMIN_CONTRACT=true` to retain the current admin list
-    * `RETAIN_NODE_RULES_CONTRACT=true` to retain the current Node rules contract
-    * `RETAIN_ACCOUNT_RULES_CONTRACT=true` to retain the current Account rules contract
+- `RETAIN_ADMIN_CONTRACT=true` to retain the current admin list
+- `RETAIN_NODE_RULES_CONTRACT=true` to retain the current Node rules contract
+- `RETAIN_ACCOUNT_RULES_CONTRACT=true` to retain the current Account rules contract
+
+:::
 
 1.  Legacy: If they exist, rename the following environment variables:
 

@@ -80,10 +80,11 @@ Use `eth_subscribe` to create subscriptions for the following event types:
 
 Use `priv_subscribe` to [create subscriptions for logs on private contracts](#logs).
 
-!!! tip
+:::tip
 
-    Only logs subscriptions are relevant for private transactions because private transactions are
-    anchored to the public chain rather than having their own private blockchain.
+Only logs subscriptions are relevant for private transactions because private transactions are anchored to the public chain rather than having their own private blockchain.
+
+:::
 
 ### New headers
 

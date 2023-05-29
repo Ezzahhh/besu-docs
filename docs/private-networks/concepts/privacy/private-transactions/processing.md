@@ -34,11 +34,11 @@ Private transaction processing is illustrated and described in the following dia
 
 1.  The Private Transaction Handler creates a PMT for the private transaction. The Private Transaction Handler propagates the PMT using devP2P in the same way as any other public Ethereum transaction.
 
-    !!! tip
+    :::tip
 
-        If you want to sign the PMT outside of Besu, use
-        [`priv_distributeRawTransaction`](../../../how-to/send-transactions/private-transactions.md#priv_distributerawtransaction)
-        instead of [`eea_sendRawTransaction`](../../../reference/api/index.md#eea_sendrawtransaction).
+    If you want to sign the PMT outside of Besu, use [`priv_distributeRawTransaction`](../../../how-to/send-transactions/private-transactions.md#priv_distributerawtransaction) instead of [`eea_sendRawTransaction`](../../../reference/api/index.md#eea_sendrawtransaction).
+
+    :::
 
 1.  Besu mines the PMT into a block and the PMT is distributed to all Ethereum nodes in the network.
 

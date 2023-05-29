@@ -40,10 +40,11 @@ Prevent eclipse attacks when using [`--sync-mode`](../../reference/cli/options.m
 
 In private and permissioned networks with only trusted peers, enabling the remote connection limits is unnecessary and might adversely affect the speed at which nodes can join the network. Limiting remote connections can cause a closed group of peers to form when the number of nodes in the network is slightly higher than [`--max-peers`](../../reference/cli/options.md#max-peers). The nodes in this closed group are all connected to each other and can't accept more connections.
 
-!!! tip
+:::tip
 
-    You can use [`--random-peer-priority-enabled`](../../reference/cli/options.md#random-peer-priority-enabled) to
-    help prevent closed groups of peers in small, stable networks.
+You can use [`--random-peer-priority-enabled`](../../reference/cli/options.md#random-peer-priority-enabled) to help prevent closed groups of peers in small, stable networks.
+
+:::
 
 ## Monitor peer connections
 

@@ -23,10 +23,11 @@ Use the [`--logging`](../../reference/cli/options.md#logging) command line optio
 
 For most use cases, the basic method provides enough configurability.
 
-!!! tip
+:::tip
 
-    Use the [`admin_changeLogLevel`](../../reference/api/index.md#admin_changeloglevel) API method
-    to change the log level while Besu is running.
+Use the [`admin_changeLogLevel`](../../reference/api/index.md#admin_changeloglevel) API method to change the log level while Besu is running.
+
+:::
 
 ## Advanced logging
 

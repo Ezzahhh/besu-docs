@@ -49,16 +49,15 @@ Permissioning implements three allowlists:
     command line option and the corresponding public key
     included in the accounts allowlist.
 
-!!! tip
+:::tip
 
-    If nodes are not connecting as expected, set the [log level to `TRACE`](../../../public-networks/reference/cli/options.md#logging)
-    and search for messages containing `Node permissioning` to identify the issue.
+If nodes are not connecting as expected, set the [log level to `TRACE`](../../../public-networks/reference/cli/options.md#logging) and search for messages containing `Node permissioning` to identify the issue.
 
-    Ensure the [`--p2p-host`](../../../public-networks/reference/cli/options.md#p2p-host) command line option has been
-    correctly configured for all nodes with the
-    externally accessible address.
+Ensure the [`--p2p-host`](../../../public-networks/reference/cli/options.md#p2p-host) command line option has been correctly configured for all nodes with the externally accessible address.
 
-    If you change your network configuration, you may need to update the node allowlist.
+If you change your network configuration, you may need to update the node allowlist.
+
+:::
 
 ## Bootnodes
 

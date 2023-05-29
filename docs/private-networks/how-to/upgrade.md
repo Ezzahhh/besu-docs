@@ -33,8 +33,9 @@ To upgrade the protocol in a private network:
     To avoid a forked network, all network participants must update their genesis file to include
     the agreed on milestone block and restart their node before reaching the milestone block.
 
-!!! tip "Tips"
+:::tip
 
-    - For compatibility with future protocol upgrades, don't hardcode any gas price assumptions.
-    - Implementing upgradeable contracts enables contracts to be upgraded if a protocol upgrade does
-        include breaking changes.
+- For compatibility with future protocol upgrades, don't hardcode any gas price assumptions.
+- Implementing upgradeable contracts enables contracts to be upgraded if a protocol upgrade does include breaking changes.
+
+:::

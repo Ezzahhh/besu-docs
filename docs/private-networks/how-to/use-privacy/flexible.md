@@ -8,10 +8,11 @@ sidebar_position: 5
 
 Use the [`web3js-quorum` library](https://github.com/ConsenSys/web3js-quorum) to create and update membership of [flexible privacy groups](../../concepts/privacy/flexible-privacy.md).
 
-!!! tip
+:::tip
 
-    Because group membership for flexible privacy groups is stored in a smart contract, flexible
-    privacy groups are also known as onchain privacy groups.
+Because group membership for flexible privacy groups is stored in a smart contract, flexible privacy groups are also known as onchain privacy groups.
+
+:::
 
 !!! important
 
@@ -44,11 +45,11 @@ To create and find a [flexible privacy group](../../concepts/privacy/flexible-pr
 
    This script creates the flexible privacy group with two members. `findPrivacyGroup` finds and displays the created privacy group.
 
-!!! tip
+:::tip
 
-    The Tessera logs for Tessera 1 and Tessera 2 display `PrivacyGroupNotFound` errors. This is
-    expected behavior because private transactions check offchain and onchain to find the privacy
-    group for a private transaction.
+The Tessera logs for Tessera 1 and Tessera 2 display `PrivacyGroupNotFound` errors. This is expected behavior because private transactions check offchain and onchain to find the privacy group for a private transaction.
+
+:::
 
 ## Add and remove members
 

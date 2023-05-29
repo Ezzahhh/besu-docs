@@ -27,14 +27,14 @@ To use Prometheus with Besu, install the [Prometheus main component](https://pro
 brew install prometheus
 ```
 
-!!! tip
+:::tip
 
-    You can also install:
+You can also install:
 
-    * Exporters that send system metrics to Prometheus to monitor non-Besu-specific items such as disk and CPU usage.
-    * Other Prometheus components, such as the Alert Manager.
-      Additional configuration is not required for these components because Prometheus handles and analyzes data directly
-      from the feed.
+- Exporters that send system metrics to Prometheus to monitor non-Besu-specific items such as disk and CPU usage.
+- Other Prometheus components, such as the Alert Manager. Additional configuration is not required for these components because Prometheus handles and analyzes data directly from the feed.
+
+:::
 
 ## Set up and run Prometheus with Besu
 
@@ -111,9 +111,11 @@ To configure Prometheus and run with Besu:
 
 1.  View the [Prometheus graphical interface](#view-prometheus-graphical-interface).
 
-    !!! tip
+    :::tip
 
-        Use a log ingestion tool, such as Logstash, to parse the logs and alert you to configured anomalies.
+    Use a log ingestion tool, such as Logstash, to parse the logs and alert you to configured anomalies.
+
+    :::
 
 ## Run Prometheus with Besu in push mode
 

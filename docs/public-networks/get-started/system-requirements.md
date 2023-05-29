@@ -8,10 +8,11 @@ description: System requirements to sync and run Besu
 
 Determine public network system requirements by checking CPU and disk space requirements using [Prometheus](../how-to/monitor/metrics.md). Grafana provides a [sample dashboard](https://grafana.com/grafana/dashboards/10273) for Besu.
 
-!!! tip
+:::tip
 
-    CPU requirements are highest when syncing to the network and typically reduce after the node is
-    synchronized to the chain head.
+CPU requirements are highest when syncing to the network and typically reduce after the node is synchronized to the chain head.
+
+:::
 
 ## Java Virtual Machine size
 

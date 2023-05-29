@@ -267,10 +267,11 @@ Besu doesn't incorporate [account management](../../public-networks/how-to/send-
 
 1.  [Send test Ether](https://metamask.zendesk.com/hc/en-us/articles/360015488931-How-to-send-ETH-and-ERC-20-tokens-from-your-MetaMask-Wallet) from the first test account (containing test Ether) to the new test account (which has a zero balance).
 
-    !!! tip
+    :::tip
 
-        You can use a zero gas price here as this private test network is a [free gas network](../how-to/configure/free-gas.md),
-        but the maximum amount of gas that can be used (the gas limit) for a value transaction must be at least 21000.
+    You can use a zero gas price here as this private test network is a [free gas network](../how-to/configure/free-gas.md), but the maximum amount of gas that can be used (the gas limit) for a value transaction must be at least 21000.
+
+    :::
 
 1.  Refresh the Block Explorer page in your browser displaying the target test account.
 

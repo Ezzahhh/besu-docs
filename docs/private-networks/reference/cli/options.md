@@ -78,10 +78,11 @@ besu --Tab+Tab
 
 The [accounts permissions configuration file]. The default is the `permissions_config.toml` file in the [data directory](../../../public-networks/reference/cli/options.md#data-path).
 
-!!! tip
+:::tip
 
-    `--permissions-accounts-config-file` and
-    [`--permissions-nodes-config-file`](#permissions-nodes-config-file) can use the same file.
+`--permissions-accounts-config-file` and [`--permissions-nodes-config-file`](#permissions-nodes-config-file) can use the same file.
+
+:::
 
 ### `permissions-accounts-config-file-enabled`
 
@@ -195,11 +196,11 @@ Enables or disables contract-based [onchain account permissioning](../../concept
 
 The [nodes permissions configuration file]. The default is the `permissions_config.toml` file in the [data directory](../../../public-networks/reference/cli/options.md#data-path).
 
-!!! tip
+:::tip
 
-    `--permissions-nodes-config-file` and
-    [`--permissions-accounts-config-file`](#permissions-accounts-config-file) can use the same
-    file.
+`--permissions-nodes-config-file` and [`--permissions-accounts-config-file`](#permissions-accounts-config-file) can use the same file.
+
+:::
 
 ### `permissions-nodes-config-file-enabled`
 

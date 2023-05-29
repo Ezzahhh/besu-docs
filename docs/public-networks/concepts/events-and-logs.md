@@ -126,12 +126,11 @@ The event signature hash for event 1 is `keccak('Event1(uint256)')` and the even
 - `04474795f5b996ff80cb47c148d4c5ccdbe09ef27551820caa9c2f8ed149cce3` for event 1
 - `06df6fb2d6d0b17a870decb858cc46bf7b69142ab7b9318f7603ed3fd4ad240e` for event 2.
 
-!!! tip
+:::tip
 
-    You can use a library keccak (sha3) hash function, such as provided in
-    [Web3.js](https://web3js.readthedocs.io/en/v1.2.11/web3-utils.html?highlight=sha3#sha3), or an online tool,
-    such as https://emn178.github.io/online-tools/keccak_256.html, to generate event signature
-    hashes.
+You can use a library keccak (sha3) hash function, such as provided in [Web3.js](https://web3js.readthedocs.io/en/v1.2.11/web3-utils.html?highlight=sha3#sha3), or an online tool, such as https://emn178.github.io/online-tools/keccak_256.html, to generate event signature hashes.
+
+:::
 
 !!! example
 

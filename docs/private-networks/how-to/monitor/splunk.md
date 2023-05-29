@@ -107,22 +107,24 @@ If running [Besu as a Docker container](../../get-started/install/run-docker-ima
 
     Once the service is started, connect on [`http://localhost:8080/`](http://localhost:8080/) and login as the `admin` user with a password of `changeme`.
 
-    !!! tip
+    :::tip
 
-        To follow the logs of the Splunk container:
+    To follow the logs of the Splunk container:
 
-        ```bash
-        docker logs -f splunk-demo
-        ```
+    ```bash
+    docker logs -f splunk-demo
+    ```
 
-1.  Create the Besu index:
+    :::
+
+2.  Create the Besu index:
 
     1. In the Splunk Web interface, navigate to the [index list in the settings](http://localhost:8080/en-US/manager/search/data/indexes).
-    1. [Create an event index] with an Index Name of `besu`.
-    1. Leave other fields with the default values.
-    1. Save the `besu` index.
+    2. [Create an event index] with an Index Name of `besu`.
+    3. Leave other fields with the default values.
+    4. Save the `besu` index.
 
-1.  Run Besu. To start a Besu node running in development mode, run the following command:
+3.  Run Besu. To start a Besu node running in development mode, run the following command:
 
     ```bash
     LOGGER=Splunk \
@@ -138,13 +140,13 @@ If running [Besu as a Docker container](../../get-started/install/run-docker-ima
 
     The environment variables specified send the Besu logs to Splunk. Only `LOGGER`, `SPLUNK_URL`, `SPLUNK_TOKEN` and `SPLUNK_SKIPTLSVERIFY` are required in this example. The complete list of options is in the [Splunk options reference table](#splunk-options-reference).
 
-1.  In the Splunk Web interface, navigate to the [search page](http://localhost:8080/en-US/app/search/search). Type `index="besu"` in the search field. Log events sent by Besu are displayed.
+4.  In the Splunk Web interface, navigate to the [search page](http://localhost:8080/en-US/app/search/search). Type `index="besu"` in the search field. Log events sent by Besu are displayed.
 
     Congratulations! You can now play with the search and other Splunk features to explore your Besu logs.
 
     ![Splunk search page](../../../assets/images/splunk-ui.png)
 
-1.  Stop Besu with ++ctrl+c++. Stop the Splunk container with `docker stop splunk-demo`.
+5.  Stop Besu with ++ctrl+c++. Stop the Splunk container with `docker stop splunk-demo`.
 
 ## Run a Splunk Enterprise instance
 

@@ -20,10 +20,11 @@ You can [create a private network using QBFT](../../../tutorials/qbft.md).
     than 1/3 of validators stop participating, new blocks are no longer created, and the
     network stalls. It may take significant time to recover once nodes are restarted.
 
-!!! tip
+:::tip
 
-    You can use a plugin to securely store a validator's key using the
-    [`--security-module`](../../../../public-networks/reference/cli/options.md#security-module) option.
+You can use a plugin to securely store a validator's key using the [`--security-module`](../../../../public-networks/reference/cli/options.md#security-module) option.
+
+:::
 
 ## Genesis file
 
@@ -266,10 +267,11 @@ To tune the block timeout for your network deployment:
 1. Reduce `requesttimeoutseconds` until you start to see round changes occurring.
 1. Increase `requesttimeoutseconds` to the value where round changes are no longer occurring.
 
-!!! tip
+:::tip
 
-    View [`TRACE` logs](../../../../public-networks/reference/api/index.md#admin_changeloglevel) to see round change
-    log messages.
+View [`TRACE` logs](../../../../public-networks/reference/api/index.md#admin_changeloglevel) to see round change log messages.
+
+:::
 
 Use a [transition](#transitions) to update the `blockperiodseconds` in an existing network.
 

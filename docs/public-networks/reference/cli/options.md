@@ -933,10 +933,11 @@ If using [Prometheus](https://prometheus.io/) to pull metrics from a node, you m
 
 :::
 
-!!! tip
+:::tip
 
-    To allow all hostnames, use `"*"`.
-    We don't recommend allowing all hostnames for production environments.
+To allow all hostnames, use `"*"`. We don't recommend allowing all hostnames for production environments.
+
+:::
 
 ### `identity`
 
@@ -1668,9 +1669,11 @@ Possible values are:
 | `kotti` | ETC | Test | [FAST](#sync-mode) | A PoA network using Clique |
 | `astor` | ETC | Test | [FAST](#sync-mode) | A PoW network |
 
-!!! tip
+:::tip
 
-    Values are case insensitive, so either `mainnet` or `MAINNET` works.
+Values are case insensitive, so either `mainnet` or `MAINNET` works.
+
+:::
 
 !!! important
 
@@ -2020,10 +2023,11 @@ Enables or disables random prioritization of incoming connections. Enable in sma
 
 Enables or disables using the [`--remote-connections-max-percentage`](#remote-connections-max-percentage) option to limit the percentage of remote P2P connections initiated by peers. The default is `true`.
 
-!!! tip
+:::tip
 
-    In private and permissioned networks with a level of trust between peers, disabling the remote connection limits
-    may increase the speed at which nodes can join the network.
+In private and permissioned networks with a level of trust between peers, disabling the remote connection limits may increase the speed at which nodes can join the network.
+
+:::
 
 !!! important
 

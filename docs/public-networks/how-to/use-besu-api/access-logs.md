@@ -137,12 +137,11 @@ To get all logs for a filter, use [`eth_getFilterLogs`](../../reference/api/inde
     }
     ```
 
-!!! tip
+:::tip
 
-    You can use [`eth_getLogs`](#get-logs-using-a-filter-options-object) with a filter options
-    object to get all logs matching the filter options instead of using
-    [`eth_newFilter`](../../reference/api/index.md#eth_newfilter) followed by
-    [`eth_getFilterLogs`](../../reference/api/index.md#eth_getfilterlogs).
+You can use [`eth_getLogs`](#get-logs-using-a-filter-options-object) with a filter options object to get all logs matching the filter options instead of using [`eth_newFilter`](../../reference/api/index.md#eth_newfilter) followed by [`eth_getFilterLogs`](../../reference/api/index.md#eth_getfilterlogs).
+
+:::
 
 ## Uninstall a filter
 

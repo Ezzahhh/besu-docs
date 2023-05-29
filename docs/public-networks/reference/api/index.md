@@ -144,11 +144,11 @@ You can specify only one log level per RPC call.
 
 Generates cached log bloom indexes for blocks. APIs such as [`eth_getLogs`](#eth_getlogs) and [`eth_getFilterLogs`](#eth_getfilterlogs) use the cache for improved performance.
 
-!!! tip
+:::tip
 
-    Manually executing `admin_generateLogBloomCache` is not required unless the
-    [`--auto-log-bloom-caching-enabled`](../cli/options.md#auto-log-bloom-caching-enabled) command
-    line option is set to false.
+Manually executing `admin_generateLogBloomCache` is not required unless the [`--auto-log-bloom-caching-enabled`](../cli/options.md#auto-log-bloom-caching-enabled) command line option is set to false.
+
+:::
 
 :::note
 

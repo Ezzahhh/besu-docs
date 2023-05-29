@@ -12,9 +12,8 @@ Hyperledger Besu-extended privacy provides JSON-RPC API methods for creating and
 - [`priv_findPrivacyGroup`](../../reference/api/index.md#priv_findprivacygroup)
 - [`priv_deletePrivacyGroup`](../../reference/api/index.md#priv_deleteprivacygroup).
 
-!!! tip
+:::tip
 
-    You can find and delete
-    [EEA-compliant privacy groups](../../concepts/privacy/privacy-groups.md) using
-    [`priv_findPrivacyGroup`](../../reference/api/index.md#priv_findprivacygroup) and
-    [`priv_deletePrivacyGroup`](../../reference/api/index.md#priv_deleteprivacygroup).
+You can find and delete [EEA-compliant privacy groups](../../concepts/privacy/privacy-groups.md) using [`priv_findPrivacyGroup`](../../reference/api/index.md#priv_findprivacygroup) and [`priv_deletePrivacyGroup`](../../reference/api/index.md#priv_deleteprivacygroup).
+
+:::

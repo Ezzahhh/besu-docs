@@ -174,11 +174,11 @@ Provides operator actions.
     besu --network=goerli --data-path=/project/goerli operator generate-log-bloom-cache --start-block=0 --end-block=100000
     ```
 
-!!! tip
+:::tip
 
-    Manually executing `generate-log-bloom-cache` is not required unless you set the
-    [`--auto-log-bloom-caching-enabled`](options.md#auto-log-bloom-caching-enabled) command line
-    option to false.
+Manually executing `generate-log-bloom-cache` is not required unless you set the [`--auto-log-bloom-caching-enabled`](options.md#auto-log-bloom-caching-enabled) command line option to false.
+
+:::
 
 Generates cached log bloom indexes for blocks. APIs use the cached indexes for improved log query performance.
 

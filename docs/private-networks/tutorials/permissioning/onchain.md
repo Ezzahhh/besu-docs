@@ -131,10 +131,11 @@ Copy the `genesis.json` file to the `Permisssioned-Network` directory.
 
 ### 5. Add the Ingress contracts to the genesis file
 
-!!! tip
+:::tip
 
-    If the network is using only account or node permissioning, add only the relevant Ingress
-    contract to the genesis file.
+If the network is using only account or node permissioning, add only the relevant Ingress contract to the genesis file.
+
+:::
 
 Add the Ingress contracts to the genesis file for your network by copying them from [`genesis.json`](https://github.com/ConsenSys/permissioning-smart-contracts/blob/e6c2d4d5a728c11cdb8e97a07ddda3c0bfb57b5d/genesis.json) in the [`permissioning-smart-contracts` repository](https://github.com/ConsenSys/permissioning-smart-contracts) to the `alloc` section of the contract:
 
@@ -269,10 +270,11 @@ The command line specifies:
 - The enode URL of Node-1 using [`--bootnodes`](../../../public-networks/reference/cli/options.md#bootnodes).
 - Other options as for [Node-1](#7-start-node-1).
 
-!!! tip
+:::tip
 
-    If your nodes are having trouble connecting as peers,
-    update the `--bootnodes` option for each node to include all four enode URLs.
+If your nodes are having trouble connecting as peers, update the `--bootnodes` option for each node to include all four enode URLs.
+
+:::
 
 ### 11. Clone the contracts and install dependencies
 
@@ -296,21 +298,23 @@ Create the following environment variables and set to the specified values:
 - `CHAIN_ID` - The chain ID from the genesis file.
 - `INITIAL_ALLOWLISTED_NODES`(optional) - The enode URLs of permitted nodes. Specify multiple nodes (Node-1, Node-2, Node-3) as a comma-separated list.
 
-!!! tip
+:::tip
 
-    A simple way to set multiple environment variables is to create a file called `.env` with the required settings:
+A simple way to set multiple environment variables is to create a file called `.env` with the required settings:
 
-    ```env
-    NODE_INGRESS_CONTRACT_ADDRESS=0x0000000000000000000000000000000000009999
-    ACCOUNT_INGRESS_CONTRACT_ADDRESS=0x0000000000000000000000000000000000008888
-    BESU_NODE_PERM_ACCOUNT=627306090abaB3A6e1400e9345bC60c78a8BEf57
-    BESU_NODE_PERM_KEY=c87509a1c067bbde78beb793e6fa76530b6382a4c0241e5e4a9ec0a0f44dc0d3
-    BESU_NODE_PERM_ENDPOINT=http://127.0.0.1:8545
-    CHAIN_ID=1337
-    INITIAL_ALLOWLISTED_NODES=enode://c35c3...d615f@1.2.3.4:30303,enode://f42c13...fc456@1.2.3.5:30303
-    ```
+```env
+NODE_INGRESS_CONTRACT_ADDRESS=0x0000000000000000000000000000000000009999
+ACCOUNT_INGRESS_CONTRACT_ADDRESS=0x0000000000000000000000000000000000008888
+BESU_NODE_PERM_ACCOUNT=627306090abaB3A6e1400e9345bC60c78a8BEf57
+BESU_NODE_PERM_KEY=c87509a1c067bbde78beb793e6fa76530b6382a4c0241e5e4a9ec0a0f44dc0d3
+BESU_NODE_PERM_ENDPOINT=http://127.0.0.1:8545
+CHAIN_ID=1337
+INITIAL_ALLOWLISTED_NODES=enode://c35c3...d615f@1.2.3.4:30303,enode://f42c13...fc456@1.2.3.5:30303
+```
 
-    If using a `.env` file, save the file to the `permissioning-smart-contracts` directory.
+If using a `.env` file, save the file to the `permissioning-smart-contracts` directory.
+
+:::
 
 ### 13. Deploy the contracts
 

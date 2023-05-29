@@ -99,13 +99,12 @@ To use domain names in enode URLs:
     enode://c35c3ec90a8a51fd5703594c6303382f3ae6b2ecb9589bab2c04b3794f2bc3fc2631dabb0c08af795787a6c004d8f532230ae6e9925cbbefb0b28b79295d615f@mydomain.dev.example.net:30301
     ```
 
-!!! tip
+:::tip
 
-    If deploying Besu using Kubernetes in private permissioned networks, use the
-    `--Xdns-enabled` and `--Xdns-update-enabled` options to ensure that Besu can connect to a container after
-    restarting even if the IP address of the container changes.
+If deploying Besu using Kubernetes in private permissioned networks, use the `--Xdns-enabled` and `--Xdns-update-enabled` options to ensure that Besu can connect to a container after restarting even if the IP address of the container changes.
 
-    Use the [`--Xhelp`](../reference/cli/options.md#xhelp) command line option to view early access options and their
-    descriptions.
+Use the [`--Xhelp`](../reference/cli/options.md#xhelp) command line option to view early access options and their descriptions.
+
+:::
 
 If nodes are not connecting as expected, set the [log level to TRACE](../reference/api/index.md#admin_changeloglevel) to help troubleshoot the issue.

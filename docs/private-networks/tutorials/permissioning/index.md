@@ -310,9 +310,11 @@ Replace `<EnodeNode1>`, `<EnodeNode2>`, `<EnodeNode3>`, and `<EnodeNode4>` with 
     curl -X POST --data '{"jsonrpc":"2.0","method":"perm_addNodesToAllowlist","params":[["<EnodeNode1>","<EnodeNode2>","<EnodeNode3>","EnodeNode4"]], "id":1}' http://127.0.0.1:8548
     ```
 
-!!! tip
+:::tip
 
-    The curl call is the same for each node except for the JSON-RPC endpoint.
+The curl call is the same for each node except for the JSON-RPC endpoint.
+
+:::
 
 ### 12. Add nodes as peers
 
@@ -338,9 +340,11 @@ Replace `<EnodeNode1>` with the enode URL displayed when starting Node-1.
     curl -X POST --data '{"jsonrpc":"2.0","method":"admin_addPeer","params":["<EnodeNode1>"],"id":1}' http://127.0.0.1:8548
     ```
 
-!!! tip
+:::tip
 
-    The curl call is the same for each node except for the JSON-RPC endpoint.
+The curl call is the same for each node except for the JSON-RPC endpoint.
+
+:::
 
 Replace `<EnodeNode2>` with the enode URL displayed when starting Node-2.
 

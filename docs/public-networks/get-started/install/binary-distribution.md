@@ -73,10 +73,11 @@ If synchronizing to Mainnet on Linux or other chains with large data requirement
 
 :::
 
-!!! tip
+:::tip
 
-    We recommend installing [jemalloc](https://jemalloc.net/) to reduce memory usage.
-    If using Ubuntu, you can install it with the command: `apt install libjemalloc-dev`.
+We recommend installing [jemalloc](https://jemalloc.net/) to reduce memory usage. If using Ubuntu, you can install it with the command: `apt install libjemalloc-dev`.
+
+:::
 
 ### Install from packaged binaries
 

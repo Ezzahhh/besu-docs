@@ -12,13 +12,13 @@ In private networks for development or testing purposes, specify at least one bo
 
 In production networks, [configure two or more nodes as bootnodes](#configure-bootnodes-in-a-production-network).
 
-!!! tip
+:::tip
 
-    Bootnodes and static nodes are parallel methods for finding peers. Depending on your use case,
-    you can use only bootnodes, only static nodes, or both bootnodes and static nodes.
+Bootnodes and static nodes are parallel methods for finding peers. Depending on your use case, you can use only bootnodes, only static nodes, or both bootnodes and static nodes.
 
-    To find peers, configure one or more bootnodes. To configure a specific set
-    of peer connections, use [static nodes](../../../public-networks/how-to/connect/static-nodes.md).
+To find peers, configure one or more bootnodes. To configure a specific set of peer connections, use [static nodes](../../../public-networks/how-to/connect/static-nodes.md).
+
+:::
 
 :::note Mainnet and public testnets
 
@@ -58,11 +58,11 @@ We recommend storing the bootnode configuration under source control.
 
 To allow for failure, specify all bootnodes on the command line (even to the bootnodes themselves).
 
-!!! tip
+:::tip
 
-    Having each bootnode list the other bootnodes increases the speed of discovery.
-    Nodes ignore their own enode in the bootnodes list so it isn't required to specify different
-    bootnode lists to the bootnodes themselves.
+Having each bootnode list the other bootnodes increases the speed of discovery. Nodes ignore their own enode in the bootnodes list so it isn't required to specify different bootnode lists to the bootnodes themselves.
+
+:::
 
 ## Add and remove bootnodes
 

@@ -20,10 +20,11 @@ filename=/tmp/recording.jfr,maxsize=1024m,maxage=1d,\
 settings=profile,path-to-gc-roots=true
 ```
 
-!!! tip
+:::tip
 
-    When recording, cleanly exiting Besu results in better data.
-    If not possible to cleanly exit, the file may be missing some information not flushed to disk.
+When recording, cleanly exiting Besu results in better data. If not possible to cleanly exit, the file may be missing some information not flushed to disk.
+
+:::
 
 Inspect the file written to `/tmp/recording.jfr` with tools such as [Mission Control](https://docs.oracle.com/javacomponents/jmc-5-5/jmc-user-guide/intro.htm#JMCCI109).
 
