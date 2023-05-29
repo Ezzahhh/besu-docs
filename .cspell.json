@@ -39,7 +39,8 @@
     "docs/Reference/**",
     "docs/public-networks/reference/cli/options.md",
     "MAINTAINERS.md",
-    "CODE_OF_CONDUCT.md"
+    "CODE_OF_CONDUCT.md",
+    "CHANGELOG.md"
   ],
   "ignoreRegExpList": [
     "Email",
