@@ -18,60 +18,62 @@ See a [comparison of the proof of authority consensus protocols](../../../concep
 
 The `config` property in the genesis file specifies the consensus protocol for a chain.
 
-!!! example
+<!--tabs-->
 
-    === "Ethash"
+# Ethash
 
-        ```json
-        {
-          "config": {
-          ...
-            "ethash": {
-            ...
-            }
-          },
-          ...
-        }
-        ```
+```json
+{
+  "config": {
+  ...
+    "ethash": {
+    ...
+    }
+  },
+  ...
+}
+```
 
-    === "Clique"
+# Clique
 
-        ```json
-        {
-          "config": {
-            ...
-            "clique": {
-            ...
-            }
-          },
-          ...
-        }
-        ```
+```json
+{
+  "config": {
+    ...
+    "clique": {
+    ...
+    }
+  },
+  ...
+}
+```
 
-    === "IBFT 2.0"
+# IBFT 2.0
 
-        ```json
-        {
-          "config": {
-            ...
-            "ibft2": {
-              ...
-            }
-          },
-          ...
-        }
-        ```
+```json
+{
+  "config": {
+    ...
+    "ibft2": {
+      ...
+    }
+  },
+  ...
+}
+```
 
-    === "QBFT"
+# QBFT
 
-        ```json
-        {
-          "config": {
-            ...
-            "qbft": {
-              ...
-            }
-          },
-          ...
-        }
-        ```
+```json
+{
+  "config": {
+    ...
+    "qbft": {
+      ...
+    }
+  },
+  ...
+}
+```
+
+<!--/tabs-->

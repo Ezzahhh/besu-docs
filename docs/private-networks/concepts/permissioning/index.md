@@ -8,16 +8,15 @@ description: Besu permissioning feature
 
 A permissioned network enables node permissioning and account permissioning, allowing only specified nodes and accounts to access the network.
 
-!!! important "Permissioning is not privacy"
+:::caution Permissioning is not privacy
 
-    In peer-to-peer networks, node permissioning enforces rules on nodes you control.
+In peer-to-peer networks, node permissioning enforces rules on nodes you control.
 
-    Permissioning requires a distributed network of trust across the network where participants
-    agree to follow the rules. One bad actor can decide not to follow the rules. Nodes can take
-    action to prevent the bad actor adding to the chain but they cannot prevent the bad actor from
-    allowing access to the chain.
+Permissioning requires a distributed network of trust across the network where participants agree to follow the rules. One bad actor can decide not to follow the rules. Nodes can take action to prevent the bad actor adding to the chain but they cannot prevent the bad actor from allowing access to the chain.
 
-    Besu also implements [privacy](../privacy/index.md).
+Besu also implements [privacy](../privacy/index.md).
+
+:::
 
 ## Node permissioning
 

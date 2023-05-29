@@ -15,17 +15,19 @@ Private transactions have the same parameters as public Ethereum transactions, w
   - `restricted` - Only the nodes participating in the transaction receive and store the payload of the private transaction.
   - `unrestricted` - All nodes in the network receive the payload of the private transaction, but only the nodes participating in the transaction can read the transaction.
 
-  !!! important
+  :::info
 
-        Besu implements `restricted` private transactions only.
+  Besu implements `restricted` private transactions only.
+
+  :::
 
 The `gas` and `gasPrice` are used by the [privacy marker transaction (PMT)](processing.md), not the private transaction itself.
 
-!!! warning
+:::info
 
-    Because gas isn't required in private transactions, inefficient contracts deployed accidentally
-    or deliberately can cause performance issues in privacy-enabled networks.
-    Ensure your network has a mechanism to [establish trust offchain](../index.md#privacy-enabled-networks).
+Because gas isn't required in private transactions, inefficient contracts deployed accidentally or deliberately can cause performance issues in privacy-enabled networks. Ensure your network has a mechanism to [establish trust offchain](../index.md#privacy-enabled-networks).
+
+:::
 
 You can [create and send private transactions](../../../how-to/send-transactions/private-transactions.md).
 
@@ -33,10 +35,11 @@ You can [create and send private transactions](../../../how-to/send-transactions
 
 Besu and Tessera nodes both have public/private key pairs identifying them. A Besu node sending a private transaction to a Tessera node signs the transaction with the Besu node private key. The `privateFrom` and `privateFor` parameters specified in the RLP-encoded transaction string for [`eea_sendRawTransaction`](../../../reference/api/index.md#eea_sendrawtransaction) are the public keys of the Tessera nodes sending and receiving the transaction.
 
-!!! important
+:::info
 
-    The mapping of Besu node addresses to Tessera node public keys is offchain.
-    That is, the sender of a private transaction must know the Tessera node public key of the recipient.
+The mapping of Besu node addresses to Tessera node public keys is offchain. That is, the sender of a private transaction must know the Tessera node public key of the recipient.
+
+:::
 
 ## Nonces
 

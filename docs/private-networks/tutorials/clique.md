@@ -241,10 +241,11 @@ Import accounts to MetaMask and send transactions, as described in the [Quicksta
 
 When finished using the private network, stop all nodes using ++ctrl+c++ in each terminal window.
 
-!!!tip
+:::tip
 
-    To restart the Clique network in the future, start from
-    [4. Start First Node as Bootnode](#4-start-the-first-node-as-the-bootnode).
+To restart the Clique network in the future, start from [4. Start First Node as Bootnode](#4-start-the-first-node-as-the-bootnode).
+
+:::
 
 <!-- Links -->
 

@@ -8,16 +8,16 @@ description: Privacy
 
 In Besu, privacy refers to the ability to keep transactions private between the involved participants. Other participants cannot access the transaction content or list of participants.
 
-!!! important
+:::danger
 
-    For production environments requiring private transactions:
+For production environments requiring private transactions:
 
-    * We recommend using a network with a consensus mechanism supporting transaction finality. For
-      example, [IBFT 2.0](../../how-to/configure/consensus/ibft.md).
-    * Tessera must be [highly available and run in a separate instance to Besu].
+- We recommend using a network with a consensus mechanism supporting transaction finality. For example, [IBFT 2.0](../../how-to/configure/consensus/ibft.md).
+- Tessera must be [highly available and run in a separate instance to Besu].
 
-    Using private transactions with [pruning] or
-    [fast sync](../../../public-networks/reference/cli/options.md#sync-mode) isn't supported.
+Using private transactions with [pruning] or [fast sync](../../../public-networks/reference/cli/options.md#sync-mode) isn't supported.
+
+:::
 
 ## Private transaction manager
 
@@ -39,10 +39,11 @@ Private Transaction Managers are also known as Enclaves.
 
 When enabling privacy in a [private network](../../get-started/system-requirements.md), there's an assumed level of trust among the node operators, since all are members of the private network.
 
-!!! important
+:::caution
 
-    Inefficient contracts deployed accidentally or deliberately can cause performance issues in
-    privacy-enabled networks because gas isn't required in private transactions.
+Inefficient contracts deployed accidentally or deliberately can cause performance issues in privacy-enabled networks because gas isn't required in private transactions.
+
+:::
 
 In contrast, gas is required in Ethereum Mainnet and public testnets because they are trustless environments.
 

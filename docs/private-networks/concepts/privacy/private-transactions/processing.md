@@ -56,14 +56,14 @@ Private transaction processing is illustrated and described in the following dia
 
 1.  The Private Transaction Processor executes the transaction. The Private Transaction Processor can read and write to the private world state, and read from the public world state.
 
-!!! important
+:::danger Recommendations
 
-    * We recommend using a network with a consensus mechanism supporting transaction finality. For example,
-      [IBFT 2.0](../../../how-to/configure/consensus/ibft.md).
-    * Tessera must be [highly available and run in a separate instance to Besu](../../../how-to/use-privacy/tessera.md).
+- We recommend using a network with a consensus mechanism supporting transaction finality. For example, [IBFT 2.0](../../../how-to/configure/consensus/ibft.md).
+- Tessera must be [highly available and run in a separate instance to Besu](../../../how-to/use-privacy/tessera.md).
 
-    Using private transactions with [pruning] or [fast sync](../../../../public-networks/reference/cli/options.md#sync-mode)
-    is not supported.
+Using private transactions with [pruning] or [fast sync](../../../../public-networks/reference/cli/options.md#sync-mode) is not supported.
+
+:::
 
 <!-- Links -->
 

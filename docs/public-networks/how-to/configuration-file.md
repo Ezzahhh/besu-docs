@@ -29,10 +29,11 @@ Values must conform to TOML specifications for string, numbers, arrays, and bool
 - Comma-separated lists on the command line are string arrays in the TOML file.
 - Enclose file paths, hexadecimal numbers, URLs, and &lt;host:port> values in quotes.
 
-!!!tip
+:::tip
 
-    The [command line reference](../reference/cli/options.md) includes configuration file
-    examples for each option.
+The [command line reference](../reference/cli/options.md) includes configuration file examples for each option.
+
+:::
 
 !!!example "Sample TOML configuration file"
 

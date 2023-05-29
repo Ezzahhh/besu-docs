@@ -8,17 +8,12 @@ sidebar_position: 5
 
 [QBFT](qbft.md) or [IBFT 2.0](ibft.md) network conditions might not allow voting to change validators. For example, if a majority of the current validators are no longer participating in the network, a vote to add or remove validators won't be successful. You can bypass voting and specify new validators using a transition in the genesis file.
 
-!!! warning
+:::caution
 
-    - In most cases, add or remove validators
-      [by voting or smart contract for QBFT](qbft.md#add-and-remove-validators);
-      or [by voting for IBFT 2.0](ibft.md#add-and-remove-validators).
-      Use transitions only when voting isn't possible.
-      Using transitions requires coordinating a rolling update of all the nodes in order to pick up the configuration at
-      the correct block height.
-      Using transitions also leaves the validator overrides permanently in your genesis configuration.
-    - Transitions are a Besu-specific feature.
-      If you run a mixed-client QBFT network, you can't use transitions to change the validators.
+- In most cases, add or remove validators [by voting or smart contract for QBFT](qbft.md#add-and-remove-validators); or [by voting for IBFT 2.0](ibft.md#add-and-remove-validators). Use transitions only when voting isn't possible. Using transitions requires coordinating a rolling update of all the nodes in order to pick up the configuration at the correct block height. Using transitions also leaves the validator overrides permanently in your genesis configuration.
+- Transitions are a Besu-specific feature. If you run a mixed-client QBFT network, you can't use transitions to change the validators.
+
+:::
 
 To add or remove validators without voting:
 
@@ -27,125 +22,130 @@ To add or remove validators without voting:
     - `<BlockNumber>` is the upcoming block at which to change validators.
     - `<ValidatorAddressX> ... <ValidatorAddressZ>` are strings representing the account addresses of the validators after `<BlockNumber>`.
 
-    !!! example "Transitions object in the genesis file"
+    <!--tabs-->
 
-        === "QBFT syntax"
+    # QBFT syntax
 
-            ```bash
-            {
-              "config": {
-                ...
-                "qbft": {
-                  "blockperiodseconds": 2,
-                  "epochlength": 30000,
-                  "requesttimeoutseconds": 4
-                },
-                "transitions": {
-                  "qbft": [
-                  {
-                    "block": <BlockNumber>,
-                    "validators": [
-                      <ValidatorAddressX>,
-                      ...
-                      <ValidatorAddressZ>
-                    ]
-                  }
-                  ]
-                }
-              },
+    ```bash
+    {
+      "config": {
+        ...
+        "qbft": {
+          "blockperiodseconds": 2,
+          "epochlength": 30000,
+          "requesttimeoutseconds": 4
+        },
+        "transitions": {
+          "qbft": [
+          {
+            "block": <BlockNumber>,
+            "validators": [
+              <ValidatorAddressX>,
               ...
-            }
-            ```
+              <ValidatorAddressZ>
+            ]
+          }
+          ]
+        }
+      },
+      ...
+    }
+    ```
 
-        === "QBFT example"
+    # QBFT example
 
-            ```bash
+    ```bash
+    {
+      "config": {
+        ...
+        "qbft": {
+          "blockperiodseconds": 2,
+          "epochlength": 30000,
+          "requesttimeoutseconds": 4
+        },
+        "transitions": {
+          "qbft": [
             {
-              "config": {
-                ...
-                "qbft": {
-                  "blockperiodseconds": 2,
-                  "epochlength": 30000,
-                  "requesttimeoutseconds": 4
-                },
-                "transitions": {
-                  "qbft": [
-                    {
-                    "block": 25,
-                    "validators": [
-                      "0x372a70ace72b02cc7f1757183f98c620254f9c8d",
-                      "0x9811ebc35d7b06b3fa8dc5809a1f9c52751e1deb"
-                      ]
-                    }
-                  ]
-                }
-              },
-              ...
+            "block": 25,
+            "validators": [
+              "0x372a70ace72b02cc7f1757183f98c620254f9c8d",
+              "0x9811ebc35d7b06b3fa8dc5809a1f9c52751e1deb"
+              ]
             }
-            ```
+          ]
+        }
+      },
+      ...
+    }
+    ```
 
-        === "IBFT 2.0 syntax"
+    # IBFT 2.0 syntax
 
-            ```bash
-            {
-              "config": {
-                ...
-                "ibft2": {
-                  "blockperiodseconds": 2,
-                  "epochlength": 30000,
-                  "requesttimeoutseconds": 4
-                },
-                "transitions": {
-                  "ibft2": [
-                  {
-                    "block": <BlockNumber>,
-                    "validators": [
-                      <ValidatorAddressX>,
-                      ...
-                      <ValidatorAddressZ>
-                    ]
-                  }
-                  ]
-                }
-              },
+    ```bash
+    {
+      "config": {
+        ...
+        "ibft2": {
+          "blockperiodseconds": 2,
+          "epochlength": 30000,
+          "requesttimeoutseconds": 4
+        },
+        "transitions": {
+          "ibft2": [
+          {
+            "block": <BlockNumber>,
+            "validators": [
+              <ValidatorAddressX>,
               ...
-            }
-            ```
+              <ValidatorAddressZ>
+            ]
+          }
+          ]
+        }
+      },
+      ...
+    }
+    ```
 
-        === "IBFT 2.0 example"
+    # IBFT 2.0 example
 
-            ```bash
-            {
-              "config": {
-                ...
-                "ibft2": {
-                  "blockperiodseconds": 2,
-                  "epochlength": 30000,
-                  "requesttimeoutseconds": 4
-                },
-                "transitions": {
-                  "ibft2": [
-                  {
-                  "block": 25,
-                  "validators": [
-                    "0x372a70ace72b02cc7f1757183f98c620254f9c8d",
-                    "0x9811ebc35d7b06b3fa8dc5809a1f9c52751e1deb"
-                    ]
-                  }
-                  ]
-                }
-              },
-              ...
-            }
-            ```
+    ```bash
+    {
+      "config": {
+        ...
+        "ibft2": {
+          "blockperiodseconds": 2,
+          "epochlength": 30000,
+          "requesttimeoutseconds": 4
+        },
+        "transitions": {
+          "ibft2": [
+          {
+          "block": 25,
+          "validators": [
+            "0x372a70ace72b02cc7f1757183f98c620254f9c8d",
+            "0x9811ebc35d7b06b3fa8dc5809a1f9c52751e1deb"
+            ]
+          }
+          ]
+        }
+      },
+      ...
+    }
+    ```
 
-1.  Restart all nodes in the network using the updated genesis file. You can make a rolling update of the nodes, as long as they're all up before the transition block is processed.
-1.  To verify the changes after the transition block, call [`qbft_getValidatorsByBlockNumber`](../../../reference/api/index.md#qbft_getvalidatorsbyblocknumber) or [`ibft_getValidatorsByBlockNumber`](../../../reference/api/index.md#ibft_getvalidatorsbyblocknumber), specifying `latest`.
+    <!--/tabs-->
 
-!!! caution
+2.  Restart all nodes in the network using the updated genesis file. You can make a rolling update of the nodes, as long as they're all up before the transition block is processed.
+3.  To verify the changes after the transition block, call [`qbft_getValidatorsByBlockNumber`](../../../reference/api/index.md#qbft_getvalidatorsbyblocknumber) or [`ibft_getValidatorsByBlockNumber`](../../../reference/api/index.md#ibft_getvalidatorsbyblocknumber), specifying `latest`.
 
-    Don't specify a transition block in the past.
-    Specifying a transition block in the past can result in unexpected behavior, such as causing the network to fork.
+:::caution
+
+Don't specify a transition block in the past.
+
+Specifying a transition block in the past can result in unexpected behavior, such as causing the network to fork.
+
+:::
 
 ## Override smart contract validators
 

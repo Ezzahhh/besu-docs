@@ -201,10 +201,11 @@ Automatic log bloom caching has a small impact on performance. If you are not qu
 
 A list of node IDs with which this node will not peer. The node ID is the public key of the node. You can specify the banned node IDs with or without the `0x` prefix.
 
-!!!tip
+:::tip
 
-    The singular `--banned-node-id` and plural `--banned-node-ids` are available and are two names
-    for the same option.
+The singular `--banned-node-id` and plural `--banned-node-ids` are available and are two names for the same option.
+
+:::
 
 ### `bonsai-historical-block-limit`
 
@@ -495,10 +496,11 @@ You can override the default DNS server if it's unreliable or doesn't serve TCP 
 
 A comma-separated list of hostnames to allow for Engine API access (applies to both HTTP and WebSocket).
 
-!!!tip
+:::tip
 
-    To allow all hostnames, use `"*"`. We don't recommend allowing all hostnames in production
-    environments.
+To allow all hostnames, use `"*"`. We don't recommend allowing all hostnames in production environments.
+
+:::
 
 ### `engine-jwt-disabled`
 
@@ -1415,12 +1417,11 @@ Minimum occupancy ratio for a mined block if the transaction pool is not empty. 
 
 The account you pay mining rewards to. You must specify a valid coinbase when you enable mining using the [`--miner-enabled`](#miner-enabled) option or the [`miner_start`](../api/index.md#miner_start) JSON-RPC API method.
 
-!!!note
+:::note
 
-    Besu ignores this option in networks using
-    [Clique](../../../private-networks/how-to/configure/consensus/clique.md),
-    [IBFT 2.0](../../../private-networks/how-to/configure/consensus/ibft.md), or
-    [QBFT](../../../private-networks/how-to/configure/consensus/qbft.md) consensus protocols.
+Besu ignores this option in networks using [Clique](../../../private-networks/how-to/configure/consensus/clique.md), [IBFT 2.0](../../../private-networks/how-to/configure/consensus/ibft.md), or [QBFT](../../../private-networks/how-to/configure/consensus/qbft.md) consensus protocols.
+
+:::
 
 ### `miner-enabled`
 
@@ -1611,22 +1612,25 @@ Specify the method for handling [NAT environments](../../how-to/connect/specify-
 
 The default is `AUTO`. `NONE` disables NAT functionality.
 
-!!!tip
+:::tip
 
-    UPnP support is often disabled by default in networking firmware. If disabled by default,
-    explicitly enable UPnP support.
+UPnP support is often disabled by default in networking firmware. If disabled by default, explicitly enable UPnP support.
 
-!!!tip
+:::
 
-    Use `UPNPP2PONLY` if you wish to enable UPnP for p2p traffic but not JSON-RPC.
+:::tip
 
-!!!notes
+Use `UPNPP2PONLY` if you wish to enable UPnP for p2p traffic but not JSON-RPC.
 
-    Specifying `UPNP` might introduce delays during node startup, especially on networks without a
-    UPnP gateway device.
+:::
 
-    You must specify `DOCKER` when using the
-    [Besu Docker image](../../get-started/install/run-docker-image.md).
+:::note
+
+Specifying `UPNP` might introduce delays during node startup, especially on networks without a UPnP gateway device.
+
+You must specify `DOCKER` when using the [Besu Docker image](../../get-started/install/run-docker-image.md).
+
+:::
 
 ### `network`
 
@@ -2180,10 +2184,11 @@ Enables or disables including the [revert reason](../../../private-networks/how-
 
 A comma-separated list of APIs to enable on the HTTP JSON-RPC channel. When you use this option you must also specify the `--rpc-http-enabled` option. The available API options are: `ADMIN`, `CLIQUE`, `DEBUG`, `EEA`, `ETH`, `IBFT`, `MINER`, `NET`, `PERM`, `PLUGINS`, `PRIV`, `QBFT`, `TRACE`, `TXPOOL`, and `WEB3`. The default is: `ETH`, `NET`, `WEB3`.
 
-!!!tip
+:::tip
 
-    The singular `--rpc-http-api` and plural `--rpc-http-apis` are available and are two names for
-    the same option.
+The singular `--rpc-http-api` and plural `--rpc-http-apis` are available and are two names for the same option.
+
+:::
 
 ### `rpc-http-authentication-credentials-file`
 
@@ -2313,19 +2318,19 @@ Listed domains can access the node using JSON-RPC. If your client interacts with
 
 The default value is `"none"`. If you do not list any domains, browser apps cannot interact with your Besu node.
 
-!!!note
+:::note
 
-    To run a local Besu node with MetaMask, set `--rpc-http-cors-origins` to
-    `chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn`.
+To run a local Besu node with MetaMask, set `--rpc-http-cors-origins` to `chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn`.
 
-    Remember to also include the dapp domain MetaMask interacts with, for example if your app is deployed
-    on Remix and you're using MetaMask to interact with the contract, use
-    `--rpc-http-cors-origins=chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn,http://remix.ethereum.org`
+Remember to also include the dapp domain MetaMask interacts with, for example if your app is deployed on Remix and you're using MetaMask to interact with the contract, use `--rpc-http-cors-origins=chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn,http://remix.ethereum.org`
 
-!!!tip
+:::
 
-    For testing and development purposes, use `"all"` or `"*"` to accept requests from any domain.
-    We don't recommend accepting requests from any domain for production environments.
+:::tip
+
+For testing and development purposes, use `"all"` or `"*"` to accept requests from any domain. We don't recommend accepting requests from any domain for production environments.
+
+:::
 
 ### `rpc-http-enabled`
 
@@ -2573,10 +2578,11 @@ You must specify [`--rpc-http-tls-ca-clients-enabled`](#rpc-http-tls-ca-clients-
 
 A list of comma-separated TLS cipher suites to support.
 
-!!!tip
+:::tip
 
-    The singular `--rpc-http-tls-cipher-suite` and plural `--rpc-http-tls-cipher-suites` are available and are two names for
-    the same option.
+The singular `--rpc-http-tls-cipher-suite` and plural `--rpc-http-tls-cipher-suites` are available and are two names for the same option.
+
+:::
 
 ### `rpc-http-tls-enabled`
 
@@ -2732,10 +2738,11 @@ You must enable client authentication using the [`--rpc-http-tls-client-auth-ena
 
 A list of comma-separated TLS protocols to support. The default is `DEFAULT_TLS_PROTOCOLS`, a list which includes `TLSv1.3` and `TLSv1.2`.
 
-!!!tip
+:::tip
 
-    The singular `--rpc-http-tls-protocol` and plural `--rpc-http-tls-protocols` are available and are two names for
-    the same option.
+The singular `--rpc-http-tls-protocol` and plural `--rpc-http-tls-protocols` are available and are two names for the same option.
+
+:::
 
 ### `rpc-max-logs-range`
 
@@ -2830,10 +2837,11 @@ If set to 0, then this option is ignored and no cap is applied.
 
 A comma-separated list of APIs to enable on the WebSockets channel. When you use this option you must also specify the `--rpc-ws-enabled` option. The available API options are: `ADMIN`, `CLIQUE`, `DEBUG`, `EEA`, `ETH`, `IBFT`, `MINER`, `NET`, `PERM`, `PLUGINS`, `PRIV`, `QBFT`, `TRACE`, `TXPOOL`, and `WEB3`. The default is: `ETH`, `NET`, `WEB3`.
 
-!!!tip
+:::tip
 
-    The singular `--rpc-ws-api` and plural `--rpc-ws-apis` options are available and are two names
-    for the same option.
+The singular `--rpc-ws-api` and plural `--rpc-ws-apis` options are available and are two names for the same option.
+
+:::
 
 ### `rpc-ws-authentication-credentials-file`
 

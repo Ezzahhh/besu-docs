@@ -38,7 +38,11 @@ The following log shows an automatic detection failure.
     INFO  | NetworkRunner | Starting Network.
     ```
 
-!!!tip If automatic detection fails, set the IP and ports in [`NONE`](#none) mode.
+:::tip
+
+If automatic detection fails, set the IP and ports in [`NONE`](#none) mode.
+
+:::
 
 ## UPnP
 

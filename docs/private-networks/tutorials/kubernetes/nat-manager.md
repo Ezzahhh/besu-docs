@@ -190,12 +190,15 @@ Possible errors messages for Kubernetes automatic detection failure:
     INFO  | NetworkRunner | Starting Network.
     ```
 
-!!!tip For development environment, the permission issue can be fixed by running `kubectl create clusterrolebinding myapp-view-binding --clusterrole=admin --serviceaccount=default:default`
+:::tip
 
-      This command should only be used on development environment and not in production environment.
+For development environment, the permission issue can be fixed by running `kubectl create clusterrolebinding myapp-view-binding --clusterrole=admin --serviceaccount=default:default`
 
-      In production environment, require a finer management of permissions using Kubernetes
-      [Role-based access control](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
+This command should only be used on development environment and not in production environment.
+
+In production environment, require a finer management of permissions using Kubernetes [Role-based access control](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
+
+:::
 
 ### `Ingress not found` error message
 

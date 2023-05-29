@@ -53,11 +53,19 @@ kind create cluster
 
 It can build, push, pull, and run container images. Built container images can be run without needing a registry.
 
-!!!note The official Docker-CLI is not supported but rather uses [nerdctl](https://github.com/containerd/nerdctl) which is a Docker-CLI compatible tool for containerd, and is automatically installed with Rancher Desktop.
+:::note
 
-!!!note For Windows, you must [install Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install) to install Rancher Desktop.
+The official Docker-CLI is not supported but rather uses [nerdctl](https://github.com/containerd/nerdctl) which is a Docker-CLI compatible tool for containerd, and is automatically installed with Rancher Desktop.
+
+:::
+
+:::note
+
+For Windows, you must [install Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install) to install Rancher Desktop.
 
 Refer to the [official Rancher Desktop documentation](https://docs.rancherdesktop.io/) for system requirements and installation instructions.
+
+:::
 
 ## Cloud clusters
 

@@ -1544,14 +1544,13 @@ Methods with an equivalent [GraphQL](../../how-to/use-besu-api/graphql.md) query
 
 Returns a list of account addresses a client owns.
 
-!!!note
+:::note
 
-    This method returns an empty object because Besu
-    [doesn't support key management](../../how-to/send-transactions.md) inside the
-    client.
+This method returns an empty object because Besu [doesn't support key management](../../how-to/send-transactions.md) inside the client.
 
-    To provide access to your key store and and then sign transactions, use
-    [EthSigner](http://docs.ethsigner.consensys.net/en/latest/) with Besu.
+To provide access to your key store and and then sign transactions, use [EthSigner](http://docs.ethsigner.consensys.net/en/latest/) with Besu.
+
+:::
 
 #### Parameters
 

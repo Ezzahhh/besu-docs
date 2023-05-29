@@ -14,25 +14,25 @@ Because group membership for flexible privacy groups is stored in a smart contra
 
 :::
 
-!!! important
+:::danger
 
-    Flexible privacy groups are an early access feature. Don't use in production networks.
+Flexible privacy groups are an early access feature. Don't use in production networks.
 
-    The flexible privacy group interfaces might change between releases. There might not be an
-    upgrade path from flexible privacy groups created using v1.5 or earlier to enable use of flexible privacy
-    group functionality in future versions.
+The flexible privacy group interfaces might change between releases. There might not be an upgrade path from flexible privacy groups created using v1.5 or earlier to enable use of flexible privacy group functionality in future versions.
 
-    We don't recommended creating flexible privacy groups in a chain with existing
-    [offchain privacy groups](privacy-groups.md).
+We don't recommended creating flexible privacy groups in a chain with existing [offchain privacy groups](privacy-groups.md).
+
+:::
 
 ## Group management contracts
 
 The privacy group management contract bytecode is hard-coded into Besu and when you create a privacy group, the contract bytecode is part of the genesis state of the privacy group.
 
-!!! caution
+:::caution
 
-    All members of a flexible privacy group must be using the same version of Besu. If
-    using different versions, the private state within the privacy group may become inconsistent.
+All members of a flexible privacy group must be using the same version of Besu. If using different versions, the private state within the privacy group may become inconsistent.
+
+:::
 
 In the default implementation of the group management contract, the signer of the private transaction that creates the privacy group is also the owner of the group. Only the owner can add and remove participants, and upgrade the management contract.
 
@@ -44,13 +44,13 @@ When creating a flexible privacy group, generate the privacy group ID for the gr
 
 The [web3js-quorum library](../../how-to/use-privacy/flexible.md) generates a unique privacy group ID and passes the ID to Besu when creating a privacy group.
 
-!!! caution
+:::caution
 
-    When generating a privacy group ID, you must ensure the ID is unique across all network
-    participants. If you create a privacy group with an existing privacy group ID, the existing
-    privacy group is overwritten.
+When generating a privacy group ID, you must ensure the ID is unique across all network participants. If you create a privacy group with an existing privacy group ID, the existing privacy group is overwritten.
 
-    To ensure unique privacy group IDs, we recommend using 256-bit SecureRandom.
+To ensure unique privacy group IDs, we recommend using 256-bit SecureRandom.
+
+:::
 
 ## Multi-tenancy
 

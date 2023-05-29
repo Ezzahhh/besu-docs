@@ -342,10 +342,11 @@ You can switch from the [block header validator selection method] configured her
 
 When finished using the private network, stop all nodes using ++ctrl+c++ in each terminal window.
 
-!!!tip
+:::tip
 
-    To restart the QBFT network in the future, start from
-    [step 6](#6-start-the-first-node-as-the-bootnode).
+To restart the QBFT network in the future, start from [step 6](#6-start-the-first-node-as-the-bootnode).
+
+:::
 
 <!-- Links -->
 

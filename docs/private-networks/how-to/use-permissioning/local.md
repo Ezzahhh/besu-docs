@@ -168,13 +168,11 @@ You can specify the accounts and nodes allowlists in the same file or in separat
 
 To specify a permissions configuration file (or separate files for accounts and nodes) in any location, use the [`--permissions-accounts-config-file`](../../reference/cli/options.md#permissions-accounts-config-file) and [`--permissions-nodes-config-file`](../../reference/cli/options.md#permissions-nodes-config-file) options.
 
-!!!note
+:::note
 
-    The [`--permissions-accounts-config-file`](../../reference/cli/options.md#permissions-accounts-config-file)
-    and [`permissions-nodes-config-file`](../../reference/cli/options.md#permissions-nodes-config-file)
-    options are not used when running Besu from the
-    [Docker image](../../get-started/install/run-docker-image.md). Use a bind mount to
-    [specify a permissions configuration file with Docker].
+The [`--permissions-accounts-config-file`](../../reference/cli/options.md#permissions-accounts-config-file) and [`permissions-nodes-config-file`](../../reference/cli/options.md#permissions-nodes-config-file) options are not used when running Besu from the [Docker image](../../get-started/install/run-docker-image.md). Use a bind mount to [specify a permissions configuration file with Docker].
+
+:::
 
 !!! example "Sample permissions configuration file"
 

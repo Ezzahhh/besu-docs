@@ -54,9 +54,11 @@ Clique is more fault tolerant than QBFT and IBFT 2.0. Clique tolerates up to hal
 
 Networks with three or less validators can produce blocks but do not guarantee finality when operating in adversarial environments.
 
-!!! important
+:::caution
 
-    We recommend using QBFT or IBFT 2.0 networks with at least four nodes in production environments.
+We recommend using QBFT or IBFT 2.0 networks with at least four nodes in production environments.
+
+:::
 
 ### Speed
 

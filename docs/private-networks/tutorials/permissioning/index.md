@@ -450,9 +450,11 @@ The result confirms Node-5 has no peers even though it specifies Node-1 as a boo
 
 When finished using the permissioned network, stop all nodes using ++ctrl+c++ in each terminal window.
 
-!!!tip
+:::tip
 
-    To restart the permissioned network in the future, start from [step 7](#7-start-node-1).
+To restart the permissioned network in the future, start from [step 7](#7-start-node-1).
+
+:::
 
 <!-- Links -->
 

@@ -14,11 +14,11 @@ Existing validators propose and vote to [add or remove validators](#add-and-remo
 
 You can [create a private network using IBFT](../../../tutorials/ibft/index.md).
 
-!!! important
+:::danger
 
-    Configure your network to ensure you never lose more than 1/3 of your validators. If more
-    than 1/3 of validators stop participating, new blocks are no longer created, and the
-    network stalls. It may take significant time to recover once nodes are restarted.
+Configure your network to ensure you never lose more than 1/3 of your validators. If more than 1/3 of validators stop participating, new blocks are no longer created, and the network stalls. It may take significant time to recover once nodes are restarted.
+
+:::
 
 :::tip
 
@@ -30,30 +30,28 @@ You can use a plugin to securely store a validator's key using the [`--security-
 
 To use IBFT 2.0, Besu requires an IBFT 2.0 [genesis file](../../../../public-networks/concepts/genesis-file.md). The genesis file defines properties specific to IBFT 2.0.
 
-!!! example "Example IBFT 2.0 genesis file"
-
-    ```json
-      {
-        "config": {
-          "chainId": 1981,
-          "berlinBlock": 0,
-          "ibft2": {
-            "blockperiodseconds": 2,
-            "epochlength": 30000,
-            "requesttimeoutseconds": 4,
-            "blockreward": "5000000000000000",
-            "miningbeneficiary": "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73"
-          }
-        },
-        "nonce": "0x0",
-        "timestamp": "0x58ee40ba",
-        "extraData": "0xf83ea00000000000000000000000000000000000000000000000000000000000000000d594c2ab482b506de561668e07f04547232a72897daf808400000000c0",
-        "gasLimit": "0x1fffffffffffff",
-        "difficulty": "0x1",
-        "mixHash": "0x63746963616c2062797a616e74696e65206661756c7420746f6c6572616e6365",
-        "alloc": {}
-      }
-    ```
+```json title="Example IBFT 2.0 genesis file"
+{
+  "config": {
+    "chainId": 1981,
+    "berlinBlock": 0,
+    "ibft2": {
+      "blockperiodseconds": 2,
+      "epochlength": 30000,
+      "requesttimeoutseconds": 4,
+      "blockreward": "5000000000000000",
+      "miningbeneficiary": "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73"
+    }
+  },
+  "nonce": "0x0",
+  "timestamp": "0x58ee40ba",
+  "extraData": "0xf83ea00000000000000000000000000000000000000000000000000000000000000000d594c2ab482b506de561668e07f04547232a72897daf808400000000c0",
+  "gasLimit": "0x1fffffffffffff",
+  "difficulty": "0x1",
+  "mixHash": "0x63746963616c2062797a616e74696e65206661756c7420746f6c6572616e6365",
+  "alloc": {}
+}
+```
 
 The properties specific to IBFT 2.0 are:
 
@@ -64,31 +62,23 @@ The properties specific to IBFT 2.0 are:
 - `miningbeneficiary` - Optional beneficiary of the `blockreward`. Defaults to the validator that proposes the block. If set, then all nodes on the network must use the same beneficiary.
 - `extraData` - RLP encoded [extra data](#extra-data).
 
-!!! caution
+:::caution
 
-    We don't recommend changing `epochlength` in a running network. Changing the `epochlength`
-    after genesis can result in illegal blocks.
+We don't recommend changing `epochlength` in a running network. Changing the `epochlength` after genesis can result in illegal blocks.
 
-??? caution "Invalid block header error"
+:::
 
-    When adding a new node, if a `TimeStampMoreRecentThanParent | Invalid block header` error occurs,
-    the genesis file of the new node specifies a higher `blockperiodseconds` than the imported chain.
-    The imported chain makes new blocks faster than the genesis file allows and Besu rejects them
-    with this error.
-    This error most often occurs when importing chains from older versions of Besu.
+:::caution Invalid block header error
 
-    Decrease the `blockperiodseconds` in the new IBFT 2.0 genesis file to a lower value that
-    satisfies the block header validation.
+When adding a new node, if a `TimeStampMoreRecentThanParent | Invalid block header` error occurs, the genesis file of the new node specifies a higher `blockperiodseconds` than the imported chain. The imported chain makes new blocks faster than the genesis file allows and Besu rejects them with this error. This error most often occurs when importing chains from older versions of Besu.
 
-    !!! example
+Decrease the `blockperiodseconds` in the new IBFT 2.0 genesis file to a lower value that satisfies the block header validation.
 
-        If the error reads `| TimestampMoreRecentThanParent | Invalid block header: timestamp
-        1619660141 is only 3 seconds newer than parent timestamp 1619660138. Minimum 4 seconds`,
-        decrease the `blockperiodseconds` from 4 seconds to 3 seconds to match the imported chain.
+:::
 
-    After you update the new genesis file, if the imported chain has a `blockperiodseconds` value
-    set lower than you prefer, you can adjust it by [configuring the block time on an existing IBFT
-    2.0 network](#configure-block-time-on-an-existing-network).
+If the error reads `| TimestampMoreRecentThanParent | Invalid block header: timestamp 1619660141 is only 3 seconds newer than parent timestamp 1619660138. Minimum 4 seconds`, decrease the `blockperiodseconds` from 4 seconds to 3 seconds to match the imported chain.
+
+After you update the new genesis file, if the imported chain has a `blockperiodseconds` value set lower than you prefer, you can adjust it by [configuring the block time on an existing IBFT 2.0 network](#configure-block-time-on-an-existing-network).
 
 The properties with specific values in the IBFT 2.0 genesis files are:
 
@@ -110,29 +100,25 @@ The `extraData` property is an RLP encoding of:
 
 In the genesis block, the important information in the extra data is the list of validators. All other details have empty values. Formally, `extraData` in the genesis block contains `RLP([32 bytes Vanity, List<Validators>, No Vote, Round=Int(0), 0 Seals])`.
 
-!!! info
+:::info
 
-    RLP encoding is a space-efficient object serialization scheme used in Ethereum.
+RLP encoding is a space-efficient object serialization scheme used in Ethereum.
+
+:::
 
 #### Generate extra data
 
 To generate the `extraData` RLP string for inclusion in the genesis file, use the [`rlp encode`](../../../../public-networks/reference/cli/subcommands.md#rlp) Besu subcommand.
 
-!!! example
-
-    ```bash
-    besu rlp encode --from=toEncode.json
-    ```
+```bash title="Example"
+besu rlp encode --from=toEncode.json
+```
 
 Where the `toEncode.json` file contains a list of the initial validators, in ascending order. To write the validator address and copy it to the `toEncode.json` file, use the [`public-key export-address`](../../../../public-networks/reference/cli/subcommands.md#export-address) Besu subcommand. For example:
 
-!!! example "One initial validator in `toEncode.json` file"
-
-    ```json
-    [
-      "9811ebc35d7b06b3fa8dc5809a1f9c52751e1deb"
-    ]
-    ```
+```json title="One initial validator in toEncode.json file"
+["9811ebc35d7b06b3fa8dc5809a1f9c52751e1deb"]
+```
 
 Copy the RLP encoded data to the `extraData` property in the genesis file.
 
@@ -144,16 +130,15 @@ If `requesttimeoutseconds` expires before adding the proposed block, a round cha
 
 Usually, the protocol adds the proposed block before reaching `requesttimeoutseconds`. A new round then starts, resetting the block time and round timeout timers. When `blockperiodseconds` expires, the protocol proposes the next new block.
 
-!!! warning
+:::danger
 
-    If more than 1/3 of validators stop participating, new blocks can no longer be created and
-    `requesttimeoutseconds` doubles with each round change. The quickest method
-    to resume block production is to restart all validators, which resets `requesttimeoutseconds` to
-    its genesis value.
+If more than 1/3 of validators stop participating, new blocks can no longer be created and `requesttimeoutseconds` doubles with each round change. The quickest method to resume block production is to restart all validators, which resets `requesttimeoutseconds` to its genesis value.
+
+:::
 
 Once `blockperiodseconds` is over, the time from proposing a block to adding the block is small (usually around one second) even in networks with geographically dispersed validators.
 
-!!! example An internal network run by ConsenSys had four geographically dispersed validators in Sweden, Sydney, and two in North Virginia. With a `blockperiodseconds` of 5 and a `requesttimeoutseconds` of 10, the testnet consistently created blocks with a five second block time.
+An internal network run by ConsenSys had four geographically dispersed validators in Sweden, Sydney, and two in North Virginia. With a `blockperiodseconds` of 5 and a `requesttimeoutseconds` of 10, the testnet consistently created blocks with a five second block time.
 
 #### Tune block timeout
 
@@ -218,11 +203,9 @@ If network conditions render it impossible to add and remove validators by votin
 
 To propose adding a validator to an IBFT 2.0 network, call [`ibft_proposeValidatorVote`](../../../reference/api/index.md#ibft_proposevalidatorvote), specifying the address of the proposed validator and `true`. A majority of validators must execute the call.
 
-!!! example "JSON-RPC `ibft_proposeValidatorVote` request example"
-
-    ```bash
-    curl -X POST --data '{"jsonrpc":"2.0","method":"ibft_proposeValidatorVote","params":["0xFE3B557E8Fb62b89F4916B721be55cEb828dBd73", true], "id":1}' <JSON-RPC-endpoint:port>
-    ```
+```bash title="JSON-RPC ibft_proposeValidatorVote request example"
+curl -X POST --data '{"jsonrpc":"2.0","method":"ibft_proposeValidatorVote","params":["0xFE3B557E8Fb62b89F4916B721be55cEb828dBd73", true], "id":1}' <JSON-RPC-endpoint:port>
+```
 
 When the validator proposes the next block, the protocol inserts one proposal received from [`ibft_proposeValidatorVote`](../../../reference/api/index.md#ibft_proposevalidatorvote) into the block. If blocks include all proposals, subsequent blocks proposed by the validator will not contain a vote.
 
@@ -230,19 +213,15 @@ When more than 50% of the existing validators have published a matching proposal
 
 To return a list of validators and confirm the addition of a proposed validator, use [`ibft_getValidatorsByBlockNumber`](../../../reference/api/index.md#ibft_getvalidatorsbyblocknumber).
 
-!!! example "JSON-RPC `ibft_getValidatorsByBlockNumber` request example"
-
-    ```bash
-    curl -X POST --data '{"jsonrpc":"2.0","method":"ibft_getValidatorsByBlockNumber","params":["latest"], "id":1}' <JSON-RPC-endpoint:port>
-    ```
+```bash title="JSON-RPC ibft_getValidatorsByBlockNumber request example"
+curl -X POST --data '{"jsonrpc":"2.0","method":"ibft_getValidatorsByBlockNumber","params":["latest"], "id":1}' <JSON-RPC-endpoint:port>
+```
 
 To discard your proposal after confirming the addition of a validator, call [`ibft_discardValidatorVote`](../../../reference/api/index.md#ibft_discardvalidatorvote), specifying the address of the proposed validator.
 
-!!! example "JSON-RPC `ibft_discardValidatorVote` request example"
-
-    ```bash
-    curl -X POST --data '{"jsonrpc":"2.0","method":"ibft_discardValidatorVote","params":["0xFE3B557E8Fb62b89F4916B721be55cEb828dBd73"], "id":1}' <JSON-RPC-endpoint:port>
-    ```
+```bash title="JSON-RPC ibft_discardValidatorVote request example"
+curl -X POST --data '{"jsonrpc":"2.0","method":"ibft_discardValidatorVote","params":["0xFE3B557E8Fb62b89F4916B721be55cEb828dBd73"], "id":1}' <JSON-RPC-endpoint:port>
+```
 
 ### Remove a validator
 
@@ -268,11 +247,11 @@ Non-validator nodes don't affect performance and don't count towards the maximum
 
 The `transitions` genesis configuration item allows you to specify a future block number at which to change IBFT 2.0 network configuration in an existing network. For example, you can update the [block time](#configure-block-time-on-an-existing-network-deployment), [block reward](#configure-block-rewards-on-an-existing-network-deployment), or [mining beneficiary](#configure-the-mining-beneficiary-on-an-existing-network-deployment).
 
-!!! caution
+:::caution
 
-    Do not specify a transition block in the past.
-    Specifying a transition block in the past could result in unexpected behavior, such as causing
-    the network to fork.
+Do not specify a transition block in the past. Specifying a transition block in the past could result in unexpected behavior, such as causing the network to fork.
+
+:::
 
 ### Configure block time on an existing network deployment
 
@@ -284,55 +263,57 @@ To update an existing network with a new `blockperiodseconds`:
     - `<FutureBlockNumber>` is the upcoming block at which to change `blockperiodseconds`.
     - `<NewValue>` is the updated value for `blockperiodseconds`.
 
-    !!! example "Transitions configuration"
+    <!--tabs-->
 
-        === "Syntax"
+    # Syntax
 
-            ```bash
+    ```bash
+    {
+      "config": {
+        ...
+        "ibft2": {
+          "blockperiodseconds": 2,
+          "epochlength": 30000,
+          "requesttimeoutseconds": 4
+        },
+        "transitions": {
+          "ibft2": [
             {
-              "config": {
-                ...
-                "ibft2": {
-                  "blockperiodseconds": 2,
-                  "epochlength": 30000,
-                  "requesttimeoutseconds": 4
-                },
-                "transitions": {
-                  "ibft2": [
-                    {
-                      "block": <FutureBlockNumber>,
-                      "blockperiodseconds": <NewValue>
-                    }
-                  ]
-                }
-              },
-              ...
+              "block": <FutureBlockNumber>,
+              "blockperiodseconds": <NewValue>
             }
-            ```
+          ]
+        }
+      },
+      ...
+    }
+    ```
 
-        === "Example"
+    # Example
 
-            ```bash
+    ```bash
+    {
+      "config": {
+        ...
+        "ibft2": {
+          "blockperiodseconds": 2,
+          "epochlength": 30000,
+          "requesttimeoutseconds": 4
+        },
+        "transitions": {
+          "ibft2": [
             {
-              "config": {
-                ...
-                "ibft2": {
-                  "blockperiodseconds": 2,
-                  "epochlength": 30000,
-                  "requesttimeoutseconds": 4
-                },
-                "transitions": {
-                  "ibft2": [
-                    {
-                      "block": 1240,
-                      "blockperiodseconds": 4
-                    }
-                  ]
-                }
-              },
-              ...
+              "block": 1240,
+              "blockperiodseconds": 4
             }
-            ```
+          ]
+        }
+      },
+      ...
+    }
+    ```
+
+    <!--/tabs-->
 
 1.  Restart all nodes in the network using the updated genesis file.
 1.  To verify the changes after the transition block, call [`ibft_getValidatorsByBlockNumber`](../../../../public-networks/reference/api/index.md#ibft_getvalidatorsbyblocknumber), specifying `latest`.
@@ -347,73 +328,75 @@ To update an existing network with a new `blockreward`:
     - `<FutureBlockNumber>` is the upcoming block at which to change `blockreward`.
     - `<NewValue>` is the updated value for `blockreward`.
 
-    !!! example "Transitions configuration"
+    <!--tabs-->
 
-        === "Syntax"
+    # Syntax
 
-            ```bash
+    ```bash
+    {
+      "config": {
+        ...
+        "ibft2": {
+          "blockperiodseconds": 2,
+          "epochlength": 30000,
+          "requesttimeoutseconds": 4
+          "blockreward": "5000000000000000"
+        },
+        "transitions": {
+          "ibft2": [
             {
-              "config": {
-                ...
-                "ibft2": {
-                  "blockperiodseconds": 2,
-                  "epochlength": 30000,
-                  "requesttimeoutseconds": 4
-                  "blockreward": "5000000000000000"
-                },
-                "transitions": {
-                  "ibft2": [
-                    {
-                      "block": <FutureBlockNumber>,
-                      "blockreward": <NewValue>
-                    },
-                    {
-                      "block": <FutureBlockNumber>,
-                      "blockreward": <NewValue>
-                    },
-                    {
-                      "block": <FutureBlockNumber>,
-                      "blockreward": <NewValue>
-                    }
-                  ]
-                }
-              },
-              ...
-            }
-            ```
-
-        === "Example"
-
-            ```bash
+              "block": <FutureBlockNumber>,
+              "blockreward": <NewValue>
+            },
             {
-              "config": {
-                ...
-                "ibft2": {
-                  "blockperiodseconds": 2,
-                  "epochlength": 30000,
-                  "requesttimeoutseconds": 4
-                  "blockreward": "5000000000000000"
-                },
-                "transitions": {
-                  "ibft2": [
-                    {
-                      "block": 10,
-                      "blockreward": "6000000000000000"
-                    },
-                    {
-                      "block": 15,
-                      "blockreward": "75000000000000000"
-                    },
-                    {
-                      "block": 20,
-                      "blockreward": "0"
-                    }
-                  ]
-                }
-              },
-              ...
+              "block": <FutureBlockNumber>,
+              "blockreward": <NewValue>
+            },
+            {
+              "block": <FutureBlockNumber>,
+              "blockreward": <NewValue>
             }
-            ```
+          ]
+        }
+      },
+      ...
+    }
+    ```
+
+    # Example
+
+    ```bash
+    {
+      "config": {
+        ...
+        "ibft2": {
+          "blockperiodseconds": 2,
+          "epochlength": 30000,
+          "requesttimeoutseconds": 4
+          "blockreward": "5000000000000000"
+        },
+        "transitions": {
+          "ibft2": [
+            {
+              "block": 10,
+              "blockreward": "6000000000000000"
+            },
+            {
+              "block": 15,
+              "blockreward": "75000000000000000"
+            },
+            {
+              "block": 20,
+              "blockreward": "0"
+            }
+          ]
+        }
+      },
+      ...
+    }
+    ```
+
+    <!--/tabs-->
 
     :::note
 
@@ -433,69 +416,71 @@ To update an existing network with a new mining beneficiary:
     - `<FutureBlockNumber>` is the upcoming block at which to change `miningbeneficiary`.
     - `<NewAddress>` is the updated 20-byte address for `miningbeneficiary`. Starting at `<FutureBlockNumber>`, block rewards go to this address.
 
-    !!! example "Transitions configuration"
+    <!--tabs-->
 
-        === "Syntax"
+    # Syntax
 
-            ```bash
+    ```bash
+    {
+      "config": {
+        "chainId": 999,
+        "berlinBlock": 0,
+        "ibft2": {
+          "blockperiodseconds": 1,
+          "epochlength": 30000,
+          "requesttimeoutseconds": 5,
+          "blockreward": "5000000000000000000",
+          "miningbeneficiary": "0x0000000000000000000000000000000000000001"
+        },
+        "transitions": {
+          "ibft2": [
             {
-              "config": {
-                "chainId": 999,
-                "berlinBlock": 0,
-                "ibft2": {
-                  "blockperiodseconds": 1,
-                  "epochlength": 30000,
-                  "requesttimeoutseconds": 5,
-                  "blockreward": "5000000000000000000",
-                  "miningbeneficiary": "0x0000000000000000000000000000000000000001"
-                },
-                "transitions": {
-                  "ibft2": [
-                    {
-                      "block": <FutureBlockNumber>,
-                      "miningbeneficiary": <NewAddress>
-                    },
-                    {
-                      "block": <FutureBlockNumber>,
-                      "miningbeneficiary": <NewAddress>
-                    }
-                  ]
-                }
-              },
-              ...
-            }
-            ```
-
-        === "Example"
-
-            ```bash
+              "block": <FutureBlockNumber>,
+              "miningbeneficiary": <NewAddress>
+            },
             {
-              "config": {
-                "chainId": 999,
-                "berlinBlock": 0,
-                "ibft2": {
-                  "blockperiodseconds": 1,
-                  "epochlength": 30000,
-                  "requesttimeoutseconds": 5,
-                  "blockreward": "5000000000000000000",
-                  "miningbeneficiary": "0x0000000000000000000000000000000000000001"
-                },
-                "transitions": {
-                  "ibft2": [
-                  {
-                    "block": 10000,
-                    "miningbeneficiary": "",
-                  },
-                  {
-                    "block": 20000,
-                    "miningbeneficiary": "0x0000000000000000000000000000000000000002",
-                  }
-                  ]
-                }
-              },
-              ...
+              "block": <FutureBlockNumber>,
+              "miningbeneficiary": <NewAddress>
             }
-            ```
+          ]
+        }
+      },
+      ...
+    }
+    ```
+
+    # Example
+
+    ```bash
+    {
+      "config": {
+        "chainId": 999,
+        "berlinBlock": 0,
+        "ibft2": {
+          "blockperiodseconds": 1,
+          "epochlength": 30000,
+          "requesttimeoutseconds": 5,
+          "blockreward": "5000000000000000000",
+          "miningbeneficiary": "0x0000000000000000000000000000000000000001"
+        },
+        "transitions": {
+          "ibft2": [
+          {
+            "block": 10000,
+            "miningbeneficiary": "",
+          },
+          {
+            "block": 20000,
+            "miningbeneficiary": "0x0000000000000000000000000000000000000002",
+          }
+          ]
+        }
+      },
+      ...
+    }
+    ```
+
+    <!--/tabs-->
 
     :::note
 
@@ -508,3 +493,7 @@ To update an existing network with a new mining beneficiary:
 <!-- Acronyms and Definitions -->
 
 _[vanity data]: Validators can include anything they like as vanity data. _[RLP]: Recursive Length Prefix
+
+```
+
+```

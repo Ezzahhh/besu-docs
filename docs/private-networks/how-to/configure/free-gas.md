@@ -78,7 +78,11 @@ When starting nodes, set the [minimum gas price](../../../public-networks/refere
     min-gas-price=0
     ```
 
-!!! important In a free gas network, ensure the [minimum gas price](../../../public-networks/reference/cli/options.md#min-gas-price) is set to zero for every node. Any node with a minimum gas price set higher than zero will silently drop transactions with a zero gas price. You can query a node's gas configuration using [`eth_gasPrice`](../../../public-networks/reference/api/index.md#eth_gasprice).
+:::danger Important
+
+In a free gas network, ensure the [minimum gas price](../../../public-networks/reference/cli/options.md#min-gas-price) is set to zero for every node. Any node with a minimum gas price set higher than zero will silently drop transactions with a zero gas price. You can query a node's gas configuration using [`eth_gasPrice`](../../../public-networks/reference/api/index.md#eth_gasprice).
+
+:::
 
 ### 4. Enable zero base fee if using London fork or later
 
@@ -101,10 +105,11 @@ If using Truffle to develop on your free gas network, you also need to configure
 
 Like setting block and contract size limits to their maximum values for Besu, set the transaction gas limit in Truffle to the maximum possible.
 
-!!! important
+:::info
 
-    Besu does not support private key management. To use Besu with Truffle, you must configure
-    a [Truffle wallet](../../../public-networks/how-to/develop/truffle.md).
+Besu does not support private key management. To use Besu with Truffle, you must configure a [Truffle wallet](../../../public-networks/how-to/develop/truffle.md).
+
+:::
 
 ### Update `truffle-config.js`
 

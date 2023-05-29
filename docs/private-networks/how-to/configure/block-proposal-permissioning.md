@@ -6,11 +6,13 @@ sidebar_position: 7
 
 # Block proposal permissioning
 
-!!! important
+:::info
 
-    Only private networks using the [QBFT consensus protocol] support block proposal permissioning.
+Only private networks using the [QBFT consensus protocol] support block proposal permissioning.
 
-    Block proposal permissioning is an early access feature, and functionality and options may be updated between releases.
+Block proposal permissioning is an early access feature, and functionality and options may be updated between releases.
+
+:::
 
 You can configure [block proposal permissioning](../../concepts/pki.md#block-proposal-permissioning) to ensure only authorized validator nodes can propose blocks in the network.
 

@@ -241,14 +241,15 @@ Returned by [`eth_getTransactionReceipt`](index.md#eth_gettransactionreceipt).
 | `revertReason` | String | ABI-encoded string that displays the [reason for reverting the transaction](../../../private-networks/how-to/send-transactions/revert-reason.md). Only available if revert reason is [enabled](../cli/options.md#revert-reason-enabled). |
 | `type` | Quantity | Transaction type, `0x00` for legacy transactions, `0x01` for access list types, `0x02` for dynamic fees. |
 
-!!!note
+:::note
 
-    For pre-Byzantium transactions, the transaction receipt object includes the following instead
-    of `status`:
+For pre-Byzantium transactions, the transaction receipt object includes the following instead of `status`:
 
 | Key    |        Type         | Value                       |
 | ------ | :-----------------: | --------------------------- |
 | `root` | Data, 32&nbsp;bytes | Post-transaction state root |
+
+:::
 
 ## Transaction trace object
 

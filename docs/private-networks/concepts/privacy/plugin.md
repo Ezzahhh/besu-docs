@@ -10,9 +10,11 @@ You can define your own strategy for private transactions by building a plugin t
 
 The plugin can take many forms, but it must provide Besu with a private transaction when required.
 
-!!! important
+:::danger
 
-    The privacy plugin is an early access feature and plugin interfaces are subject to change between releases.
+The privacy plugin is an early access feature and plugin interfaces are subject to change between releases.
+
+:::
 
 ## Configuration
 

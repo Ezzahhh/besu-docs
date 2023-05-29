@@ -16,9 +16,11 @@ Use this Docker image to run a single Besu node without installing Besu.
 
 - MacOS or Linux
 
-  !!! important
+  :::caution
 
-        The Docker image doesn't run on Windows.
+  The Docker image does not run on Windows.
+
+  :::
 
 ## Expose ports
 
@@ -42,36 +44,29 @@ See the [`docker run -p` documentation](https://docs.docker.com/engine/reference
 
 :::
 
-!!! example
+To enable JSON-RPC HTTP calls to `127.0.0.1:8545` and P2P discovery on `127.0.0.1:13001`:
 
-    To enable JSON-RPC HTTP calls to `127.0.0.1:8545` and P2P discovery on `127.0.0.1:13001`:
-
-    ```bash
-    docker run -p 8545:8545 -p 13001:30303 hyperledger/besu:latest --rpc-http-enabled
-    ```
+```bash
+docker run -p 8545:8545 -p 13001:30303 hyperledger/besu:latest --rpc-http-enabled
+```
 
 ## Start Besu
 
-!!! important
+:::danger
 
-    Don't mount a volume at the default data path (`/opt/besu`). Mounting a volume at the default
-    data path interferes with the operation of Besu and prevents Besu from safely launching.
+Don't mount a volume at the default data path (`/opt/besu`). Mounting a volume at the default data path interferes with the operation of Besu and prevents Besu from safely launching.
 
-    To run a node that maintains the node state (key and database),
-    [`--data-path`](../../../public-networks/reference/cli/options.md#data-path) must be set to a location other
-    than `/opt/besu` and a storage volume mounted at that location.
+To run a node that maintains the node state (key and database), [`--data-path`](../../../public-networks/reference/cli/options.md#data-path) must be set to a location other than `/opt/besu` and a storage volume mounted at that location.
 
-    When running in a Docker container, [`--nat-method`](../../../public-networks/how-to/connect/specify-nat.md)
-    must be set to `DOCKER` or `AUTO` (default). Don't set
-    [`--nat-method`](../../../public-networks/how-to/connect/specify-nat.md) to `NONE` or `UPNP`.
+When running in a Docker container, [`--nat-method`](../../../public-networks/how-to/connect/specify-nat.md) must be set to `DOCKER` or `AUTO` (default). Don't set [`--nat-method`](../../../public-networks/how-to/connect/specify-nat.md) to `NONE` or `UPNP`.
+
+:::
 
 You can specify [Besu environment variables](../../../public-networks/reference/cli/options.md#specify-options) with the Docker image instead of the command line options.
 
-!!! example
-
-    ```bash
-    docker run -p 30303:30303 -p 8545:8545 -e BESU_RPC_HTTP_ENABLED=true -e BESU_NETWORK=goerli hyperledger/besu:latest
-    ```
+```bash
+docker run -p 30303:30303 -p 8545:8545 -e BESU_RPC_HTTP_ENABLED=true -e BESU_NETWORK=goerli hyperledger/besu:latest
+```
 
 ??? caution "Unsupported address type exception"
 

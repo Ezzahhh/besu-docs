@@ -199,7 +199,8 @@ Start a node with the [`--rpc-ws-enabled`](../../public-networks/reference/cli/o
 
 When finished using the private network, stop all nodes using ++ctrl+c++ in each terminal window.
 
-!!!tip
+:::tip
 
-    To restart the private network in the future, start from
-    [3. Start the first node as a bootnode](#3-start-the-first-node-as-a-bootnode).
+To restart the private network in the future, start from [3. Start the first node as a bootnode](#3-start-the-first-node-as-a-bootnode).
+
+:::

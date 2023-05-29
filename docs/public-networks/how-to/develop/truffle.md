@@ -18,9 +18,11 @@ To install a Truffle wallet:
 npm install --save @truffle/hdwallet-provider
 ```
 
-!!!note
+:::note
 
-    With Truffle 5, you must use a Web3 1.0 enabled wallet or the Truffle tasks hang.
+With Truffle 5, you must use a Web3 1.0 enabled wallet or the Truffle tasks hang.
+
+:::
 
 ### Update the Truffle configuration file
 

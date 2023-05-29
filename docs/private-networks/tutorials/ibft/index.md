@@ -342,10 +342,11 @@ Import accounts to MetaMask and send transactions as described in the [Quickstar
 
 When finished using the private network, stop all nodes using ++ctrl+c++ in each terminal window.
 
-!!!tip
+:::tip
 
-    To restart the IBFT 2.0 network in the future, start from
-    [6. Start First Node as Bootnode](#6-start-the-first-node-as-the-bootnode).
+To restart the IBFT 2.0 network in the future, start from [6. Start First Node as Bootnode](#6-start-the-first-node-as-the-bootnode).
+
+:::
 
 <!-- Links -->
 
