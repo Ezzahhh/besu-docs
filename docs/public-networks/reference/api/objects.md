@@ -9,11 +9,11 @@ tags:
 
 The following objects are parameters for or returned by Besu API methods.
 
-!!! attention
+:::info
 
-    This reference contains API objects that apply to both public and private networks.
-    For private-network-specific API objects, see the
-    [private network API object reference](../../../private-networks/reference/api/objects.md).
+This reference contains API objects that apply to both public and private networks. For private-network-specific API objects, see the [private network API object reference](../../../private-networks/reference/api/objects.md).
+
+:::
 
 ## Block object
 

@@ -29,14 +29,12 @@ While Hyperledger Besu is running, the following are not supported:
 
 The following log shows an automatic detection failure.
 
-!!! example The following log shows an automatic detection failure.
-
-    ```
-    INFO  | KubernetesNatManager | Starting kubernetes NAT manager.
-    DEBUG | KubernetesNatManager | Trying to update information using Kubernetes client SDK.
-    DEBUG | NatService | Nat manager failed to configure itself automatically due to the following reason Service not found. NONE mode will be used
-    INFO  | NetworkRunner | Starting Network.
-    ```
+```log title="The following log shows an automatic detection failure"
+INFO  | KubernetesNatManager | Starting kubernetes NAT manager.
+DEBUG | KubernetesNatManager | Trying to update information using Kubernetes client SDK.
+DEBUG | NatService | Nat manager failed to configure itself automatically due to the following reason Service not found. NONE mode will be used
+INFO  | NetworkRunner | Starting Network.
+```
 
 :::tip
 
@@ -58,10 +56,11 @@ UPnP support is often disabled by default in networking firmware. If disabled by
 
 :::
 
-!!! important
+:::info
 
-    When the NAT method is set to `UPNP`, the advertised port is the same as the
-    [listening port](../../reference/cli/options.md#p2p-port).
+When the NAT method is set to `UPNP`, the advertised port is the same as the [listening port](../../reference/cli/options.md#p2p-port).
+
+:::
 
 ## Kubernetes
 
@@ -86,7 +85,8 @@ Specify `NONE` to explicitly configure the external IP address and ports adverti
 
 The P2P and JSON-RPC HTTP hosts and ports are advertised in the [`net_services`](../../reference/api/index.md#net_services) method.
 
-!!! important
+:::tip
 
-    When the NAT method is set to `NONE`, the advertised port is the same as the
-    [listening port](../../reference/cli/options.md#p2p-port).
+When the NAT method is set to `NONE`, the advertised port is the same as the [listening port](../../reference/cli/options.md#p2p-port).
+
+:::

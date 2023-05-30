@@ -26,123 +26,155 @@ The first mode of the EVM tool runs an arbitrary EVM and is invoked without an e
 
 ### `code`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --code=<code>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--code=<code>
+```
 
-    ```bash
-    --code=5B600080808060045AFA50600056
-    ```
+# Example
+
+```bash
+--code=5B600080808060045AFA50600056
+```
+
+<!--/tabs-->
 
 The code to be executed, in compiled hex code form. Execution fails if this is not set.
 
 ### `gas`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --gas=<integer>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--gas=<integer>
+```
 
-    ```bash
-    --gas=100000000
-    ```
+# Example
+
+```bash
+--gas=100000000
+```
+
+<!--/tabs-->
 
 Amount of gas to make available to the EVM. The default is 10 billion, a number unlikely to be seen in any production blockchain.
 
 ### `price`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --price=<integer>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--price=<integer>
+```
 
-    ```bash
-    --price=10
-    ```
+# Example
+
+```bash
+--price=10
+```
+
+<!--/tabs-->
 
 Price of gas in Gwei. The default is `0`. If set to a non-zero value, the sender account must have enough value to cover the gas fees.
 
 ### `sender`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --sender=<address>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--sender=<address>
+```
 
-    ```bash
-    --sender=0xfe3b557e8fb62b89f4916b721be55ceb828dbd73
-    ```
+# Example
+
+```bash
+--sender=0xfe3b557e8fb62b89f4916b721be55ceb828dbd73
+```
+
+<!--/tabs-->
 
 The account the invocation is sent from. The specified account must exist in the world state, which, unless specified by [`--genesis`](#genesis), is the set of [accounts used for testing](../../private-networks/reference/accounts-for-testing.md).
 
 ### `receiver`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --receiver=<address>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--receiver=<address>
+```
 
-    ```bash
-    --receiver=0x588108d3eab34e94484d7cda5a1d31804ca96fe7
-    ```
+# Example
+
+```bash
+--receiver=0x588108d3eab34e94484d7cda5a1d31804ca96fe7
+```
+
+<!--/tabs-->
 
 The account the invocation is sent to. The specified account does not need to exist.
 
 ### `input`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --input=<code>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--input=<code>
+```
 
-    ```bash
-    --input=9064129300000000000000000000000000000000000000000000000000000000
-    ```
+# Example
+
+```bash
+--input=9064129300000000000000000000000000000000000000000000000000000000
+```
+
+<!--/tabs-->
 
 The data passed into the call. Corresponds to the `data` field of the transaction and is returned by the `CALLDATA` and related opcodes.
 
 ### `value`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --value=<integer>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--value=<integer>
+```
 
-    ```bash
-    --value=1000000000000000000
-    ```
+# Example
+
+```bash
+--value=1000000000000000000
+```
+
+<!--/tabs-->
 
 The value, in wei, attached to this transaction. For operations that query the value or transfer it to other accounts this is the amount that is available. The amount is not reduced to cover intrinsic cost and gas fees.
 
 ### `json`, `trace`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --json
-    ```
+# Syntax
+
+```bash
+--json
+```
+
+<!--/tabs-->
 
 Provides an operation-by-operation trace of the command in JSON.
 
@@ -150,21 +182,29 @@ Provides an operation-by-operation trace of the command in JSON.
 
 ### `json-alloc`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --json-alloc
-    ```
+# Syntax
+
+```bash
+--json-alloc
+```
+
+<!--/tabs-->
 
 Outputs a JSON summary of the post-execution world state and allocations.
 
 ### `[no]memory`, `trace.[no]memory`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --nomemory, --memory
-    ```
+# Syntax
+
+```bash
+--nomemory, --memory
+```
+
+<!--/tabs-->
 
 Setting `--nomemory` disables tracing the memory output for each operation. Setting `--memory` enables it. Memory traces are disabled by default.
 
@@ -174,31 +214,43 @@ For memory heavy scripts, disabling memory traces may reduce the volume of JSON 
 
 ### `trace.[no]stack`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --trace.nostack, --trace.stack
-    ```
+# Syntax
+
+```bash
+--trace.nostack, --trace.stack
+```
+
+<!--/tabs-->
 
 Setting `--trace.nostack` disables tracing the operand stack for each operation. Setting `--trace.stack` enables it. Stack traces are enabled by default.
 
 ### `trace.[no]returndata`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --trace.noreturndata, --trace.returndata
-    ```
+# Syntax
+
+```bash
+--trace.noreturndata, --trace.returndata
+```
+
+<!--/tabs-->
 
 Setting `--trace.noreturndata` disables tracing the return data for each operation. Setting `--trace.returndata` enables it. Return data traces are enabled by default.
 
 ### `[no]time`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --notime, --time
-    ```
+# Syntax
+
+```bash
+--notime, --time
+```
+
+<!--/tabs-->
 
 Setting `--notime` disables including time data in the summary output. Setting `--time` enables it.
 
@@ -206,17 +258,21 @@ This is useful for testing and differential evaluations.
 
 ### `genesis`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --genesis=<path>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--genesis=<path>
+```
 
-    ```bash
-    --genesis=/opt/besu/genesis.json
-    ```
+# Example
+
+```bash
+--genesis=/opt/besu/genesis.json
+```
+
+<!--/tabs-->
 
 The [Besu genesis file](genesis-items.md) to use when evaluating the EVM. Most useful are the `alloc` items that set up accounts and their stored memory states.
 
@@ -224,75 +280,95 @@ The [Besu genesis file](genesis-items.md) to use when evaluating the EVM. Most u
 
 ### `chain`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --chain=<mainnet|goerli|sepolia|dev|classic|mordor|kotti|astor>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--chain=<mainnet|goerli|sepolia|dev|classic|mordor|kotti|astor>
+```
 
-    ```bash
-    --chain=goerli
-    ```
+# Example
+
+```bash
+--chain=goerli
+```
+
+<!--/tabs-->
 
 The well-known network genesis file to use when evaluating the EVM. These values are an alternative to the [`--genesis`](#genesis) option for well-known networks.
 
 ### `repeat`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --repeat=<integer>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--repeat=<integer>
+```
 
-    ```bash
-    --repeat=1000
-    ```
+# Example
+
+```bash
+--repeat=1000
+```
+
+<!--/tabs-->
 
 Number of times to repeat the contract before gathering timing information. This is useful when benchmarking EVM operations. The default is `0`.
 
 ### `revert-reason-enabled`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --revert-reason-enabled
-    ```
+# Syntax
+
+```bash
+--revert-reason-enabled
+```
+
+<!--/tabs-->
 
 Enables tracing the reason included in `REVERT` operations. The revert reason is enabled by default.
 
 ### `fork`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --fork=<string>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--fork=<string>
+```
 
-    ```bash
-    --fork=FutureEips
-    ```
+# Example
+
+```bash
+--fork=FutureEips
+```
+
+<!--/tabs-->
 
 Specific fork to evaluate, overriding network settings.
 
 ### `key-value-storage`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --key-value-storage=<memory|rocksdb>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--key-value-storage=<memory|rocksdb>
+```
 
-    ```bash
-    --key-value-storage=rocksdb
-    ```
+# Example
+
+```bash
+--key-value-storage=rocksdb
+```
+
+<!--/tabs-->
 
 Kind of key value storage to use.
 
@@ -302,43 +378,55 @@ When set to `rocksdb` and combined with [`--data-path`](#data-path), [`--block-n
 
 ### `data-path`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --data-path=<path>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--data-path=<path>
+```
 
-    ```bash
-    --data-path=/opt/besu/data
-    ```
+# Example
+
+```bash
+--data-path=/opt/besu/data
+```
+
+<!--/tabs-->
 
 When [`--key-value-storage`](#key-value-storage) is set to `rocksdb`, specifies the location of the database on disk.
 
 ### `block-number`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --block-number=<integer>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--block-number=<integer>
+```
 
-    ```bash
-    --block-number=10000000
-    ```
+# Example
+
+```bash
+--block-number=10000000
+```
+
+<!--/tabs-->
 
 The block number to evaluate the code against. Used to ensure that the EVM is evaluating the code against the correct fork, or to specify the world state when [`--key-value-storage`](#key-value-storage) is set to `rocksdb`.
 
 ### `version`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --version
-    ```
+# Syntax
+
+```bash
+--version
+```
+
+<!--/tabs-->
 
 Displays the version information.
 
@@ -350,11 +438,15 @@ The `state-test` subcommand allows the [Ethereum state tests](https://github.com
 
 ### `json`, `trace`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --json
-    ```
+# Syntax
+
+```bash
+--json
+```
+
+<!--/tabs-->
 
 Provides an operation-by-operation trace of the command in JSON.
 
@@ -364,11 +456,15 @@ Set this option for EVM Lab Fuzzing. Whether or not `--json` is set, a summary J
 
 ### `[no]memory`, `trace.[no]memory`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --[no]memory
-    ```
+# Syntax
+
+```bash
+--[no]memory
+```
+
+<!--/tabs-->
 
 Setting `--nomemory` disables tracing the memory output for each operation. Setting `--memory` enables it. Memory traces are disabled by default.
 
@@ -380,33 +476,41 @@ For memory heavy scripts, disabling memory traces may reduce the volume of JSON 
 
 If you use command arguments, you can list one or more state tests. All the state tests are evaluated in the order they are specified.
 
-=== "Docker example"
+<!--tabs-->
 
-    ```bash
-    docker run --rm -v ${PWD}:/opt/referencetests hyperledger/besu-evmtool:develop --json state-test /opt/referencetests/GeneralStateTests/stExample/add11.json
-    ```
+# Docker example
 
-=== "CLI example"
+```bash
+docker run --rm -v ${PWD}:/opt/referencetests hyperledger/besu-evmtool:develop --json state-test /opt/referencetests/GeneralStateTests/stExample/add11.json
+```
 
-    ```bash
-    evm --json state-test stExample/add11.json
-    ```
+# CLI example
+
+```bash
+evm --json state-test stExample/add11.json
+```
+
+<!--/tabs-->
 
 ### Use standard input
 
 If no reference tests are passed in using the command line, the EVM tool loads one complete JSON object from standard input and executes that state test.
 
-=== "Docker example"
+<!--tabs-->
 
-    ```bash
-    docker run --rm -i hyperledger/besu-evmtool:develop --json state-test < stExample/add11.json
-    ```
+# Docker example
 
-=== "CLI example"
+```bash
+docker run --rm -i hyperledger/besu-evmtool:develop --json state-test < stExample/add11.json
+```
 
-    ```bash
-    evm --json state-test < stExample/add11.json
-    ```
+# CLI example
+
+```bash
+evm --json state-test < stExample/add11.json
+```
+
+<!--/tabs-->
 
 ## EOF code validation
 
@@ -414,17 +518,21 @@ The `code-validate` subcommand allows [Ethereum object formatted (EOF)](https://
 
 ### `file`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --file=<file>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--file=<file>
+```
 
-    ```bash
-    --file=eof.txt
-    ```
+# Example
+
+```bash
+--file=eof.txt
+```
+
+<!--/tabs-->
 
 File containing one or more EOF containers or EVM bytecode. Each line in the file is considered a separate program.
 
@@ -432,17 +540,21 @@ File containing one or more EOF containers or EVM bytecode. Each line in the fil
 
 If you use command arguments, each argument is considered a separate program. If a code segment includes spaces, it must be contained in quotes.
 
-=== "Docker example"
+<!--tabs-->
 
-    ```bash
-    docker run --rm hyperledger/besu-evmtool:develop code-validate "0xef0001 010008 020002-0007-0002 030000 00 00000002-02010002 59-59-b00001-50-b1 03-b1" 0xef0002 0xef00010100040200010001030000000000000000
-    ```
+# Docker example
 
-=== "CLI example"
+```bash
+docker run --rm hyperledger/besu-evmtool:develop code-validate "0xef0001 010008 020002-0007-0002 030000 00 00000002-02010002 59-59-b00001-50-b1 03-b1" 0xef0002 0xef00010100040200010001030000000000000000
+```
 
-    ```bash
-    evm code-validate "0xef0001 010008 020002-0007-0002 030000 00 00000002-02010002 59-59-b00001-50-b1 03-b1" 0xef0002 0xef00010100040200010001030000000000000000
-    ```
+# CLI example
+
+```bash
+evm code-validate "0xef0001 010008 020002-0007-0002 030000 00 00000002-02010002 59-59-b00001-50-b1 03-b1" 0xef0002 0xef00010100040200010001030000000000000000
+```
+
+<!--/tabs-->
 
 ### Use standard input
 

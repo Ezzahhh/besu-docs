@@ -12,10 +12,11 @@ Hyperledger Besu peer-to-peer (P2P) discovery happens periodically based on the 
 
 The frequency of discovery isn't configurable, but you can [limit remote connections](#limit-remote-connections) in public networks and [randomly prioritize connections](../../reference/cli/options.md#random-peer-priority-enabled) in small, stable networks.
 
-!!! info
+:::info
 
-    You can use [`admin_addPeer`](../../reference/cli/options.md#admin_addpeer) to attempt a specific connection, but
-    this isn't P2P discovery.
+You can use [`admin_addPeer`](../../reference/cli/options.md#admin_addpeer) to attempt a specific connection, but this isn't P2P discovery.
+
+:::
 
 In private networks, we recommend [using bootnodes](../../../private-networks/how-to/configure/bootnodes.md) to initially discover peers.
 
@@ -25,14 +26,13 @@ You can limit peers to reduce the bandwidth, CPU time, and disk access Besu uses
 
 To reduce the maximum number of peers, use the [`--max-peers`](../../reference/cli/options.md#max-peers) option. The default is 25.
 
-!!! caution
+:::caution
 
-    The minimum number of peers is set by the `--Xp2p-peer-lower-bound` option, which also has a default of 25.
-    If you reduce the `--max-peers` from the default, you must also set the `--Xp2p-peer-lower-bound`
-    option to the same value or lower.
-    For example, if you decrease `--max-peers` to 20, set `--Xp2p-peer-lower-bound` to 20 or lower.
+The minimum number of peers is set by the `--Xp2p-peer-lower-bound` option, which also has a default of 25. If you reduce the `--max-peers` from the default, you must also set the `--Xp2p-peer-lower-bound` option to the same value or lower. For example, if you decrease `--max-peers` to 20, set `--Xp2p-peer-lower-bound` to 20 or lower.
 
-    Note, `Xp2p-peer-lower-bound` is an early access option.
+Note, `Xp2p-peer-lower-bound` is an early access option.
+
+:::
 
 ## Limit remote connections
 
@@ -68,11 +68,9 @@ The default logging configuration doesn't list node connection and disconnection
 
 The console logs connection and disconnection events when the log level is `DEBUG` or higher. If the message `Successfully accepted connection from ...` displays, connections are getting through the firewalls.
 
-!!! example "Sample log output"
-
-    ```bash
-    2018-10-16 12:37:35.479-04:00 | nioEventLoopGroup-3-1 | INFO | NettyP2PNetwork | Successfully accepted connection from 0xa979fb575495b8d6db44f750317d0f4622bf4c2aa3365d6af7c284339968eef29b69ad0dce72a4d8db5ebb4968de0e3bec910127f134779fbcb0cb6d3331163c
-    ```
+```bash title="Sample log output"
+2018-10-16 12:37:35.479-04:00 | nioEventLoopGroup-3-1 | INFO | NettyP2PNetwork | Successfully accepted connection from 0xa979fb575495b8d6db44f750317d0f4622bf4c2aa3365d6af7c284339968eef29b69ad0dce72a4d8db5ebb4968de0e3bec910127f134779fbcb0cb6d3331163c
+```
 
 ## Disable discovery
 

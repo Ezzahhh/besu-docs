@@ -12,18 +12,21 @@ import Postman from '../../../global/postman.md';
 
 JSON-RPC APIs allow you to interact with your node. JSON-RPC endpoints are not enabled by default.
 
-!!! caution
+:::caution
 
-    You should secure access to your node's JSON-RPC endpoints. Users with access to your node
-    via JSON-RPC can make calls directly to your node, causing your node to consume resources.
+You should secure access to your node's JSON-RPC endpoints. Users with access to your node via JSON-RPC can make calls directly to your node, causing your node to consume resources.
+
+:::
 
 To enable JSON-RPC over HTTP or WebSocket, use the [`--rpc-http-enabled`](../../reference/cli/options.md#rpc-http-enabled) and [`--rpc-ws-enabled`](../../reference/cli/options.md#rpc-ws-enabled) options.
 
 To enable JSON-RPC over an [IPC socket](index.md#socket-path), use the `--Xrpc-ipc-enabled` option.
 
-!!! caution
+:::caution
 
-    `--Xrpc-ipc-enabled` is an early access option.
+`--Xrpc-ipc-enabled` is an early access option.
+
+:::
 
 <Postman />
 
@@ -37,27 +40,25 @@ To use the geth console with Besu:
 1. Specify which APIs to enable using the [`--rpc-http-api`](../../reference/cli/options.md#rpc-http-api) or `--Xrpc-ipc-api` option.
 1. Start the geth console specifying the JSON-RPC endpoint:
 
-!!! example
+<!--tabs-->
 
-    === "HTTP endpoint"
+# HTTP endpoint
 
-        ```bash
-        geth attach http://localhost:8545
-        ```
+```bash
+geth attach http://localhost:8545
+```
 
-    === "IPC endpoint"
+# IPC endpoint
 
-        ```bash
-        geth attach /path/to/besu.ipc
-        ```
+```bash
+geth attach /path/to/besu.ipc
+```
 
 Use the geth console to call [JSON-RPC API methods](../../reference/api/index.md) that geth and Besu share.
 
-!!! example
-
-    ```bash
-    eth.syncing
-    ```
+```bash
+eth.syncing
+```
 
 ## JSON-RPC authentication
 
@@ -69,53 +70,60 @@ Besu disables [Authentication](authenticate.md) by default.
 
 To make RPC requests over HTTP, you can use [`curl`](https://curl.haxx.se/download.html).
 
-!!! example
+<!--tabs-->
 
-    === "Syntax"
+# Syntax
 
-        ```bash
-        curl -X POST --data '{"jsonrpc":"2.0","id":<request-ID>,"method":"<method-name>","params":[<method-parameters>]}' <JSON-RPC-http-endpoint:port>
-        ```
+```bash
+curl -X POST --data '{"jsonrpc":"2.0","id":<request-ID>,"method":"<method-name>","params":[<method-parameters>]}' <JSON-RPC-http-endpoint:port>
+```
 
-    === "curl HTTP request"
+# curl HTTP request
 
-        ```bash
-        curl -X POST --data '{"jsonrpc":"2.0","id":"1","method":"eth_blockNumber","params":[]}' http://127.0.0.1:8555
-        ```
+```bash
+curl -X POST --data '{"jsonrpc":"2.0","id":"1","method":"eth_blockNumber","params":[]}' http://127.0.0.1:8555
+```
 
-    === "JSON result"
+# JSON result
 
-        ```json
-        {
-          "jsonrpc":"2.0",
-          "id":"1",
-          "result":"0x60e"
-        }
-        ```
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "1",
+  "result": "0x60e"
+}
+```
+
+<!--/tabs-->
 
 You can use `curl` to make multiple RPC requests (batch requests) over HTTP at the same time. Send the requests as an array, and receive an array of responses. The default number of allowed requests in a RPC batch request is `1024`. Use the [`--rpc-http-max-batch-size`](../../reference/cli/options.md#rpc-http-max-batch-size) command line option to update the default value.
 
-!!! example
+<!--tabs-->
 
-    === "curl HTTP request"
+# curl HTTP request
 
-        ```bash
-        curl -X POST --data '[{"jsonrpc":"2.0","id":"1","method":"eth_blockNumber","params":[]}, {"jsonrpc":"2.0","id":"2","method":"admin_peers","params":[]}]' http://127.0.0.1:8555
-        ```
+```bash
+curl -X POST --data '[{"jsonrpc":"2.0","id":"1","method":"eth_blockNumber","params":[]}, {"jsonrpc":"2.0","id":"2","method":"admin_peers","params":[]}]' http://127.0.0.1:8555
+```
 
-    === "JSON result"
+# JSON result
 
-        ```json
-        [{
-          "jsonrpc":"2.0",
-          "id":"1",
-          "result":"0x60e"
-        },{
-          "jsonrpc":"2.0",
-          "id":"2",
-          "result":[]
-        }]
-        ```
+```json
+[
+  {
+    "jsonrpc": "2.0",
+    "id": "1",
+    "result": "0x60e"
+  },
+  {
+    "jsonrpc": "2.0",
+    "id": "2",
+    "result": []
+  }
+]
+```
+
+<!--/tabs-->
 
 ### WebSocket
 
@@ -129,53 +137,60 @@ wscat -c ws://<JSON-RPC-ws-endpoint:port>
 
 After you establish a connection, the terminal displays a '>' prompt. Send individual requests as a JSON data package at each prompt.
 
-!!! Example
+<!--tabs-->
 
-    === "Syntax"
+# Syntax
 
-        ```bash
-        {"jsonrpc":"2.0","id":<request-ID>,"method":"<method-name>","params":[<method-parameters>]}
-        ```
+```bash
+{"jsonrpc":"2.0","id":<request-ID>,"method":"<method-name>","params":[<method-parameters>]}
+```
 
-    === "wscat WS request"
+# wscat WS request
 
-        ```bash
-        {"jsonrpc":"2.0","id":"1","method":"eth_blockNumber","params":[]}
-        ```
+```bash
+{"jsonrpc":"2.0","id":"1","method":"eth_blockNumber","params":[]}
+```
 
-    === "JSON result"
+# JSON result
 
-        ```json
-        {
-          "jsonrpc":"2.0",
-          "id":"1",
-          "result":"0x23"
-        }
-        ```
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "1",
+  "result": "0x23"
+}
+```
+
+<!--/tabs-->
 
 You can use `wscat` to make multiple RPC requests over WebSocket at the same time. Send the requests as an array, and receive an array of responses.
 
-!!! example
+<!--tabs-->
 
-    === "wscat WS request"
+# wscat WS request
 
-        ```bash
-        [{"jsonrpc":"2.0","id":"1","method":"eth_blockNumber","params":[]}, {"jsonrpc":"2.0","id":"2","method":"admin_peers","params":[]}]
-        ```
+```bash
+[{"jsonrpc":"2.0","id":"1","method":"eth_blockNumber","params":[]}, {"jsonrpc":"2.0","id":"2","method":"admin_peers","params":[]}]
+```
 
-    === "JSON result"
+# JSON result
 
-        ```json
-        [{
-          "jsonrpc":"2.0",
-          "id":"1",
-          "result":"0x23"
-        },{
-          "jsonrpc":"2.0",
-          "id":"2",
-          "result":[]
-        }]
-        ```
+```json
+[
+  {
+    "jsonrpc": "2.0",
+    "id": "1",
+    "result": "0x23"
+  },
+  {
+    "jsonrpc": "2.0",
+    "id": "2",
+    "result": []
+  }
+]
+```
+
+<!--/tabs-->
 
 :::note
 
@@ -193,39 +208,47 @@ By default, the readiness check requires a connected peer and the node to be wit
 
 Use the query parameters `minPeers` and `maxBlocksBehind` to adjust the number of peers required and the number of blocks tolerance.
 
-=== "Readiness endpoint"
+<!--tabs-->
 
-    ```bash
-    http://<JSON-RPC-HTTP-endpoint:port>/readiness
-    ```
+# Readiness endpoint
 
-=== "curl request example"
+```bash
+http://<JSON-RPC-HTTP-endpoint:port>/readiness
+```
 
-    ```bash
-    curl -v 'http://localhost:8545/readiness'
-    ```
+# curl request example
 
-=== "Query parameters example"
+```bash
+curl -v 'http://localhost:8545/readiness'
+```
 
-    ```bash
-    curl -v 'http://localhost:8545/readiness?minPeers=0&maxBlocksBehind=10'
-    ```
+# Query parameters example
+
+```bash
+curl -v 'http://localhost:8545/readiness?minPeers=0&maxBlocksBehind=10'
+```
+
+<!--/tabs-->
 
 ### Liveness
 
 The liveness check requires the JSON-RPC server to be up. You can use the endpoint to verify that the node can respond to RPC calls. The status in the response will always be `UP`.
 
-=== "Liveness endpoint"
+<!--tabs-->
 
-    ```bash
-    http://<JSON-RPC-HTTP-endpoint:port>/liveness
-    ```
+# Liveness endpoint
 
-=== "curl request example"
+```bash
+http://<JSON-RPC-HTTP-endpoint:port>/liveness
+```
 
-    ```bash
-    curl -v 'http://localhost:8545/liveness'
-    ```
+# curl request example
+
+```bash
+curl -v 'http://localhost:8545/liveness'
+```
+
+<!--/tabs-->
 
 ## API methods enabled by default
 
@@ -233,9 +256,11 @@ Besu enables the `ETH`, `NET`, and `WEB3` API methods by default.
 
 To enable the `ADMIN`, `CLIQUE`, `DEBUG`, `EEA`, `IBFT`, `MINER`, `PERM`, `PLUGINS`, `PRIV`, `TRACE`, and `TXPOOL` API methods, use the [`--rpc-http-api`](../../reference/cli/options.md#rpc-http-api), [`--rpc-ws-api`](../../reference/cli/options.md#rpc-ws-api), or `--Xrpc-ipc-api` options.
 
-!!! caution
+:::caution
 
-    `--Xrpc-ipc-api` is an early access option.
+`--Xrpc-ipc-api` is an early access option.
+
+:::
 
 ## Block parameter
 

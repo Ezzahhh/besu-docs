@@ -12,12 +12,9 @@ To enable the [Prometheus](https://prometheus.io/) monitoring and alerting servi
 
 The Besu example networks have [monitoring with Prometheus and Grafana configured].
 
-!!! example
+Use Prometheus to monitor the number of blocks your Besu node is behind the chain head, and to alert you that your node is not keeping up with the chain head.
 
-    Use Prometheus to monitor the number of blocks your Besu node is behind the chain head, and to alert you that your
-    node is not keeping up with the chain head.
-
-    [This recording](https://www.youtube.com/watch?v=7BuutRe0I28&feature=youtu.be) shows examples of monitoring Hyperledger Besu.
+[This recording](https://www.youtube.com/watch?v=7BuutRe0I28&feature=youtu.be) shows examples of monitoring Hyperledger Besu.
 
 ## Install Prometheus
 
@@ -42,74 +39,80 @@ To configure Prometheus and run with Besu:
 
 1.  Configure Prometheus to poll Besu. For example, add the following YAML fragment to the `scrape_configs` block of the `prometheus.yml` file:
 
-    !!! example
+    <!--tabs-->
 
-          === "Fragment to insert in prometheus.yml"
+    # Fragment to insert in prometheus.yml
 
-              ```yml
-                - job_name: besu
-                  scrape_interval: 15s
-                  scrape_timeout: 10s
-                  metrics_path: /metrics
-                  scheme: http
-                  static_configs:
-                  - targets:
-                    - localhost:9545
-              ```
+    ```yml
+    - job_name: besu
+      scrape_interval: 15s
+      scrape_timeout: 10s
+      metrics_path: /metrics
+      scheme: http
+      static_configs:
+        - targets:
+            - localhost:9545
+    ```
 
-          === "Full prometheus.yml example"
+    # Full prometheus.yml example
 
-              ```yml
-              global:
-                scrape_interval: 15s
+    ```yml
+    global:
+      scrape_interval: 15s
 
-              scrape_configs:
-                - job_name: "prometheus"
-                  static_configs:
-                  - targets: ["localhost:9090"]
-                - job_name: besu
-                  scrape_interval: 15s
-                  scrape_timeout: 10s
-                  metrics_path: /metrics
-                  scheme: http
-                  static_configs:
-                  - targets:
-                    - localhost:9545
-              ```
+    scrape_configs:
+      - job_name: "prometheus"
+        static_configs:
+          - targets: ["localhost:9090"]
+      - job_name: besu
+        scrape_interval: 15s
+        scrape_timeout: 10s
+        metrics_path: /metrics
+        scheme: http
+        static_configs:
+          - targets:
+              - localhost:9545
+    ```
 
-          Prometheus requires 3 MB of space per node per hour for metrics, with a `scrape_interval` of 15 seconds.
+    <!--/tabs-->
 
-1.  Start Besu with the [`--metrics-enabled`](../../reference/cli/options.md#metrics-enabled) option. To start a single node for testing with metrics enabled, run the following command:
+    Prometheus requires 3 MB of space per node per hour for metrics, with a `scrape_interval` of 15 seconds.
 
-    === "Syntax"
+2.  Start Besu with the [`--metrics-enabled`](../../reference/cli/options.md#metrics-enabled) option. To start a single node for testing with metrics enabled, run the following command:
 
-          ```bash
-          besu --network=dev --miner-enabled --miner-coinbase <COINBASE ADDRESS> --rpc-http-cors-origins="all" --rpc-http-enabled --metrics-enabled
-          ```
+    <!--tabs-->
 
-    === "Example"
+    # Syntax
 
-          ```bash
-          besu --network=dev --miner-enabled --miner-coinbase fe3b557e8fb62b89f4916b721be55ceb828dbd73 --rpc-http-cors-origins="all" --rpc-http-enabled --metrics-enabled
-          ```
+    ```bash
+    besu --network=dev --miner-enabled --miner-coinbase <COINBASE ADDRESS> --rpc-http-cors-origins="all" --rpc-http-enabled --metrics-enabled
+    ```
+
+    # Example
+
+    ```bash
+    besu --network=dev --miner-enabled --miner-coinbase fe3b557e8fb62b89f4916b721be55ceb828dbd73 --rpc-http-cors-origins="all" --rpc-http-enabled --metrics-enabled
+    ```
+
+    <!--/tabs-->
 
     To specify the host and port on which Prometheus accesses Besu, use the [`--metrics-host`](../../reference/cli/options.md#metrics-host) and [`--metrics-port`](../../reference/cli/options.md#metrics-port) options. The default host and port are 127.0.0.1 (`localhost`) and 9545.
 
-    !!! important
+    :::danger
 
-          To avoid DNS rebinding attacks, if running Prometheus on a different host than your Besu node (any host other than
-          `localhost`), add the hostname that Prometheus uses to [`--host-allowlist`](../../reference/cli/options.md#host-allowlist).
+    To avoid DNS rebinding attacks, if running Prometheus on a different host than your Besu node (any host other than `localhost`), add the hostname that Prometheus uses to [`--host-allowlist`](../../reference/cli/options.md#host-allowlist).
 
-          For example, if Prometheus is configured to get metrics from `http://besu.local:8008/metrics`, then `besu.local`
-          has to be in `--host-allowlist`.
+    For example, if Prometheus is configured to get metrics from `http://besu.local:8008/metrics`, then `besu.local` has to be in `--host-allowlist`.
 
-1.  In another terminal, run Prometheus specifying the `prometheus.yml` file:
+    :::
+
+3.  In another terminal, run Prometheus specifying the `prometheus.yml` file:
 
     ```bash
     prometheus --config.file=prometheus.yml
     ```
 
-1.  View the [Prometheus graphical interface](#view-prometheus-graphical-interface).
+4.  View the [Prometheus graphical interface](#view-prometheus-graphical-interface).
 
     :::tip
 
@@ -119,7 +122,7 @@ To configure Prometheus and run with Besu:
 
 ## Run Prometheus with Besu in push mode
 
-The [`--metrics-enabled`](../../reference/cli/options.md#metrics-enabled) option enables Prometheus polling of Besu, but sometimes metrics are hard to poll (for example, when running inside Docker containers with varying IP addresses). To enable Besu to push metrics to a [Prometheus Pushgateway](https://github.com/prometheus/pushgateway), use the [`--metrics-push-enabled`](../../reference/cli/options.md#metrics-push-enabled) option.
+The [`--metrics-enabled`](../../reference/cli/options.md#metrics-enabled) option enables Prometheus polling of Besu, but sometimes metrics are hard to poll (for example, when running inside Docker containers with varying IP addresses). To enable Besu to push metrics to a [Prometheus push gateway](https://github.com/prometheus/pushgateway), use the [`--metrics-push-enabled`](../../reference/cli/options.md#metrics-push-enabled) option.
 
 To configure Prometheus and run with Besu pushing to a push gateway:
 
@@ -143,17 +146,21 @@ To configure Prometheus and run with Besu pushing to a push gateway:
 
 1.  Start Besu specifying the `--metrics-push-enabled` option and port of the push gateway:
 
-    === "Syntax"
+    <!--tabs-->
 
-        ```bash
-        besu --network=dev --miner-enabled --miner-coinbase <COINBASE ADDRESS> --rpc-http-cors-origins="all" --rpc-http-enabled --metrics-push-enabled --metrics-push-port=9091 --metrics-push-host=127.0.0.1
-        ```
+    # Syntax
 
-    === "Example"
+    ```bash
+    besu --network=dev --miner-enabled --miner-coinbase <COINBASE ADDRESS> --rpc-http-cors-origins="all" --rpc-http-enabled --metrics-push-enabled --metrics-push-port=9091 --metrics-push-host=127.0.0.1
+    ```
 
-        ```bash
-        besu --network=dev --miner-enabled --miner-coinbase fe3b557e8fb62b89f4916b721be55ceb828dbd73 --rpc-http-cors-origins="all" --rpc-http-enabled --metrics-push-enabled --metrics-push-port=9091 --metrics-push-host=127.0.0.1
-        ```
+    # Example
+
+    ```bash
+    besu --network=dev --miner-enabled --miner-coinbase fe3b557e8fb62b89f4916b721be55ceb828dbd73 --rpc-http-cors-origins="all" --rpc-http-enabled --metrics-push-enabled --metrics-push-port=9091 --metrics-push-host=127.0.0.1
+    ```
+
+    <!--/tabs-->
 
 1.  In another terminal, run Prometheus specifying the `prometheus.yml` file:
 
@@ -277,14 +284,12 @@ The following table lists available metrics. Each metric starts with a metric ca
 | `process_open_fds` | Gauge | Number of open file descriptors |
 | `process_start_time_seconds` | Gauge | Start time of the process since Unix epoch in seconds |
 
-!!! important
+:::info
 
-    * The `ethereum_best_known_block_number` metric always has a value. When the
-      [`eth_syncing` JSON-RPC method](../../reference/api/index.md#eth_syncing) returns
-      false, the current chain height displays.
-    * Although the `ethereum_peer_limit` metric does not have a JSON-RPC equivalent, the
-      [`max peers` command line option](../../reference/cli/options.md#max-peers) sets the
-      maximum number of P2P connections that can be established.
+- The `ethereum_best_known_block_number` metric always has a value. When the [`eth_syncing` JSON-RPC method](../../reference/api/index.md#eth_syncing) returns false, the current chain height displays.
+- Although the `ethereum_peer_limit` metric does not have a JSON-RPC equivalent, the [`max peers` command line option](../../reference/cli/options.md#max-peers) sets the maximum number of P2P connections that can be established.
+
+:::
 
 <!-- Links -->
 

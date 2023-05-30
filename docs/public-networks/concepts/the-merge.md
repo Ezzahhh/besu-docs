@@ -6,9 +6,11 @@ description: What is the Merge?
 
 # The Merge
 
-!!! important
+:::info
 
-    The Merge was executed on **September 15, 2022**.
+The Merge was executed on **September 15, 2022**.
+
+:::
 
 [The Merge](https://ethereum.org/en/upgrades/merge/) was an Ethereum upgrade that merged the [Beacon Chain] into Ethereum Mainnet, turning Mainnet into a combination of an [execution layer and consensus layer](#execution-and-consensus-clients). The Merge transitioned Mainnet from proof of work to [proof of stake consensus](proof-of-stake/index.md).
 
@@ -39,20 +41,19 @@ Consensus clients, such as [Teku], contain beacon node and validator client impl
 
 Before The Merge, the execution and consensus clients' configurations were updated to listen for a certain total terminal difficulty (TTD) to be reached.
 
-!!! info
+:::info
 
-    The TTD is a specific value for the total difficulty, which is the sum of the proof-of-work
-    mining difficulty for all blocks up to some point in the blockchain.
+The TTD is a specific value for the total difficulty, which is the sum of the proof-of-work mining difficulty for all blocks up to some point in the blockchain.
+
+:::
 
 The consensus layer enabled the Merge configuration (Bellatrix) before reaching the TTD. Once the execution layer blocks reached the TTD, the Beacon Chain merged into Ethereum Mainnet, and Ethereum transitioned to a proof of stake network.
 
-!!! important
+:::tip
 
-    After The Merge, a Mainnet node operator must run both an execution client and a beacon node at
-    the same time.
-    To become a validator, you must also run a validator client (either
-    [in the same process as the beacon node](https://docs.teku.consensys.net/en/stable/HowTo/Get-Started/Run-Teku/#start-the-clients-in-a-single-process)
-    or [separately](https://docs.teku.consensys.net/en/stable/HowTo/Get-Started/Run-Teku/#run-the-clients-separately).
+After The Merge, a Mainnet node operator must run both an execution client and a beacon node at the same time. To become a validator, you must also run a validator client (either [in the same process as the beacon node](https://docs.teku.consensys.net/en/stable/HowTo/Get-Started/Run-Teku/#start-the-clients-in-a-single-process) or [separately](https://docs.teku.consensys.net/en/stable/HowTo/Get-Started/Run-Teku/#run-the-clients-separately).
+
+:::
 
 After The Merge, validators earn rewards for performing [validator duties](proof-of-stake/index.md), and [fee recipients](https://docs.teku.consensys.net/Reference/CLI/CLI-Syntax#validators-proposer-default-fee-recipient) also earn rewards for the inclusion of execution layer transactions.
 

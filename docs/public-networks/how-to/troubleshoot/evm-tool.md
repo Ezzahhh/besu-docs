@@ -54,16 +54,20 @@ The first mode of the EVM tool runs an arbitrary EVM and is invoked without an e
 
 The EVM tool also has a [`state-test` subcommand](../../reference/evm-tool.md#state-test-options) that allows [Ethereum state tests](https://github.com/ethereum/tests/tree/develop/GeneralStateTests) to be evaluated, and a [`code-validate` subcommand](../../reference/evm-tool.md#eof-code-validation) that allows [Ethereum object formatted (EOF)](https://eips.ethereum.org/EIPS/eip-3540) code to be validated. Most of the options from EVM execution don't apply.
 
-=== "`state-test`"
+<!--tabs-->
 
-    ```bash
-    evm state-test <state-test> --nomemory
-    ```
+# `state-test`
 
-=== "`code-validate`"
+```bash
+evm state-test <state-test> --nomemory
+```
 
-    ```bash
-    evm code-validate --file <file>
-    ```
+# `code-validate`
+
+```bash
+evm code-validate --file <file>
+```
+
+<!--/tabs-->
 
 The [EVM tool reference](../../reference/evm-tool.md) provides more information on these modes.

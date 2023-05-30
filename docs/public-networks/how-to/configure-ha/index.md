@@ -10,21 +10,17 @@ To enable high availability to the [RPC Pub/Sub API over WebSocket](../use-besu-
 
 ![Load Balancer](../../../assets/images/LoadBalancer.png)
 
-!!! important
+:::tip
 
-    We don't recommend putting [bootnodes](../../../private-networks/how-to/configure/bootnodes.md)
-    behind a load balancer.
+We don't recommend putting [bootnodes](../../../private-networks/how-to/configure/bootnodes.md) behind a load balancer.
 
-!!! important
+:::
 
-    We recommend using load balancers over WebSockets because WebSockets are persistent connections associated with
-    specific nodes. If you use load balancers configured in sticky mode over HTTP instead, the connection sticks to the
-    associated node even when the node is congested and there is a lower load node available. If you use load balancers
-    not configured in sticky mode over HTTP, the connections may switch from node to node, so some JSON-RPC requests may
-    not provide expected results (for example, [`admin` methods](../../reference/api/index.md#admin-methods),
-    [`net_enode`](../../reference/api/index.md#net_enode),
-    [`net_peerCount`](../../reference/api/index.md#net_peercount), and
-    [`eth_syncing`](../../reference/api/index.md#eth_syncing)).
+:::info
+
+We recommend using load balancers over WebSockets because WebSockets are persistent connections associated with specific nodes. If you use load balancers configured in sticky mode over HTTP instead, the connection sticks to the associated node even when the node is congested and there is a lower load node available. If you use load balancers not configured in sticky mode over HTTP, the connections may switch from node to node, so some JSON-RPC requests may not provide expected results (for example, [`admin` methods](../../reference/api/index.md#admin-methods), [`net_enode`](../../reference/api/index.md#net_enode), [`net_peerCount`](../../reference/api/index.md#net_peercount), and [`eth_syncing`](../../reference/api/index.md#eth_syncing)).
+
+:::
 
 ## Determine when a node is ready
 

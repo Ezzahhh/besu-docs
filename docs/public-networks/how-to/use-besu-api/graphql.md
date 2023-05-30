@@ -24,14 +24,11 @@ Access the GraphQL endpoint at `http://<HOST>:<PORT>/graphql`. Configure `<HOST>
 
 [Hyperledger Besu JSON-RPC API methods](../../reference/api/index.md) with an equivalent [GraphQL](graphql.md) query include a GraphQL request and result in the method example.
 
-!!! example
+The following [`syncing`](../../reference/api/index.md#eth_syncing) request returns data about the synchronization status.
 
-    The following [`syncing`](../../reference/api/index.md#eth_syncing) request returns data
-    about the synchronization status.
-
-    ```bash
-    curl -X POST -H "Content-Type: application/json" --data '{ "query": "{syncing{startingBlock currentBlock highestBlock}}"}' http://localhost:8547/graphql
-    ```
+```bash
+curl -X POST -H "Content-Type: application/json" --data '{ "query": "{syncing{startingBlock currentBlock highestBlock}}"}' http://localhost:8547/graphql
+```
 
 ## GraphQL requests with GraphiQL app
 
@@ -43,54 +40,62 @@ The third-party tool, [GraphiQL](https://github.com/skevy/graphiql-app), provide
 
 `transactionCount` and `transactions` supports the Pending query.
 
-!!! important
+:::info
 
-    Besu does not execute pending transactions so results from `account`, `call`, and `estimateGas`
-    for Pending do not reflect pending transactions.
+Besu does not execute pending transactions so results from `account`, `call`, and `estimateGas` for Pending do not reflect pending transactions.
 
-!!! example
+:::
 
-    === "Pending transaction count"
+<!--tabs-->
 
-        ```bash
-        curl -X POST -H "Content-Type: application/json" --data '{ "query": "{pending {transactionCount}}"}' http://localhost:8547/graphql
-        ```
+# Pending transaction count
 
-    === "Result"
+```bash
+curl -X POST -H "Content-Type: application/json" --data '{ "query": "{pending {transactionCount}}"}' http://localhost:8547/graphql
+```
 
-        ```bash
+# Result
+
+```json
+{
+  "data": {
+    "pending": {
+      "transactionCount": 2
+    }
+  }
+}
+```
+
+<!--/tabs-->
+
+<!--tabs-->
+
+# Pending transactions
+
+```bash
+curl -X POST -H "Content-Type: application/json" --data '{ "query": "{pending {transactions{hash}}}"}' http://localhost:8547/graphql
+```
+
+# Result
+
+```json
+{
+  "data": {
+    "pending": {
+      "transactions": [
         {
-          "data" : {
-            "pending" : {
-              "transactionCount" : 2
-            }
-          }
-        }
-        ```
-
-!!! example
-
-    === "Pending transactions"
-
-        ```bash
-        curl -X POST -H "Content-Type: application/json" --data '{ "query": "{pending {transactions{hash}}}"}' http://localhost:8547/graphql
-        ```
-
-    === "Result"
-
-        ```bash
+          "hash": "0xbb3ab8e2113a4afdde9753782cb0680408c0d5b982572dda117a4c72fafbf3fa"
+        },
         {
-          "data" : {
-            "pending" : {
-              "transactions" : [ {
-                "hash" : "0xbb3ab8e2113a4afdde9753782cb0680408c0d5b982572dda117a4c72fafbf3fa"
-              }, {
-                "hash" : "0xf6bd6b1bccf765024bd482a71c6855428e2903895982090ab5dbb0feda717af6"
-              } ]
-            }
-          }
+          "hash": "0xf6bd6b1bccf765024bd482a71c6855428e2903895982090ab5dbb0feda717af6"
         }
-        ```
+      ]
+    }
+  }
+}
+```
+
+<!--/tabs-->
 
 <!-- Links -->
 

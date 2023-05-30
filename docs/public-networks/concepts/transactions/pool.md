@@ -18,7 +18,11 @@ Options and methods for configuring and monitoring the transaction pool include:
 - [`--tx-pool-retention-hours`](../../reference/cli/options.md#tx-pool-retention-hours) command line option to specify the maximum number of hours to keep pending transactions in the transaction pool.
 - [`newPendingTransactions`](../../how-to/use-besu-api/rpc-pubsub.md#pending-transactions) and [`droppedPendingTransactions`](../../how-to/use-besu-api/rpc-pubsub.md#dropped-transactions) RPC subscriptions to notify of transactions added to and dropped from the transaction pool.
 
-!!! important When submitting [private transactions](../../../private-networks/concepts/privacy/private-transactions/index.md#nonce-validation), the [privacy marker transaction](../../../private-networks/concepts/privacy/private-transactions/processing.md) is submitted to the transaction pool, not the private transaction itself.
+:::tip
+
+When submitting [private transactions](../../../private-networks/concepts/privacy/private-transactions/index.md#nonce-validation), the [privacy marker transaction](../../../private-networks/concepts/privacy/private-transactions/processing.md) is submitted to the transaction pool, not the private transaction itself.
+
+:::
 
 ## Dropping transactions when the transaction pool is full
 

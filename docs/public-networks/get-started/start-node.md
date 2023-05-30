@@ -24,9 +24,11 @@ To delete the local block data, delete the `database` directory in the `besu/bui
 
 Besu specifies the genesis configuration, and sets the network ID and bootnodes when connecting to [Goerli](#run-a-node-on-goerli-testnet), [Sepolia](#run-a-node-on-sepolia-testnet), and [Mainnet](#run-a-node-on-ethereum-mainnet).
 
-!!! important
+:::info
 
-    The Ropsten, Rinkeby, and Kiln testnets are deprecated.
+The Ropsten, Rinkeby, and Kiln testnets are deprecated.
+
+:::
 
 When you specify [`--network=dev`](../reference/cli/options.md#network), Besu uses the development mode genesis configuration with a fixed low difficulty. A node started with [`--network=dev`](../reference/cli/options.md#network) has an empty bootnodes list by default.
 
@@ -66,19 +68,15 @@ rpc-http-enabled=true
 data-path="/tmp/tmpdata-path"
 ```
 
-!!! caution
+:::danger Warning
 
-    The following settings are a security risk in production environments:
+The following settings are a security risk in production environments:
 
-    * Enabling the HTTP JSON-RPC service
-      ([`--rpc-http-enabled`](../reference/cli/options.md#rpc-http-enabled)) and setting
-      [`--rpc-http-host`](../reference/cli/options.md#rpc-http-host) to 0.0.0.0 exposes the
-      RPC connection on your node to any remote connection.
-    * Setting [`--host-allowlist`](../reference/cli/options.md#host-allowlist) to `"*"`
-      allows JSON-RPC API access from any host.
-    * Setting
-      [`--rpc-http-cors-origins`](../reference/cli/options.md#rpc-http-cors-origins) to
-      `"all"` or `"*"` allows cross-origin resource sharing (CORS) access from any domain.
+- Enabling the HTTP JSON-RPC service ([`--rpc-http-enabled`](../reference/cli/options.md#rpc-http-enabled)) and setting [`--rpc-http-host`](../reference/cli/options.md#rpc-http-host) to 0.0.0.0 exposes the RPC connection on your node to any remote connection.
+- Setting [`--host-allowlist`](../reference/cli/options.md#host-allowlist) to `"*"` allows JSON-RPC API access from any host.
+- Setting [`--rpc-http-cors-origins`](../reference/cli/options.md#rpc-http-cors-origins) to `"all"` or `"*"` allows cross-origin resource sharing (CORS) access from any domain.
+
+:::
 
 ## Run a node on Goerli testnet
 
@@ -124,30 +122,28 @@ See the [guide on connecting to Mainnet](connect/mainnet.md) for more informatio
 
 If you started Besu with the [`--rpc-http-enabled`](../reference/cli/options.md#rpc-http-enabled) option, use [cURL](https://curl.haxx.se/) to call [JSON-RPC API methods](../reference/api/index.md) to confirm the node is running.
 
-!!! example
+- `eth_chainId` returns the chain ID of the network.
 
-    * `eth_chainId` returns the chain ID of the network.
+  ```bash
+  curl -X POST --data '{"jsonrpc":"2.0","method":"eth_chainId","params":[],"id":1}' localhost:8545
+  ```
 
-        ```bash
-        curl -X POST --data '{"jsonrpc":"2.0","method":"eth_chainId","params":[],"id":1}' localhost:8545
-        ```
+- `eth_syncing` returns the starting, current, and highest block.
 
-    * `eth_syncing` returns the starting, current, and highest block.
+  ```bash
+  curl -X POST --data '{"jsonrpc":"2.0","method":"eth_syncing","params":[],"id":1}' localhost:8545
+  ```
 
-        ```bash
-        curl -X POST --data '{"jsonrpc":"2.0","method":"eth_syncing","params":[],"id":1}' localhost:8545
-        ```
+  For example, after connecting to Mainnet, `eth_syncing` will return something similar to:
 
-        For example, after connecting to Mainnet, `eth_syncing` will return something similar to:
-
-        ```json
-        {
-          "jsonrpc" : "2.0",
-          "id" : 1,
-          "result" : {
-            "startingBlock" : "0x0",
-            "currentBlock" : "0x2d0",
-            "highestBlock" : "0x66c0"
-          }
-        }
-        ```
+  ```json
+  {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "startingBlock": "0x0",
+      "currentBlock": "0x2d0",
+      "highestBlock": "0x66c0"
+    }
+  }
+  ```

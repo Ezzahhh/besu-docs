@@ -14,26 +14,21 @@ To accept signed transactions from remote connections, set the [API listening ho
 
 [Use client libraries](develop/client-libraries.md) to create and send a signed raw transaction to transfer Ether and create a smart contract.
 
-!!! warning "Private keys"
+:::danger Private keys
 
-    Don't use the accounts from the examples on Mainnet or any public network except for testing.
-    The private keys are displayed which means the accounts are not secure.
+Don't use the accounts from the examples on Mainnet or any public network except for testing. The private keys are displayed which means the accounts are not secure.
 
-    All accounts and private keys in the examples are from the `dev.json` genesis file in the
-    [`/besu/config/src/main/resources`](https://github.com/hyperledger/besu/tree/master/config/src/main/resources)
-    directory.
+All accounts and private keys in the examples are from the `dev.json` genesis file in the [`/besu/config/src/main/resources`](https://github.com/hyperledger/besu/tree/master/config/src/main/resources) directory.
 
-    In production environments avoid exposing your private keys by creating signed transactions
-    offline, or use [EthSigner](https://docs.ethsigner.consensys.net/) to isolate your private keys
-    and sign transactions with
-    [`eth_sendTransaction`](https://docs.ethsigner.consensys.net/Reference/API-Methods#eth_sendtransaction).
+In production environments avoid exposing your private keys by creating signed transactions offline, or use [EthSigner](https://docs.ethsigner.consensys.net/) to isolate your private keys and sign transactions with [`eth_sendTransaction`](https://docs.ethsigner.consensys.net/Reference/API-Methods#eth_sendtransaction).
 
-!!! caution
+:::
 
-    Setting the [listening host](use-besu-api/index.md#service-hosts) to `0.0.0.0` exposes the API service
-    connection on your node to any remote connection.
-    In a production environment, ensure you are using a firewall to avoid exposing your node to the
-    internet.
+:::caution
+
+Setting the [listening host](use-besu-api/index.md#service-hosts) to `0.0.0.0` exposes the API service connection on your node to any remote connection. In a production environment, ensure you are using a firewall to avoid exposing your node to the internet.
+
+:::
 
 :::tip
 

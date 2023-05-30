@@ -14,9 +14,7 @@ Besu passes the contents of the `BESU_OPTS` environment variable to the JVM. Set
 
 For Bash-based executions, you can set the variable for only the scope of the program execution by setting it before starting Besu.
 
-!!! example
-
-    ```bash
-    BESU_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005 \
-    besu --network=goerli
-    ```
+```bash
+BESU_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005 \
+besu --network=goerli
+```

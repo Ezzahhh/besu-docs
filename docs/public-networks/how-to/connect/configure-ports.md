@@ -28,11 +28,11 @@ We also recommend opening the P2P TCP port for inbound connections. This is not 
 
 Combine the P2P port with the values for the [`--p2p-host`](../../reference/cli/options.md#p2p-host) and [`--p2p-interface`](../../reference/cli/options.md#p2p-interface) options when specifying the [P2P host](../../reference/cli/options.md#p2p-host) and [P2P network interface](../../reference/cli/options.md#p2p-interface).
 
-!!! info
+:::info
 
-    By default, peer discovery listens on `0.0.0.0:30303` (all interfaces). If the device Besu is
-    running on must bind to a specific network interface, specify the interface using the
-    [`--p2p-interface`](../../reference/cli/options.md#p2p-interface) option.
+By default, peer discovery listens on `0.0.0.0:30303` (all interfaces). If the device Besu is running on must bind to a specific network interface, specify the interface using the [`--p2p-interface`](../../reference/cli/options.md#p2p-interface) option.
+
+:::
 
 ## JSON-RPC API
 

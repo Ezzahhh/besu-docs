@@ -22,16 +22,20 @@ Pruning reduces the storage required by removing state trie nodes unreachable fr
 
 Pruning is disabled by default, and can be enabled with the [`--pruning-enabled`](../../public-networks/reference/cli/options.md#pruning-enabled) command line option.
 
-!!! Important
+:::info
 
-    Using pruning with [private transactions](../../private-networks/concepts/privacy/private-transactions)\
-    isn't supported.
+Using pruning with [private transactions](../../private-networks/concepts/privacy/private-transactions)\
+isn't supported.
+
+:::
 
 Pruning might increase block import times, but it doesn't affect the ability of nodes to stay in sync.
 
-!!! Important
+:::caution
 
-    Pruning is being deprecated for [Bonsai Tries](#bonsai-tries) and is currently not being updated.
+Pruning is being deprecated for [Bonsai Tries](#bonsai-tries) and is currently not being updated.
+
+:::
 
 ## Bonsai Tries
 
@@ -72,6 +76,8 @@ The following table shows the ways you can [sync a full node](../get-started/con
 | Forest | Fast | 750 GB | Yes |
 | Forest | Snap | 750 GB | No |
 
-!!! important
+:::tip
 
-    We recommend using snap sync with Bonsai for the fastest sync and lowest storage requirements.
+We recommend using snap sync with Bonsai for the fastest sync and lowest storage requirements.
+
+:::

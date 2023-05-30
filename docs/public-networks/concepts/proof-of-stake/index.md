@@ -8,9 +8,11 @@ description: Ethereum proof of stake consensus
 
 In Ethereum's PoS, you must run a [full node](../the-merge.md#execution-and-consensus-clients) and [stake 32 ETH](https://ethereum.org/en/staking/) to become a validator.
 
-!!! important
+:::caution
 
-    Withdrawing staked ETH isn't yet supported and will be included in a separate upgrade following The Merge.
+Withdrawing staked ETH isn't yet supported and will be included in a separate upgrade following The Merge.
+
+:::
 
 :::note
 

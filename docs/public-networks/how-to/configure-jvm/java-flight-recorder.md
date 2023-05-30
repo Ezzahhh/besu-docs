@@ -28,8 +28,8 @@ When recording, cleanly exiting Besu results in better data. If not possible to 
 
 Inspect the file written to `/tmp/recording.jfr` with tools such as [Mission Control](https://docs.oracle.com/javacomponents/jmc-5-5/jmc-user-guide/intro.htm#JMCCI109).
 
-!!! warning
+:::danger
 
-    If providing the output file to [ConsenSys Quorum support](https://consensys.net/quorum/support/), be aware that
-    while JFR files don't contain secrets such as private keys, some details about the user configuration can be
-    inferred from the JFR output.
+If providing the output file to [ConsenSys Quorum support](https://consensys.net/quorum/support/), be aware that while JFR files don't contain secrets such as private keys, some details about the user configuration can be inferred from the JFR output.
+
+:::

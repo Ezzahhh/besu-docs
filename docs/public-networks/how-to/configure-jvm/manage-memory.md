@@ -26,31 +26,35 @@ Setting a higher maximum heap size speeds up the sync period but doesn't have mu
 
 You can set the maximum heap size using the `BESU_OPTS` environment variable and the `-Xmx` option. The following examples set the maximum heap size to 8 GB:
 
-=== "Exported environment variable example"
+<!--tabs-->
 
-    Set the variable for the whole shell before running Besu.
+# Exported environment variable example
 
-    ```bash
-    export BESU_OPTS=-Xmx8g
-    ```
+Set the variable for the whole shell before running Besu.
 
-=== "Inline environment variable example"
+```bash
+export BESU_OPTS=-Xmx8g
+```
 
-    Set the variable only for the specific Besu command.
+# Inline environment variable example
 
-    ```bash
-    BESU_OPTS=-Xmx8g besu [Besu options]
-    ```
+Set the variable only for the specific Besu command.
 
-=== "`.service` file example"
+```bash
+BESU_OPTS=-Xmx8g besu [Besu options]
+```
 
-    ```bash
-    [Service]
-    ...
-    Environment="BESU_OPTS=-Xmx8g"
-    ExecStart=besu [Besu options]
-    ...
-    ```
+# `.service` file example
+
+```bash
+[Service]
+...
+Environment="BESU_OPTS=-Xmx8g"
+ExecStart=besu [Besu options]
+...
+```
+
+<!--/tabs-->
 
 ## Manage the heap dump
 

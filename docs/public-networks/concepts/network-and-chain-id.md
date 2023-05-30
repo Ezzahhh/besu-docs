@@ -20,18 +20,16 @@ Peer-to-peer communication between nodes uses the _network ID_, while the transa
 
 For most networks, including Mainnet and the public testnets, the network ID and the chain ID are the same, with the network ID defaulting to the chain ID, as specified in the genesis file.
 
-!!! example "Chain ID in the genesis file"
-
-    ```json
-    {
-      "config": {
-        "ethash": {
-        },
-        "chainID": 1981
-      },
-      ...
-    }
-    ```
+```json title="Chain ID in the genesis file"
+{
+  "config": {
+    "ethash": {
+    },
+    "chainID": 1981
+  },
+  ...
+}
+```
 
 Besu sets the chain ID (and by default the network ID) automatically, using either the [`--genesis-file`](../reference/cli/options.md#genesis-file) option or when specifying a network using the [`--network`](../reference/cli/options.md#network) option. The following table lists the available networks and their chain and network IDs.
 
@@ -46,9 +44,11 @@ Besu sets the chain ID (and by default the network ID) automatically, using eith
 | `kotti`   | ETC   | 6        | 6          | Test        |
 | `astor`   | ETC   | 212      | 212        | Test        |
 
-!!! important
+:::info
 
-    The Ropsten, Rinkeby, and Kiln testnets are deprecated.
+The Ropsten, Rinkeby, and Kiln testnets are deprecated.
+
+:::
 
 ## Specify a different network ID
 
@@ -66,7 +66,10 @@ To change a chain ID and start a new chain:
 4. Delete the old data directory or point to a new location for each node.
 5. [Restart the nodes](../../private-networks/tutorials/ibft/index.md#6-start-the-first-node-as-the-bootnode).
 
-!!! important
+:::danger Warning
 
-    Starting a new chain is starting from block zero.
-    This means when you start a new chain with a new chain ID, you lose all previous data.
+Starting a new chain is starting from block zero.
+
+This means when you start a new chain with a new chain ID, you lose all previous data.
+
+:::

@@ -10,11 +10,11 @@ tags:
 
 This reference describes the syntax of the Hyperledger Besu command line interface (CLI) subcommands.
 
-!!! attention
+:::note
 
-    This reference contains subcommands that apply to both public and private networks.
-    For private-network-specific subcommands, see the
-    [private network subcommands reference](../../../private-networks/reference/cli/subcommands.md).
+This reference contains subcommands that apply to both public and private networks. For private-network-specific subcommands, see the [private network subcommands reference](../../../private-networks/reference/cli/subcommands.md).
+
+:::
 
 To start a Besu node using subcommands, run:
 
@@ -34,17 +34,21 @@ Provides blocks related actions.
 
 ### `import`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    besu blocks import [--skip-pow-validation-enabled] [--start-block=<LONG>] [--end-block=<LONG>] --from=<block-file>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+besu blocks import [--skip-pow-validation-enabled] [--start-block=<LONG>] [--end-block=<LONG>] --from=<block-file>
+```
 
-    ```bash
-    besu blocks import --skip-pow-validation-enabled --start-block=100 --end-block=300 --from=/home/me/me_project/mainnet.blocks
-    ```
+# Example
+
+```bash
+besu blocks import --skip-pow-validation-enabled --start-block=100 --end-block=300 --from=/home/me/me_project/mainnet.blocks
+```
+
+<!--/tabs-->
 
 Imports a block or range of blocks from the specified file into the blockchain database.
 
@@ -62,17 +66,21 @@ Use `--skip-pow-validation-enabled` when performing [Ethereum Foundation hive te
 
 ### `export`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    besu blocks export [--start-block=<LONG>] [--end-block=<LONG>] --to=<block-file>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+besu blocks export [--start-block=<LONG>] [--end-block=<LONG>] --to=<block-file>
+```
 
-    ```bash
-    besu --network=goerli --data-path=/home/data/ blocks export --start-block=100 --end-block=300 --to=/home/exportblock.bin
-    ```
+# Example
+
+```bash
+besu --network=goerli --data-path=/home/data/ blocks export --start-block=100 --end-block=300 --to=/home/exportblock.bin
+```
+
+<!--/tabs-->
 
 Exports a block or range of blocks from storage to a file in RLP format.
 
@@ -84,55 +92,61 @@ If you are not running the command against the default network (Mainnet), specif
 
 Provides node public key related actions.
 
-!!!caution
+:::caution
 
-    To get the public key or address of a node, ensure you use the
-    [`--data-path`](options.md#data-path) or
-    [`--node-private-key-file`](options.md#node-private-key-file) option with the `public-key`
-    command. Otherwise, a new [node key](../../concepts/node-keys.md) is silently generated when
-    starting Besu.
+To get the public key or address of a node, ensure you use the [`--data-path`](options.md#data-path) or [`--node-private-key-file`](options.md#node-private-key-file) option with the `public-key` command. Otherwise, a new [node key](../../concepts/node-keys.md) is silently generated when starting Besu.
+
+:::
 
 ### `export`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    besu public-key export [--node-private-key-file=<file>] [--to=<key-file>] [--ec-curve=<ec-curve-name>]
-    ```
+# Syntax
 
-=== "Example (to standard output)"
+```bash
+besu public-key export [--node-private-key-file=<file>] [--to=<key-file>] [--ec-curve=<ec-curve-name>]
+```
 
-    ```bash
-    besu --data-path=<node data path> public-key export --node-private-key-file=/home/me/me_node/myPrivateKey --ec-curve=secp256k1
-    ```
+# Example (to standard output)
 
-=== "Example (to file)"
+```bash
+besu --data-path=<node data path> public-key export --node-private-key-file=/home/me/me_node/myPrivateKey --ec-curve=secp256k1
+```
 
-    ```bash
-    besu --data-path=<node data path> public-key export --node-private-key-file=/home/me/me_node/myPrivateKey --to=/home/me/me_project/not_precious_pub_key --ec-curve=secp256k1
-    ```
+# Example (to file)
+
+```bash
+besu --data-path=<node data path> public-key export --node-private-key-file=/home/me/me_node/myPrivateKey --to=/home/me/me_project/not_precious_pub_key --ec-curve=secp256k1
+```
+
+<!--/tabs-->
 
 Outputs the node public key to standard output or to the file specified by `--to=<key-file>`. You can output the public key associated with a specific private key file using the [`--node-private-key-file`](options.md#node-private-key-file) option. The default elliptic curve used for the key is `secp256k1`. Use the `--ec-curve` option to choose between `secp256k1` or `secp256r1`.
 
 ### `export-address`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    besu public-key export-address [--node-private-key-file=<file>] [--to=<address-file>] [--ec-curve=<ec-curve-name>]
-    ```
+# Syntax
 
-=== "Example (to standard output)"
+```bash
+besu public-key export-address [--node-private-key-file=<file>] [--to=<address-file>] [--ec-curve=<ec-curve-name>]
+```
 
-    ```bash
-    besu --data-path=<node data path> public-key export-address --node-private-key-file=/home/me/me_node/myPrivateKey --ec-curve=secp256k1
-    ```
+# Example (to standard output)
 
-=== "Example (to file)"
+```bash
+besu --data-path=<node data path> public-key export-address --node-private-key-file=/home/me/me_node/myPrivateKey --ec-curve=secp256k1
+```
 
-    ```bash
-    besu --data-path=<node data path> public-key export-address --node-private-key-file=/home/me/me_node/myPrivateKey --to=/home/me/me_project/me_node_address --ec-curve=secp256k1
-    ```
+# Example (to file)
+
+```bash
+besu --data-path=<node data path> public-key export-address --node-private-key-file=/home/me/me_node/myPrivateKey --to=/home/me/me_project/me_node_address --ec-curve=secp256k1
+```
+
+<!--/tabs-->
 
 Outputs the node address to standard output or to the file specified by `--to=<address-file>`. You can output the address associated with a specific private key file using the [`--node-private-key-file`](options.md#node-private-key-file) option. The default elliptic curve used for the key is `secp256k1`. Use the `--ec-curve` option to choose between `secp256k1` or `secp256r1`.
 
@@ -142,17 +156,21 @@ Provides password related actions.
 
 ### `hash`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    besu password hash --password=<my-password>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+besu password hash --password=<my-password>
+```
 
-    ```bash
-    besu password hash --password=myPassword123
-    ```
+# Example
+
+```bash
+besu password hash --password=myPassword123
+```
+
+<!--/tabs-->
 
 Generates the hash of a given password. Include the hash in the [credentials file](../../how-to/use-besu-api/authenticate.md#credentials-file) for JSON-RPC API [authentication](../../how-to/use-besu-api/authenticate.md).
 
@@ -162,17 +180,21 @@ Provides operator actions.
 
 ### `generate-log-bloom-cache`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    besu operator generate-log-bloom-cache [--start-block=<BLOCK_NUMBER>] [--end-block=<BLOCK_NUMBER>]
-    ```
+# Syntax
 
-=== "Example"
+```bash
+besu operator generate-log-bloom-cache [--start-block=<BLOCK_NUMBER>] [--end-block=<BLOCK_NUMBER>]
+```
 
-    ```bash
-    besu --network=goerli --data-path=/project/goerli operator generate-log-bloom-cache --start-block=0 --end-block=100000
-    ```
+# Example
+
+```bash
+besu --network=goerli --data-path=/project/goerli operator generate-log-bloom-cache --start-block=0 --end-block=100000
+```
+
+<!--/tabs-->
 
 :::tip
 
@@ -192,17 +214,21 @@ To generate cached log bloom indexes while the node is running, use the [`admin_
 
 ## `retesteth`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    besu retesteth [--data-path=<PATH>] [--rpc-http-host=<HOST>] [--rpc-http-port=<PORT>] [-l=<LOG VERBOSITY LEVEL>] [--host-allowlist=<hostname>[,<hostname>…]… or * or all]
-    ```
+# Syntax
 
-=== "Example"
+```bash
+besu retesteth [--data-path=<PATH>] [--rpc-http-host=<HOST>] [--rpc-http-port=<PORT>] [-l=<LOG VERBOSITY LEVEL>] [--host-allowlist=<hostname>[,<hostname>…]… or * or all]
+```
 
-    ```bash
-    besu retesteth --data-path=/home/me/me_node --rpc-http-port=8590 --host-allowlist=*
-    ```
+# Example
+
+```bash
+besu retesteth --data-path=/home/me/me_node --rpc-http-port=8590 --host-allowlist=*
+```
+
+<!--/tabs-->
 
 Runs a Retesteth-compatible server. [Retesteth](https://github.com/ethereum/retesteth/wiki) is a developer tool that can generate and run consensus tests against any Ethereum client running such a server.
 
@@ -216,16 +242,20 @@ The command accepts the following command line options:
 
 ## `validate-config`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    besu validate-config --config-file <PATH-TO-CONFIG-FILE>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+besu validate-config --config-file <PATH-TO-CONFIG-FILE>
+```
 
-    ```bash
-    besu validate-config --config-file ../besu-local-nodes/config/besu/besu1.conf
-    ```
+# Example
+
+```bash
+besu validate-config --config-file ../besu-local-nodes/config/besu/besu1.conf
+```
+
+<!--/tabs-->
 
 Performs basic syntax validation of the specified [TOML configuration file](../../how-to/configuration-file.md). Checks TOML syntax (for example, valid format and unmatched quotes) and flags unknown options. Doesn't check data types, and doesn't check dependencies between options (this is done at Besu startup).

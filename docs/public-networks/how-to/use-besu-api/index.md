@@ -18,9 +18,11 @@ The following sections provide information about JSON-RPC, RPC Pub/Sub, and Grap
 
 To enable API access, use the [`--rpc-http-enabled`](../../reference/cli/options.md#rpc-http-enabled), [`--ws-http-enabled`](../../reference/cli/options.md#rpc-ws-enabled), [`--graphql-http-enabled`](../../reference/cli/options.md#graphql-http-enabled), and `--Xrpc-ipc-enabled` options.
 
-!!! caution
+:::caution
 
-    `--Xrpc-ipc-enabled` is an early access option.
+`--Xrpc-ipc-enabled` is an early access option.
+
+:::
 
 ## Service hosts
 
@@ -28,11 +30,11 @@ To specify the host the API service listens on, use the [`--rpc-http-host`](../.
 
 To allow remote connections, set the host to `0.0.0.0`.
 
-!!! caution
+:::caution
 
-    Setting the host to `0.0.0.0` exposes the API service connection on your node to any remote
-    connection. In a production environment, ensure you use a firewall to avoid exposing your node
-    to the internet.
+Setting the host to `0.0.0.0` exposes the API service connection on your node to any remote connection. In a production environment, ensure you use a firewall to avoid exposing your node to the internet.
+
+:::
 
 ## Service ports
 
@@ -50,33 +52,35 @@ Ports must be [exposed appropriately](../connect/configure-ports.md).
 
 To specify the socket path for the IPC socket, use the `--Xrpc-ipc-path` option. The default path is `besu.ipc` in the Besu data directory.
 
-!!! caution
+:::caution
 
-    `--Xrpc-ipc-path` is an early access option.
+`--Xrpc-ipc-path` is an early access option.
+
+:::
 
 ## Host allowlist
 
 To prevent DNS rebinding attacks, Besu checks incoming HTTP request host headers, WebSocket connections, and GraphQL requests. Besu accepts requests only when hostnames specified using the [`--host-allowlist`](../../reference/cli/options.md#host-allowlist) option matches the request host headers. By default, Besu accepts requests and connections from `localhost` and `127.0.0.1`.
 
-!!! important
+:::info
 
-    This isn't a permissioning feature.
-    To restrict access to the API, we recommend using the [Besu authentication mechanism](authenticate.md)
-    with username and password authentication or JWT public key authentication.
+This isn't a permissioning feature. To restrict access to the API, we recommend using the [Besu authentication mechanism](authenticate.md) with username and password authentication or JWT public key authentication.
+
+:::
 
 If your application publishes RPC ports, specify the hostnames when starting Besu.
 
-!!! example
-
-    ```bash
-    besu --host-allowlist=example.com
-    ```
+```bash
+besu --host-allowlist=example.com
+```
 
 Specify `*` for `--host-allowlist` to effectively disable host protection.
 
-!!! caution
+:::caution
 
-    Specifying `*` for `--host-allowlist` is not recommended for production code.
+Specifying `*` for `--host-allowlist` is not recommended for production code.
+
+:::
 
 ## Not supported by Besu
 

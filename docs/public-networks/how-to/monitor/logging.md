@@ -33,27 +33,25 @@ Use the [`admin_changeLogLevel`](../../reference/api/index.md#admin_changeloglev
 
 You can provide your own logging configuration using the standard Log4J2 configuration mechanisms. For example, the following Log4J2 configuration is the same as the [default configuration] except for the exclusion of logging of stack traces for exceptions.
 
-!!! example "debug.xml"
+```xml title="debug.xml"
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+  <Properties>
+    <Property name="root.log.level">INFO</Property>
+  </Properties>
 
-    ```xml
-    <?xml version="1.0" encoding="UTF-8"?>
-    <Configuration status="INFO">
-      <Properties>
-        <Property name="root.log.level">INFO</Property>
-      </Properties>
-
-      <Appenders>
-        <Console name="Console" target="SYSTEM_OUT">
-          <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSSZZZ} | %t | %-5level | %c{1} | %msg %throwable{short.message}%n" />
-        </Console>
-      </Appenders>
-      <Loggers>
-        <Root level="${sys:root.log.level}">
-          <AppenderRef ref="Console" />
-        </Root>
-      </Loggers>
-    </Configuration>
-    ```
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSSZZZ} | %t | %-5level | %c{1} | %msg %throwable{short.message}%n" />
+    </Console>
+  </Appenders>
+  <Loggers>
+    <Root level="${sys:root.log.level}">
+      <AppenderRef ref="Console" />
+    </Root>
+  </Loggers>
+</Configuration>
+```
 
 To use your custom configuration, set the environment variable `LOG4J_CONFIGURATION_FILE` to the location of your configuration file.
 
@@ -61,13 +59,11 @@ If you have more specific requirements, you can create your own [log4j2 configur
 
 For Bash-based executions, you can set the variable for only the scope of the program execution by setting it before starting Besu.
 
-!!! example
+To set the debug logging and start Besu connected to the Goerli testnet:
 
-    To set the debug logging and start Besu connected to the Goerli testnet:
-
-    ```bash
-    LOG4J_CONFIGURATION_FILE=./debug.xml besu --network=goerli
-    ```
+```bash
+LOG4J_CONFIGURATION_FILE=./debug.xml besu --network=goerli
+```
 
 ### Log rotation
 

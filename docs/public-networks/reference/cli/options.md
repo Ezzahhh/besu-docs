@@ -10,11 +10,11 @@ tags:
 
 This reference describes the syntax of the Hyperledger Besu command line interface (CLI) options.
 
-!!! attention
+:::info
 
-    This reference contains options that apply to both public and private networks.
-    For private-network-specific options, see the
-    [private network options reference](../../../private-networks/reference/cli/options.md).
+This reference contains options that apply to both public and private networks. For private-network-specific options, see the [private network options reference](../../../private-networks/reference/cli/options.md).
+
+:::
 
 ## Specify options
 
@@ -44,95 +44,107 @@ If using Bash or Z shell, you can view option suggestions by entering `--` and p
 besu --Tab+Tab
 ```
 
-!!! caution
+:::caution
 
-    Characters such as smart quotes and long (em) hyphens don't work in Besu command line options.
-    Ensure quotes aren't automatically converted to smart quotes, or double hyphens combined into em
-    hyphens.
+Characters such as smart quotes and long (em) hyphens don't work in Besu command line options. Ensure quotes aren't automatically converted to smart quotes, or double hyphens combined into em hyphens.
+
+:::
 
 ## Options
 
 ### `api-gas-price-blocks`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --api-gas-price-blocks=<INTEGER>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--api-gas-price-blocks=<INTEGER>
+```
 
-    ```bash
-    --api-gas-price-blocks=50
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--api-gas-price-blocks=50
+```
 
-    ```bash
-    BESU_API_GAS_PRICE_BLOCKS=50
-    ```
+# Environment variable
 
-=== "Example configuration file"
+```bash
+BESU_API_GAS_PRICE_BLOCKS=50
+```
 
-    ```bash
-    api-gas-price-blocks=50
-    ```
+# Example configuration file
+
+```bash
+api-gas-price-blocks=50
+```
+
+<!--/tabs-->
 
 Number of blocks back from the head block to examine for [`eth_gasPrice`](../api/index.md#eth_gasprice). The default is `100`.
 
 ### `api-gas-price-max`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --api-gas-price-max=<INTEGER>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--api-gas-price-max=<INTEGER>
+```
 
-    ```bash
-    --api-gas-price-max=20000
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--api-gas-price-max=20000
+```
 
-    ```bash
-    BESU_API_GAS_PRICE_MAX=20000
-    ```
+# Environment variable
 
-=== "Example configuration file"
+```bash
+BESU_API_GAS_PRICE_MAX=20000
+```
 
-    ```bash
-    api-gas-price-max=20000
-    ```
+# Example configuration file
+
+```bash
+api-gas-price-max=20000
+```
+
+<!--/tabs-->
 
 Maximum gas price to return for [`eth_gasPrice`](../api/index.md#eth_gasprice), regardless of the percentile value measured. The default is `500000000000` (500 GWei).
 
 ### `api-gas-price-percentile`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --api-gas-price-percentile=<DOUBLE>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--api-gas-price-percentile=<DOUBLE>
+```
 
-    ```bash
-    --api-gas-price-percentile=75
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--api-gas-price-percentile=75
+```
 
-    ```bash
-    BESU_API_GAS_PRICE_PERCENTILE=75
-    ```
+# Environment variable
 
-=== "Example configuration file"
+```bash
+BESU_API_GAS_PRICE_PERCENTILE=75
+```
 
-    ```bash
-    api-gas-price-percentile=75
-    ```
+# Example configuration file
+
+```bash
+api-gas-price-percentile=75
+```
+
+<!--/tabs-->
 
 Percentile value to measure for [`eth_gasPrice`](../api/index.md#eth_gasprice). The default is `50.0`.
 
@@ -143,29 +155,33 @@ For [`eth_gasPrice`](../api/index.md#eth_gasprice), to return the:
 
 ### `auto-log-bloom-caching-enabled`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --auto-log-bloom-caching-enabled[=<true|false>]
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--auto-log-bloom-caching-enabled[=<true|false>]
+```
 
-    ```bash
-    --auto-log-bloom-caching-enabled=false
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--auto-log-bloom-caching-enabled=false
+```
 
-    ```bash
-    BESU_AUTO_LOG_BLOOM_CACHING_ENABLED=false
-    ```
+# Environment variable
 
-=== "Example configuration file"
+```bash
+BESU_AUTO_LOG_BLOOM_CACHING_ENABLED=false
+```
 
-    ```bash
-    auto-log-bloom-caching-enabled=false
-    ```
+# Example configuration file
+
+```bash
+auto-log-bloom-caching-enabled=false
+```
+
+<!--/tabs-->
 
 Enables or disables automatic log bloom caching. APIs such as [`eth_getLogs`](../api/index.md#eth_getlogs) and [`eth_getFilterLogs`](../api/index.md#eth_getfilterlogs) use the cache for improved performance. The default is `true`.
 
@@ -175,29 +191,33 @@ Automatic log bloom caching has a small impact on performance. If you are not qu
 
 ### `banned-node-ids`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --banned-node-ids=<bannedNodeId>[,<bannedNodeId>...]...
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--banned-node-ids=<bannedNodeId>[,<bannedNodeId>...]...
+```
 
-    ```bash
-    --banned-node-ids=0xc35c3...d615f,0xf42c13...fc456
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--banned-node-ids=0xc35c3...d615f,0xf42c13...fc456
+```
 
-    ```bash
-    BESU_BANNED_NODE_IDS=0xc35c3...d615f,0xf42c13...fc456
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_BANNED_NODE_IDS=0xc35c3...d615f,0xf42c13...fc456
+```
 
-    ```bash
-    banned-node-ids=["0xc35c3...d615f","0xf42c13...fc456"]
-    ```
+# Configuration file
+
+```bash
+banned-node-ids=["0xc35c3...d615f","0xf42c13...fc456"]
+```
+
+<!--/tabs-->
 
 A list of node IDs with which this node will not peer. The node ID is the public key of the node. You can specify the banned node IDs with or without the `0x` prefix.
 
@@ -209,57 +229,65 @@ The singular `--banned-node-id` and plural `--banned-node-ids` are available and
 
 ### `bonsai-historical-block-limit`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --bonsai-historical-block-limit=256
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--bonsai-historical-block-limit=256
+```
 
-    ```bash
-    --bonsai-historical-block-limit=256
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--bonsai-historical-block-limit=256
+```
 
-    ```bash
-    BESU_BONSAI_MAXIMUM_BACK_LAYERS_TO_LOAD=256
-    ```
+# Environment variable
 
-=== "Example configuration file"
+```bash
+BESU_BONSAI_MAXIMUM_BACK_LAYERS_TO_LOAD=256
+```
 
-    ```bash
-    bonsai-historical-block-limit=256
-    ```
+# Example configuration file
+
+```bash
+bonsai-historical-block-limit=256
+```
+
+<!--/tabs-->
 
 When using [Bonsai Tries](../../concepts/data-storage-formats.md#bonsai-tries), the [maximum number of previous blocks](../../concepts/data-storage-formats.md#accessing-data) for which Bonsai can reconstruct a historical state. The default is 512.
 
 ### `bootnodes`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --bootnodes[=<enode://id@host:port>[,<enode://id@host:port>...]...]
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--bootnodes[=<enode://id@host:port>[,<enode://id@host:port>...]...]
+```
 
-    ```bash
-    --bootnodes=enode://c35c3...d615f@1.2.3.4:30303,enode://f42c13...fc456@1.2.3.5:30303
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--bootnodes=enode://c35c3...d615f@1.2.3.4:30303,enode://f42c13...fc456@1.2.3.5:30303
+```
 
-    ```bash
-    BESU_BOOTNODES=enode://c35c3...d615f@1.2.3.4:30303,enode://f42c13...fc456@1.2.3.5:30303
-    ```
+# Environment variable
 
-=== "Example configuration file"
+```bash
+BESU_BOOTNODES=enode://c35c3...d615f@1.2.3.4:30303,enode://f42c13...fc456@1.2.3.5:30303
+```
 
-    ```bash
-    bootnodes=["enode://c35c3...d615f@1.2.3.4:30303","enode://f42c13...fc456@1.2.3.5:30303"]
-    ```
+# Example configuration file
+
+```bash
+bootnodes=["enode://c35c3...d615f@1.2.3.4:30303","enode://f42c13...fc456@1.2.3.5:30303"]
+```
+
+<!--/tabs-->
 
 A list of comma-separated [enode URLs](../../concepts/node-keys.md#enode-url) for [P2P discovery bootstrap](../../../private-networks/how-to/configure/bootnodes.md).
 
@@ -269,57 +297,65 @@ In private networks defined using [`--genesis-file`](#genesis-file) or when usin
 
 ### `color-enabled`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --color-enabled[=<true|false>]
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--color-enabled[=<true|false>]
+```
 
-    ```bash
-    --color-enabled=false
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--color-enabled=false
+```
 
-    ```bash
-    BESU_COLOR_ENABLED=false
-    ```
+# Environment variable
 
-=== "Example configuration file"
+```bash
+BESU_COLOR_ENABLED=false
+```
 
-    ```bash
-    color-enabled=false
-    ```
+# Example configuration file
+
+```bash
+color-enabled=false
+```
+
+<!--/tabs-->
 
 Enables or disables color output to console. The default is `true`.
 
 ### `compatibility-eth64-forkid-enabled`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --compatibility-eth64-forkid-enabled[=<true|false>]
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--compatibility-eth64-forkid-enabled[=<true|false>]
+```
 
-    ```bash
-    --compatibility-eth64-forkid-enabled=true
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--compatibility-eth64-forkid-enabled=true
+```
 
-    ```bash
-    BESU_COMPATIBILITY_ETH64_FORKID_ENABLED=true
-    ```
+# Environment variable
 
-=== "Example configuration file"
+```bash
+BESU_COMPATIBILITY_ETH64_FORKID_ENABLED=true
+```
 
-    ```bash
-    compatibility-eth64-forkid-enabled=true
-    ```
+# Example configuration file
+
+```bash
+compatibility-eth64-forkid-enabled=true
+```
+
+<!--/tabs-->
 
 Enables or disables the legacy Eth/64 fork ID. For any networks with nodes using Besu v1.4 or earlier and nodes using Besu v20.10.1 or later, either:
 
@@ -328,137 +364,157 @@ Enables or disables the legacy Eth/64 fork ID. For any networks with nodes using
 
 The default is `false`.
 
-!!! caution
+:::caution
 
-    If networks have Besu nodes using v1.4 or earlier and other Besu nodes using v20.10.1 or later,
-    the nodes on different versions cannot communicate unless `--compatibility-eth64-forkid-enabled`
-    is set to `true`.
+If networks have Besu nodes using v1.4 or earlier and other Besu nodes using v20.10.1 or later, the nodes on different versions cannot communicate unless `--compatibility-eth64-forkid-enabled` is set to `true`.
+
+:::
 
 ### `config-file`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --config-file=<FILE>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--config-file=<FILE>
+```
 
-    ```bash
-    --config-file=/home/me/me_node/config.toml
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--config-file=/home/me/me_node/config.toml
+```
 
-    ```bash
-    BESU_CONFIG_FILE=/home/me/me_node/config.toml
-    ```
+# Environment variable
+
+```bash
+BESU_CONFIG_FILE=/home/me/me_node/config.toml
+```
+
+<!--/tabs-->
 
 The path to the [TOML configuration file](../../how-to/configuration-file.md). The default is `none`.
 
 ### `data-path`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --data-path=<PATH>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--data-path=<PATH>
+```
 
-    ```bash
-    --data-path=/home/me/me_node
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--data-path=/home/me/me_node
+```
 
-    ```bash
-    BESU_DATA_PATH=/home/me/me_node
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_DATA_PATH=/home/me/me_node
+```
 
-    ```bash
-    data-path="/home/me/me_node"
-    ```
+# Configuration file
+
+```bash
+data-path="/home/me/me_node"
+```
+
+<!--/tabs-->
 
 The path to the Besu data directory. The default is the directory you installed Besu in, or `/opt/besu/database` if using the [Besu Docker image](../../get-started/install/run-docker-image.md).
 
 ### `data-storage-format`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --data-storage-format=<FORMAT>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--data-storage-format=<FORMAT>
+```
 
-    ```bash
-    --data-storage-format=BONSAI
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--data-storage-format=BONSAI
+```
 
-    ```bash
-    BESU_DATA_STORAGE_FORMAT=BONSAI
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_DATA_STORAGE_FORMAT=BONSAI
+```
 
-    ```bash
-    data-storage-format="BONSAI"
-    ```
+# Configuration file
+
+```bash
+data-storage-format="BONSAI"
+```
+
+<!--/tabs-->
 
 The [data storage format](../../concepts/data-storage-formats.md) to use. Set to `BONSAI` for Bonsai Tries or `FOREST` for Forest of Tries. The default is `FOREST`.
 
 ### `discovery-dns-url`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --discovery-dns-url=<enrtree URL>
-    ```
+# Syntax
 
-=== "Environment variable"
+```bash
+--discovery-dns-url=<enrtree URL>
+```
 
-    ```bash
-    BESU_DISCOVERY_DNS_URL=enrtree://AM5FCQLWIZX2QFPNJAP7VUERCCRNGRHWZG3YYHIUV7BVDQ5FDPRT2@nodes.example.org
-    ```
+# Environment variable
 
-=== "Example configuration file"
+```bash
+BESU_DISCOVERY_DNS_URL=enrtree://AM5FCQLWIZX2QFPNJAP7VUERCCRNGRHWZG3YYHIUV7BVDQ5FDPRT2@nodes.example.org
+```
 
-    ```bash
-    discovery-dns-url="enrtree://AM5FCQLWIZX2QFPNJAP7VUERCCRNGRHWZG3YYHIUV7BVDQ5FDPRT2@nodes.example.org"
-    ```
+# Example configuration file
+
+```bash
+discovery-dns-url="enrtree://AM5FCQLWIZX2QFPNJAP7VUERCCRNGRHWZG3YYHIUV7BVDQ5FDPRT2@nodes.example.org"
+```
+
+<!--/tabs-->
 
 The `enrtree` URL of the DNS node list for [node discovery via DNS](https://eips.ethereum.org/EIPS/eip-1459). The default is `null`.
 
 ### `discovery-enabled`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --discovery-enabled[=<true|false>]
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--discovery-enabled[=<true|false>]
+```
 
-    ```bash
-    --discovery-enabled=false
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--discovery-enabled=false
+```
 
-    ```bash
-    BESU_DISCOVERY_ENABLED=false
-    ```
+# Environment variable
 
-=== "Example configuration file"
+```bash
+BESU_DISCOVERY_ENABLED=false
+```
 
-    ```bash
-    discovery-enabled=false
-    ```
+# Example configuration file
+
+```bash
+discovery-enabled=false
+```
+
+<!--/tabs-->
 
 Enables or disables P2P discovery. The default is `true`.
 
@@ -470,29 +526,33 @@ You can override the default DNS server if it's unreliable or doesn't serve TCP 
 
 ### `engine-host-allowlist`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --engine-host-allowlist=<hostname>[,<hostname>...]... or "*"
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--engine-host-allowlist=<hostname>[,<hostname>...]... or "*"
+```
 
-    ```bash
-    --engine-host-allowlist=localhost,127.0.0.1
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--engine-host-allowlist=localhost,127.0.0.1
+```
 
-    ```bash
-    BESU_ENGINE_HOST_ALLOWLIST=localhost,127.0.0.1
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_ENGINE_HOST_ALLOWLIST=localhost,127.0.0.1
+```
 
-    ```bash
-    engine-host-allowlist=["localhost","127.0.0.1"]
-    ```
+# Configuration file
+
+```bash
+engine-host-allowlist=["localhost","127.0.0.1"]
+```
+
+<!--/tabs-->
 
 A comma-separated list of hostnames to allow for Engine API access (applies to both HTTP and WebSocket).
 
@@ -504,257 +564,295 @@ To allow all hostnames, use `"*"`. We don't recommend allowing all hostnames in 
 
 ### `engine-jwt-disabled`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --engine-jwt-disabled[=<true|false>]
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--engine-jwt-disabled[=<true|false>]
+```
 
-    ```bash
-    --engine-jwt-disabled=true
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--engine-jwt-disabled=true
+```
 
-    ```bash
-    BESU_ENGINE_JWT_DISABLED=true
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_ENGINE_JWT_DISABLED=true
+```
 
-    ```bash
-    engine-jwt-disabled=true
-    ```
+# Configuration file
+
+```bash
+engine-jwt-disabled=true
+```
+
+<!--/tabs-->
 
 Disables or enables [authentication](../../how-to/use-engine-api.md#authentication) for Engine APIs. The default is `false` (authentication is enabled by default).
 
 ### `engine-jwt-secret`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --engine-jwt-secret=<FILE>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--engine-jwt-secret=<FILE>
+```
 
-    ```bash
-    --engine-jwt-secret=jwt.hex
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--engine-jwt-secret=jwt.hex
+```
 
-    ```bash
-    BESU_ENGINE_JWT_SECRET="jwt.hex"
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_ENGINE_JWT_SECRET="jwt.hex"
+```
 
-    ```bash
-    engine-jwt-secret="jwt.hex"
-    ```
+# Configuration file
+
+```bash
+engine-jwt-secret="jwt.hex"
+```
+
+<!--/tabs-->
 
 Shared secret used to authenticate [consensus clients](../../concepts/the-merge.md) when using the Engine JSON-RPC API (both HTTP and WebSocket). Contents of file must be at least 32 hex-encoded bytes and not begin with `0x`. May be a relative or absolute path. See an [example of how to generate this](../../get-started/connect/mainnet.md#1-generate-the-shared-secret).
 
 ### `engine-rpc-enabled`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --engine-rpc-enabled[=<true|false]>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--engine-rpc-enabled[=<true|false]>
+```
 
-    ```bash
-    --engine-rpc-enabled
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--engine-rpc-enabled
+```
 
-    ```bash
-    BESU_ENGINE_RPC_ENABLED=true
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_ENGINE_RPC_ENABLED=true
+```
 
-    ```bash
-    engine-rpc-enabled=true
-    ```
+# Configuration file
+
+```bash
+engine-rpc-enabled=true
+```
+
+<!--/tabs-->
 
 Enables or disables the [Engine API](../engine-api/index.md). The default is `false`.
 
 ### `engine-rpc-port`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --engine-rpc-port=<PORT>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--engine-rpc-port=<PORT>
+```
 
-    ```bash
-    --engine-rpc-port=8551
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--engine-rpc-port=8551
+```
 
-    ```bash
-    BESU_ENGINE_RPC_PORT=8551
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_ENGINE_RPC_PORT=8551
+```
 
-    ```bash
-    engine-rpc-port="8551"
-    ```
+# Configuration file
+
+```bash
+engine-rpc-port="8551"
+```
+
+<!--/tabs-->
 
 The listening port for the Engine API calls (`ENGINE`, `ETH`) for JSON-RPC over HTTP and WebSocket. The default is `8551`.
 
 ### `ethstats`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --ethstats=<nodename:secret@host:port>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--ethstats=<nodename:secret@host:port>
+```
 
-    ```bash
-    --ethstats=Dev-Node-1:secret@127.0.0.1:3001
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--ethstats=Dev-Node-1:secret@127.0.0.1:3001
+```
 
-    ```bash
-    BESU_ETHSTATS=Dev-Node-1:secret@127.0.0.1:3001
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_ETHSTATS=Dev-Node-1:secret@127.0.0.1:3001
+```
 
-    ```bash
-    ethstats="Dev-Node-1:secret@127.0.0.1:3001"
-    ```
+# Configuration file
+
+```bash
+ethstats="Dev-Node-1:secret@127.0.0.1:3001"
+```
+
+<!--/tabs-->
 
 Reporting URL of an [Ethstats](../../../private-networks/how-to/deploy/ethstats.md) server. If specified without a port, the default port is 443 for SSL connections and 80 for non-SSL connections.
 
 ### `ethstats-cacert-file`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --ethstats-cacert-file=<FILE>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--ethstats-cacert-file=<FILE>
+```
 
-    ```bash
-    --ethstats-cacert-file=./root.cert
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--ethstats-cacert-file=./root.cert
+```
 
-    ```bash
-    BESU_ETHSTATS_CACERT_FILE=./root.cert
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_ETHSTATS_CACERT_FILE=./root.cert
+```
 
-    ```bash
-    ethstats-cacert-file="./root.cert"
-    ```
+# Configuration file
+
+```bash
+ethstats-cacert-file="./root.cert"
+```
+
+<!--/tabs-->
 
 Path to the root certificate authority (CA) certificate file of the Ethstats server specified by [`--ethstats`](#ethstats). This option is useful in non-production environments.
 
 ### `ethstats-contact`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --ethstats-contact=<CONTACT>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--ethstats-contact=<CONTACT>
+```
 
-    ```bash
-    --ethstats-contact=contact@mail.com
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--ethstats-contact=contact@mail.com
+```
 
-    ```bash
-    BESU_ETHSTATS_CONTACT=contact@mail.com
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_ETHSTATS_CONTACT=contact@mail.com
+```
 
-    ```bash
-    ethstats-contact="contact@mail.com"
-    ```
+# Configuration file
+
+```bash
+ethstats-contact="contact@mail.com"
+```
+
+<!--/tabs-->
 
 Contact email address to send to the Ethstats server specified by [`--ethstats`](#ethstats).
 
 ### `fast-sync-min-peers`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --fast-sync-min-peers=<INTEGER>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--fast-sync-min-peers=<INTEGER>
+```
 
-    ```bash
-    --fast-sync-min-peers=8
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--fast-sync-min-peers=8
+```
 
-    ```bash
-    BESU_FAST_SYNC_MIN_PEERS=8
-    ```
+# Environment variable
 
-=== "Example configuration file"
+```bash
+BESU_FAST_SYNC_MIN_PEERS=8
+```
 
-    ```bash
-    fast-sync-min-peers=8
-    ```
+# Example configuration file
+
+```bash
+fast-sync-min-peers=8
+```
+
+<!--/tabs-->
 
 The minimum number of peers required before starting [fast synchronization](../../get-started/connect/sync-node.md#fast-synchronization) in [proof of work](../../how-to/use-pow/mining.md) networks. The default is 5.
 
-!!! important
+:::info
 
-    This option only applies to proof of work networks.
+This option only applies to proof of work networks.
+
+:::
 
 ### `genesis-file`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --genesis-file=<FILE>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--genesis-file=<FILE>
+```
 
-    ```bash
-    --genesis-file=/home/me/me_node/customGenesisFile.json
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--genesis-file=/home/me/me_node/customGenesisFile.json
+```
 
-    ```bash
-    BESU_GENESIS_FILE=/home/me/me_node/customGenesisFile.json
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_GENESIS_FILE=/home/me/me_node/customGenesisFile.json
+```
 
-    ```bash
-    genesis-file="/home/me/me_node/customGenesisFile.json"
-    ```
+# Configuration file
+
+```bash
+genesis-file="/home/me/me_node/customGenesisFile.json"
+```
+
+<!--/tabs-->
 
 The path to the [genesis file](../../concepts/genesis-file.md).
 
@@ -766,57 +864,65 @@ You can't use the [`--genesis-file`](#genesis-file) and [`--network`](#network) 
 
 ### `graphql-http-cors-origins`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --graphql-http-cors-origins=<graphQLHttpCorsAllowedOrigins>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--graphql-http-cors-origins=<graphQLHttpCorsAllowedOrigins>
+```
 
-    ```bash
-    --graphql-http-cors-origins="http://medomain.com","https://meotherdomain.com"
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--graphql-http-cors-origins="http://medomain.com","https://meotherdomain.com"
+```
 
-    ```bash
-    BESU_GRAPHQL_HTTP_CORS_ORIGINS="http://medomain.com","https://meotherdomain.com"
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_GRAPHQL_HTTP_CORS_ORIGINS="http://medomain.com","https://meotherdomain.com"
+```
 
-    ```bash
-    graphql-http-cors-origins=["http://medomain.com","https://meotherdomain.com"]
-    ```
+# Configuration file
+
+```bash
+graphql-http-cors-origins=["http://medomain.com","https://meotherdomain.com"]
+```
+
+<!--/tabs-->
 
 A list of comma-separated origin domain URLs for CORS validation. The default is none.
 
 ### `graphql-http-enabled`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --graphql-http-enabled[=<true|false>]
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--graphql-http-enabled[=<true|false>]
+```
 
-    ```bash
-    --graphql-http-enabled
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--graphql-http-enabled
+```
 
-    ```bash
-    BESU_GRAPHQL_HTTP_ENABLED=true
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_GRAPHQL_HTTP_ENABLED=true
+```
 
-    ```bash
-    graphql-http-enabled=true
-    ```
+# Configuration file
+
+```bash
+graphql-http-enabled=true
+```
+
+<!--/tabs-->
 
 Enables or disables the GraphQL HTTP service. The default is `false`.
 
@@ -824,31 +930,35 @@ The default GraphQL HTTP service endpoint is `http://127.0.0.1:8547/graphql` if 
 
 ### `graphql-http-host`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --graphql-http-host=<HOST>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--graphql-http-host=<HOST>
+```
 
-    ```bash
-    # to listen on all interfaces
-    --graphql-http-host=0.0.0.0
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+# to listen on all interfaces
+--graphql-http-host=0.0.0.0
+```
 
-    ```bash
-    # to listen on all interfaces
-    BESU_GRAPHQL_HTTP_HOST=0.0.0.0
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+# to listen on all interfaces
+BESU_GRAPHQL_HTTP_HOST=0.0.0.0
+```
 
-    ```bash
-    graphql-http-host="0.0.0.0"
-    ```
+# Configuration file
+
+```bash
+graphql-http-host="0.0.0.0"
+```
+
+<!--/tabs-->
 
 The host on which GraphQL HTTP listens. The default is `127.0.0.1`.
 
@@ -856,78 +966,89 @@ To allow remote connections, set to `0.0.0.0`.
 
 ### `graphql-http-port`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --graphql-http-port=<PORT>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--graphql-http-port=<PORT>
+```
 
-    ```bash
-    # to listen on port 6175
-    --graphql-http-port=6175
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+# to listen on port 6175
+--graphql-http-port=6175
+```
 
-    ```bash
-    # to listen on port 6175
-    BESU_GRAPHQL_HTTP_PORT=6175
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+# to listen on port 6175
+BESU_GRAPHQL_HTTP_PORT=6175
+```
 
-    ```bash
-    graphql-http-port="6175"
-    ```
+# Configuration file
+
+```bash
+graphql-http-port="6175"
+```
+
+<!--/tabs-->
 
 The port (TCP) on which GraphQL HTTP listens. The default is `8547`. Ports must be [exposed appropriately](../../how-to/connect/configure-ports.md).
 
 ### `help`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    -h, --help
-    ```
+# Syntax
+
+```bash
+-h, --help
+```
+
+<!--/tabs-->
 
 Show the help message and exit.
 
 ### `host-allowlist`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --host-allowlist=<hostname>[,<hostname>...]... or "*"
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--host-allowlist=<hostname>[,<hostname>...]... or "*"
+```
 
-    ```bash
-    --host-allowlist=medomain.com,meotherdomain.com
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--host-allowlist=medomain.com,meotherdomain.com
+```
 
-    ```bash
-    BESU_HOST_ALLOWLIST=medomain.com,meotherdomain.com
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_HOST_ALLOWLIST=medomain.com,meotherdomain.com
+```
 
-    ```bash
-    host-allowlist=["medomain.com", "meotherdomain.com"]
-    ```
+# Configuration file
+
+```bash
+host-allowlist=["medomain.com", "meotherdomain.com"]
+```
+
+<!--/tabs-->
 
 A comma-separated list of hostnames to [access the JSON-RPC API](../../how-to/use-besu-api/index.md#host-allowlist) and [pull Besu metrics](../../how-to/monitor/metrics.md). By default, Besu accepts requests from `localhost` and `127.0.0.1`.
 
-!!! important
+:::info
 
-    This isn't a permissioning feature.
-    To restrict access to the API, we recommend using the
-    [Besu authentication mechanism](../../how-to/use-besu-api/authenticate.md) with username and password
-    authentication or JWT public key authentication.
+This isn't a permissioning feature. To restrict access to the API, we recommend using the [Besu authentication mechanism](../../how-to/use-besu-api/authenticate.md) with username and password authentication or JWT public key authentication.
+
+:::
 
 :::note
 
@@ -943,29 +1064,33 @@ To allow all hostnames, use `"*"`. We don't recommend allowing all hostnames for
 
 ### `identity`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --identity=<String>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--identity=<String>
+```
 
-    ```bash
-    --identity=MyNode
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--identity=MyNode
+```
 
-    ```bash
-    BESU_IDENTITY=MyNode
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_IDENTITY=MyNode
+```
 
-    ```bash
-    identity="MyNode"
-    ```
+# Configuration file
+
+```bash
+identity="MyNode"
+```
+
+<!--/tabs-->
 
 The name for the node. If specified, it's the second section of the client ID provided by some Ethereum network explorers. For example, in the client ID `besu/MyNode/v1.3.4/linux-x86_64/oracle_openjdk-java-11`, the node name is `MyNode`.
 
@@ -973,29 +1098,33 @@ If a name is not specified, the name section is not included in the client ID. F
 
 ### `key-value-storage`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --key-value-storage=<keyValueStorageName>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--key-value-storage=<keyValueStorageName>
+```
 
-    ```bash
-    --key-value-storage=rocksdb
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--key-value-storage=rocksdb
+```
 
-    ```bash
-    BESU_KEY_VALUE_STORAGE=rocksdb
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_KEY_VALUE_STORAGE=rocksdb
+```
 
-    ```bash
-    key-value-storage="rocksdb"
-    ```
+# Configuration file
+
+```bash
+key-value-storage="rocksdb"
+```
+
+<!--/tabs-->
 
 The key-value storage to use. Use this option only if using a storage system provided with a plugin. The default is `rocksdb`.
 
@@ -1003,93 +1132,103 @@ For development use only, the `memory` option provides ephemeral storage for syn
 
 ### `logging`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    -l, --logging=<LEVEL>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+-l, --logging=<LEVEL>
+```
 
-    ```bash
-    --logging=DEBUG
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--logging=DEBUG
+```
 
-    ```bash
-    BESU_LOGGING=DEBUG
-    ```
+# Environment variable
 
-=== "Example configuration file"
+```bash
+BESU_LOGGING=DEBUG
+```
 
-    ```bash
-    logging="DEBUG"
-    ```
+# Example configuration file
+
+```bash
+logging="DEBUG"
+```
+
+<!--/tabs-->
 
 Sets logging verbosity. Log levels are `OFF`, `FATAL`, `ERROR`, `WARN`, `INFO`, `DEBUG`, `TRACE`, `ALL`. The default is `INFO`.
 
 ### `max-peers`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --max-peers=<INTEGER>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--max-peers=<INTEGER>
+```
 
-    ```bash
-    --max-peers=42
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--max-peers=42
+```
 
-    ```bash
-    BESU_MAX_PEERS=42
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_MAX_PEERS=42
+```
 
-    ```bash
-    max-peers=42
-    ```
+# Configuration file
+
+```bash
+max-peers=42
+```
+
+<!--/tabs-->
 
 The maximum number of P2P connections you can establish. The default is 25.
 
-!!! caution
+:::caution
 
-    The minimum number of peers is set by the early access option `--Xp2p-peer-lower-bound`, which
-    also has a default of 25.
-    If you reduce the `--max-peers` from the default, you must also set the `--Xp2p-peer-lower-bound`
-    option to the same value or lower.
-    For example, if you decrease `--max-peers` to 20, set `--Xp2p-peer-lower-bound` to 20 or lower.
+The minimum number of peers is set by the early access option `--Xp2p-peer-lower-bound`, which also has a default of 25. If you reduce the `--max-peers` from the default, you must also set the `--Xp2p-peer-lower-bound` option to the same value or lower. For example, if you decrease `--max-peers` to 20, set `--Xp2p-peer-lower-bound` to 20 or lower.
+
+:::
 
 ### `metrics-category`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --metrics-category=<metrics-category>[,metrics-category...]...
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--metrics-category=<metrics-category>[,metrics-category...]...
+```
 
-    ```bash
-    --metrics-category=BLOCKCHAIN,PEERS,PROCESS
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--metrics-category=BLOCKCHAIN,PEERS,PROCESS
+```
 
-    ```bash
-    BESU_METRICS_CATEGORY=BLOCKCHAIN,PEERS,PROCESS
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_METRICS_CATEGORY=BLOCKCHAIN,PEERS,PROCESS
+```
 
-    ```bash
-    metrics-category=["BLOCKCHAIN","PEERS","PROCESS"]
-    ```
+# Configuration file
+
+```bash
+metrics-category=["BLOCKCHAIN","PEERS","PROCESS"]
+```
+
+<!--/tabs-->
 
 A comma-separated list of categories for which to track metrics. The defaults are `BLOCKCHAIN`, `ETHEREUM`, `EXECUTORS`, `JVM`, `NETWORK`, `PEERS`, `PERMISSIONING`, `PROCESS`, `PRUNER`, `RPC`, `STRATUM`, `SYNCHRONIZER`, and `TRANSACTION_POOL`.
 
@@ -1099,29 +1238,33 @@ Categories containing `PRIVATE` track metrics when you enable [private transacti
 
 ### `metrics-enabled`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --metrics-enabled[=<true|false>]
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--metrics-enabled[=<true|false>]
+```
 
-    ```bash
-    --metrics-enabled
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--metrics-enabled
+```
 
-    ```bash
-    BESU_METRICS_ENABLED=true
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_METRICS_ENABLED=true
+```
 
-    ```bash
-    metrics-enabled=true
-    ```
+# Configuration file
+
+```bash
+metrics-enabled=true
+```
+
+<!--/tabs-->
 
 Enables or disables the [metrics exporter](../../how-to/monitor/metrics.md#monitor-node-performance-using-prometheus). The default is `false`.
 
@@ -1129,29 +1272,33 @@ You can't specify `--metrics-enabled` with [`--metrics-push-enabled`](#metrics-p
 
 ### `metrics-host`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --metrics-host=<HOST>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--metrics-host=<HOST>
+```
 
-    ```bash
-    --metrics-host=127.0.0.1
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--metrics-host=127.0.0.1
+```
 
-    ```bash
-    BESU_METRICS_HOST=127.0.0.1
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_METRICS_HOST=127.0.0.1
+```
 
-    ```bash
-    metrics-host="127.0.0.1"
-    ```
+# Configuration file
+
+```bash
+metrics-host="127.0.0.1"
+```
+
+<!--/tabs-->
 
 The host on which [Prometheus](https://prometheus.io/) accesses [Besu metrics](../../how-to/monitor/metrics.md#monitor-node-performance-using-prometheus). The metrics server respects the [`--host-allowlist` option](#host-allowlist).
 
@@ -1159,85 +1306,97 @@ The default is `127.0.0.1`.
 
 ### `metrics-port`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --metrics-port=<PORT>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--metrics-port=<PORT>
+```
 
-    ```bash
-    --metrics-port=6174
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--metrics-port=6174
+```
 
-    ```bash
-    BESU_METRICS_PORT=6174
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_METRICS_PORT=6174
+```
 
-    ```bash
-    metrics-port="6174"
-    ```
+# Configuration file
+
+```bash
+metrics-port="6174"
+```
+
+<!--/tabs-->
 
 The port (TCP) on which [Prometheus](https://prometheus.io/) accesses [Besu metrics](../../how-to/monitor/metrics.md#monitor-node-performance-using-prometheus). The default is `9545`. Ports must be [exposed appropriately](../../how-to/connect/configure-ports.md).
 
 ### `metrics-protocol`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --metrics-protocol=<metrics-protocol>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--metrics-protocol=<metrics-protocol>
+```
 
-    ```bash
-    --metrics-protocol=OPENTELEMETRY
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--metrics-protocol=OPENTELEMETRY
+```
 
-    ```bash
-    BESU_METRICS_PROTOCOL=OPENTELEMETRY
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_METRICS_PROTOCOL=OPENTELEMETRY
+```
 
-    ```bash
-    metrics-protocol="OPENTELEMETRY"
-    ```
+# Configuration file
+
+```bash
+metrics-protocol="OPENTELEMETRY"
+```
+
+<!--/tabs-->
 
 Metrics protocol to use: `PROMETHEUS`, `OPENTELEMETRY`, or `NONE`. The default is `PROMETHEUS`.
 
 ### `metrics-push-enabled`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --metrics-push-enabled[=<true|false>]
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--metrics-push-enabled[=<true|false>]
+```
 
-    ```bash
-    --metrics-push-enabled=true
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--metrics-push-enabled=true
+```
 
-    ```bash
-    BESU_METRICS_PUSH_ENABLED=true
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_METRICS_PUSH_ENABLED=true
+```
 
-    ```bash
-    metrics-push-enabled=true
-    ```
+# Configuration file
+
+```bash
+metrics-push-enabled=true
+```
+
+<!--/tabs-->
 
 Enables or disables [push gateway integration].
 
@@ -1245,29 +1404,33 @@ You can't specify `--metrics-push-enabled` with [`--metrics-enabled`](#metrics-e
 
 ### `metrics-push-host`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --metrics-push-host=<HOST>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--metrics-push-host=<HOST>
+```
 
-    ```bash
-    --metrics-push-host=127.0.0.1
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--metrics-push-host=127.0.0.1
+```
 
-    ```bash
-    BESU_METRICS_PUSH_HOST=127.0.0.1
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_METRICS_PUSH_HOST=127.0.0.1
+```
 
-    ```bash
-    metrics-push-host="127.0.0.1"
-    ```
+# Configuration file
+
+```bash
+metrics-push-host="127.0.0.1"
+```
+
+<!--/tabs-->
 
 The host of the [Prometheus Push Gateway](https://github.com/prometheus/pushgateway). The default is `127.0.0.1`. The metrics server respects the [`--host-allowlist` option](#host-allowlist).
 
@@ -1279,141 +1442,161 @@ When pushing metrics, ensure you set `--metrics-push-host` to the machine on whi
 
 ### `metrics-push-interval`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --metrics-push-interval=<INTEGER>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--metrics-push-interval=<INTEGER>
+```
 
-    ```bash
-    --metrics-push-interval=30
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--metrics-push-interval=30
+```
 
-    ```bash
-    BESU_METRICS_PUSH_INTERVAL=30
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_METRICS_PUSH_INTERVAL=30
+```
 
-    ```bash
-    metrics-push-interval=30
-    ```
+# Configuration file
+
+```bash
+metrics-push-interval=30
+```
+
+<!--/tabs-->
 
 The interval, in seconds, to push metrics when in `push` mode. The default is 15.
 
 ### `metrics-push-port`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --metrics-push-port=<PORT>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--metrics-push-port=<PORT>
+```
 
-    ```bash
-    --metrics-push-port=6174
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--metrics-push-port=6174
+```
 
-    ```bash
-    BESU_METRICS_PUSH_PORT=6174
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_METRICS_PUSH_PORT=6174
+```
 
-    ```bash
-    metrics-push-port="6174"
-    ```
+# Configuration file
+
+```bash
+metrics-push-port="6174"
+```
+
+<!--/tabs-->
 
 The port (TCP) of the [Prometheus Push Gateway](https://github.com/prometheus/pushgateway). The default is `9001`. Ports must be [exposed appropriately](../../how-to/connect/configure-ports.md).
 
 ### `metrics-push-prometheus-job`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --metrics-push-prometheus-job=<metricsPrometheusJob>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--metrics-push-prometheus-job=<metricsPrometheusJob>
+```
 
-    ```bash
-    --metrics-push-prometheus-job="my-custom-job"
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--metrics-push-prometheus-job="my-custom-job"
+```
 
-    ```bash
-    BESU_METRICS_PUSH_PROMETHEUS_JOB="my-custom-job"
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_METRICS_PUSH_PROMETHEUS_JOB="my-custom-job"
+```
 
-    ```bash
-    metrics-push-prometheus-job="my-custom-job"
-    ```
+# Configuration file
+
+```bash
+metrics-push-prometheus-job="my-custom-job"
+```
+
+<!--/tabs-->
 
 The job name when in `push` mode. The default is `besu-client`.
 
 ### `min-block-occupancy-ratio`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --min-block-occupancy-ratio=<minBlockOccupancyRatio>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--min-block-occupancy-ratio=<minBlockOccupancyRatio>
+```
 
-    ```bash
-    --min-block-occupancy-ratio=0.5
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--min-block-occupancy-ratio=0.5
+```
 
-    ```bash
-    BESU_MIN_BLOCK_OCCUPANCY_RATIO=0.5
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_MIN_BLOCK_OCCUPANCY_RATIO=0.5
+```
 
-    ```bash
-    min-block-occupancy-ratio="0.5"
-    ```
+# Configuration file
+
+```bash
+min-block-occupancy-ratio="0.5"
+```
+
+<!--/tabs-->
 
 Minimum occupancy ratio for a mined block if the transaction pool is not empty. When filling a block during mining, the occupancy ratio indicates the threshold at which the node stops waiting for smaller transactions to fill the remaining space. The default is 0.8.
 
 ### `miner-coinbase`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --miner-coinbase=<Ethereum account address>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--miner-coinbase=<Ethereum account address>
+```
 
-    ```bash
-    --miner-coinbase=fe3b557e8fb62b89f4916b721be55ceb828dbd73
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--miner-coinbase=fe3b557e8fb62b89f4916b721be55ceb828dbd73
+```
 
-    ```bash
-    BESU_MINER_COINBASE=fe3b557e8fb62b89f4916b721be55ceb828dbd73
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_MINER_COINBASE=fe3b557e8fb62b89f4916b721be55ceb828dbd73
+```
 
-    ```bash
-    miner-coinbase="0xfe3b557e8fb62b89f4916b721be55ceb828dbd73"
-    ```
+# Configuration file
+
+```bash
+miner-coinbase="0xfe3b557e8fb62b89f4916b721be55ceb828dbd73"
+```
+
+<!--/tabs-->
 
 The account you pay mining rewards to. You must specify a valid coinbase when you enable mining using the [`--miner-enabled`](#miner-enabled) option or the [`miner_start`](../api/index.md#miner_start) JSON-RPC API method.
 
@@ -1425,181 +1608,213 @@ Besu ignores this option in networks using [Clique](../../../private-networks/ho
 
 ### `miner-enabled`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --miner-enabled[=<true|false>]
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--miner-enabled[=<true|false>]
+```
 
-    ```bash
-    --miner-enabled=true
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--miner-enabled=true
+```
 
-    ```bash
-    BESU_MINER_ENABLED=true
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_MINER_ENABLED=true
+```
 
-    ```bash
-    miner-enabled=true
-    ```
+# Configuration file
+
+```bash
+miner-enabled=true
+```
+
+<!--/tabs-->
 
 Enables or disables mining when you start the node. The default is `false`.
 
 ### `miner-extra-data`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --miner-extra-data=<Extra data>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--miner-extra-data=<Extra data>
+```
 
-    ```bash
-    --miner-extra-data=0x444F4E27542050414E4943202120484F444C2C20484F444C2C20484F444C2021
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--miner-extra-data=0x444F4E27542050414E4943202120484F444C2C20484F444C2C20484F444C2021
+```
 
-    ```bash
-    BESU_MINER_EXTRA_DATA=0x444F4E27542050414E4943202120484F444C2C20484F444C2C20484F444C2021
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_MINER_EXTRA_DATA=0x444F4E27542050414E4943202120484F444C2C20484F444C2C20484F444C2021
+```
 
-    ```bash
-    miner-extra-data="0x444F4E27542050414E4943202120484F444C2C20484F444C2C20484F444C2021"
-    ```
+# Configuration file
+
+```bash
+miner-extra-data="0x444F4E27542050414E4943202120484F444C2C20484F444C2C20484F444C2021"
+```
+
+<!--/tabs-->
 
 A hex string representing the 32 bytes included in the extra data field of a mined block. The default is 0x.
 
 ### `miner-stratum-enabled`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --miner-stratum-enabled
-    ```
+# Syntax
 
-=== "Environment variable"
+```bash
+--miner-stratum-enabled
+```
 
-    ```bash
-    BESU_MINER_STRATUM_ENABLED=true
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_MINER_STRATUM_ENABLED=true
+```
 
-    ```bash
-    miner-stratum-enabled=true
-    ```
+# Configuration file
+
+```bash
+miner-stratum-enabled=true
+```
+
+<!--/tabs-->
 
 Enables a node to perform stratum mining. The default is `false`.
 
 ### `miner-stratum-host`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --miner-stratum-host=<HOST>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--miner-stratum-host=<HOST>
+```
 
-    ```bash
-    --miner-stratum-host=192.168.1.132
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--miner-stratum-host=192.168.1.132
+```
 
-    ```bash
-    BESU_MINER_STRATUM_HOST=192.168.1.132
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_MINER_STRATUM_HOST=192.168.1.132
+```
 
-    ```bash
-    miner-stratum-host="192.168.1.132"
-    ```
+# Configuration file
+
+```bash
+miner-stratum-host="192.168.1.132"
+```
+
+<!--/tabs-->
 
 The host of the stratum mining service. The default is `0.0.0.0`.
 
 ### `miner-stratum-port`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --miner-stratum-port=<PORT>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--miner-stratum-port=<PORT>
+```
 
-    ```bash
-    --miner-stratum-port=8010
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--miner-stratum-port=8010
+```
 
-    ```bash
-    BESU_MINER_STRATUM_PORT=8010
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_MINER_STRATUM_PORT=8010
+```
 
-    ```bash
-    miner-stratum-port="8010"
-    ```
+# Configuration file
+
+```bash
+miner-stratum-port="8010"
+```
+
+<!--/tabs-->
 
 The port of the stratum mining service. The default is `8008`. You must [expose ports appropriately](../../how-to/connect/configure-ports.md).
 
 ### `min-gas-price`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --min-gas-price=<minTransactionGasPrice>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--min-gas-price=<minTransactionGasPrice>
+```
 
-    ```bash
-    --min-gas-price=1337
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--min-gas-price=1337
+```
 
-    ```bash
-    BESU_MIN_GAS_PRICE=1337
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_MIN_GAS_PRICE=1337
+```
 
-    ```bash
-    min-gas-price=1337
-    ```
+# Configuration file
+
+```bash
+min-gas-price=1337
+```
+
+<!--/tabs-->
 
 The minimum price a transaction offers to include it in a mined block. The minimum gas price is the lowest value [`eth_gasPrice`](../api/index.md#eth_gasprice) can return. The default is 1000 Wei.
 
-!!! important In a [free gas network](../../../private-networks/how-to/configure/free-gas.md), ensure the minimum gas price is set to zero for every node. Any node with a minimum gas price set higher than zero will silently drop transactions with a zero gas price. You can query a node's gas configuration using [`eth_gasPrice`](../api/index.md#eth_gasprice).
+:::tip
+
+In a [free gas network](../../../private-networks/how-to/configure/free-gas.md), ensure the minimum gas price is set to zero for every node. Any node with a minimum gas price set higher than zero will silently drop transactions with a zero gas price. You can query a node's gas configuration using [`eth_gasPrice`](../api/index.md#eth_gasprice).
+
+:::
 
 ### `nat-method`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --nat-method=UPNP
-    ```
+# Syntax
 
-=== "Example configuration file"
+```bash
+--nat-method=UPNP
+```
 
-    ```bash
-    nat-method="UPNP"
-    ```
+# Example configuration file
+
+```bash
+nat-method="UPNP"
+```
+
+<!--/tabs-->
 
 Specify the method for handling [NAT environments](../../how-to/connect/specify-nat.md). The options are:
 
@@ -1634,29 +1849,33 @@ You must specify `DOCKER` when using the [Besu Docker image](../../get-started/i
 
 ### `network`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --network=<NETWORK>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--network=<NETWORK>
+```
 
-    ```bash
-    --network=goerli
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--network=goerli
+```
 
-    ```bash
-    BESU_NETWORK=goerli
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_NETWORK=goerli
+```
 
-    ```bash
-    network="goerli"
-    ```
+# Configuration file
+
+```bash
+network="goerli"
+```
+
+<!--/tabs-->
 
 The predefined network configuration. The default is `mainnet`.
 
@@ -1679,37 +1898,43 @@ Values are case insensitive, so either `mainnet` or `MAINNET` works.
 
 :::
 
-!!! important
+:::info
 
-    - You can't use the `--network` and [`--genesis-file`](#genesis-file) options at the same time.
+- You can't use the `--network` and [`--genesis-file`](#genesis-file) options at the same time.
 
-    - The Ropsten, Rinkeby, and Kiln testnets are deprecated.
+- The Ropsten, Rinkeby, and Kiln testnets are deprecated.
+
+:::
 
 ### `network-id`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --network-id=<INTEGER>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--network-id=<INTEGER>
+```
 
-    ```bash
-    --network-id=8675309
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--network-id=8675309
+```
 
-    ```bash
-    BESU_NETWORK_ID=8675309
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_NETWORK_ID=8675309
+```
 
-    ```bash
-    network-id="8675309"
-    ```
+# Configuration file
+
+```bash
+network-id="8675309"
+```
+
+<!--/tabs-->
 
 The [P2P network identifier](../../concepts/network-and-chain-id.md).
 
@@ -1717,313 +1942,363 @@ Use this option to override the default network ID. The default value is the sam
 
 ### `node-private-key-file`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --node-private-key-file=<FILE>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--node-private-key-file=<FILE>
+```
 
-    ```bash
-    --node-private-key-file=/home/me/me_node/myPrivateKey
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--node-private-key-file=/home/me/me_node/myPrivateKey
+```
 
-    ```bash
-    BESU_NODE_PRIVATE_KEY_FILE=/home/me/me_node/myPrivateKey
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_NODE_PRIVATE_KEY_FILE=/home/me/me_node/myPrivateKey
+```
 
-    ```bash
-    node-private-key-file="/home/me/me_node/myPrivateKey"
-    ```
+# Configuration file
+
+```bash
+node-private-key-file="/home/me/me_node/myPrivateKey"
+```
+
+<!--/tabs-->
 
 The private key file for the node. The default is the key file in the [data directory](#data-path). If no key file exists, Besu creates a key file containing the generated private key, otherwise, the existing key file specifies the node private key.
 
-!!!attention
+:::danger
 
-    The private key is not encrypted.
+The private key is not encrypted.
+
+:::
 
 This option is ignored if [`--security-module`](#security-module) is set to a non-default value.
 
 ### `p2p-enabled`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --p2p-enabled[=<true|false>]
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--p2p-enabled[=<true|false>]
+```
 
-    ```bash
-    --p2p-enabled=false
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--p2p-enabled=false
+```
 
-    ```bash
-    BESU_P2P_ENABLED=false
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_P2P_ENABLED=false
+```
 
-    ```bash
-    p2p-enabled=false
-    ```
+# Configuration file
+
+```bash
+p2p-enabled=false
+```
+
+<!--/tabs-->
 
 Enables or disables all P2P communication. The default is `true`.
 
 ### `p2p-host`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --p2p-host=<HOST>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--p2p-host=<HOST>
+```
 
-    ```bash
-    # to listen on all interfaces
-    --p2p-host=0.0.0.0
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+# to listen on all interfaces
+--p2p-host=0.0.0.0
+```
 
-    ```bash
-    # to listen on all interfaces
-    BESU_P2P_HOST=0.0.0.0
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+# to listen on all interfaces
+BESU_P2P_HOST=0.0.0.0
+```
 
-    ```bash
-    p2p-host="0.0.0.0"
-    ```
+# Configuration file
+
+```bash
+p2p-host="0.0.0.0"
+```
+
+<!--/tabs-->
 
 The advertised host that can be used to access the node from outside the network in [P2P communication](../../how-to/connect/configure-ports.md#p2p-networking). The default is `127.0.0.1`.
 
-!!! info
+:::info
 
-    If [`--nat-method`](#nat-method) is set to [`NONE`](../../how-to/connect/specify-nat.md),
-    `--p2p-host` is not overridden and must be specified for the node to be accessed from outside the network.
+If [`--nat-method`](#nat-method) is set to [`NONE`](../../how-to/connect/specify-nat.md), `--p2p-host` is not overridden and must be specified for the node to be accessed from outside the network.
+
+:::
 
 ### `p2p-interface`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --p2p-interface=<HOST>
-    ```
+Syntax
 
-=== "Example"
+```bash
+--p2p-interface=<HOST>
+```
 
-    ```bash
-    --p2p-interface=192.168.1.132
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--p2p-interface=192.168.1.132
+```
 
-    ```bash
-    BESU_P2P_INTERFACE=192.168.1.132
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_P2P_INTERFACE=192.168.1.132
+```
 
-    ```bash
-    p2p-interface="192.168.1.132"
-    ```
+# Configuration file
+
+```bash
+p2p-interface="192.168.1.132"
+```
+
+<!--/tabs-->
 
 The network interface on which the node listens for [P2P communication](../../how-to/connect/configure-ports.md#p2p-networking). Use the option to specify the required network interface when the device that Besu is running on has multiple network interfaces. The default is 0.0.0.0 (all interfaces).
 
 ### `p2p-port`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --p2p-port=<PORT>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--p2p-port=<PORT>
+```
 
-    ```bash
-    # to listen on port 1789
-    --p2p-port=1789
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+# to listen on port 1789
+--p2p-port=1789
+```
 
-    ```bash
-    # to listen on port 1789
-    BESU_P2P_PORT=1789
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+# to listen on port 1789
+BESU_P2P_PORT=1789
+```
 
-    ```bash
-    p2p-port="1789"
-    ```
+# Configuration file
+
+```bash
+p2p-port="1789"
+```
+
+<!--/tabs-->
 
 The P2P listening ports (UDP and TCP). The default is `30303`. You must [expose ports appropriately](../../how-to/connect/configure-ports.md).
 
 ### `pruning-block-confirmations`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --pruning-block-confirmations=<INTEGER>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--pruning-block-confirmations=<INTEGER>
+```
 
-    ```bash
-    --pruning-block-confirmations=5
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--pruning-block-confirmations=5
+```
 
-    ```bash
-    BESU_PRUNING_BLOCK_CONFIRMATIONS=5
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_PRUNING_BLOCK_CONFIRMATIONS=5
+```
 
-    ```bash
-    pruning-block-confirmations=5
-    ```
+# Configuration file
+
+```bash
+pruning-block-confirmations=5
+```
+
+<!--/tabs-->
 
 The minimum number of confirmations on a block before marking of newly-stored or in-use state trie nodes that cannot be pruned. The default is 10.
 
-!!! important Using pruning with [private transactions](../../../private-networks/concepts/privacy/index.md) is not supported.
+:::info
+
+Using pruning with [private transactions](../../../private-networks/concepts/privacy/index.md) is not supported.
+
+:::
 
 ### `pruning-blocks-retained`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --pruning-blocks-retained=<INTEGER>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--pruning-blocks-retained=<INTEGER>
+```
 
-    ```bash
-    --pruning-blocks-retained=10000
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--pruning-blocks-retained=10000
+```
 
-    ```bash
-    BESU_PRUNING_BLOCKS_RETAINED=10000
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_PRUNING_BLOCKS_RETAINED=10000
+```
 
-    ```bash
-    pruning-blocks-retained=10000
-    ```
+# Configuration file
+
+```bash
+pruning-blocks-retained=10000
+```
+
+<!--/tabs-->
 
 The minimum number of recent blocks to keep the entire world state for. The default is 1024.
 
-!!! important
+:::info
 
-    Using pruning with [private transactions](../../../private-networks/concepts/privacy/index.md) isn't
-    supported.
+Using pruning with [private transactions](../../../private-networks/concepts/privacy/index.md) isn't supported.
+
+:::
 
 ### `pruning-enabled`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --pruning-enabled
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--pruning-enabled
+```
 
-    ```bash
-    --pruning-enabled=true
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--pruning-enabled=true
+```
 
-    ```bash
-    BESU_PRUNING_ENABLED=true
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_PRUNING_ENABLED=true
+```
 
-    ```bash
-    pruning-enabled=true
-    ```
+# Configuration file
+
+```bash
+pruning-enabled=true
+```
+
+<!--/tabs-->
 
 Enables [pruning](../../concepts/data-storage-formats.md#pruning) to reduce storage required for the world state. The default is `false`.
 
-!!! important
+:::info
 
-    Using pruning with [private transactions](../../../private-networks/concepts/privacy/index.md) isn't
-    supported.
+Using pruning with [private transactions](../../../private-networks/concepts/privacy/index.md) isn't supported.
 
-!!! important
+:::
 
-    Pruning is being deprecated for [Bonsai Tries](../../concepts/data-storage-formats.md#bonsai-tries)
-    and is currently not being updated.
+:::note
+
+Pruning is being deprecated for [Bonsai Tries](../../concepts/data-storage-formats.md#bonsai-tries) and is currently not being updated.
+
+:::
 
 ### `random-peer-priority-enabled`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --random-peer-priority-enabled[=<true|false>]
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--random-peer-priority-enabled[=<true|false>]
+```
 
-    ```bash
-    --random-peer-priority-enabled=true
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--random-peer-priority-enabled=true
+```
 
-    ```bash
-    BESU_RANDOM_PEER_PRIORITY_ENABLED=true
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_RANDOM_PEER_PRIORITY_ENABLED=true
+```
 
-    ```bash
-    random-peer-priority-enabled=true
-    ```
+# Configuration file
+
+```bash
+random-peer-priority-enabled=true
+```
+
+<!--/tabs-->
 
 Enables or disables random prioritization of incoming connections. Enable in small, stable networks to prevent closed groups of peers forming. The default is `false`.
 
 ### `remote-connections-limit-enabled`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --remote-connections-limit-enabled[=<true|false>]
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--remote-connections-limit-enabled[=<true|false>]
+```
 
-    ```bash
-    --remote-connections-limit-enabled=false
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--remote-connections-limit-enabled=false
+```
 
-    ```bash
-    BESU_REMOTE_CONNECTIONS_LIMIT_ENABLED=false
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_REMOTE_CONNECTIONS_LIMIT_ENABLED=false
+```
 
-    ```bash
-    remote-connections-limit-enabled=false
-    ```
+# Configuration file
+
+```bash
+remote-connections-limit-enabled=false
+```
+
+<!--/tabs-->
 
 Enables or disables using the [`--remote-connections-max-percentage`](#remote-connections-max-percentage) option to limit the percentage of remote P2P connections initiated by peers. The default is `true`.
 
@@ -2033,154 +2308,175 @@ In private and permissioned networks with a level of trust between peers, disabl
 
 :::
 
-!!! important
+:::danger
 
-    To prevent eclipse attacks, ensure you enable the remote connections limit when connecting to
-    any public network, and especially when using [`--sync-mode`](#sync-mode) and
-    [`--fast-sync-min-peers`](#fast-sync-min-peers).
+To prevent eclipse attacks, ensure you enable the remote connections limit when connecting to any public network, and especially when using [`--sync-mode`](#sync-mode) and [`--fast-sync-min-peers`](#fast-sync-min-peers).
+
+:::
 
 ### `remote-connections-max-percentage`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --remote-connections-max-percentage=<DOUBLE>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--remote-connections-max-percentage=<DOUBLE>
+```
 
-    ```bash
-    --remote-connections-max-percentage=25
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--remote-connections-max-percentage=25
+```
 
-    ```bash
-    BESU_REMOTE_CONNECTIONS_MAX_PERCENTAGE=25
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_REMOTE_CONNECTIONS_MAX_PERCENTAGE=25
+```
 
-    ```bash
-    remote-connections-max-percentage=25
-    ```
+# Configuration file
+
+```bash
+remote-connections-max-percentage=25
+```
+
+<!--/tabs-->
 
 The percentage of remote P2P connections you can establish with the node. Must be between 0 and 100, inclusive. The default is 60.
 
 ### `reorg-logging-threshold`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --reorg-logging-threshold=<INTEGER>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--reorg-logging-threshold=<INTEGER>
+```
 
-    ```bash
-    --reorg-logging-threshold=3
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--reorg-logging-threshold=3
+```
 
-    ```bash
-    BESU_REORG_LOGGING_THRESHOLD=3
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_REORG_LOGGING_THRESHOLD=3
+```
 
-    ```bash
-    reorg-logging-threshold=3
-    ```
+# Configuration file
+
+```bash
+reorg-logging-threshold=3
+```
+
+<!--/tabs-->
 
 Minimum depth of chain reorganizations to log. The default is 6.
 
 ### `required-block`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --required-block, --required-blocks[=BLOCK=HASH[,BLOCK=HASH...]...]
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--required-block, --required-blocks[=BLOCK=HASH[,BLOCK=HASH...]...]
+```
 
-    ```bash
-    --required-block=6485846=0x43f0cd1e5b1f9c4d5cda26c240b59ee4f1b510d0a185aa8fd476d091b0097a80
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--required-block=6485846=0x43f0cd1e5b1f9c4d5cda26c240b59ee4f1b510d0a185aa8fd476d091b0097a80
+```
 
-    ```bash
-    BESU_REQUIRED_BLOCK=6485846=0x43f0cd1e5b1f9c4d5cda26c240b59ee4f1b510d0a185aa8fd476d091b0097a80
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_REQUIRED_BLOCK=6485846=0x43f0cd1e5b1f9c4d5cda26c240b59ee4f1b510d0a185aa8fd476d091b0097a80
+```
 
-    ```bash
-    required-block=["6485846=0x43f0cd1e5b1f9c4d5cda26c240b59ee4f1b510d0a185aa8fd476d091b0097a80"]
-    ```
+# Configuration file
+
+```bash
+required-block=["6485846=0x43f0cd1e5b1f9c4d5cda26c240b59ee4f1b510d0a185aa8fd476d091b0097a80"]
+```
+
+<!--/tabs-->
 
 Requires a peer with the specified block number to have the specified hash when connecting, or Besu rejects that peer.
 
 ### `revert-reason-enabled`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --revert-reason-enabled[=<true|false>]
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--revert-reason-enabled[=<true|false>]
+```
 
-    ```bash
-    --revert-reason-enabled=true
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--revert-reason-enabled=true
+```
 
-    ```bash
-    BESU_REVERT_REASON_ENABLED=true
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_REVERT_REASON_ENABLED=true
+```
 
-    ```bash
-    revert-reason-enabled=true
-    ```
+# Configuration file
+
+```bash
+revert-reason-enabled=true
+```
+
+<!--/tabs-->
 
 Enables or disables including the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md) in the transaction receipt, [`eth_estimateGas`](../api/index.md#eth_estimategas) error response, [`eth_call`](../api/index.md#eth_call) error response, and [`trace`](../trace-types.md#trace) response. The default is `false`.
 
-!!! caution
+:::caution
 
-    Enabling revert reason may use a significant amount of memory. We don't recommend enabling
-    revert reason when connected to public Ethereum networks.
+Enabling revert reason may use a significant amount of memory. We don't recommend enabling revert reason when connected to public Ethereum networks.
+
+:::
 
 ### `rpc-http-api`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --rpc-http-api=<api name>[,<api name>...]...
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--rpc-http-api=<api name>[,<api name>...]...
+```
 
-    ```bash
-    --rpc-http-api=ETH,NET,WEB3
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--rpc-http-api=ETH,NET,WEB3
+```
 
-    ```bash
-    BESU_RPC_HTTP_API=ETH,NET,WEB3
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_RPC_HTTP_API=ETH,NET,WEB3
+```
 
-    ```bash
-    rpc-http-api=["ETH","NET","WEB3"]
-    ```
+# Configuration file
+
+```bash
+rpc-http-api=["ETH","NET","WEB3"]
+```
+
+<!--/tabs-->
 
 A comma-separated list of APIs to enable on the HTTP JSON-RPC channel. When you use this option you must also specify the `--rpc-http-enabled` option. The available API options are: `ADMIN`, `CLIQUE`, `DEBUG`, `EEA`, `ETH`, `IBFT`, `MINER`, `NET`, `PERM`, `PLUGINS`, `PRIV`, `QBFT`, `TRACE`, `TXPOOL`, and `WEB3`. The default is: `ETH`, `NET`, `WEB3`.
 
@@ -2192,125 +2488,141 @@ The singular `--rpc-http-api` and plural `--rpc-http-apis` are available and are
 
 ### `rpc-http-authentication-credentials-file`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --rpc-http-authentication-credentials-file=<FILE>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--rpc-http-authentication-credentials-file=<FILE>
+```
 
-    ```bash
-    --rpc-http-authentication-credentials-file=/home/me/me_node/auth.toml
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--rpc-http-authentication-credentials-file=/home/me/me_node/auth.toml
+```
 
-    ```bash
-    BESU_RPC_HTTP_AUTHENTICATION_CREDENTIALS_FILE=/home/me/me_node/auth.toml
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_RPC_HTTP_AUTHENTICATION_CREDENTIALS_FILE=/home/me/me_node/auth.toml
+```
 
-    ```bash
-    rpc-http-authentication-credentials-file="/home/me/me_node/auth.toml"
-    ```
+# Configuration file
+
+```bash
+rpc-http-authentication-credentials-file="/home/me/me_node/auth.toml"
+```
+
+<!--/tabs-->
 
 The [credentials file](../../how-to/use-besu-api/authenticate.md#credentials-file) for JSON-RPC API [authentication](../../how-to/use-besu-api/authenticate.md).
 
 ### `rpc-http-authentication-enabled`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --rpc-http-authentication-enabled[=<true|false>]
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--rpc-http-authentication-enabled[=<true|false>]
+```
 
-    ```bash
-    --rpc-http-authentication-enabled=true
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--rpc-http-authentication-enabled=true
+```
 
-    ```bash
-    BESU_RPC_HTTP_AUTHENTICATION_ENABLED=true
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_RPC_HTTP_AUTHENTICATION_ENABLED=true
+```
 
-    ```bash
-    rpc-http-authentication-enabled=true
-    ```
+# Configuration file
+
+```bash
+rpc-http-authentication-enabled=true
+```
+
+<!--/tabs-->
 
 Enables or disables [authentication](../../how-to/use-besu-api/authenticate.md) for the HTTP JSON-RPC service.
 
 ### `rpc-http-authentication-jwt-public-key-file`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --rpc-http-authentication-jwt-public-key-file=<FILE>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--rpc-http-authentication-jwt-public-key-file=<FILE>
+```
 
-    ```bash
-    --rpc-http-authentication-jwt-public-key-file=publicKey.pem
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--rpc-http-authentication-jwt-public-key-file=publicKey.pem
+```
 
-    ```bash
-    BESU_RPC_HTTP_AUTHENTICATION_JWT_PUBLIC_KEY_FILE="publicKey.pem"
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_RPC_HTTP_AUTHENTICATION_JWT_PUBLIC_KEY_FILE="publicKey.pem"
+```
 
-    ```bash
-    rpc-http-authentication-jwt-public-key-file="publicKey.pem"
-    ```
+# Configuration file
+
+```bash
+rpc-http-authentication-jwt-public-key-file="publicKey.pem"
+```
+
+<!--/tabs-->
 
 The [JWT provider's public key file] used for JSON-RPC HTTP authentication with an external JWT.
 
 ### `rpc-http-cors-origins`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --rpc-http-cors-origins=<url>[,<url>...]... or all or "*"
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--rpc-http-cors-origins=<url>[,<url>...]... or all or "*"
+```
 
-    ```bash
+# Example
 
-    $# You can allow one or more domains with a comma-separated list.
+```bash
 
-    --rpc-http-cors-origins=http://medomain.com,https://meotherdomain.com
-    ```
+$# You can allow one or more domains with a comma-separated list.
 
-=== "Environment variable"
+--rpc-http-cors-origins=http://medomain.com,https://meotherdomain.com
+```
 
-    ```bash
-    BESU_RPC_HTTP_CORS_ORIGINS=http://medomain.com,https://meotherdomain.com
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_RPC_HTTP_CORS_ORIGINS=http://medomain.com,https://meotherdomain.com
+```
 
-    ```bash
-    rpc-http-cors-origins=["http://medomain.com","https://meotherdomain.com"]
-    ```
+# Configuration file
 
-=== "Remix example"
+```bash
+rpc-http-cors-origins=["http://medomain.com","https://meotherdomain.com"]
+```
 
-    ```bash
+# Remix example
 
-    $# The following allows Remix to interact with your Besu node.
+```bash
 
-    --rpc-http-cors-origins=http://remix.ethereum.org
-    ```
+$# The following allows Remix to interact with your Besu node.
+
+--rpc-http-cors-origins=http://remix.ethereum.org
+```
+
+<!--/tabs-->
 
 A list of domain URLs for CORS validation.
 
@@ -2334,179 +2646,203 @@ For testing and development purposes, use `"all"` or `"*"` to accept requests fr
 
 ### `rpc-http-enabled`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --rpc-http-enabled[=<true|false>]
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--rpc-http-enabled[=<true|false>]
+```
 
-    ```bash
-    --rpc-http-enabled=true
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--rpc-http-enabled=true
+```
 
-    ```bash
-    BESU_RPC_HTTP_ENABLED=true
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_RPC_HTTP_ENABLED=true
+```
 
-    ```bash
-    rpc-http-enabled=true
-    ```
+# Configuration file
+
+```bash
+rpc-http-enabled=true
+```
+
+<!--/tabs-->
 
 Enables or disables the HTTP JSON-RPC service. The default is `false`.
 
 ### `rpc-http-host`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --rpc-http-host=<HOST>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--rpc-http-host=<HOST>
+```
 
-    ```bash
-    # to listen on all interfaces
-    --rpc-http-host=0.0.0.0
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+# to listen on all interfaces
+--rpc-http-host=0.0.0.0
+```
 
-    ```bash
-    BESU_RPC_HTTP_HOST=0.0.0.0
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_RPC_HTTP_HOST=0.0.0.0
+```
 
-    ```bash
-    rpc-http-host="0.0.0.0"
-    ```
+# Configuration file
+
+```bash
+rpc-http-host="0.0.0.0"
+```
+
+<!--/tabs-->
 
 The host on which HTTP JSON-RPC listens. The default is `127.0.0.1`.
 
 To allow remote connections, set to `0.0.0.0`.
 
-!!! caution
+:::caution
 
-    Setting the host to `0.0.0.0` exposes the RPC connection on your node to any remote connection.
-    In a production environment, ensure you are using a firewall to avoid exposing your node to the
-    internet.
+Setting the host to `0.0.0.0` exposes the RPC connection on your node to any remote connection. In a production environment, ensure you are using a firewall to avoid exposing your node to the internet.
+
+:::
 
 ### `rpc-http-max-active-connections`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --rpc-http-max-active-connections=<INTEGER>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--rpc-http-max-active-connections=<INTEGER>
+```
 
-    ```bash
-    --rpc-http-max-active-connections=100
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--rpc-http-max-active-connections=100
+```
 
-    ```bash
-    BESU_RPC_HTTP_MAX_ACTIVE_CONNECTIONS=100
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_RPC_HTTP_MAX_ACTIVE_CONNECTIONS=100
+```
 
-    ```toml
-    rpc-http-max-active-connections=100
-    ```
+# Configuration file
+
+```toml
+rpc-http-max-active-connections=100
+```
+
+<!--/tabs-->
 
 The maximum number of allowed HTTP JSON-RPC connections. Once this limit is reached, incoming connections are rejected. The default is 80.
 
 ### `rpc-http-max-batch-size`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --rpc-http-max-batch-size=<INTEGER>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--rpc-http-max-batch-size=<INTEGER>
+```
 
-    ```bash
-    --rpc-http-max-batch-size=1200
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--rpc-http-max-batch-size=1200
+```
 
-    ```bash
-    BESU_RPC_HTTP_MAX_BATCH_SIZE=1200
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_RPC_HTTP_MAX_BATCH_SIZE=1200
+```
 
-    ```toml
-    rpc-http-max-batch-size=1200
-    ```
+# Configuration file
+
+```toml
+rpc-http-max-batch-size=1200
+```
+
+<!--/tabs-->
 
 The maximum number of allowed requests in a [RPC batch request](../../how-to/use-besu-api/json-rpc.md#http). The default limit is `1024`, and `-1` specifies no limit.
 
 ### `rpc-http-port`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --rpc-http-port=<PORT>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--rpc-http-port=<PORT>
+```
 
-    ```bash
-    # to listen on port 3435
-    --rpc-http-port=3435
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+# to listen on port 3435
+--rpc-http-port=3435
+```
 
-    ```bash
-    BESU_RPC_HTTP_PORT=3435
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_RPC_HTTP_PORT=3435
+```
 
-    ```bash
-    rpc-http-port="3435"
-    ```
+# Configuration file
+
+```bash
+rpc-http-port="3435"
+```
+
+<!--/tabs-->
 
 The port (TCP) on which HTTP JSON-RPC listens. The default is `8545`. You must [expose ports appropriately](../../how-to/connect/configure-ports.md).
 
 ### `rpc-http-tls-ca-clients-enabled`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --rpc-http-tls-ca-clients-enabled[=<true|false>]
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--rpc-http-tls-ca-clients-enabled[=<true|false>]
+```
 
-    ```bash
-    --rpc-http-tls-ca-clients-enabled=true
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--rpc-http-tls-ca-clients-enabled=true
+```
 
-    ```bash
-    BESU_RPC_HTTP_TLS_CA_CLIENTS_ENABLED=true
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_RPC_HTTP_TLS_CA_CLIENTS_ENABLED=true
+```
 
-    ```bash
-    rpc-http-tls-ca-clients-enabled=true
-    ```
+# Configuration file
+
+```bash
+rpc-http-tls-ca-clients-enabled=true
+```
+
+<!--/tabs-->
 
 Enables or disables clients with trusted CA certificates to connect. The default is `false`.
 
@@ -2518,29 +2854,33 @@ You must enable client authentication using the [`--rpc-http-tls-client-auth-ena
 
 ### `rpc-http-tls-client-auth-enabled`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --rpc-http-tls-client-auth-enabled[=<true|false>]
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--rpc-http-tls-client-auth-enabled[=<true|false>]
+```
 
-    ```bash
-    --rpc-http-tls-client-auth-enabled=true
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--rpc-http-tls-client-auth-enabled=true
+```
 
-    ```bash
-    BESU_RPC_HTTP_TLS_CLIENT_AUTH_ENABLED=true
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_RPC_HTTP_TLS_CLIENT_AUTH_ENABLED=true
+```
 
-    ```bash
-    rpc-http-tls-client-auth-enabled=true
-    ```
+# Configuration file
+
+```bash
+rpc-http-tls-client-auth-enabled=true
+```
+
+<!--/tabs-->
 
 Enables or disables TLS client authentication for the JSON-RPC HTTP service. The default is `false`.
 
@@ -2552,29 +2892,33 @@ You must specify [`--rpc-http-tls-ca-clients-enabled`](#rpc-http-tls-ca-clients-
 
 ### `rpc-http-tls-cipher-suite`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --rpc-http-tls-cipher-suite=<cipherSuiteName>[, <cipherSuiteName>...]
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--rpc-http-tls-cipher-suite=<cipherSuiteName>[, <cipherSuiteName>...]
+```
 
-    ```bash
-    --rpc-http-tls-cipher-suite=TLS_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--rpc-http-tls-cipher-suite=TLS_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+```
 
-    ```bash
-    BESU_RPC_HTTP_TLS_CIPHER_SUITE=TLS_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_RPC_HTTP_TLS_CIPHER_SUITE=TLS_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+```
 
-    ```bash
-    rpc-http-tls-cipher-suite=["TLS_AES_256_GCM_SHA384","TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"]
-    ```
+# Configuration file
+
+```bash
+rpc-http-tls-cipher-suite=["TLS_AES_256_GCM_SHA384","TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"]
+```
+
+:::
 
 A list of comma-separated TLS cipher suites to support.
 
@@ -2586,29 +2930,33 @@ The singular `--rpc-http-tls-cipher-suite` and plural `--rpc-http-tls-cipher-sui
 
 ### `rpc-http-tls-enabled`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --rpc-http-tls-enabled[=<true|false>]
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--rpc-http-tls-enabled[=<true|false>]
+```
 
-    ```bash
-    --rpc-http-tls-enabled=true
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--rpc-http-tls-enabled=true
+```
 
-    ```bash
-    BESU_RPC_HTTP_TLS_ENABLED=true
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_RPC_HTTP_TLS_ENABLED=true
+```
 
-    ```bash
-    rpc-http-tls-enabled=true
-    ```
+# Configuration file
+
+```bash
+rpc-http-tls-enabled=true
+```
+
+:::
 
 Enables or disables TLS for the JSON-RPC HTTP service. The default is `false`.
 
@@ -2620,85 +2968,97 @@ Enables or disables TLS for the JSON-RPC HTTP service. The default is `false`.
 
 ### `rpc-http-tls-keystore-file`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --rpc-http-tls-keystore-file=<FILE>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--rpc-http-tls-keystore-file=<FILE>
+```
 
-    ```bash
-    --rpc-http-tls-keystore-file=/home/me/me_node/keystore.pfx
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--rpc-http-tls-keystore-file=/home/me/me_node/keystore.pfx
+```
 
-    ```bash
-    BESU_RPC_HTTP_TLS_KEYSTORE_FILE=/home/me/me_node/keystore.pfx
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_RPC_HTTP_TLS_KEYSTORE_FILE=/home/me/me_node/keystore.pfx
+```
 
-    ```bash
-    rpc-http-tls-keystore-file="/home/me/me_node/keystore.pfx"
-    ```
+# Configuration file
+
+```bash
+rpc-http-tls-keystore-file="/home/me/me_node/keystore.pfx"
+```
+
+:::
 
 The Keystore file (in PKCS #12 format) that contains private key and the certificate presented to the client during authentication.
 
 ### `rpc-http-tls-keystore-password-file`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --rpc-http-tls-keystore-password-file=<FILE>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--rpc-http-tls-keystore-password-file=<FILE>
+```
 
-    ```bash
-    --rpc-http-tls-keystore-password-file=/home/me/me_node/password
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--rpc-http-tls-keystore-password-file=/home/me/me_node/password
+```
 
-    ```bash
-    BESU_RPC_HTTP_TLS_KEYSTORE_PASSWORD_FILE=/home/me/me_node/password
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_RPC_HTTP_TLS_KEYSTORE_PASSWORD_FILE=/home/me/me_node/password
+```
 
-    ```bash
-    rpc-http-tls-keystore-password-file="/home/me/me_node/password"
-    ```
+# Configuration file
+
+```bash
+rpc-http-tls-keystore-password-file="/home/me/me_node/password"
+```
+
+<!--/tabs-->
 
 The path to the file containing the password to decrypt the keystore.
 
 ### `rpc-http-tls-known-clients-file`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --rpc-http-tls-known-clients-file=<FILE>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--rpc-http-tls-known-clients-file=<FILE>
+```
 
-    ```bash
-    --rpc-http-tls-known-clients-file=/home/me/me_node/knownClients
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--rpc-http-tls-known-clients-file=/home/me/me_node/knownClients
+```
 
-    ```bash
-    BESU_RPC_HTTP_TLS_KNOWN_CLIENTS_FILE=/home/me/me_node/knownClients
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_RPC_HTTP_TLS_KNOWN_CLIENTS_FILE=/home/me/me_node/knownClients
+```
 
-    ```bash
-    rpc-http-tls-known-clients-file="/home/me/me_node/knownClients"
-    ```
+# Configuration file
+
+```bash
+rpc-http-tls-known-clients-file="/home/me/me_node/knownClients"
+```
+
+<!--/tabs-->
 
 The path to the file used to [authenticate clients](../../../private-networks/how-to/configure/tls/client-and-server.md#create-the-known-clients-file) using self-signed certificates or non-public certificates.
 
@@ -2712,29 +3072,33 @@ You must enable client authentication using the [`--rpc-http-tls-client-auth-ena
 
 ### `rpc-http-tls-protocol`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --rpc-http-tls-protocol=<protocolName>[, <protocolName>...]
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--rpc-http-tls-protocol=<protocolName>[, <protocolName>...]
+```
 
-    ```bash
-    --rpc-http-tls-protocol=TLSv1.3,TLSv1.2
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--rpc-http-tls-protocol=TLSv1.3,TLSv1.2
+```
 
-    ```bash
-    BESU_RPC_HTTP_TLS_PROTOCOL=TLSv1.3,TLSv1.2
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_RPC_HTTP_TLS_PROTOCOL=TLSv1.3,TLSv1.2
+```
 
-    ```bash
-    rpc-http-tls-protocol=["TLSv1.3","TLSv1.2"]
-    ```
+# Configuration file
+
+```bash
+rpc-http-tls-protocol=["TLSv1.3","TLSv1.2"]
+```
+
+<!--/tabs-->
 
 A list of comma-separated TLS protocols to support. The default is `DEFAULT_TLS_PROTOCOLS`, a list which includes `TLSv1.3` and `TLSv1.2`.
 
@@ -2746,64 +3110,73 @@ The singular `--rpc-http-tls-protocol` and plural `--rpc-http-tls-protocols` are
 
 ### `rpc-max-logs-range`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --rpc-max-logs-range=<INTEGER>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--rpc-max-logs-range=<INTEGER>
+```
 
-    ```bash
-    --rpc-max-logs-range=500
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--rpc-max-logs-range=500
+```
 
-    ```bash
-    BESU_RPC_MAX_LOGS_RANGE=500
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_RPC_MAX_LOGS_RANGE=500
+```
 
-    ```bash
-    rpc-max-logs-range=500
-    ```
+# Configuration file
+
+```bash
+rpc-max-logs-range=500
+```
+
+<!--/tabs-->
 
 When using [`eth_getLogs`](../api/index.md#eth_getlogs), the maximum number of blocks to retrieve logs from. Set to 0 to specify no limit. The default is 5000.
 
-!!! warning
+:::caution
 
-    Using `eth_getLogs` to get logs from a large range of blocks, especially an entire chain from
-    its genesis block, might cause Besu to hang for an indeterminable amount of time while generating
-    the response.
-    We recommend setting a range limit or leaving this option at its default value.
+Using `eth_getLogs` to get logs from a large range of blocks, especially an entire chain from its genesis block, might cause Besu to hang for an indeterminable amount of time while generating the response.
+
+We recommend setting a range limit or leaving this option at its default value.
+
+:::
 
 ### `rpc-tx-feecap`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --rpc-tx-feecap=<MAX_FEE>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--rpc-tx-feecap=<MAX_FEE>
+```
 
-    ```bash
-    --rpc-tx-feecap=1200000000000000000
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--rpc-tx-feecap=1200000000000000000
+```
 
-    ```bash
-    BESU_RPC_TX_FEECAP=1200000000000000000
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_RPC_TX_FEECAP=1200000000000000000
+```
 
-    ```bash
-    rpc-tx-feecap=1200000000000000000
-    ```
+# Configuration file
+
+```bash
+rpc-tx-feecap=1200000000000000000
+```
+
+<!--/tabs-->
 
 The maximum transaction fee (in Wei) accepted for transactions submitted through the [`eth_sendRawTransaction`](../api/index.md#eth_sendrawtransaction) RPC. The default is 1000000000000000000 (1 ether).
 
@@ -2811,29 +3184,33 @@ If set to 0, then this option is ignored and no cap is applied.
 
 ### `rpc-ws-api`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --rpc-ws-api=<api name>[,<api name>...]...
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--rpc-ws-api=<api name>[,<api name>...]...
+```
 
-    ```bash
-    --rpc-ws-api=ETH,NET,WEB3
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--rpc-ws-api=ETH,NET,WEB3
+```
 
-    ```bash
-    BESU_RPC_WS_API=ETH,NET,WEB3
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_RPC_WS_API=ETH,NET,WEB3
+```
 
-    ```bash
-    rpc-ws-api=["ETH","NET","WEB3"]
-    ```
+# Configuration file
+
+```bash
+rpc-ws-api=["ETH","NET","WEB3"]
+```
+
+<!--/tabs-->
 
 A comma-separated list of APIs to enable on the WebSockets channel. When you use this option you must also specify the `--rpc-ws-enabled` option. The available API options are: `ADMIN`, `CLIQUE`, `DEBUG`, `EEA`, `ETH`, `IBFT`, `MINER`, `NET`, `PERM`, `PLUGINS`, `PRIV`, `QBFT`, `TRACE`, `TXPOOL`, and `WEB3`. The default is: `ETH`, `NET`, `WEB3`.
 
@@ -2845,57 +3222,65 @@ The singular `--rpc-ws-api` and plural `--rpc-ws-apis` options are available and
 
 ### `rpc-ws-authentication-credentials-file`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --rpc-ws-authentication-credentials-file=<FILE>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--rpc-ws-authentication-credentials-file=<FILE>
+```
 
-    ```bash
-    --rpc-ws-authentication-credentials-file=/home/me/me_node/auth.toml
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--rpc-ws-authentication-credentials-file=/home/me/me_node/auth.toml
+```
 
-    ```bash
-    BESU_RPC_WS_AUTHENTICATION_CREDENTIALS_FILE=/home/me/me_node/auth.toml
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_RPC_WS_AUTHENTICATION_CREDENTIALS_FILE=/home/me/me_node/auth.toml
+```
 
-    ```bash
-    rpc-ws-authentication-credentials-file="/home/me/me_node/auth.toml"
-    ```
+# Configuration file
+
+```bash
+rpc-ws-authentication-credentials-file="/home/me/me_node/auth.toml"
+```
+
+:::
 
 The path to the [credentials file](../../how-to/use-besu-api/authenticate.md#credentials-file) for JSON-RPC API [authentication](../../how-to/use-besu-api/authenticate.md).
 
 ### `rpc-ws-authentication-enabled`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --rpc-ws-authentication-enabled[=<true|false>]
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--rpc-ws-authentication-enabled[=<true|false>]
+```
 
-    ```bash
-    --rpc-ws-authentication-enabled=true
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--rpc-ws-authentication-enabled=true
+```
 
-    ```bash
-    BESU_RPC_WS_AUTHENTICATION_ENABLED=true
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_RPC_WS_AUTHENTICATION_ENABLED=true
+```
 
-    ```bash
-    rpc-ws-authentication-enabled=true
-    ```
+# Configuration file
+
+```bash
+rpc-ws-authentication-enabled=true
+```
+
+<!--/tabs-->
 
 Enables or disables [authentication](../../how-to/use-besu-api/authenticate.md) for the WebSocket JSON-RPC service.
 
@@ -2907,86 +3292,98 @@ Enables or disables [authentication](../../how-to/use-besu-api/authenticate.md) 
 
 ### `rpc-ws-authentication-jwt-public-key-file`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --rpc-ws-authentication-jwt-public-key-file=<FILE>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--rpc-ws-authentication-jwt-public-key-file=<FILE>
+```
 
-    ```bash
-    --rpc-ws-authentication-jwt-public-key-file=publicKey.pem
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--rpc-ws-authentication-jwt-public-key-file=publicKey.pem
+```
 
-    ```bash
-    BESU_RPC_WS_AUTHENTICATION_JWT_PUBLIC_KEY_FILE="publicKey.pem"
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_RPC_WS_AUTHENTICATION_JWT_PUBLIC_KEY_FILE="publicKey.pem"
+```
 
-    ```bash
-    rpc-ws-authentication-jwt-public-key-file="publicKey.pem"
-    ```
+# Configuration file
+
+```bash
+rpc-ws-authentication-jwt-public-key-file="publicKey.pem"
+```
+
+<!--/tabs-->
 
 The [JWT provider's public key file] used for JSON-RPC WebSocket authentication with an external JWT.
 
 ### `rpc-ws-enabled`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --rpc-ws-enabled[=<true|false>]
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--rpc-ws-enabled[=<true|false>]
+```
 
-    ```bash
-    --rpc-ws-enabled=true
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--rpc-ws-enabled=true
+```
 
-    ```bash
-    BESU_RPC_WS_ENABLED=true
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_RPC_WS_ENABLED=true
+```
 
-    ```bash
-    rpc-ws-enabled=true
-    ```
+# Configuration file
+
+```bash
+rpc-ws-enabled=true
+```
+
+<!--/tabs-->
 
 Enables or disables the WebSocket JSON-RPC service. The default is `false`.
 
 ### `rpc-ws-host`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --rpc-ws-host=<HOST>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--rpc-ws-host=<HOST>
+```
 
-    ```bash
-    # to listen on all interfaces
-    --rpc-ws-host=0.0.0.0
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+# to listen on all interfaces
+--rpc-ws-host=0.0.0.0
+```
 
-    ```bash
-    BESU_RPC_WS_HOST=0.0.0.0
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_RPC_WS_HOST=0.0.0.0
+```
 
-    ```bash
-    rpc-ws-host="0.0.0.0"
-    ```
+# Configuration file
+
+```bash
+rpc-ws-host="0.0.0.0"
+```
+
+:::
 
 The host on which WebSocket JSON-RPC listens. The default is `127.0.0.1`.
 
@@ -2994,114 +3391,130 @@ To allow remote connections, set to `0.0.0.0`
 
 ### `rpc-ws-max-active-connections`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --rpc-ws-max-active-connections=<INTEGER>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--rpc-ws-max-active-connections=<INTEGER>
+```
 
-    ```bash
-    --rpc-ws-max-active-connections=100
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--rpc-ws-max-active-connections=100
+```
 
-    ```bash
-    BESU_RPC_WS_MAX_ACTIVE_CONNECTIONS=100
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_RPC_WS_MAX_ACTIVE_CONNECTIONS=100
+```
 
-    ```toml
-    rpc-ws-max-active-connections=100
-    ```
+# Configuration file
+
+```toml
+rpc-ws-max-active-connections=100
+```
+
+<!--/tabs-->
 
 The maximum number of WebSocket connections allowed for JSON-RPC. Once this limit is reached, incoming connections are rejected. The default is 80.
 
 ### `rpc-ws-max-frame-size`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --rpc-ws-max-frame-size=<INTEGER>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--rpc-ws-max-frame-size=<INTEGER>
+```
 
-    ```bash
-    --rpc-ws-max-frame-size=65536
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--rpc-ws-max-frame-size=65536
+```
 
-    ```bash
-    BESU_RPC_WS_MAX_FRAME_SIZE=65536
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_RPC_WS_MAX_FRAME_SIZE=65536
+```
 
-    ```toml
-    rpc-ws-max-frame-size=65536
-    ```
+# Configuration file
+
+```toml
+rpc-ws-max-frame-size=65536
+```
+
+<!--/tabs-->
 
 The maximum size in bytes for JSON-RPC WebSocket frames. If this limit is exceeded, the WebSocket disconnects. The default is 1048576 (or 1 MB).
 
 ### `rpc-ws-port`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --rpc-ws-port=<PORT>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--rpc-ws-port=<PORT>
+```
 
-    ```bash
-    # to listen on port 6174
-    --rpc-ws-port=6174
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+# to listen on port 6174
+--rpc-ws-port=6174
+```
 
-    ```bash
-    BESU_RPC_WS_PORT=6174
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_RPC_WS_PORT=6174
+```
 
-    ```bash
-    rpc-ws-port="6174"
-    ```
+# Configuration file
+
+```bash
+rpc-ws-port="6174"
+```
+
+<!--/tabs-->
 
 The port (TCP) on which WebSocket JSON-RPC listens. The default is `8546`. You must [expose ports appropriately](../../how-to/connect/configure-ports.md).
 
 ### `security-module`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --security-module=<NAME>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--security-module=<NAME>
+```
 
-    ```bash
-    --security-module=security_module
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--security-module=security_module
+```
 
-    ```bash
-    BESU_SECURITY_MODULE=security_module
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_SECURITY_MODULE=security_module
+```
 
-    ```bash
-    security-module="security_module"
-    ```
+# Configuration file
+
+```bash
+security-module="security_module"
+```
+
+<!--/tabs-->
 
 Name of the security module plugin to use. For example, a Hardware Security Module (HSM) or V3 filestore plugin.
 
@@ -3109,125 +3522,141 @@ The default is the node's local private key file specified using [`--node-privat
 
 ### `static-nodes-file`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --static-nodes-file=<FILE>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--static-nodes-file=<FILE>
+```
 
-    ```bash
-    --static-nodes-file=~/besudata/static-nodes.json
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--static-nodes-file=~/besudata/static-nodes.json
+```
 
-    ```bash
-    BESU_STATIC_NODES_FILE=~/besudata/static-nodes.json
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_STATIC_NODES_FILE=~/besudata/static-nodes.json
+```
 
-    ```bash
-    static-nodes-file="~/besudata/static-nodes.json"
-    ```
+# Configuration file
+
+```bash
+static-nodes-file="~/besudata/static-nodes.json"
+```
+
+<!--/tabs-->
 
 Static nodes JSON file containing the [static nodes](../../how-to/connect/static-nodes.md) for this node to connect to. The default is `datapath/static-nodes.json`.
 
 ### `strict-tx-replay-protection-enabled`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --strict-tx-replay-protection-enabled[=<true|false>]
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--strict-tx-replay-protection-enabled[=<true|false>]
+```
 
-    ```bash
-    --strict-tx-replay-protection-enabled=false
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--strict-tx-replay-protection-enabled=false
+```
 
-    ```bash
-    STRICT_TX_REPLAY_PROTECTION_ENABLED=false
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+STRICT_TX_REPLAY_PROTECTION_ENABLED=false
+```
 
-    ```bash
-    strict-tx-replay-protection-enabled=false
-    ```
+# Configuration file
+
+```bash
+strict-tx-replay-protection-enabled=false
+```
+
+<!--/tabs-->
 
 Enables or disables replay protection, in accordance with [EIP-155](https://eips.ethereum.org/EIPS/eip-155), on transactions submitted using JSON-RPC. The default is `false`.
 
 ### `sync-mode`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --sync-mode=X_SNAP
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--sync-mode=X_SNAP
+```
 
-    ```bash
-    --sync-mode=X_SNAP
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--sync-mode=X_SNAP
+```
 
-    ```bash
-    BESU_SYNC_MODE=X_SNAP
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_SYNC_MODE=X_SNAP
+```
 
-    ```bash
-    sync-mode="X_SNAP"
-    ```
+# Configuration file
+
+```bash
+sync-mode="X_SNAP"
+```
+
+<!--/tabs-->
 
 The synchronization mode. Use `X_SNAP` for [snap sync](../../get-started/connect/sync-node.md#snap-synchronization), `X_CHECKPOINT` for [checkpoint sync](../../get-started/connect/sync-node.md#checkpoint-synchronization), `FAST` for [fast sync](../../get-started/connect/sync-node.md#fast-synchronization), and `FULL` for [full sync](../../get-started/connect/sync-node.md#run-an-archive-node).
 
 - The default is `FULL` when connecting to a private network by not using the [`--network`](#network) option and specifying the [`--genesis-file`](#genesis-file) option.
 - The default is `FAST` when using the [`--network`](#network) option with named networks, except for the `dev` development network. `FAST` is also the default if running Besu on the default network (Ethereum Mainnet) by specifying neither [network](#network) nor [genesis file](#genesis-file).
 
-!!! important
+:::tip
 
-    * We recommend using snap sync over fast sync because snap sync can be faster by several days.
-    * Checkpoint sync is an early access feature.
-    * It might become impossible to sync Ethereum Mainnet using fast sync in the future.
-      Update Besu to a version that supports newer sync methods.
-    * When synchronizing in a mode other than `FULL`, most historical world state data is unavailable.
-      Any methods attempting to access unavailable world state data return `null`.
+- We recommend using snap sync over fast sync because snap sync can be faster by several days.
+- Checkpoint sync is an early access feature.
+- It might become impossible to sync Ethereum Mainnet using fast sync in the future. Update Besu to a version that supports newer sync methods.
+- When synchronizing in a mode other than `FULL`, most historical world state data is unavailable. Any methods attempting to access unavailable world state data return `null`.
+
+:::
 
 ### `target-gas-limit`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --target-gas-limit=<INTEGER>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--target-gas-limit=<INTEGER>
+```
 
-    ```bash
-    --target-gas-limit=8000000
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--target-gas-limit=8000000
+```
 
-    ```bash
-    BESU_TARGET_GAS_LIMIT=8000000
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_TARGET_GAS_LIMIT=8000000
+```
 
-    ```bash
-    target-gas-limit="8000000"
-    ```
+# Configuration file
+
+```bash
+target-gas-limit="8000000"
+```
+
+<!--/tabs-->
 
 The gas limit toward which Besu will gradually move on an existing network, if enough miners are in agreement. To change the block gas limit set in the genesis file without creating a new network, use `target-gas-limit`. The gas limit between blocks can change only 1/1024th, so the target tells the block creator how to set the gas limit in its block. If the values are the same or within 1/1024th, Besu sets the limit to the specified value. Otherwise, the limit moves as far as it can within that constraint.
 
@@ -3237,139 +3666,169 @@ Use the [`miner_changeTargetGasLimit`](../api/index.md#miner_changetargetgaslimi
 
 ### `tx-pool-limit-by-account-percentage`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --tx-pool-limit-by-account-percentage=<DOUBLE>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--tx-pool-limit-by-account-percentage=<DOUBLE>
+```
 
-    ```bash
-    --tx-pool-limit-by-account-percentage=0.1
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--tx-pool-limit-by-account-percentage=0.1
+```
 
-    ```bash
-    BESU_TX_POOL_LIMIT_BY_ACCOUNT_PERCENTAGE=0.1
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_TX_POOL_LIMIT_BY_ACCOUNT_PERCENTAGE=0.1
+```
 
-    ```bash
-    tx-pool-limit-by-account-percentage=0.4
-    ```
+# Configuration file
+
+```bash
+tx-pool-limit-by-account-percentage=0.4
+```
+
+<!--/tabs-->
 
 The maximum percentage of future transactions kept in the transaction pool, per account. Accepted values are in the range (0–1]. The default is .001 or 0.1% of transactions from a single account to be kept in the pool.
 
-!!! warning The default value is often unsuitable for [private networks](../../../private-networks/index.md). This feature mitigates future-nonce transactions from filling the pool without ever being executable by Besu. This is important for Mainnet, but may cause issues on private networks. Please update this value or set to 1 if you know the nodes gossiping transactions in your network.
+:::caution
+
+The default value is often unsuitable for [private networks](../../../private-networks/index.md). This feature mitigates future-nonce transactions from filling the pool without ever being executable by Besu. This is important for Mainnet, but may cause issues on private networks. Please update this value or set to 1 if you know the nodes gossiping transactions in your network.
+
+:::
 
 ### `tx-pool-max-size`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --tx-pool-max-size=<INTEGER>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--tx-pool-max-size=<INTEGER>
+```
 
-    ```bash
-    --tx-pool-max-size=2000
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--tx-pool-max-size=2000
+```
 
-    ```bash
-    BESU_TX_POOL_MAX_SIZE=2000
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_TX_POOL_MAX_SIZE=2000
+```
 
-    ```bash
-    tx-pool-max-size="2000"
-    ```
+# Configuration file
+
+```bash
+tx-pool-max-size="2000"
+```
+
+<!--/tabs-->
 
 The maximum number of transactions kept in the transaction pool. The default is 4096.
 
 ### `tx-pool-price-bump`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --tx-pool-price-bump=<INTEGER>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--tx-pool-price-bump=<INTEGER>
+```
 
-    ```bash
-    --tx-pool-price-bump=25
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--tx-pool-price-bump=25
+```
 
-    ```bash
-    BESU_TX_POOL_PRICE_BUMP=25
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_TX_POOL_PRICE_BUMP=25
+```
 
-    ```bash
-    tx-pool-price-bump=25
-    ```
+# Configuration file
+
+```bash
+tx-pool-price-bump=25
+```
+
+<!--/tabs-->
 
 The price bump percentage to replace an existing transaction. The default is 10.
 
 ### `tx-pool-retention-hours`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    --tx-pool-retention-hours=<INTEGER>
-    ```
+# Syntax
 
-=== "Example"
+```bash
+--tx-pool-retention-hours=<INTEGER>
+```
 
-    ```bash
-    --tx-pool-retention-hours=5
-    ```
+# Example
 
-=== "Environment variable"
+```bash
+--tx-pool-retention-hours=5
+```
 
-    ```bash
-    BESU_TX_POOL_RETENTION_HOURS=5
-    ```
+# Environment variable
 
-=== "Configuration file"
+```bash
+BESU_TX_POOL_RETENTION_HOURS=5
+```
 
-    ```bash
-    tx-pool-retention-hours=5
-    ```
+# Configuration file
+
+```bash
+tx-pool-retention-hours=5
+```
+
+<!--/tabs-->
 
 The maximum period, in hours, to hold pending transactions in the transaction pool. The default is 13.
 
 ### `Xhelp`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    -X, --Xhelp
-    ```
+# Syntax
+
+```bash
+-X, --Xhelp
+```
+
+<!--/tabs-->
 
 Displays the early access options and their descriptions, and exit.
 
-!!! warning
+:::caution
 
-    The displayed options are unstable and may change between releases.
+The displayed options are unstable and may change between releases.
+
+:::
 
 ### `version`
 
-=== "Syntax"
+<!--tabs-->
 
-    ```bash
-    -V, --version
-    ```
+# Syntax
+
+```bash
+-V, --version
+```
+
+<!--/tabs-->
 
 Prints version information and exit.
 

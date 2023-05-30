@@ -16,9 +16,11 @@ When starting Hyperledger Besu, if the [`--node-private-key-file`](../reference/
 
 If a `key` file does exist in the data directory when starting Besu, the node starts using the private key in the `key` file.
 
-!!!info
+:::info
 
-    The private key is not encrypted.
+The private key is not encrypted.
+
+:::
 
 ## Node public key
 
@@ -40,11 +42,9 @@ If the `key` file exists, the node starts with the private key in the `key` file
 
 For example, the following command either reads the node private key from `privatekeyfile` or writes a generated private key to `privatekeyfile`.
 
-!!! example
-
-    ```bash
-    besu --node-private-key-file="/Users/username/privatekeyfile"
-    ```
+```bash
+besu --node-private-key-file="/Users/username/privatekeyfile"
+```
 
 ## Enode URL
 
@@ -63,19 +63,13 @@ The enode URL format is `enode://<id>@<host:port>[?discport=<port>]` where:
 
 - If the TCP listening and UDP discovery ports differ, the UDP port is specified as query parameter `discport`.
 
-!!! example
+:::info
 
-    If the node public key is
-    `0xc35c3ec90a8a51fd5703594c6303382f3ae6b2ecb9589bab2c04b3794f2bc3fc2631dabb0c08af795787a6c004d8f532230ae6e9925cbbefb0b28b79295d615f`,
-    the host is `10.3.58.6`, the TCP listening port is `30303`, and the UDP discovery port is `30301`, then the
-    enode URL is
-    `enode://c35c3ec90a8a51fd5703594c6303382f3ae6b2ecb9589bab2c04b3794f2bc3fc2631dabb0c08af795787a6c004d8f532230ae6e9925cbbefb0b28b79295d615f@10.3.58.6:30303?discport=30301`
+If the node public key is `0xc35c3ec90a8a51fd5703594c6303382f3ae6b2ecb9589bab2c04b3794f2bc3fc2631dabb0c08af795787a6c004d8f532230ae6e9925cbbefb0b28b79295d615f`, the host is `10.3.58.6`, the TCP listening port is `30303`, and the UDP discovery port is `30301`, then the enode URL is `enode://c35c3ec90a8a51fd5703594c6303382f3ae6b2ecb9589bab2c04b3794f2bc3fc2631dabb0c08af795787a6c004d8f532230ae6e9925cbbefb0b28b79295d615f@10.3.58.6:30303?discport=30301`
 
-    If the [`--p2p-host`](../reference/cli/options.md#p2p-host) or
-    [`--p2p-port`](../reference/cli/options.md#p2p-port) options are not specified and the node
-    public key is `0xc35c3ec90a8a51fd5703594c6303382f3ae6b2ecb9589bab2c04b3794f2bc3fc2631dabb0c08af795787a6c004d8f532230ae6e9925cbbefb0b28b79295d615f`,
-    then the enode URL is
-    `enode://c35c3ec90a8a51fd5703594c6303382f3ae6b2ecb9589bab2c04b3794f2bc3fc2631dabb0c08af795787a6c004d8f532230ae6e9925cbbefb0b28b79295d615f@127.0.0.1:30303`
+If the [`--p2p-host`](../reference/cli/options.md#p2p-host) or [`--p2p-port`](../reference/cli/options.md#p2p-port) options are not specified and the node public key is `0xc35c3ec90a8a51fd5703594c6303382f3ae6b2ecb9589bab2c04b3794f2bc3fc2631dabb0c08af795787a6c004d8f532230ae6e9925cbbefb0b28b79295d615f`, then the enode URL is `enode://c35c3ec90a8a51fd5703594c6303382f3ae6b2ecb9589bab2c04b3794f2bc3fc2631dabb0c08af795787a6c004d8f532230ae6e9925cbbefb0b28b79295d615f@127.0.0.1:30303`
+
+:::
 
 The enode URL displays when starting a Besu node. Use the [`net_enode`](../reference/api/index.md#net_enode) JSON-RPC API method to get the enode URL of the node.
 
@@ -83,21 +77,20 @@ The enode advertised to other nodes during discovery is the external IP address 
 
 ### Domain name support
 
-!!! warning
+:::caution
 
-    Enode URL domain name support is an early access feature that you can use in private
-    [permissioned networks](../../private-networks/concepts/permissioning/index.md) only.
+Enode URL domain name support is an early access feature that you can use in private [permissioned networks](../../private-networks/concepts/permissioning/index.md) only.
+
+:::
 
 To use domain names in enode URLs:
 
 - Configure DNS reverse lookup.
 - Enable DNS support using the early access option `--Xdns-enabled`.
 
-!!! example "Example enode URL using a domain name"
-
-    ```bash
-    enode://c35c3ec90a8a51fd5703594c6303382f3ae6b2ecb9589bab2c04b3794f2bc3fc2631dabb0c08af795787a6c004d8f532230ae6e9925cbbefb0b28b79295d615f@mydomain.dev.example.net:30301
-    ```
+```bash title="Example enode URL using a domain name"
+enode://c35c3ec90a8a51fd5703594c6303382f3ae6b2ecb9589bab2c04b3794f2bc3fc2631dabb0c08af795787a6c004d8f532230ae6e9925cbbefb0b28b79295d615f@mydomain.dev.example.net:30301
+```
 
 :::tip
 

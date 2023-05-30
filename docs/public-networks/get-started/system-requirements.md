@@ -38,6 +38,8 @@ We synchronized the 22.4.2 Mainnet nodes using `m6gd.2xlarge` boxes.
 
 Using a larger box while synchronizing speeds up the sync process by giving it more resources. When the sync is completed, the box size can be reduced.
 
-!!! important
+:::caution
 
-    If you are using a more recent release than 22.4.2, resource requirements may have increased.
+If you are using a more recent release than 22.4.2, resource requirements may have increased.
+
+:::

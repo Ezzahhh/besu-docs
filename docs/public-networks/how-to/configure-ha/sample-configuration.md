@@ -33,69 +33,65 @@ Where applicable, we strongly recommend using service discovery. That is, pair y
 
 For Nginx, use multiple upstreams (one for each port). Pair each upstream with a separate server block.
 
-!!! example "Upstreams paired with server blocks"
+```conf title="Upstreams paired with server blocks"
+upstream discovery_tcp_30303 {
+    server 10.0.1.1:30303;
+    server 10.0.1.2:30303;
+}
 
-    ```
-    upstream discovery_tcp_30303 {
-        server 10.0.1.1:30303;
-        server 10.0.1.2:30303;
-    }
+upstream rpc_tcp_8545 {
+    server 10.0.1.1:8545;
+    server 10.0.1.2:8545;
+}
 
-    upstream rpc_tcp_8545 {
-        server 10.0.1.1:8545;
-        server 10.0.1.2:8545;
+server {
+    listen 30303;
+    server_name some.host;
+    location / {
+        proxy_pass http://discovery_tcp_30303;
     }
+}
 
-    server {
-        listen 30303;
-        server_name some.host;
-        location / {
-            proxy_pass http://discovery_tcp_30303;
-        }
+server {
+    listen 8545;
+    server_name some.host;
+    location / {
+        proxy_pass http://rpc_tcp_8545;
     }
-
-    server {
-        listen 8545;
-        server_name some.host;
-        location / {
-            proxy_pass http://rpc_tcp_8545;
-        }
-    }
-    ...
-    ```
+}
+...
+```
 
 For HAProxy, create multiple backend and frontend sets.
 
-!!! example "Multiple backend and frontend sets"
-
-    ```
-    frontend discovery-tcp-30303
-        bind *:30303
-        acl ...
-        ...
-        default_backend back-discovery-tcp-30303
-
-    frontend rpc-tcp-8545
-        bind *:8545
-        acl ...
-        ...
-        default_backend back-rpc-tcp-8545
-
-    backend back-discovery-tcp-30303
-        balance leastconn
-        server node-01 10.0.1.1:30303 weight 1 check
-        server node-02 10.0.1.2:30303 weight 1 check
-        option ...
-        timeout server 600s
-
-    backend back-rpc-tcp-8545
-        balance leastconn
-        server node-01 10.0.1.1:8545 weight 1 check
-        server node-02 10.0.1.2:8545 weight 1 check
-        option ....
-        timeout server 600s
+```text title="Multiple backend and frontend sets"
+frontend discovery-tcp-30303
+    bind *:30303
+    acl ...
     ...
-    ```
+    default_backend back-discovery-tcp-30303
+
+frontend rpc-tcp-8545
+    bind *:8545
+    acl ...
+    ...
+    default_backend back-rpc-tcp-8545
+
+backend back-discovery-tcp-30303
+    balance leastconn
+    server node-01 10.0.1.1:30303 weight 1 check
+    server node-02 10.0.1.2:30303 weight 1 check
+    option ...
+    timeout server 600s
+
+backend back-rpc-tcp-8545
+    balance leastconn
+    server node-01 10.0.1.1:8545 weight 1 check
+    server node-02 10.0.1.2:8545 weight 1 check
+    option ....
+    timeout server 600s
+...
+```
 
 ### HTTPS redirection
 

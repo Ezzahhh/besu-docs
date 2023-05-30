@@ -49,11 +49,13 @@ You can run a full node using [snap synchronization (snap sync)](#snap-synchroni
 
 ### Snap synchronization
 
-!!! important
+:::tip
 
-    We recommend using snap sync over fast sync because snap sync can be faster by several days.
-    We recommend using snap sync with the [Bonsai](../../concepts/data-storage-formats.md#bonsai-tries)
-    data storage format for the fastest sync and lowest storage requirements.
+We recommend using snap sync over fast sync because snap sync can be faster by several days.
+
+We recommend using snap sync with the [Bonsai](../../concepts/data-storage-formats.md#bonsai-tries) data storage format for the fastest sync and lowest storage requirements.
+
+:::
 
 Enable snap sync using [`--sync-mode=X_SNAP`](../../reference/cli/options.md#sync-mode). You need Besu version 22.4.0 or later to use snap sync.
 
@@ -67,9 +69,11 @@ See [how to read the Besu metrics charts](../../how-to/monitor/understand-metric
 
 ### Checkpoint synchronization
 
-!!! important
+:::caution
 
-    Checkpoint sync is an early access feature.
+Checkpoint sync is an early access feature.
+
+:::
 
 Enable checkpoint sync using [`--sync-mode=X_CHECKPOINT`](../../reference/cli/options.md#sync-mode). You need Besu version 22.4.3 or later to use checkpoint sync.
 
@@ -79,15 +83,13 @@ Ethereum Mainnet and the Goerli testnet configurations already define default ch
 
 For other networks, you can configure a checkpoint in the genesis file by specifying the block hash, number, and total difficulty as in the following example.
 
-!!! example "Checkpoint configuration example"
-
-    ```json
-    "checkpoint": {
-      "hash": "0x844d581cb00058d19f0584fb582fa2de208876ee56bbae27446a679baf4633f4",
-      "number": 14700000,
-      "totalDifficulty": "0xA2539264C62BF98CFC6"
-    }
-    ```
+```json title="Checkpoint configuration example"
+"checkpoint": {
+  "hash": "0x844d581cb00058d19f0584fb582fa2de208876ee56bbae27446a679baf4633f4",
+  "number": 14700000,
+  "totalDifficulty": "0xA2539264C62BF98CFC6"
+}
+```
 
 :::note
 
@@ -101,11 +103,11 @@ You can restart Besu during a checkpoint sync in case of hardware or software pr
 
 ### Fast synchronization
 
-!!! important
+:::caution
 
-    It might become impossible to sync Ethereum Mainnet using fast sync in the future.
-    If you sync for the first time or ever need to re-sync, update Besu to a version that supports
-    newer sync methods.
+It might become impossible to sync Ethereum Mainnet using fast sync in the future. If you sync for the first time or ever need to re-sync, update Besu to a version that supports newer sync methods.
+
+:::
 
 Enable fast sync using [`--sync-mode=FAST`](../../reference/cli/options.md#sync-mode).
 
@@ -125,36 +127,32 @@ When fast syncing, block numbers increase until close to the head block, then th
 
 :::
 
-!!! caution "RocksDB error on AWS"
+:::caution RocksDB error on AWS
 
-    When running Besu on some cloud providers, a known [RocksDB](https://github.com/facebook/rocksdb/issues/6435) issue
-    causes fast sync to fail occasionally.
-    The following error is displayed repeatedly:
+When running Besu on some cloud providers, a known [RocksDB](https://github.com/facebook/rocksdb/issues/6435) issue causes fast sync to fail occasionally. The following error is displayed repeatedly:
 
-    ```
-    EthScheduler-Services-1 (importBlock) | ERROR | PipelineChainDownloader | Chain download failed. Restarting after short delay.
-    java.util.concurrent.CompletionException: org.hyperledger.besu.plugin.services.exception.StorageException: org.rocksdb.RocksDBException: block checksum mismatch:
-    ```
+```
+EthScheduler-Services-1 (importBlock) | ERROR | PipelineChainDownloader | Chain download failed. Restarting after short delay.
+java.util.concurrent.CompletionException: org.hyperledger.besu.plugin.services.exception.StorageException: org.rocksdb.RocksDBException: block checksum mismatch:
+```
 
-    The failure has been seen on AWS and Digital Ocean.
-    On AWS, A full restart of the VM is required to restart the fast sync.
-    Fast sync isn't [currently supported on Digital Ocean](https://github.com/hyperledger/besu/blob/750580dcca349d22d024cc14a8171b2fa74b505a/CHANGELOG.md#143).
+The failure has been seen on AWS and Digital Ocean. On AWS, A full restart of the VM is required to restart the fast sync. Fast sync isn't [currently supported on Digital Ocean](https://github.com/hyperledger/besu/blob/750580dcca349d22d024cc14a8171b2fa74b505a/CHANGELOG.md#143).
 
-!!! caution "Pending state nodes stays constant"
+:::
 
-    When fast syncing, the pending state nodes count is the number of nodes yet to be downloaded, and
-    it should change constantly.
-    Pending state nodes trend to 0 during fast sync and then goes to 0.
+:::caution Pending state nodes stays constant
 
-    If the number stays constant, this could mean your node isn't syncing against any peers.
+When fast syncing, the pending state nodes count is the number of nodes yet to be downloaded, and it should change constantly. Pending state nodes trend to 0 during fast sync and then goes to 0.
 
-    In the following example, the pivot block is 0 and the pending state nodes value is constant.
-    This means the node isn't syncing against any peers.
-    The fact that state nodes have been downloaded means at some stage it was syncing.
+If the number stays constant, this could mean your node isn't syncing against any peers.
 
-    ![Fast synchronization](../../../assets/images/fastsync.png)
+In the following example, the pivot block is 0 and the pending state nodes value is constant. This means the node isn't syncing against any peers. The fact that state nodes have been downloaded means at some stage it was syncing.
 
-    The easiest solution in this scenario is to restart fast sync to obtain a new pivot block.
+![Fast synchronization](../../../assets/images/fastsync.png)
+
+The easiest solution in this scenario is to restart fast sync to obtain a new pivot block.
+
+:::
 
 ## Run an archive node
 
