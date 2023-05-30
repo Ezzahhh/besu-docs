@@ -600,7 +600,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"debug_accountAt","params":["0xc8
 
 <!--/tabs-->
 
-    This example uses a contract address for the `address` parameter.
+This example uses a contract address for the `address` parameter.
 
 <!--tabs-->
 

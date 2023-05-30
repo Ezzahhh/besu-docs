@@ -60,7 +60,7 @@ If you update the chain ID (or network ID) of existing nodes, they can no longer
 
 To change a chain ID and start a new chain:
 
-1. Stop all your nodes using ++ctrl+c++ in each terminal window.
+1. Stop all your nodes using <kbd>ctrl+c</kbd> in each terminal window.
 2. Update the [genesis file](genesis-file.md) with the new chain ID.
 3. Make sure all nodes have the same genesis file.
 4. Delete the old data directory or point to a new location for each node.
